@@ -1,0 +1,150 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Starter models — replace with your own
+// ─────────────────────────────────────────
+// ADMIN USER
+// ─────────────────────────────────────────
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String // bcrypt hashed
+  name      String
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+}
+
+// ─────────────────────────────────────────
+// BOOKINGS
+// ─────────────────────────────────────────
+model Booking {
+  id String @id @default(cuid())
+
+  // Client info
+  clientName  String
+  clientEmail String
+  clientPhone String
+
+  // Event info
+  eventType   EventType
+  eventDate   DateTime
+  location    String
+  guestCount  Int?
+  budgetRange BudgetRange
+  notes       String?     @db.Text
+
+  // Status
+  status BookingStatus @default(NEW_REQUEST)
+
+  // Internal
+  internalNotes String? @db.Text
+  assignedTo    String? // name of coordinator
+
+  // Payment tracking
+  agreedAmount  Float?
+  depositAmount Float?
+  depositPaid   Boolean   @default(false)
+  depositDate   DateTime?
+  balancePaid   Boolean   @default(false)
+  balanceDate   DateTime?
+
+  // Relations
+  messages Message[]
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum EventType {
+  WEDDING
+  BIRTHDAY
+  CORPORATE
+  GRADUATION
+  ENGAGEMENT
+  ANNIVERSARY
+  CULTURAL
+  OTHER
+}
+
+enum BudgetRange {
+  UNDER_50K // Under ETB 50,000
+  RANGE_50K_100K // ETB 50,000 – 100,000
+  RANGE_100K_200K // ETB 100,000 – 200,000
+  RANGE_200K_500K // ETB 200,000 – 500,000
+  ABOVE_500K // Above ETB 500,000
+}
+
+enum BookingStatus {
+  NEW_REQUEST
+  CONTACTED
+  CONFIRMED
+  PLANNED
+  COMPLETED
+  CANCELLED
+}
+
+// ─────────────────────────────────────────
+// MESSAGES (Client Communication Log)
+// ─────────────────────────────────────────
+model Message {
+  id        String        @id @default(cuid())
+  bookingId String
+  booking   Booking       @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  sender    MessageSender
+  content   String        @db.Text
+  createdAt DateTime      @default(now())
+}
+
+enum MessageSender {
+  ADMIN
+  SYSTEM // auto-generated status change messages
+}
+
+// ─────────────────────────────────────────
+// GALLERY
+// ─────────────────────────────────────────
+model GalleryImage {
+  id             String          @id @default(cuid())
+  title          String
+  description    String?
+  imageUrl       String // Supabase Storage URL
+  category       GalleryCategory
+  isFeatured     Boolean         @default(false)
+  isBeforeAfter  Boolean         @default(false)
+  beforeImageUrl String? // only if isBeforeAfter = true
+  afterImageUrl  String? // only if isBeforeAfter = true
+  sortOrder      Int             @default(0)
+  createdAt      DateTime        @default(now())
+}
+
+enum GalleryCategory {
+  WEDDINGS
+  BIRTHDAYS
+  CORPORATE
+  DECORATIONS
+  BEHIND_THE_SCENES
+}
+
+// ─────────────────────────────────────────
+// SERVICE PACKAGES
+// ─────────────────────────────────────────
+model Package {
+  id          String   @id @default(cuid())
+  name        String // e.g. "Basic", "Standard", "Premium"
+  price       Float // in ETB
+  priceLabel  String // e.g. "Starting from ETB 50,000"
+  description String
+  features    String[] // array of feature strings
+  isPopular   Boolean  @default(false)
+  isActive    Boolean  @default(true)
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+}

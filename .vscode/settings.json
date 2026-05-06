@@ -1,5 +1,5 @@
 {
-    "prisma.pinToPrisma6": true,
+    "prisma.pinToPrisma6": false,
     "chat.tools.terminal.autoApprove": {
         "gh": true
     }

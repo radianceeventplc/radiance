@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  output   = "../generated/prisma"
 }
 
 datasource db {
@@ -7,6 +8,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Starter models — replace with your own
 // ─────────────────────────────────────────
 // ADMIN USER
 // ─────────────────────────────────────────
