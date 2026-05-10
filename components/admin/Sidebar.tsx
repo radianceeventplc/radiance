@@ -15,11 +15,13 @@ import {
   Menu,
   X,
   LogOut,
+  FileText,
 } from "lucide-react";
 
 const navItems = [
   { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
   { label: "Bookings", href: "/admin/bookings", icon: CalendarCheck },
+  { label: "Proposals", href: "/admin/proposals", icon: FileText },
   { label: "Weddings", href: "/admin/weddings", icon: Heart },
   { label: "Gallery", href: "/admin/gallery", icon: Image },
   { label: "Packages", href: "/admin/packages", icon: Package },

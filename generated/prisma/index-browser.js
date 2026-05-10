@@ -292,6 +292,82 @@ exports.Prisma.DesignAssetScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.ProposalScalarFieldEnum = {
+  id: 'id',
+  bookingId: 'bookingId',
+  title: 'title',
+  proposalNumber: 'proposalNumber',
+  introduction: 'introduction',
+  eventVision: 'eventVision',
+  themeConcept: 'themeConcept',
+  totalAmount: 'totalAmount',
+  currency: 'currency',
+  status: 'status',
+  validUntil: 'validUntil',
+  pdfUrl: 'pdfUrl',
+  publicToken: 'publicToken',
+  clientApproved: 'clientApproved',
+  clientApprovedAt: 'clientApprovedAt',
+  clientRejected: 'clientRejected',
+  rejectionReason: 'rejectionReason',
+  notes: 'notes',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ProposalItemScalarFieldEnum = {
+  id: 'id',
+  proposalId: 'proposalId',
+  title: 'title',
+  description: 'description',
+  quantity: 'quantity',
+  unitPrice: 'unitPrice',
+  totalPrice: 'totalPrice',
+  category: 'category',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.ProposalSectionScalarFieldEnum = {
+  id: 'id',
+  proposalId: 'proposalId',
+  title: 'title',
+  content: 'content',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.ProposalContractScalarFieldEnum = {
+  id: 'id',
+  proposalId: 'proposalId',
+  title: 'title',
+  content: 'content',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.ProposalCommentScalarFieldEnum = {
+  id: 'id',
+  proposalId: 'proposalId',
+  authorName: 'authorName',
+  content: 'content',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.ProposalTemplateScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  eventType: 'eventType',
+  coverImage: 'coverImage',
+  sections: 'sections',
+  contractTerms: 'contractTerms',
+  isActive: 'isActive',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -393,6 +469,28 @@ exports.AssetCategory = exports.$Enums.AssetCategory = {
   TEXTURE: 'TEXTURE'
 };
 
+exports.ProposalStatus = exports.$Enums.ProposalStatus = {
+  DRAFT: 'DRAFT',
+  SENT: 'SENT',
+  VIEWED: 'VIEWED',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED',
+  EXPIRED: 'EXPIRED'
+};
+
+exports.ProposalItemCategory = exports.$Enums.ProposalItemCategory = {
+  DECORATION: 'DECORATION',
+  CATERING: 'CATERING',
+  PHOTOGRAPHY: 'PHOTOGRAPHY',
+  VENUE: 'VENUE',
+  ENTERTAINMENT: 'ENTERTAINMENT',
+  FLORAL: 'FLORAL',
+  LIGHTING: 'LIGHTING',
+  TRANSPORT: 'TRANSPORT',
+  COORDINATION: 'COORDINATION',
+  CUSTOM: 'CUSTOM'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Booking: 'Booking',
@@ -404,7 +502,13 @@ exports.Prisma.ModelName = {
   RSVP: 'RSVP',
   GiftRegistry: 'GiftRegistry',
   GiftReservation: 'GiftReservation',
-  DesignAsset: 'DesignAsset'
+  DesignAsset: 'DesignAsset',
+  Proposal: 'Proposal',
+  ProposalItem: 'ProposalItem',
+  ProposalSection: 'ProposalSection',
+  ProposalContract: 'ProposalContract',
+  ProposalComment: 'ProposalComment',
+  ProposalTemplate: 'ProposalTemplate'
 };
 
 /**

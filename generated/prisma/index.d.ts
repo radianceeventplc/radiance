@@ -68,6 +68,36 @@ export type GiftReservation = $Result.DefaultSelection<Prisma.$GiftReservationPa
  * 
  */
 export type DesignAsset = $Result.DefaultSelection<Prisma.$DesignAssetPayload>
+/**
+ * Model Proposal
+ * 
+ */
+export type Proposal = $Result.DefaultSelection<Prisma.$ProposalPayload>
+/**
+ * Model ProposalItem
+ * 
+ */
+export type ProposalItem = $Result.DefaultSelection<Prisma.$ProposalItemPayload>
+/**
+ * Model ProposalSection
+ * 
+ */
+export type ProposalSection = $Result.DefaultSelection<Prisma.$ProposalSectionPayload>
+/**
+ * Model ProposalContract
+ * 
+ */
+export type ProposalContract = $Result.DefaultSelection<Prisma.$ProposalContractPayload>
+/**
+ * Model ProposalComment
+ * 
+ */
+export type ProposalComment = $Result.DefaultSelection<Prisma.$ProposalCommentPayload>
+/**
+ * Model ProposalTemplate
+ * 
+ */
+export type ProposalTemplate = $Result.DefaultSelection<Prisma.$ProposalTemplatePayload>
 
 /**
  * Enums
@@ -192,6 +222,34 @@ export const AssetCategory: {
 
 export type AssetCategory = (typeof AssetCategory)[keyof typeof AssetCategory]
 
+
+export const ProposalStatus: {
+  DRAFT: 'DRAFT',
+  SENT: 'SENT',
+  VIEWED: 'VIEWED',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED',
+  EXPIRED: 'EXPIRED'
+};
+
+export type ProposalStatus = (typeof ProposalStatus)[keyof typeof ProposalStatus]
+
+
+export const ProposalItemCategory: {
+  DECORATION: 'DECORATION',
+  CATERING: 'CATERING',
+  PHOTOGRAPHY: 'PHOTOGRAPHY',
+  VENUE: 'VENUE',
+  ENTERTAINMENT: 'ENTERTAINMENT',
+  FLORAL: 'FLORAL',
+  LIGHTING: 'LIGHTING',
+  TRANSPORT: 'TRANSPORT',
+  COORDINATION: 'COORDINATION',
+  CUSTOM: 'CUSTOM'
+};
+
+export type ProposalItemCategory = (typeof ProposalItemCategory)[keyof typeof ProposalItemCategory]
+
 }
 
 export type UserRole = $Enums.UserRole
@@ -237,6 +295,14 @@ export const GiftPriority: typeof $Enums.GiftPriority
 export type AssetCategory = $Enums.AssetCategory
 
 export const AssetCategory: typeof $Enums.AssetCategory
+
+export type ProposalStatus = $Enums.ProposalStatus
+
+export const ProposalStatus: typeof $Enums.ProposalStatus
+
+export type ProposalItemCategory = $Enums.ProposalItemCategory
+
+export const ProposalItemCategory: typeof $Enums.ProposalItemCategory
 
 /**
  * ##  Prisma Client ʲˢ
@@ -470,6 +536,66 @@ export class PrismaClient<
     * ```
     */
   get designAsset(): Prisma.DesignAssetDelegate<ExtArgs>;
+
+  /**
+   * `prisma.proposal`: Exposes CRUD operations for the **Proposal** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Proposals
+    * const proposals = await prisma.proposal.findMany()
+    * ```
+    */
+  get proposal(): Prisma.ProposalDelegate<ExtArgs>;
+
+  /**
+   * `prisma.proposalItem`: Exposes CRUD operations for the **ProposalItem** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ProposalItems
+    * const proposalItems = await prisma.proposalItem.findMany()
+    * ```
+    */
+  get proposalItem(): Prisma.ProposalItemDelegate<ExtArgs>;
+
+  /**
+   * `prisma.proposalSection`: Exposes CRUD operations for the **ProposalSection** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ProposalSections
+    * const proposalSections = await prisma.proposalSection.findMany()
+    * ```
+    */
+  get proposalSection(): Prisma.ProposalSectionDelegate<ExtArgs>;
+
+  /**
+   * `prisma.proposalContract`: Exposes CRUD operations for the **ProposalContract** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ProposalContracts
+    * const proposalContracts = await prisma.proposalContract.findMany()
+    * ```
+    */
+  get proposalContract(): Prisma.ProposalContractDelegate<ExtArgs>;
+
+  /**
+   * `prisma.proposalComment`: Exposes CRUD operations for the **ProposalComment** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ProposalComments
+    * const proposalComments = await prisma.proposalComment.findMany()
+    * ```
+    */
+  get proposalComment(): Prisma.ProposalCommentDelegate<ExtArgs>;
+
+  /**
+   * `prisma.proposalTemplate`: Exposes CRUD operations for the **ProposalTemplate** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ProposalTemplates
+    * const proposalTemplates = await prisma.proposalTemplate.findMany()
+    * ```
+    */
+  get proposalTemplate(): Prisma.ProposalTemplateDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -921,7 +1047,13 @@ export namespace Prisma {
     RSVP: 'RSVP',
     GiftRegistry: 'GiftRegistry',
     GiftReservation: 'GiftReservation',
-    DesignAsset: 'DesignAsset'
+    DesignAsset: 'DesignAsset',
+    Proposal: 'Proposal',
+    ProposalItem: 'ProposalItem',
+    ProposalSection: 'ProposalSection',
+    ProposalContract: 'ProposalContract',
+    ProposalComment: 'ProposalComment',
+    ProposalTemplate: 'ProposalTemplate'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -937,7 +1069,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "user" | "booking" | "message" | "galleryImage" | "packageCategory" | "package" | "weddingInvitation" | "rSVP" | "giftRegistry" | "giftReservation" | "designAsset"
+      modelProps: "user" | "booking" | "message" | "galleryImage" | "packageCategory" | "package" | "weddingInvitation" | "rSVP" | "giftRegistry" | "giftReservation" | "designAsset" | "proposal" | "proposalItem" | "proposalSection" | "proposalContract" | "proposalComment" | "proposalTemplate"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1711,6 +1843,426 @@ export namespace Prisma {
           }
         }
       }
+      Proposal: {
+        payload: Prisma.$ProposalPayload<ExtArgs>
+        fields: Prisma.ProposalFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ProposalFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ProposalFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalPayload>
+          }
+          findFirst: {
+            args: Prisma.ProposalFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ProposalFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalPayload>
+          }
+          findMany: {
+            args: Prisma.ProposalFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalPayload>[]
+          }
+          create: {
+            args: Prisma.ProposalCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalPayload>
+          }
+          createMany: {
+            args: Prisma.ProposalCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ProposalCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalPayload>[]
+          }
+          delete: {
+            args: Prisma.ProposalDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalPayload>
+          }
+          update: {
+            args: Prisma.ProposalUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalPayload>
+          }
+          deleteMany: {
+            args: Prisma.ProposalDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ProposalUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ProposalUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalPayload>
+          }
+          aggregate: {
+            args: Prisma.ProposalAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProposal>
+          }
+          groupBy: {
+            args: Prisma.ProposalGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProposalGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ProposalCountArgs<ExtArgs>
+            result: $Utils.Optional<ProposalCountAggregateOutputType> | number
+          }
+        }
+      }
+      ProposalItem: {
+        payload: Prisma.$ProposalItemPayload<ExtArgs>
+        fields: Prisma.ProposalItemFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ProposalItemFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalItemPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ProposalItemFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalItemPayload>
+          }
+          findFirst: {
+            args: Prisma.ProposalItemFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalItemPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ProposalItemFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalItemPayload>
+          }
+          findMany: {
+            args: Prisma.ProposalItemFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalItemPayload>[]
+          }
+          create: {
+            args: Prisma.ProposalItemCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalItemPayload>
+          }
+          createMany: {
+            args: Prisma.ProposalItemCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ProposalItemCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalItemPayload>[]
+          }
+          delete: {
+            args: Prisma.ProposalItemDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalItemPayload>
+          }
+          update: {
+            args: Prisma.ProposalItemUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalItemPayload>
+          }
+          deleteMany: {
+            args: Prisma.ProposalItemDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ProposalItemUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ProposalItemUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalItemPayload>
+          }
+          aggregate: {
+            args: Prisma.ProposalItemAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProposalItem>
+          }
+          groupBy: {
+            args: Prisma.ProposalItemGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProposalItemGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ProposalItemCountArgs<ExtArgs>
+            result: $Utils.Optional<ProposalItemCountAggregateOutputType> | number
+          }
+        }
+      }
+      ProposalSection: {
+        payload: Prisma.$ProposalSectionPayload<ExtArgs>
+        fields: Prisma.ProposalSectionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ProposalSectionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalSectionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ProposalSectionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalSectionPayload>
+          }
+          findFirst: {
+            args: Prisma.ProposalSectionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalSectionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ProposalSectionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalSectionPayload>
+          }
+          findMany: {
+            args: Prisma.ProposalSectionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalSectionPayload>[]
+          }
+          create: {
+            args: Prisma.ProposalSectionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalSectionPayload>
+          }
+          createMany: {
+            args: Prisma.ProposalSectionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ProposalSectionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalSectionPayload>[]
+          }
+          delete: {
+            args: Prisma.ProposalSectionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalSectionPayload>
+          }
+          update: {
+            args: Prisma.ProposalSectionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalSectionPayload>
+          }
+          deleteMany: {
+            args: Prisma.ProposalSectionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ProposalSectionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ProposalSectionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalSectionPayload>
+          }
+          aggregate: {
+            args: Prisma.ProposalSectionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProposalSection>
+          }
+          groupBy: {
+            args: Prisma.ProposalSectionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProposalSectionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ProposalSectionCountArgs<ExtArgs>
+            result: $Utils.Optional<ProposalSectionCountAggregateOutputType> | number
+          }
+        }
+      }
+      ProposalContract: {
+        payload: Prisma.$ProposalContractPayload<ExtArgs>
+        fields: Prisma.ProposalContractFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ProposalContractFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalContractPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ProposalContractFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalContractPayload>
+          }
+          findFirst: {
+            args: Prisma.ProposalContractFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalContractPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ProposalContractFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalContractPayload>
+          }
+          findMany: {
+            args: Prisma.ProposalContractFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalContractPayload>[]
+          }
+          create: {
+            args: Prisma.ProposalContractCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalContractPayload>
+          }
+          createMany: {
+            args: Prisma.ProposalContractCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ProposalContractCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalContractPayload>[]
+          }
+          delete: {
+            args: Prisma.ProposalContractDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalContractPayload>
+          }
+          update: {
+            args: Prisma.ProposalContractUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalContractPayload>
+          }
+          deleteMany: {
+            args: Prisma.ProposalContractDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ProposalContractUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ProposalContractUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalContractPayload>
+          }
+          aggregate: {
+            args: Prisma.ProposalContractAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProposalContract>
+          }
+          groupBy: {
+            args: Prisma.ProposalContractGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProposalContractGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ProposalContractCountArgs<ExtArgs>
+            result: $Utils.Optional<ProposalContractCountAggregateOutputType> | number
+          }
+        }
+      }
+      ProposalComment: {
+        payload: Prisma.$ProposalCommentPayload<ExtArgs>
+        fields: Prisma.ProposalCommentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ProposalCommentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalCommentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ProposalCommentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalCommentPayload>
+          }
+          findFirst: {
+            args: Prisma.ProposalCommentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalCommentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ProposalCommentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalCommentPayload>
+          }
+          findMany: {
+            args: Prisma.ProposalCommentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalCommentPayload>[]
+          }
+          create: {
+            args: Prisma.ProposalCommentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalCommentPayload>
+          }
+          createMany: {
+            args: Prisma.ProposalCommentCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ProposalCommentCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalCommentPayload>[]
+          }
+          delete: {
+            args: Prisma.ProposalCommentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalCommentPayload>
+          }
+          update: {
+            args: Prisma.ProposalCommentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalCommentPayload>
+          }
+          deleteMany: {
+            args: Prisma.ProposalCommentDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ProposalCommentUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ProposalCommentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalCommentPayload>
+          }
+          aggregate: {
+            args: Prisma.ProposalCommentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProposalComment>
+          }
+          groupBy: {
+            args: Prisma.ProposalCommentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProposalCommentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ProposalCommentCountArgs<ExtArgs>
+            result: $Utils.Optional<ProposalCommentCountAggregateOutputType> | number
+          }
+        }
+      }
+      ProposalTemplate: {
+        payload: Prisma.$ProposalTemplatePayload<ExtArgs>
+        fields: Prisma.ProposalTemplateFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ProposalTemplateFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalTemplatePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ProposalTemplateFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalTemplatePayload>
+          }
+          findFirst: {
+            args: Prisma.ProposalTemplateFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalTemplatePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ProposalTemplateFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalTemplatePayload>
+          }
+          findMany: {
+            args: Prisma.ProposalTemplateFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalTemplatePayload>[]
+          }
+          create: {
+            args: Prisma.ProposalTemplateCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalTemplatePayload>
+          }
+          createMany: {
+            args: Prisma.ProposalTemplateCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ProposalTemplateCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalTemplatePayload>[]
+          }
+          delete: {
+            args: Prisma.ProposalTemplateDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalTemplatePayload>
+          }
+          update: {
+            args: Prisma.ProposalTemplateUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalTemplatePayload>
+          }
+          deleteMany: {
+            args: Prisma.ProposalTemplateDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ProposalTemplateUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ProposalTemplateUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProposalTemplatePayload>
+          }
+          aggregate: {
+            args: Prisma.ProposalTemplateAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProposalTemplate>
+          }
+          groupBy: {
+            args: Prisma.ProposalTemplateGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProposalTemplateGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ProposalTemplateCountArgs<ExtArgs>
+            result: $Utils.Optional<ProposalTemplateCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1868,17 +2420,59 @@ export namespace Prisma {
 
 
   /**
+   * Count Type UserCountOutputType
+   */
+
+  export type UserCountOutputType = {
+    proposals: number
+    proposalTemplates: number
+  }
+
+  export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    proposals?: boolean | UserCountOutputTypeCountProposalsArgs
+    proposalTemplates?: boolean | UserCountOutputTypeCountProposalTemplatesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCountOutputType
+     */
+    select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountProposalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProposalWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountProposalTemplatesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProposalTemplateWhereInput
+  }
+
+
+  /**
    * Count Type BookingCountOutputType
    */
 
   export type BookingCountOutputType = {
     messages: number
     invitations: number
+    proposals: number
   }
 
   export type BookingCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     messages?: boolean | BookingCountOutputTypeCountMessagesArgs
     invitations?: boolean | BookingCountOutputTypeCountInvitationsArgs
+    proposals?: boolean | BookingCountOutputTypeCountProposalsArgs
   }
 
   // Custom InputTypes
@@ -1904,6 +2498,13 @@ export namespace Prisma {
    */
   export type BookingCountOutputTypeCountInvitationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: WeddingInvitationWhereInput
+  }
+
+  /**
+   * BookingCountOutputType without action
+   */
+  export type BookingCountOutputTypeCountProposalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProposalWhereInput
   }
 
 
@@ -2015,6 +2616,64 @@ export namespace Prisma {
    */
   export type GiftRegistryCountOutputTypeCountReservationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: GiftReservationWhereInput
+  }
+
+
+  /**
+   * Count Type ProposalCountOutputType
+   */
+
+  export type ProposalCountOutputType = {
+    items: number
+    sections: number
+    contracts: number
+    comments: number
+  }
+
+  export type ProposalCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    items?: boolean | ProposalCountOutputTypeCountItemsArgs
+    sections?: boolean | ProposalCountOutputTypeCountSectionsArgs
+    contracts?: boolean | ProposalCountOutputTypeCountContractsArgs
+    comments?: boolean | ProposalCountOutputTypeCountCommentsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ProposalCountOutputType without action
+   */
+  export type ProposalCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalCountOutputType
+     */
+    select?: ProposalCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ProposalCountOutputType without action
+   */
+  export type ProposalCountOutputTypeCountItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProposalItemWhereInput
+  }
+
+  /**
+   * ProposalCountOutputType without action
+   */
+  export type ProposalCountOutputTypeCountSectionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProposalSectionWhereInput
+  }
+
+  /**
+   * ProposalCountOutputType without action
+   */
+  export type ProposalCountOutputTypeCountContractsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProposalContractWhereInput
+  }
+
+  /**
+   * ProposalCountOutputType without action
+   */
+  export type ProposalCountOutputTypeCountCommentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProposalCommentWhereInput
   }
 
 
@@ -2218,6 +2877,9 @@ export namespace Prisma {
     avatarUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    proposals?: boolean | User$proposalsArgs<ExtArgs>
+    proposalTemplates?: boolean | User$proposalTemplatesArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2244,10 +2906,19 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
+  export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    proposals?: boolean | User$proposalsArgs<ExtArgs>
+    proposalTemplates?: boolean | User$proposalTemplatesArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
-    objects: {}
+    objects: {
+      proposals: Prisma.$ProposalPayload<ExtArgs>[]
+      proposalTemplates: Prisma.$ProposalTemplatePayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
@@ -2622,6 +3293,8 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    proposals<T extends User$proposalsArgs<ExtArgs> = {}>(args?: Subset<T, User$proposalsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProposalPayload<ExtArgs>, T, "findMany"> | Null>
+    proposalTemplates<T extends User$proposalTemplatesArgs<ExtArgs> = {}>(args?: Subset<T, User$proposalTemplatesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProposalTemplatePayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2673,6 +3346,10 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -2687,6 +3364,10 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -2700,6 +3381,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the User
      */
     select?: UserSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * Filter, which User to fetch.
      */
@@ -2745,6 +3430,10 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where?: UserWhereInput
@@ -2789,6 +3478,10 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which Users to fetch.
      */
     where?: UserWhereInput
@@ -2827,6 +3520,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the User
      */
     select?: UserSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to create a User.
      */
@@ -2868,6 +3565,10 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * The data needed to update a User.
      */
     data: XOR<UserUpdateInput, UserUncheckedUpdateInput>
@@ -2900,6 +3601,10 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * The filter to search for the User to update in case it exists.
      */
     where: UserWhereUniqueInput
@@ -2922,6 +3627,10 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter which User to delete.
      */
     where: UserWhereUniqueInput
@@ -2938,6 +3647,46 @@ export namespace Prisma {
   }
 
   /**
+   * User.proposals
+   */
+  export type User$proposalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Proposal
+     */
+    select?: ProposalSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalInclude<ExtArgs> | null
+    where?: ProposalWhereInput
+    orderBy?: ProposalOrderByWithRelationInput | ProposalOrderByWithRelationInput[]
+    cursor?: ProposalWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProposalScalarFieldEnum | ProposalScalarFieldEnum[]
+  }
+
+  /**
+   * User.proposalTemplates
+   */
+  export type User$proposalTemplatesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalTemplate
+     */
+    select?: ProposalTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalTemplateInclude<ExtArgs> | null
+    where?: ProposalTemplateWhereInput
+    orderBy?: ProposalTemplateOrderByWithRelationInput | ProposalTemplateOrderByWithRelationInput[]
+    cursor?: ProposalTemplateWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProposalTemplateScalarFieldEnum | ProposalTemplateScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2945,6 +3694,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the User
      */
     select?: UserSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
   }
 
 
@@ -3284,6 +4037,7 @@ export namespace Prisma {
     updatedAt?: boolean
     messages?: boolean | Booking$messagesArgs<ExtArgs>
     invitations?: boolean | Booking$invitationsArgs<ExtArgs>
+    proposals?: boolean | Booking$proposalsArgs<ExtArgs>
     _count?: boolean | BookingCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["booking"]>
 
@@ -3338,6 +4092,7 @@ export namespace Prisma {
   export type BookingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     messages?: boolean | Booking$messagesArgs<ExtArgs>
     invitations?: boolean | Booking$invitationsArgs<ExtArgs>
+    proposals?: boolean | Booking$proposalsArgs<ExtArgs>
     _count?: boolean | BookingCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type BookingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -3347,6 +4102,7 @@ export namespace Prisma {
     objects: {
       messages: Prisma.$MessagePayload<ExtArgs>[]
       invitations: Prisma.$WeddingInvitationPayload<ExtArgs>[]
+      proposals: Prisma.$ProposalPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3736,6 +4492,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     messages<T extends Booking$messagesArgs<ExtArgs> = {}>(args?: Subset<T, Booking$messagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany"> | Null>
     invitations<T extends Booking$invitationsArgs<ExtArgs> = {}>(args?: Subset<T, Booking$invitationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WeddingInvitationPayload<ExtArgs>, T, "findMany"> | Null>
+    proposals<T extends Booking$proposalsArgs<ExtArgs> = {}>(args?: Subset<T, Booking$proposalsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProposalPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4137,6 +4894,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: WeddingInvitationScalarFieldEnum | WeddingInvitationScalarFieldEnum[]
+  }
+
+  /**
+   * Booking.proposals
+   */
+  export type Booking$proposalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Proposal
+     */
+    select?: ProposalSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalInclude<ExtArgs> | null
+    where?: ProposalWhereInput
+    orderBy?: ProposalOrderByWithRelationInput | ProposalOrderByWithRelationInput[]
+    cursor?: ProposalWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProposalScalarFieldEnum | ProposalScalarFieldEnum[]
   }
 
   /**
@@ -13431,6 +14208,6158 @@ export namespace Prisma {
 
 
   /**
+   * Model Proposal
+   */
+
+  export type AggregateProposal = {
+    _count: ProposalCountAggregateOutputType | null
+    _avg: ProposalAvgAggregateOutputType | null
+    _sum: ProposalSumAggregateOutputType | null
+    _min: ProposalMinAggregateOutputType | null
+    _max: ProposalMaxAggregateOutputType | null
+  }
+
+  export type ProposalAvgAggregateOutputType = {
+    totalAmount: number | null
+  }
+
+  export type ProposalSumAggregateOutputType = {
+    totalAmount: number | null
+  }
+
+  export type ProposalMinAggregateOutputType = {
+    id: string | null
+    bookingId: string | null
+    title: string | null
+    proposalNumber: string | null
+    introduction: string | null
+    eventVision: string | null
+    themeConcept: string | null
+    totalAmount: number | null
+    currency: string | null
+    status: $Enums.ProposalStatus | null
+    validUntil: Date | null
+    pdfUrl: string | null
+    publicToken: string | null
+    clientApproved: boolean | null
+    clientApprovedAt: Date | null
+    clientRejected: boolean | null
+    rejectionReason: string | null
+    notes: string | null
+    createdById: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ProposalMaxAggregateOutputType = {
+    id: string | null
+    bookingId: string | null
+    title: string | null
+    proposalNumber: string | null
+    introduction: string | null
+    eventVision: string | null
+    themeConcept: string | null
+    totalAmount: number | null
+    currency: string | null
+    status: $Enums.ProposalStatus | null
+    validUntil: Date | null
+    pdfUrl: string | null
+    publicToken: string | null
+    clientApproved: boolean | null
+    clientApprovedAt: Date | null
+    clientRejected: boolean | null
+    rejectionReason: string | null
+    notes: string | null
+    createdById: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ProposalCountAggregateOutputType = {
+    id: number
+    bookingId: number
+    title: number
+    proposalNumber: number
+    introduction: number
+    eventVision: number
+    themeConcept: number
+    totalAmount: number
+    currency: number
+    status: number
+    validUntil: number
+    pdfUrl: number
+    publicToken: number
+    clientApproved: number
+    clientApprovedAt: number
+    clientRejected: number
+    rejectionReason: number
+    notes: number
+    createdById: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ProposalAvgAggregateInputType = {
+    totalAmount?: true
+  }
+
+  export type ProposalSumAggregateInputType = {
+    totalAmount?: true
+  }
+
+  export type ProposalMinAggregateInputType = {
+    id?: true
+    bookingId?: true
+    title?: true
+    proposalNumber?: true
+    introduction?: true
+    eventVision?: true
+    themeConcept?: true
+    totalAmount?: true
+    currency?: true
+    status?: true
+    validUntil?: true
+    pdfUrl?: true
+    publicToken?: true
+    clientApproved?: true
+    clientApprovedAt?: true
+    clientRejected?: true
+    rejectionReason?: true
+    notes?: true
+    createdById?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ProposalMaxAggregateInputType = {
+    id?: true
+    bookingId?: true
+    title?: true
+    proposalNumber?: true
+    introduction?: true
+    eventVision?: true
+    themeConcept?: true
+    totalAmount?: true
+    currency?: true
+    status?: true
+    validUntil?: true
+    pdfUrl?: true
+    publicToken?: true
+    clientApproved?: true
+    clientApprovedAt?: true
+    clientRejected?: true
+    rejectionReason?: true
+    notes?: true
+    createdById?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ProposalCountAggregateInputType = {
+    id?: true
+    bookingId?: true
+    title?: true
+    proposalNumber?: true
+    introduction?: true
+    eventVision?: true
+    themeConcept?: true
+    totalAmount?: true
+    currency?: true
+    status?: true
+    validUntil?: true
+    pdfUrl?: true
+    publicToken?: true
+    clientApproved?: true
+    clientApprovedAt?: true
+    clientRejected?: true
+    rejectionReason?: true
+    notes?: true
+    createdById?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ProposalAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Proposal to aggregate.
+     */
+    where?: ProposalWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Proposals to fetch.
+     */
+    orderBy?: ProposalOrderByWithRelationInput | ProposalOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProposalWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Proposals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Proposals.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Proposals
+    **/
+    _count?: true | ProposalCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ProposalAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ProposalSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProposalMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProposalMaxAggregateInputType
+  }
+
+  export type GetProposalAggregateType<T extends ProposalAggregateArgs> = {
+        [P in keyof T & keyof AggregateProposal]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProposal[P]>
+      : GetScalarType<T[P], AggregateProposal[P]>
+  }
+
+
+
+
+  export type ProposalGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProposalWhereInput
+    orderBy?: ProposalOrderByWithAggregationInput | ProposalOrderByWithAggregationInput[]
+    by: ProposalScalarFieldEnum[] | ProposalScalarFieldEnum
+    having?: ProposalScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProposalCountAggregateInputType | true
+    _avg?: ProposalAvgAggregateInputType
+    _sum?: ProposalSumAggregateInputType
+    _min?: ProposalMinAggregateInputType
+    _max?: ProposalMaxAggregateInputType
+  }
+
+  export type ProposalGroupByOutputType = {
+    id: string
+    bookingId: string
+    title: string
+    proposalNumber: string
+    introduction: string | null
+    eventVision: string | null
+    themeConcept: string | null
+    totalAmount: number
+    currency: string
+    status: $Enums.ProposalStatus
+    validUntil: Date | null
+    pdfUrl: string | null
+    publicToken: string
+    clientApproved: boolean
+    clientApprovedAt: Date | null
+    clientRejected: boolean
+    rejectionReason: string | null
+    notes: string | null
+    createdById: string
+    createdAt: Date
+    updatedAt: Date
+    _count: ProposalCountAggregateOutputType | null
+    _avg: ProposalAvgAggregateOutputType | null
+    _sum: ProposalSumAggregateOutputType | null
+    _min: ProposalMinAggregateOutputType | null
+    _max: ProposalMaxAggregateOutputType | null
+  }
+
+  type GetProposalGroupByPayload<T extends ProposalGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProposalGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProposalGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProposalGroupByOutputType[P]>
+            : GetScalarType<T[P], ProposalGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProposalSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    bookingId?: boolean
+    title?: boolean
+    proposalNumber?: boolean
+    introduction?: boolean
+    eventVision?: boolean
+    themeConcept?: boolean
+    totalAmount?: boolean
+    currency?: boolean
+    status?: boolean
+    validUntil?: boolean
+    pdfUrl?: boolean
+    publicToken?: boolean
+    clientApproved?: boolean
+    clientApprovedAt?: boolean
+    clientRejected?: boolean
+    rejectionReason?: boolean
+    notes?: boolean
+    createdById?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    booking?: boolean | BookingDefaultArgs<ExtArgs>
+    createdBy?: boolean | UserDefaultArgs<ExtArgs>
+    items?: boolean | Proposal$itemsArgs<ExtArgs>
+    sections?: boolean | Proposal$sectionsArgs<ExtArgs>
+    contracts?: boolean | Proposal$contractsArgs<ExtArgs>
+    comments?: boolean | Proposal$commentsArgs<ExtArgs>
+    _count?: boolean | ProposalCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["proposal"]>
+
+  export type ProposalSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    bookingId?: boolean
+    title?: boolean
+    proposalNumber?: boolean
+    introduction?: boolean
+    eventVision?: boolean
+    themeConcept?: boolean
+    totalAmount?: boolean
+    currency?: boolean
+    status?: boolean
+    validUntil?: boolean
+    pdfUrl?: boolean
+    publicToken?: boolean
+    clientApproved?: boolean
+    clientApprovedAt?: boolean
+    clientRejected?: boolean
+    rejectionReason?: boolean
+    notes?: boolean
+    createdById?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    booking?: boolean | BookingDefaultArgs<ExtArgs>
+    createdBy?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["proposal"]>
+
+  export type ProposalSelectScalar = {
+    id?: boolean
+    bookingId?: boolean
+    title?: boolean
+    proposalNumber?: boolean
+    introduction?: boolean
+    eventVision?: boolean
+    themeConcept?: boolean
+    totalAmount?: boolean
+    currency?: boolean
+    status?: boolean
+    validUntil?: boolean
+    pdfUrl?: boolean
+    publicToken?: boolean
+    clientApproved?: boolean
+    clientApprovedAt?: boolean
+    clientRejected?: boolean
+    rejectionReason?: boolean
+    notes?: boolean
+    createdById?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ProposalInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    booking?: boolean | BookingDefaultArgs<ExtArgs>
+    createdBy?: boolean | UserDefaultArgs<ExtArgs>
+    items?: boolean | Proposal$itemsArgs<ExtArgs>
+    sections?: boolean | Proposal$sectionsArgs<ExtArgs>
+    contracts?: boolean | Proposal$contractsArgs<ExtArgs>
+    comments?: boolean | Proposal$commentsArgs<ExtArgs>
+    _count?: boolean | ProposalCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ProposalIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    booking?: boolean | BookingDefaultArgs<ExtArgs>
+    createdBy?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $ProposalPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Proposal"
+    objects: {
+      booking: Prisma.$BookingPayload<ExtArgs>
+      createdBy: Prisma.$UserPayload<ExtArgs>
+      items: Prisma.$ProposalItemPayload<ExtArgs>[]
+      sections: Prisma.$ProposalSectionPayload<ExtArgs>[]
+      contracts: Prisma.$ProposalContractPayload<ExtArgs>[]
+      comments: Prisma.$ProposalCommentPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      bookingId: string
+      title: string
+      proposalNumber: string
+      introduction: string | null
+      eventVision: string | null
+      themeConcept: string | null
+      totalAmount: number
+      currency: string
+      status: $Enums.ProposalStatus
+      validUntil: Date | null
+      pdfUrl: string | null
+      publicToken: string
+      clientApproved: boolean
+      clientApprovedAt: Date | null
+      clientRejected: boolean
+      rejectionReason: string | null
+      notes: string | null
+      createdById: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["proposal"]>
+    composites: {}
+  }
+
+  type ProposalGetPayload<S extends boolean | null | undefined | ProposalDefaultArgs> = $Result.GetResult<Prisma.$ProposalPayload, S>
+
+  type ProposalCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ProposalFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: ProposalCountAggregateInputType | true
+    }
+
+  export interface ProposalDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Proposal'], meta: { name: 'Proposal' } }
+    /**
+     * Find zero or one Proposal that matches the filter.
+     * @param {ProposalFindUniqueArgs} args - Arguments to find a Proposal
+     * @example
+     * // Get one Proposal
+     * const proposal = await prisma.proposal.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ProposalFindUniqueArgs>(args: SelectSubset<T, ProposalFindUniqueArgs<ExtArgs>>): Prisma__ProposalClient<$Result.GetResult<Prisma.$ProposalPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Proposal that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {ProposalFindUniqueOrThrowArgs} args - Arguments to find a Proposal
+     * @example
+     * // Get one Proposal
+     * const proposal = await prisma.proposal.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ProposalFindUniqueOrThrowArgs>(args: SelectSubset<T, ProposalFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProposalClient<$Result.GetResult<Prisma.$ProposalPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Proposal that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalFindFirstArgs} args - Arguments to find a Proposal
+     * @example
+     * // Get one Proposal
+     * const proposal = await prisma.proposal.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ProposalFindFirstArgs>(args?: SelectSubset<T, ProposalFindFirstArgs<ExtArgs>>): Prisma__ProposalClient<$Result.GetResult<Prisma.$ProposalPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Proposal that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalFindFirstOrThrowArgs} args - Arguments to find a Proposal
+     * @example
+     * // Get one Proposal
+     * const proposal = await prisma.proposal.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ProposalFindFirstOrThrowArgs>(args?: SelectSubset<T, ProposalFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProposalClient<$Result.GetResult<Prisma.$ProposalPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Proposals that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Proposals
+     * const proposals = await prisma.proposal.findMany()
+     * 
+     * // Get first 10 Proposals
+     * const proposals = await prisma.proposal.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const proposalWithIdOnly = await prisma.proposal.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ProposalFindManyArgs>(args?: SelectSubset<T, ProposalFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProposalPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Proposal.
+     * @param {ProposalCreateArgs} args - Arguments to create a Proposal.
+     * @example
+     * // Create one Proposal
+     * const Proposal = await prisma.proposal.create({
+     *   data: {
+     *     // ... data to create a Proposal
+     *   }
+     * })
+     * 
+     */
+    create<T extends ProposalCreateArgs>(args: SelectSubset<T, ProposalCreateArgs<ExtArgs>>): Prisma__ProposalClient<$Result.GetResult<Prisma.$ProposalPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Proposals.
+     * @param {ProposalCreateManyArgs} args - Arguments to create many Proposals.
+     * @example
+     * // Create many Proposals
+     * const proposal = await prisma.proposal.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ProposalCreateManyArgs>(args?: SelectSubset<T, ProposalCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Proposals and returns the data saved in the database.
+     * @param {ProposalCreateManyAndReturnArgs} args - Arguments to create many Proposals.
+     * @example
+     * // Create many Proposals
+     * const proposal = await prisma.proposal.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Proposals and only return the `id`
+     * const proposalWithIdOnly = await prisma.proposal.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ProposalCreateManyAndReturnArgs>(args?: SelectSubset<T, ProposalCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProposalPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Proposal.
+     * @param {ProposalDeleteArgs} args - Arguments to delete one Proposal.
+     * @example
+     * // Delete one Proposal
+     * const Proposal = await prisma.proposal.delete({
+     *   where: {
+     *     // ... filter to delete one Proposal
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ProposalDeleteArgs>(args: SelectSubset<T, ProposalDeleteArgs<ExtArgs>>): Prisma__ProposalClient<$Result.GetResult<Prisma.$ProposalPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Proposal.
+     * @param {ProposalUpdateArgs} args - Arguments to update one Proposal.
+     * @example
+     * // Update one Proposal
+     * const proposal = await prisma.proposal.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ProposalUpdateArgs>(args: SelectSubset<T, ProposalUpdateArgs<ExtArgs>>): Prisma__ProposalClient<$Result.GetResult<Prisma.$ProposalPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Proposals.
+     * @param {ProposalDeleteManyArgs} args - Arguments to filter Proposals to delete.
+     * @example
+     * // Delete a few Proposals
+     * const { count } = await prisma.proposal.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ProposalDeleteManyArgs>(args?: SelectSubset<T, ProposalDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Proposals.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Proposals
+     * const proposal = await prisma.proposal.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ProposalUpdateManyArgs>(args: SelectSubset<T, ProposalUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Proposal.
+     * @param {ProposalUpsertArgs} args - Arguments to update or create a Proposal.
+     * @example
+     * // Update or create a Proposal
+     * const proposal = await prisma.proposal.upsert({
+     *   create: {
+     *     // ... data to create a Proposal
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Proposal we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ProposalUpsertArgs>(args: SelectSubset<T, ProposalUpsertArgs<ExtArgs>>): Prisma__ProposalClient<$Result.GetResult<Prisma.$ProposalPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Proposals.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalCountArgs} args - Arguments to filter Proposals to count.
+     * @example
+     * // Count the number of Proposals
+     * const count = await prisma.proposal.count({
+     *   where: {
+     *     // ... the filter for the Proposals we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProposalCountArgs>(
+      args?: Subset<T, ProposalCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProposalCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Proposal.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProposalAggregateArgs>(args: Subset<T, ProposalAggregateArgs>): Prisma.PrismaPromise<GetProposalAggregateType<T>>
+
+    /**
+     * Group by Proposal.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProposalGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProposalGroupByArgs['orderBy'] }
+        : { orderBy?: ProposalGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProposalGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProposalGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Proposal model
+   */
+  readonly fields: ProposalFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Proposal.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProposalClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    booking<T extends BookingDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BookingDefaultArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    createdBy<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    items<T extends Proposal$itemsArgs<ExtArgs> = {}>(args?: Subset<T, Proposal$itemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProposalItemPayload<ExtArgs>, T, "findMany"> | Null>
+    sections<T extends Proposal$sectionsArgs<ExtArgs> = {}>(args?: Subset<T, Proposal$sectionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProposalSectionPayload<ExtArgs>, T, "findMany"> | Null>
+    contracts<T extends Proposal$contractsArgs<ExtArgs> = {}>(args?: Subset<T, Proposal$contractsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProposalContractPayload<ExtArgs>, T, "findMany"> | Null>
+    comments<T extends Proposal$commentsArgs<ExtArgs> = {}>(args?: Subset<T, Proposal$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProposalCommentPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Proposal model
+   */ 
+  interface ProposalFieldRefs {
+    readonly id: FieldRef<"Proposal", 'String'>
+    readonly bookingId: FieldRef<"Proposal", 'String'>
+    readonly title: FieldRef<"Proposal", 'String'>
+    readonly proposalNumber: FieldRef<"Proposal", 'String'>
+    readonly introduction: FieldRef<"Proposal", 'String'>
+    readonly eventVision: FieldRef<"Proposal", 'String'>
+    readonly themeConcept: FieldRef<"Proposal", 'String'>
+    readonly totalAmount: FieldRef<"Proposal", 'Float'>
+    readonly currency: FieldRef<"Proposal", 'String'>
+    readonly status: FieldRef<"Proposal", 'ProposalStatus'>
+    readonly validUntil: FieldRef<"Proposal", 'DateTime'>
+    readonly pdfUrl: FieldRef<"Proposal", 'String'>
+    readonly publicToken: FieldRef<"Proposal", 'String'>
+    readonly clientApproved: FieldRef<"Proposal", 'Boolean'>
+    readonly clientApprovedAt: FieldRef<"Proposal", 'DateTime'>
+    readonly clientRejected: FieldRef<"Proposal", 'Boolean'>
+    readonly rejectionReason: FieldRef<"Proposal", 'String'>
+    readonly notes: FieldRef<"Proposal", 'String'>
+    readonly createdById: FieldRef<"Proposal", 'String'>
+    readonly createdAt: FieldRef<"Proposal", 'DateTime'>
+    readonly updatedAt: FieldRef<"Proposal", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Proposal findUnique
+   */
+  export type ProposalFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Proposal
+     */
+    select?: ProposalSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalInclude<ExtArgs> | null
+    /**
+     * Filter, which Proposal to fetch.
+     */
+    where: ProposalWhereUniqueInput
+  }
+
+  /**
+   * Proposal findUniqueOrThrow
+   */
+  export type ProposalFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Proposal
+     */
+    select?: ProposalSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalInclude<ExtArgs> | null
+    /**
+     * Filter, which Proposal to fetch.
+     */
+    where: ProposalWhereUniqueInput
+  }
+
+  /**
+   * Proposal findFirst
+   */
+  export type ProposalFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Proposal
+     */
+    select?: ProposalSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalInclude<ExtArgs> | null
+    /**
+     * Filter, which Proposal to fetch.
+     */
+    where?: ProposalWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Proposals to fetch.
+     */
+    orderBy?: ProposalOrderByWithRelationInput | ProposalOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Proposals.
+     */
+    cursor?: ProposalWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Proposals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Proposals.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Proposals.
+     */
+    distinct?: ProposalScalarFieldEnum | ProposalScalarFieldEnum[]
+  }
+
+  /**
+   * Proposal findFirstOrThrow
+   */
+  export type ProposalFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Proposal
+     */
+    select?: ProposalSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalInclude<ExtArgs> | null
+    /**
+     * Filter, which Proposal to fetch.
+     */
+    where?: ProposalWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Proposals to fetch.
+     */
+    orderBy?: ProposalOrderByWithRelationInput | ProposalOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Proposals.
+     */
+    cursor?: ProposalWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Proposals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Proposals.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Proposals.
+     */
+    distinct?: ProposalScalarFieldEnum | ProposalScalarFieldEnum[]
+  }
+
+  /**
+   * Proposal findMany
+   */
+  export type ProposalFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Proposal
+     */
+    select?: ProposalSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalInclude<ExtArgs> | null
+    /**
+     * Filter, which Proposals to fetch.
+     */
+    where?: ProposalWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Proposals to fetch.
+     */
+    orderBy?: ProposalOrderByWithRelationInput | ProposalOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Proposals.
+     */
+    cursor?: ProposalWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Proposals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Proposals.
+     */
+    skip?: number
+    distinct?: ProposalScalarFieldEnum | ProposalScalarFieldEnum[]
+  }
+
+  /**
+   * Proposal create
+   */
+  export type ProposalCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Proposal
+     */
+    select?: ProposalSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Proposal.
+     */
+    data: XOR<ProposalCreateInput, ProposalUncheckedCreateInput>
+  }
+
+  /**
+   * Proposal createMany
+   */
+  export type ProposalCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Proposals.
+     */
+    data: ProposalCreateManyInput | ProposalCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Proposal createManyAndReturn
+   */
+  export type ProposalCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Proposal
+     */
+    select?: ProposalSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many Proposals.
+     */
+    data: ProposalCreateManyInput | ProposalCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Proposal update
+   */
+  export type ProposalUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Proposal
+     */
+    select?: ProposalSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Proposal.
+     */
+    data: XOR<ProposalUpdateInput, ProposalUncheckedUpdateInput>
+    /**
+     * Choose, which Proposal to update.
+     */
+    where: ProposalWhereUniqueInput
+  }
+
+  /**
+   * Proposal updateMany
+   */
+  export type ProposalUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Proposals.
+     */
+    data: XOR<ProposalUpdateManyMutationInput, ProposalUncheckedUpdateManyInput>
+    /**
+     * Filter which Proposals to update
+     */
+    where?: ProposalWhereInput
+  }
+
+  /**
+   * Proposal upsert
+   */
+  export type ProposalUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Proposal
+     */
+    select?: ProposalSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Proposal to update in case it exists.
+     */
+    where: ProposalWhereUniqueInput
+    /**
+     * In case the Proposal found by the `where` argument doesn't exist, create a new Proposal with this data.
+     */
+    create: XOR<ProposalCreateInput, ProposalUncheckedCreateInput>
+    /**
+     * In case the Proposal was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProposalUpdateInput, ProposalUncheckedUpdateInput>
+  }
+
+  /**
+   * Proposal delete
+   */
+  export type ProposalDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Proposal
+     */
+    select?: ProposalSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalInclude<ExtArgs> | null
+    /**
+     * Filter which Proposal to delete.
+     */
+    where: ProposalWhereUniqueInput
+  }
+
+  /**
+   * Proposal deleteMany
+   */
+  export type ProposalDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Proposals to delete
+     */
+    where?: ProposalWhereInput
+  }
+
+  /**
+   * Proposal.items
+   */
+  export type Proposal$itemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalItem
+     */
+    select?: ProposalItemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalItemInclude<ExtArgs> | null
+    where?: ProposalItemWhereInput
+    orderBy?: ProposalItemOrderByWithRelationInput | ProposalItemOrderByWithRelationInput[]
+    cursor?: ProposalItemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProposalItemScalarFieldEnum | ProposalItemScalarFieldEnum[]
+  }
+
+  /**
+   * Proposal.sections
+   */
+  export type Proposal$sectionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalSection
+     */
+    select?: ProposalSectionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalSectionInclude<ExtArgs> | null
+    where?: ProposalSectionWhereInput
+    orderBy?: ProposalSectionOrderByWithRelationInput | ProposalSectionOrderByWithRelationInput[]
+    cursor?: ProposalSectionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProposalSectionScalarFieldEnum | ProposalSectionScalarFieldEnum[]
+  }
+
+  /**
+   * Proposal.contracts
+   */
+  export type Proposal$contractsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalContract
+     */
+    select?: ProposalContractSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalContractInclude<ExtArgs> | null
+    where?: ProposalContractWhereInput
+    orderBy?: ProposalContractOrderByWithRelationInput | ProposalContractOrderByWithRelationInput[]
+    cursor?: ProposalContractWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProposalContractScalarFieldEnum | ProposalContractScalarFieldEnum[]
+  }
+
+  /**
+   * Proposal.comments
+   */
+  export type Proposal$commentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalComment
+     */
+    select?: ProposalCommentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalCommentInclude<ExtArgs> | null
+    where?: ProposalCommentWhereInput
+    orderBy?: ProposalCommentOrderByWithRelationInput | ProposalCommentOrderByWithRelationInput[]
+    cursor?: ProposalCommentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProposalCommentScalarFieldEnum | ProposalCommentScalarFieldEnum[]
+  }
+
+  /**
+   * Proposal without action
+   */
+  export type ProposalDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Proposal
+     */
+    select?: ProposalSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ProposalItem
+   */
+
+  export type AggregateProposalItem = {
+    _count: ProposalItemCountAggregateOutputType | null
+    _avg: ProposalItemAvgAggregateOutputType | null
+    _sum: ProposalItemSumAggregateOutputType | null
+    _min: ProposalItemMinAggregateOutputType | null
+    _max: ProposalItemMaxAggregateOutputType | null
+  }
+
+  export type ProposalItemAvgAggregateOutputType = {
+    quantity: number | null
+    unitPrice: number | null
+    totalPrice: number | null
+    sortOrder: number | null
+  }
+
+  export type ProposalItemSumAggregateOutputType = {
+    quantity: number | null
+    unitPrice: number | null
+    totalPrice: number | null
+    sortOrder: number | null
+  }
+
+  export type ProposalItemMinAggregateOutputType = {
+    id: string | null
+    proposalId: string | null
+    title: string | null
+    description: string | null
+    quantity: number | null
+    unitPrice: number | null
+    totalPrice: number | null
+    category: $Enums.ProposalItemCategory | null
+    sortOrder: number | null
+    createdAt: Date | null
+  }
+
+  export type ProposalItemMaxAggregateOutputType = {
+    id: string | null
+    proposalId: string | null
+    title: string | null
+    description: string | null
+    quantity: number | null
+    unitPrice: number | null
+    totalPrice: number | null
+    category: $Enums.ProposalItemCategory | null
+    sortOrder: number | null
+    createdAt: Date | null
+  }
+
+  export type ProposalItemCountAggregateOutputType = {
+    id: number
+    proposalId: number
+    title: number
+    description: number
+    quantity: number
+    unitPrice: number
+    totalPrice: number
+    category: number
+    sortOrder: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type ProposalItemAvgAggregateInputType = {
+    quantity?: true
+    unitPrice?: true
+    totalPrice?: true
+    sortOrder?: true
+  }
+
+  export type ProposalItemSumAggregateInputType = {
+    quantity?: true
+    unitPrice?: true
+    totalPrice?: true
+    sortOrder?: true
+  }
+
+  export type ProposalItemMinAggregateInputType = {
+    id?: true
+    proposalId?: true
+    title?: true
+    description?: true
+    quantity?: true
+    unitPrice?: true
+    totalPrice?: true
+    category?: true
+    sortOrder?: true
+    createdAt?: true
+  }
+
+  export type ProposalItemMaxAggregateInputType = {
+    id?: true
+    proposalId?: true
+    title?: true
+    description?: true
+    quantity?: true
+    unitPrice?: true
+    totalPrice?: true
+    category?: true
+    sortOrder?: true
+    createdAt?: true
+  }
+
+  export type ProposalItemCountAggregateInputType = {
+    id?: true
+    proposalId?: true
+    title?: true
+    description?: true
+    quantity?: true
+    unitPrice?: true
+    totalPrice?: true
+    category?: true
+    sortOrder?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type ProposalItemAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProposalItem to aggregate.
+     */
+    where?: ProposalItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProposalItems to fetch.
+     */
+    orderBy?: ProposalItemOrderByWithRelationInput | ProposalItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProposalItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProposalItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProposalItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ProposalItems
+    **/
+    _count?: true | ProposalItemCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ProposalItemAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ProposalItemSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProposalItemMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProposalItemMaxAggregateInputType
+  }
+
+  export type GetProposalItemAggregateType<T extends ProposalItemAggregateArgs> = {
+        [P in keyof T & keyof AggregateProposalItem]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProposalItem[P]>
+      : GetScalarType<T[P], AggregateProposalItem[P]>
+  }
+
+
+
+
+  export type ProposalItemGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProposalItemWhereInput
+    orderBy?: ProposalItemOrderByWithAggregationInput | ProposalItemOrderByWithAggregationInput[]
+    by: ProposalItemScalarFieldEnum[] | ProposalItemScalarFieldEnum
+    having?: ProposalItemScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProposalItemCountAggregateInputType | true
+    _avg?: ProposalItemAvgAggregateInputType
+    _sum?: ProposalItemSumAggregateInputType
+    _min?: ProposalItemMinAggregateInputType
+    _max?: ProposalItemMaxAggregateInputType
+  }
+
+  export type ProposalItemGroupByOutputType = {
+    id: string
+    proposalId: string
+    title: string
+    description: string | null
+    quantity: number
+    unitPrice: number
+    totalPrice: number
+    category: $Enums.ProposalItemCategory
+    sortOrder: number
+    createdAt: Date
+    _count: ProposalItemCountAggregateOutputType | null
+    _avg: ProposalItemAvgAggregateOutputType | null
+    _sum: ProposalItemSumAggregateOutputType | null
+    _min: ProposalItemMinAggregateOutputType | null
+    _max: ProposalItemMaxAggregateOutputType | null
+  }
+
+  type GetProposalItemGroupByPayload<T extends ProposalItemGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProposalItemGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProposalItemGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProposalItemGroupByOutputType[P]>
+            : GetScalarType<T[P], ProposalItemGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProposalItemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    proposalId?: boolean
+    title?: boolean
+    description?: boolean
+    quantity?: boolean
+    unitPrice?: boolean
+    totalPrice?: boolean
+    category?: boolean
+    sortOrder?: boolean
+    createdAt?: boolean
+    proposal?: boolean | ProposalDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["proposalItem"]>
+
+  export type ProposalItemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    proposalId?: boolean
+    title?: boolean
+    description?: boolean
+    quantity?: boolean
+    unitPrice?: boolean
+    totalPrice?: boolean
+    category?: boolean
+    sortOrder?: boolean
+    createdAt?: boolean
+    proposal?: boolean | ProposalDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["proposalItem"]>
+
+  export type ProposalItemSelectScalar = {
+    id?: boolean
+    proposalId?: boolean
+    title?: boolean
+    description?: boolean
+    quantity?: boolean
+    unitPrice?: boolean
+    totalPrice?: boolean
+    category?: boolean
+    sortOrder?: boolean
+    createdAt?: boolean
+  }
+
+  export type ProposalItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    proposal?: boolean | ProposalDefaultArgs<ExtArgs>
+  }
+  export type ProposalItemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    proposal?: boolean | ProposalDefaultArgs<ExtArgs>
+  }
+
+  export type $ProposalItemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ProposalItem"
+    objects: {
+      proposal: Prisma.$ProposalPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      proposalId: string
+      title: string
+      description: string | null
+      quantity: number
+      unitPrice: number
+      totalPrice: number
+      category: $Enums.ProposalItemCategory
+      sortOrder: number
+      createdAt: Date
+    }, ExtArgs["result"]["proposalItem"]>
+    composites: {}
+  }
+
+  type ProposalItemGetPayload<S extends boolean | null | undefined | ProposalItemDefaultArgs> = $Result.GetResult<Prisma.$ProposalItemPayload, S>
+
+  type ProposalItemCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ProposalItemFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: ProposalItemCountAggregateInputType | true
+    }
+
+  export interface ProposalItemDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ProposalItem'], meta: { name: 'ProposalItem' } }
+    /**
+     * Find zero or one ProposalItem that matches the filter.
+     * @param {ProposalItemFindUniqueArgs} args - Arguments to find a ProposalItem
+     * @example
+     * // Get one ProposalItem
+     * const proposalItem = await prisma.proposalItem.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ProposalItemFindUniqueArgs>(args: SelectSubset<T, ProposalItemFindUniqueArgs<ExtArgs>>): Prisma__ProposalItemClient<$Result.GetResult<Prisma.$ProposalItemPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one ProposalItem that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {ProposalItemFindUniqueOrThrowArgs} args - Arguments to find a ProposalItem
+     * @example
+     * // Get one ProposalItem
+     * const proposalItem = await prisma.proposalItem.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ProposalItemFindUniqueOrThrowArgs>(args: SelectSubset<T, ProposalItemFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProposalItemClient<$Result.GetResult<Prisma.$ProposalItemPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first ProposalItem that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalItemFindFirstArgs} args - Arguments to find a ProposalItem
+     * @example
+     * // Get one ProposalItem
+     * const proposalItem = await prisma.proposalItem.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ProposalItemFindFirstArgs>(args?: SelectSubset<T, ProposalItemFindFirstArgs<ExtArgs>>): Prisma__ProposalItemClient<$Result.GetResult<Prisma.$ProposalItemPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first ProposalItem that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalItemFindFirstOrThrowArgs} args - Arguments to find a ProposalItem
+     * @example
+     * // Get one ProposalItem
+     * const proposalItem = await prisma.proposalItem.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ProposalItemFindFirstOrThrowArgs>(args?: SelectSubset<T, ProposalItemFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProposalItemClient<$Result.GetResult<Prisma.$ProposalItemPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more ProposalItems that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalItemFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ProposalItems
+     * const proposalItems = await prisma.proposalItem.findMany()
+     * 
+     * // Get first 10 ProposalItems
+     * const proposalItems = await prisma.proposalItem.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const proposalItemWithIdOnly = await prisma.proposalItem.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ProposalItemFindManyArgs>(args?: SelectSubset<T, ProposalItemFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProposalItemPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a ProposalItem.
+     * @param {ProposalItemCreateArgs} args - Arguments to create a ProposalItem.
+     * @example
+     * // Create one ProposalItem
+     * const ProposalItem = await prisma.proposalItem.create({
+     *   data: {
+     *     // ... data to create a ProposalItem
+     *   }
+     * })
+     * 
+     */
+    create<T extends ProposalItemCreateArgs>(args: SelectSubset<T, ProposalItemCreateArgs<ExtArgs>>): Prisma__ProposalItemClient<$Result.GetResult<Prisma.$ProposalItemPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many ProposalItems.
+     * @param {ProposalItemCreateManyArgs} args - Arguments to create many ProposalItems.
+     * @example
+     * // Create many ProposalItems
+     * const proposalItem = await prisma.proposalItem.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ProposalItemCreateManyArgs>(args?: SelectSubset<T, ProposalItemCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ProposalItems and returns the data saved in the database.
+     * @param {ProposalItemCreateManyAndReturnArgs} args - Arguments to create many ProposalItems.
+     * @example
+     * // Create many ProposalItems
+     * const proposalItem = await prisma.proposalItem.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ProposalItems and only return the `id`
+     * const proposalItemWithIdOnly = await prisma.proposalItem.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ProposalItemCreateManyAndReturnArgs>(args?: SelectSubset<T, ProposalItemCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProposalItemPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a ProposalItem.
+     * @param {ProposalItemDeleteArgs} args - Arguments to delete one ProposalItem.
+     * @example
+     * // Delete one ProposalItem
+     * const ProposalItem = await prisma.proposalItem.delete({
+     *   where: {
+     *     // ... filter to delete one ProposalItem
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ProposalItemDeleteArgs>(args: SelectSubset<T, ProposalItemDeleteArgs<ExtArgs>>): Prisma__ProposalItemClient<$Result.GetResult<Prisma.$ProposalItemPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one ProposalItem.
+     * @param {ProposalItemUpdateArgs} args - Arguments to update one ProposalItem.
+     * @example
+     * // Update one ProposalItem
+     * const proposalItem = await prisma.proposalItem.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ProposalItemUpdateArgs>(args: SelectSubset<T, ProposalItemUpdateArgs<ExtArgs>>): Prisma__ProposalItemClient<$Result.GetResult<Prisma.$ProposalItemPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more ProposalItems.
+     * @param {ProposalItemDeleteManyArgs} args - Arguments to filter ProposalItems to delete.
+     * @example
+     * // Delete a few ProposalItems
+     * const { count } = await prisma.proposalItem.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ProposalItemDeleteManyArgs>(args?: SelectSubset<T, ProposalItemDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProposalItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalItemUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ProposalItems
+     * const proposalItem = await prisma.proposalItem.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ProposalItemUpdateManyArgs>(args: SelectSubset<T, ProposalItemUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ProposalItem.
+     * @param {ProposalItemUpsertArgs} args - Arguments to update or create a ProposalItem.
+     * @example
+     * // Update or create a ProposalItem
+     * const proposalItem = await prisma.proposalItem.upsert({
+     *   create: {
+     *     // ... data to create a ProposalItem
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ProposalItem we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ProposalItemUpsertArgs>(args: SelectSubset<T, ProposalItemUpsertArgs<ExtArgs>>): Prisma__ProposalItemClient<$Result.GetResult<Prisma.$ProposalItemPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of ProposalItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalItemCountArgs} args - Arguments to filter ProposalItems to count.
+     * @example
+     * // Count the number of ProposalItems
+     * const count = await prisma.proposalItem.count({
+     *   where: {
+     *     // ... the filter for the ProposalItems we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProposalItemCountArgs>(
+      args?: Subset<T, ProposalItemCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProposalItemCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ProposalItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalItemAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProposalItemAggregateArgs>(args: Subset<T, ProposalItemAggregateArgs>): Prisma.PrismaPromise<GetProposalItemAggregateType<T>>
+
+    /**
+     * Group by ProposalItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalItemGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProposalItemGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProposalItemGroupByArgs['orderBy'] }
+        : { orderBy?: ProposalItemGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProposalItemGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProposalItemGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ProposalItem model
+   */
+  readonly fields: ProposalItemFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ProposalItem.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProposalItemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    proposal<T extends ProposalDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProposalDefaultArgs<ExtArgs>>): Prisma__ProposalClient<$Result.GetResult<Prisma.$ProposalPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ProposalItem model
+   */ 
+  interface ProposalItemFieldRefs {
+    readonly id: FieldRef<"ProposalItem", 'String'>
+    readonly proposalId: FieldRef<"ProposalItem", 'String'>
+    readonly title: FieldRef<"ProposalItem", 'String'>
+    readonly description: FieldRef<"ProposalItem", 'String'>
+    readonly quantity: FieldRef<"ProposalItem", 'Int'>
+    readonly unitPrice: FieldRef<"ProposalItem", 'Float'>
+    readonly totalPrice: FieldRef<"ProposalItem", 'Float'>
+    readonly category: FieldRef<"ProposalItem", 'ProposalItemCategory'>
+    readonly sortOrder: FieldRef<"ProposalItem", 'Int'>
+    readonly createdAt: FieldRef<"ProposalItem", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ProposalItem findUnique
+   */
+  export type ProposalItemFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalItem
+     */
+    select?: ProposalItemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalItemInclude<ExtArgs> | null
+    /**
+     * Filter, which ProposalItem to fetch.
+     */
+    where: ProposalItemWhereUniqueInput
+  }
+
+  /**
+   * ProposalItem findUniqueOrThrow
+   */
+  export type ProposalItemFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalItem
+     */
+    select?: ProposalItemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalItemInclude<ExtArgs> | null
+    /**
+     * Filter, which ProposalItem to fetch.
+     */
+    where: ProposalItemWhereUniqueInput
+  }
+
+  /**
+   * ProposalItem findFirst
+   */
+  export type ProposalItemFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalItem
+     */
+    select?: ProposalItemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalItemInclude<ExtArgs> | null
+    /**
+     * Filter, which ProposalItem to fetch.
+     */
+    where?: ProposalItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProposalItems to fetch.
+     */
+    orderBy?: ProposalItemOrderByWithRelationInput | ProposalItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProposalItems.
+     */
+    cursor?: ProposalItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProposalItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProposalItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProposalItems.
+     */
+    distinct?: ProposalItemScalarFieldEnum | ProposalItemScalarFieldEnum[]
+  }
+
+  /**
+   * ProposalItem findFirstOrThrow
+   */
+  export type ProposalItemFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalItem
+     */
+    select?: ProposalItemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalItemInclude<ExtArgs> | null
+    /**
+     * Filter, which ProposalItem to fetch.
+     */
+    where?: ProposalItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProposalItems to fetch.
+     */
+    orderBy?: ProposalItemOrderByWithRelationInput | ProposalItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProposalItems.
+     */
+    cursor?: ProposalItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProposalItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProposalItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProposalItems.
+     */
+    distinct?: ProposalItemScalarFieldEnum | ProposalItemScalarFieldEnum[]
+  }
+
+  /**
+   * ProposalItem findMany
+   */
+  export type ProposalItemFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalItem
+     */
+    select?: ProposalItemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalItemInclude<ExtArgs> | null
+    /**
+     * Filter, which ProposalItems to fetch.
+     */
+    where?: ProposalItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProposalItems to fetch.
+     */
+    orderBy?: ProposalItemOrderByWithRelationInput | ProposalItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ProposalItems.
+     */
+    cursor?: ProposalItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProposalItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProposalItems.
+     */
+    skip?: number
+    distinct?: ProposalItemScalarFieldEnum | ProposalItemScalarFieldEnum[]
+  }
+
+  /**
+   * ProposalItem create
+   */
+  export type ProposalItemCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalItem
+     */
+    select?: ProposalItemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalItemInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ProposalItem.
+     */
+    data: XOR<ProposalItemCreateInput, ProposalItemUncheckedCreateInput>
+  }
+
+  /**
+   * ProposalItem createMany
+   */
+  export type ProposalItemCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ProposalItems.
+     */
+    data: ProposalItemCreateManyInput | ProposalItemCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ProposalItem createManyAndReturn
+   */
+  export type ProposalItemCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalItem
+     */
+    select?: ProposalItemSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many ProposalItems.
+     */
+    data: ProposalItemCreateManyInput | ProposalItemCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalItemIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ProposalItem update
+   */
+  export type ProposalItemUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalItem
+     */
+    select?: ProposalItemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalItemInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ProposalItem.
+     */
+    data: XOR<ProposalItemUpdateInput, ProposalItemUncheckedUpdateInput>
+    /**
+     * Choose, which ProposalItem to update.
+     */
+    where: ProposalItemWhereUniqueInput
+  }
+
+  /**
+   * ProposalItem updateMany
+   */
+  export type ProposalItemUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ProposalItems.
+     */
+    data: XOR<ProposalItemUpdateManyMutationInput, ProposalItemUncheckedUpdateManyInput>
+    /**
+     * Filter which ProposalItems to update
+     */
+    where?: ProposalItemWhereInput
+  }
+
+  /**
+   * ProposalItem upsert
+   */
+  export type ProposalItemUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalItem
+     */
+    select?: ProposalItemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalItemInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ProposalItem to update in case it exists.
+     */
+    where: ProposalItemWhereUniqueInput
+    /**
+     * In case the ProposalItem found by the `where` argument doesn't exist, create a new ProposalItem with this data.
+     */
+    create: XOR<ProposalItemCreateInput, ProposalItemUncheckedCreateInput>
+    /**
+     * In case the ProposalItem was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProposalItemUpdateInput, ProposalItemUncheckedUpdateInput>
+  }
+
+  /**
+   * ProposalItem delete
+   */
+  export type ProposalItemDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalItem
+     */
+    select?: ProposalItemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalItemInclude<ExtArgs> | null
+    /**
+     * Filter which ProposalItem to delete.
+     */
+    where: ProposalItemWhereUniqueInput
+  }
+
+  /**
+   * ProposalItem deleteMany
+   */
+  export type ProposalItemDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProposalItems to delete
+     */
+    where?: ProposalItemWhereInput
+  }
+
+  /**
+   * ProposalItem without action
+   */
+  export type ProposalItemDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalItem
+     */
+    select?: ProposalItemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalItemInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ProposalSection
+   */
+
+  export type AggregateProposalSection = {
+    _count: ProposalSectionCountAggregateOutputType | null
+    _avg: ProposalSectionAvgAggregateOutputType | null
+    _sum: ProposalSectionSumAggregateOutputType | null
+    _min: ProposalSectionMinAggregateOutputType | null
+    _max: ProposalSectionMaxAggregateOutputType | null
+  }
+
+  export type ProposalSectionAvgAggregateOutputType = {
+    sortOrder: number | null
+  }
+
+  export type ProposalSectionSumAggregateOutputType = {
+    sortOrder: number | null
+  }
+
+  export type ProposalSectionMinAggregateOutputType = {
+    id: string | null
+    proposalId: string | null
+    title: string | null
+    content: string | null
+    sortOrder: number | null
+    createdAt: Date | null
+  }
+
+  export type ProposalSectionMaxAggregateOutputType = {
+    id: string | null
+    proposalId: string | null
+    title: string | null
+    content: string | null
+    sortOrder: number | null
+    createdAt: Date | null
+  }
+
+  export type ProposalSectionCountAggregateOutputType = {
+    id: number
+    proposalId: number
+    title: number
+    content: number
+    sortOrder: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type ProposalSectionAvgAggregateInputType = {
+    sortOrder?: true
+  }
+
+  export type ProposalSectionSumAggregateInputType = {
+    sortOrder?: true
+  }
+
+  export type ProposalSectionMinAggregateInputType = {
+    id?: true
+    proposalId?: true
+    title?: true
+    content?: true
+    sortOrder?: true
+    createdAt?: true
+  }
+
+  export type ProposalSectionMaxAggregateInputType = {
+    id?: true
+    proposalId?: true
+    title?: true
+    content?: true
+    sortOrder?: true
+    createdAt?: true
+  }
+
+  export type ProposalSectionCountAggregateInputType = {
+    id?: true
+    proposalId?: true
+    title?: true
+    content?: true
+    sortOrder?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type ProposalSectionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProposalSection to aggregate.
+     */
+    where?: ProposalSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProposalSections to fetch.
+     */
+    orderBy?: ProposalSectionOrderByWithRelationInput | ProposalSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProposalSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProposalSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProposalSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ProposalSections
+    **/
+    _count?: true | ProposalSectionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ProposalSectionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ProposalSectionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProposalSectionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProposalSectionMaxAggregateInputType
+  }
+
+  export type GetProposalSectionAggregateType<T extends ProposalSectionAggregateArgs> = {
+        [P in keyof T & keyof AggregateProposalSection]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProposalSection[P]>
+      : GetScalarType<T[P], AggregateProposalSection[P]>
+  }
+
+
+
+
+  export type ProposalSectionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProposalSectionWhereInput
+    orderBy?: ProposalSectionOrderByWithAggregationInput | ProposalSectionOrderByWithAggregationInput[]
+    by: ProposalSectionScalarFieldEnum[] | ProposalSectionScalarFieldEnum
+    having?: ProposalSectionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProposalSectionCountAggregateInputType | true
+    _avg?: ProposalSectionAvgAggregateInputType
+    _sum?: ProposalSectionSumAggregateInputType
+    _min?: ProposalSectionMinAggregateInputType
+    _max?: ProposalSectionMaxAggregateInputType
+  }
+
+  export type ProposalSectionGroupByOutputType = {
+    id: string
+    proposalId: string
+    title: string
+    content: string
+    sortOrder: number
+    createdAt: Date
+    _count: ProposalSectionCountAggregateOutputType | null
+    _avg: ProposalSectionAvgAggregateOutputType | null
+    _sum: ProposalSectionSumAggregateOutputType | null
+    _min: ProposalSectionMinAggregateOutputType | null
+    _max: ProposalSectionMaxAggregateOutputType | null
+  }
+
+  type GetProposalSectionGroupByPayload<T extends ProposalSectionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProposalSectionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProposalSectionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProposalSectionGroupByOutputType[P]>
+            : GetScalarType<T[P], ProposalSectionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProposalSectionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    proposalId?: boolean
+    title?: boolean
+    content?: boolean
+    sortOrder?: boolean
+    createdAt?: boolean
+    proposal?: boolean | ProposalDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["proposalSection"]>
+
+  export type ProposalSectionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    proposalId?: boolean
+    title?: boolean
+    content?: boolean
+    sortOrder?: boolean
+    createdAt?: boolean
+    proposal?: boolean | ProposalDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["proposalSection"]>
+
+  export type ProposalSectionSelectScalar = {
+    id?: boolean
+    proposalId?: boolean
+    title?: boolean
+    content?: boolean
+    sortOrder?: boolean
+    createdAt?: boolean
+  }
+
+  export type ProposalSectionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    proposal?: boolean | ProposalDefaultArgs<ExtArgs>
+  }
+  export type ProposalSectionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    proposal?: boolean | ProposalDefaultArgs<ExtArgs>
+  }
+
+  export type $ProposalSectionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ProposalSection"
+    objects: {
+      proposal: Prisma.$ProposalPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      proposalId: string
+      title: string
+      content: string
+      sortOrder: number
+      createdAt: Date
+    }, ExtArgs["result"]["proposalSection"]>
+    composites: {}
+  }
+
+  type ProposalSectionGetPayload<S extends boolean | null | undefined | ProposalSectionDefaultArgs> = $Result.GetResult<Prisma.$ProposalSectionPayload, S>
+
+  type ProposalSectionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ProposalSectionFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: ProposalSectionCountAggregateInputType | true
+    }
+
+  export interface ProposalSectionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ProposalSection'], meta: { name: 'ProposalSection' } }
+    /**
+     * Find zero or one ProposalSection that matches the filter.
+     * @param {ProposalSectionFindUniqueArgs} args - Arguments to find a ProposalSection
+     * @example
+     * // Get one ProposalSection
+     * const proposalSection = await prisma.proposalSection.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ProposalSectionFindUniqueArgs>(args: SelectSubset<T, ProposalSectionFindUniqueArgs<ExtArgs>>): Prisma__ProposalSectionClient<$Result.GetResult<Prisma.$ProposalSectionPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one ProposalSection that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {ProposalSectionFindUniqueOrThrowArgs} args - Arguments to find a ProposalSection
+     * @example
+     * // Get one ProposalSection
+     * const proposalSection = await prisma.proposalSection.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ProposalSectionFindUniqueOrThrowArgs>(args: SelectSubset<T, ProposalSectionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProposalSectionClient<$Result.GetResult<Prisma.$ProposalSectionPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first ProposalSection that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalSectionFindFirstArgs} args - Arguments to find a ProposalSection
+     * @example
+     * // Get one ProposalSection
+     * const proposalSection = await prisma.proposalSection.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ProposalSectionFindFirstArgs>(args?: SelectSubset<T, ProposalSectionFindFirstArgs<ExtArgs>>): Prisma__ProposalSectionClient<$Result.GetResult<Prisma.$ProposalSectionPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first ProposalSection that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalSectionFindFirstOrThrowArgs} args - Arguments to find a ProposalSection
+     * @example
+     * // Get one ProposalSection
+     * const proposalSection = await prisma.proposalSection.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ProposalSectionFindFirstOrThrowArgs>(args?: SelectSubset<T, ProposalSectionFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProposalSectionClient<$Result.GetResult<Prisma.$ProposalSectionPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more ProposalSections that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalSectionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ProposalSections
+     * const proposalSections = await prisma.proposalSection.findMany()
+     * 
+     * // Get first 10 ProposalSections
+     * const proposalSections = await prisma.proposalSection.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const proposalSectionWithIdOnly = await prisma.proposalSection.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ProposalSectionFindManyArgs>(args?: SelectSubset<T, ProposalSectionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProposalSectionPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a ProposalSection.
+     * @param {ProposalSectionCreateArgs} args - Arguments to create a ProposalSection.
+     * @example
+     * // Create one ProposalSection
+     * const ProposalSection = await prisma.proposalSection.create({
+     *   data: {
+     *     // ... data to create a ProposalSection
+     *   }
+     * })
+     * 
+     */
+    create<T extends ProposalSectionCreateArgs>(args: SelectSubset<T, ProposalSectionCreateArgs<ExtArgs>>): Prisma__ProposalSectionClient<$Result.GetResult<Prisma.$ProposalSectionPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many ProposalSections.
+     * @param {ProposalSectionCreateManyArgs} args - Arguments to create many ProposalSections.
+     * @example
+     * // Create many ProposalSections
+     * const proposalSection = await prisma.proposalSection.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ProposalSectionCreateManyArgs>(args?: SelectSubset<T, ProposalSectionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ProposalSections and returns the data saved in the database.
+     * @param {ProposalSectionCreateManyAndReturnArgs} args - Arguments to create many ProposalSections.
+     * @example
+     * // Create many ProposalSections
+     * const proposalSection = await prisma.proposalSection.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ProposalSections and only return the `id`
+     * const proposalSectionWithIdOnly = await prisma.proposalSection.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ProposalSectionCreateManyAndReturnArgs>(args?: SelectSubset<T, ProposalSectionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProposalSectionPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a ProposalSection.
+     * @param {ProposalSectionDeleteArgs} args - Arguments to delete one ProposalSection.
+     * @example
+     * // Delete one ProposalSection
+     * const ProposalSection = await prisma.proposalSection.delete({
+     *   where: {
+     *     // ... filter to delete one ProposalSection
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ProposalSectionDeleteArgs>(args: SelectSubset<T, ProposalSectionDeleteArgs<ExtArgs>>): Prisma__ProposalSectionClient<$Result.GetResult<Prisma.$ProposalSectionPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one ProposalSection.
+     * @param {ProposalSectionUpdateArgs} args - Arguments to update one ProposalSection.
+     * @example
+     * // Update one ProposalSection
+     * const proposalSection = await prisma.proposalSection.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ProposalSectionUpdateArgs>(args: SelectSubset<T, ProposalSectionUpdateArgs<ExtArgs>>): Prisma__ProposalSectionClient<$Result.GetResult<Prisma.$ProposalSectionPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more ProposalSections.
+     * @param {ProposalSectionDeleteManyArgs} args - Arguments to filter ProposalSections to delete.
+     * @example
+     * // Delete a few ProposalSections
+     * const { count } = await prisma.proposalSection.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ProposalSectionDeleteManyArgs>(args?: SelectSubset<T, ProposalSectionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProposalSections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalSectionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ProposalSections
+     * const proposalSection = await prisma.proposalSection.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ProposalSectionUpdateManyArgs>(args: SelectSubset<T, ProposalSectionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ProposalSection.
+     * @param {ProposalSectionUpsertArgs} args - Arguments to update or create a ProposalSection.
+     * @example
+     * // Update or create a ProposalSection
+     * const proposalSection = await prisma.proposalSection.upsert({
+     *   create: {
+     *     // ... data to create a ProposalSection
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ProposalSection we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ProposalSectionUpsertArgs>(args: SelectSubset<T, ProposalSectionUpsertArgs<ExtArgs>>): Prisma__ProposalSectionClient<$Result.GetResult<Prisma.$ProposalSectionPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of ProposalSections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalSectionCountArgs} args - Arguments to filter ProposalSections to count.
+     * @example
+     * // Count the number of ProposalSections
+     * const count = await prisma.proposalSection.count({
+     *   where: {
+     *     // ... the filter for the ProposalSections we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProposalSectionCountArgs>(
+      args?: Subset<T, ProposalSectionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProposalSectionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ProposalSection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalSectionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProposalSectionAggregateArgs>(args: Subset<T, ProposalSectionAggregateArgs>): Prisma.PrismaPromise<GetProposalSectionAggregateType<T>>
+
+    /**
+     * Group by ProposalSection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalSectionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProposalSectionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProposalSectionGroupByArgs['orderBy'] }
+        : { orderBy?: ProposalSectionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProposalSectionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProposalSectionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ProposalSection model
+   */
+  readonly fields: ProposalSectionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ProposalSection.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProposalSectionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    proposal<T extends ProposalDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProposalDefaultArgs<ExtArgs>>): Prisma__ProposalClient<$Result.GetResult<Prisma.$ProposalPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ProposalSection model
+   */ 
+  interface ProposalSectionFieldRefs {
+    readonly id: FieldRef<"ProposalSection", 'String'>
+    readonly proposalId: FieldRef<"ProposalSection", 'String'>
+    readonly title: FieldRef<"ProposalSection", 'String'>
+    readonly content: FieldRef<"ProposalSection", 'String'>
+    readonly sortOrder: FieldRef<"ProposalSection", 'Int'>
+    readonly createdAt: FieldRef<"ProposalSection", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ProposalSection findUnique
+   */
+  export type ProposalSectionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalSection
+     */
+    select?: ProposalSectionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalSectionInclude<ExtArgs> | null
+    /**
+     * Filter, which ProposalSection to fetch.
+     */
+    where: ProposalSectionWhereUniqueInput
+  }
+
+  /**
+   * ProposalSection findUniqueOrThrow
+   */
+  export type ProposalSectionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalSection
+     */
+    select?: ProposalSectionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalSectionInclude<ExtArgs> | null
+    /**
+     * Filter, which ProposalSection to fetch.
+     */
+    where: ProposalSectionWhereUniqueInput
+  }
+
+  /**
+   * ProposalSection findFirst
+   */
+  export type ProposalSectionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalSection
+     */
+    select?: ProposalSectionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalSectionInclude<ExtArgs> | null
+    /**
+     * Filter, which ProposalSection to fetch.
+     */
+    where?: ProposalSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProposalSections to fetch.
+     */
+    orderBy?: ProposalSectionOrderByWithRelationInput | ProposalSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProposalSections.
+     */
+    cursor?: ProposalSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProposalSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProposalSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProposalSections.
+     */
+    distinct?: ProposalSectionScalarFieldEnum | ProposalSectionScalarFieldEnum[]
+  }
+
+  /**
+   * ProposalSection findFirstOrThrow
+   */
+  export type ProposalSectionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalSection
+     */
+    select?: ProposalSectionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalSectionInclude<ExtArgs> | null
+    /**
+     * Filter, which ProposalSection to fetch.
+     */
+    where?: ProposalSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProposalSections to fetch.
+     */
+    orderBy?: ProposalSectionOrderByWithRelationInput | ProposalSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProposalSections.
+     */
+    cursor?: ProposalSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProposalSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProposalSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProposalSections.
+     */
+    distinct?: ProposalSectionScalarFieldEnum | ProposalSectionScalarFieldEnum[]
+  }
+
+  /**
+   * ProposalSection findMany
+   */
+  export type ProposalSectionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalSection
+     */
+    select?: ProposalSectionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalSectionInclude<ExtArgs> | null
+    /**
+     * Filter, which ProposalSections to fetch.
+     */
+    where?: ProposalSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProposalSections to fetch.
+     */
+    orderBy?: ProposalSectionOrderByWithRelationInput | ProposalSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ProposalSections.
+     */
+    cursor?: ProposalSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProposalSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProposalSections.
+     */
+    skip?: number
+    distinct?: ProposalSectionScalarFieldEnum | ProposalSectionScalarFieldEnum[]
+  }
+
+  /**
+   * ProposalSection create
+   */
+  export type ProposalSectionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalSection
+     */
+    select?: ProposalSectionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalSectionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ProposalSection.
+     */
+    data: XOR<ProposalSectionCreateInput, ProposalSectionUncheckedCreateInput>
+  }
+
+  /**
+   * ProposalSection createMany
+   */
+  export type ProposalSectionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ProposalSections.
+     */
+    data: ProposalSectionCreateManyInput | ProposalSectionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ProposalSection createManyAndReturn
+   */
+  export type ProposalSectionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalSection
+     */
+    select?: ProposalSectionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many ProposalSections.
+     */
+    data: ProposalSectionCreateManyInput | ProposalSectionCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalSectionIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ProposalSection update
+   */
+  export type ProposalSectionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalSection
+     */
+    select?: ProposalSectionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalSectionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ProposalSection.
+     */
+    data: XOR<ProposalSectionUpdateInput, ProposalSectionUncheckedUpdateInput>
+    /**
+     * Choose, which ProposalSection to update.
+     */
+    where: ProposalSectionWhereUniqueInput
+  }
+
+  /**
+   * ProposalSection updateMany
+   */
+  export type ProposalSectionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ProposalSections.
+     */
+    data: XOR<ProposalSectionUpdateManyMutationInput, ProposalSectionUncheckedUpdateManyInput>
+    /**
+     * Filter which ProposalSections to update
+     */
+    where?: ProposalSectionWhereInput
+  }
+
+  /**
+   * ProposalSection upsert
+   */
+  export type ProposalSectionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalSection
+     */
+    select?: ProposalSectionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalSectionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ProposalSection to update in case it exists.
+     */
+    where: ProposalSectionWhereUniqueInput
+    /**
+     * In case the ProposalSection found by the `where` argument doesn't exist, create a new ProposalSection with this data.
+     */
+    create: XOR<ProposalSectionCreateInput, ProposalSectionUncheckedCreateInput>
+    /**
+     * In case the ProposalSection was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProposalSectionUpdateInput, ProposalSectionUncheckedUpdateInput>
+  }
+
+  /**
+   * ProposalSection delete
+   */
+  export type ProposalSectionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalSection
+     */
+    select?: ProposalSectionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalSectionInclude<ExtArgs> | null
+    /**
+     * Filter which ProposalSection to delete.
+     */
+    where: ProposalSectionWhereUniqueInput
+  }
+
+  /**
+   * ProposalSection deleteMany
+   */
+  export type ProposalSectionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProposalSections to delete
+     */
+    where?: ProposalSectionWhereInput
+  }
+
+  /**
+   * ProposalSection without action
+   */
+  export type ProposalSectionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalSection
+     */
+    select?: ProposalSectionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalSectionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ProposalContract
+   */
+
+  export type AggregateProposalContract = {
+    _count: ProposalContractCountAggregateOutputType | null
+    _min: ProposalContractMinAggregateOutputType | null
+    _max: ProposalContractMaxAggregateOutputType | null
+  }
+
+  export type ProposalContractMinAggregateOutputType = {
+    id: string | null
+    proposalId: string | null
+    title: string | null
+    content: string | null
+    createdAt: Date | null
+  }
+
+  export type ProposalContractMaxAggregateOutputType = {
+    id: string | null
+    proposalId: string | null
+    title: string | null
+    content: string | null
+    createdAt: Date | null
+  }
+
+  export type ProposalContractCountAggregateOutputType = {
+    id: number
+    proposalId: number
+    title: number
+    content: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type ProposalContractMinAggregateInputType = {
+    id?: true
+    proposalId?: true
+    title?: true
+    content?: true
+    createdAt?: true
+  }
+
+  export type ProposalContractMaxAggregateInputType = {
+    id?: true
+    proposalId?: true
+    title?: true
+    content?: true
+    createdAt?: true
+  }
+
+  export type ProposalContractCountAggregateInputType = {
+    id?: true
+    proposalId?: true
+    title?: true
+    content?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type ProposalContractAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProposalContract to aggregate.
+     */
+    where?: ProposalContractWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProposalContracts to fetch.
+     */
+    orderBy?: ProposalContractOrderByWithRelationInput | ProposalContractOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProposalContractWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProposalContracts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProposalContracts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ProposalContracts
+    **/
+    _count?: true | ProposalContractCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProposalContractMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProposalContractMaxAggregateInputType
+  }
+
+  export type GetProposalContractAggregateType<T extends ProposalContractAggregateArgs> = {
+        [P in keyof T & keyof AggregateProposalContract]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProposalContract[P]>
+      : GetScalarType<T[P], AggregateProposalContract[P]>
+  }
+
+
+
+
+  export type ProposalContractGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProposalContractWhereInput
+    orderBy?: ProposalContractOrderByWithAggregationInput | ProposalContractOrderByWithAggregationInput[]
+    by: ProposalContractScalarFieldEnum[] | ProposalContractScalarFieldEnum
+    having?: ProposalContractScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProposalContractCountAggregateInputType | true
+    _min?: ProposalContractMinAggregateInputType
+    _max?: ProposalContractMaxAggregateInputType
+  }
+
+  export type ProposalContractGroupByOutputType = {
+    id: string
+    proposalId: string
+    title: string
+    content: string
+    createdAt: Date
+    _count: ProposalContractCountAggregateOutputType | null
+    _min: ProposalContractMinAggregateOutputType | null
+    _max: ProposalContractMaxAggregateOutputType | null
+  }
+
+  type GetProposalContractGroupByPayload<T extends ProposalContractGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProposalContractGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProposalContractGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProposalContractGroupByOutputType[P]>
+            : GetScalarType<T[P], ProposalContractGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProposalContractSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    proposalId?: boolean
+    title?: boolean
+    content?: boolean
+    createdAt?: boolean
+    proposal?: boolean | ProposalDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["proposalContract"]>
+
+  export type ProposalContractSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    proposalId?: boolean
+    title?: boolean
+    content?: boolean
+    createdAt?: boolean
+    proposal?: boolean | ProposalDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["proposalContract"]>
+
+  export type ProposalContractSelectScalar = {
+    id?: boolean
+    proposalId?: boolean
+    title?: boolean
+    content?: boolean
+    createdAt?: boolean
+  }
+
+  export type ProposalContractInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    proposal?: boolean | ProposalDefaultArgs<ExtArgs>
+  }
+  export type ProposalContractIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    proposal?: boolean | ProposalDefaultArgs<ExtArgs>
+  }
+
+  export type $ProposalContractPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ProposalContract"
+    objects: {
+      proposal: Prisma.$ProposalPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      proposalId: string
+      title: string
+      content: string
+      createdAt: Date
+    }, ExtArgs["result"]["proposalContract"]>
+    composites: {}
+  }
+
+  type ProposalContractGetPayload<S extends boolean | null | undefined | ProposalContractDefaultArgs> = $Result.GetResult<Prisma.$ProposalContractPayload, S>
+
+  type ProposalContractCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ProposalContractFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: ProposalContractCountAggregateInputType | true
+    }
+
+  export interface ProposalContractDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ProposalContract'], meta: { name: 'ProposalContract' } }
+    /**
+     * Find zero or one ProposalContract that matches the filter.
+     * @param {ProposalContractFindUniqueArgs} args - Arguments to find a ProposalContract
+     * @example
+     * // Get one ProposalContract
+     * const proposalContract = await prisma.proposalContract.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ProposalContractFindUniqueArgs>(args: SelectSubset<T, ProposalContractFindUniqueArgs<ExtArgs>>): Prisma__ProposalContractClient<$Result.GetResult<Prisma.$ProposalContractPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one ProposalContract that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {ProposalContractFindUniqueOrThrowArgs} args - Arguments to find a ProposalContract
+     * @example
+     * // Get one ProposalContract
+     * const proposalContract = await prisma.proposalContract.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ProposalContractFindUniqueOrThrowArgs>(args: SelectSubset<T, ProposalContractFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProposalContractClient<$Result.GetResult<Prisma.$ProposalContractPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first ProposalContract that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalContractFindFirstArgs} args - Arguments to find a ProposalContract
+     * @example
+     * // Get one ProposalContract
+     * const proposalContract = await prisma.proposalContract.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ProposalContractFindFirstArgs>(args?: SelectSubset<T, ProposalContractFindFirstArgs<ExtArgs>>): Prisma__ProposalContractClient<$Result.GetResult<Prisma.$ProposalContractPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first ProposalContract that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalContractFindFirstOrThrowArgs} args - Arguments to find a ProposalContract
+     * @example
+     * // Get one ProposalContract
+     * const proposalContract = await prisma.proposalContract.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ProposalContractFindFirstOrThrowArgs>(args?: SelectSubset<T, ProposalContractFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProposalContractClient<$Result.GetResult<Prisma.$ProposalContractPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more ProposalContracts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalContractFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ProposalContracts
+     * const proposalContracts = await prisma.proposalContract.findMany()
+     * 
+     * // Get first 10 ProposalContracts
+     * const proposalContracts = await prisma.proposalContract.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const proposalContractWithIdOnly = await prisma.proposalContract.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ProposalContractFindManyArgs>(args?: SelectSubset<T, ProposalContractFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProposalContractPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a ProposalContract.
+     * @param {ProposalContractCreateArgs} args - Arguments to create a ProposalContract.
+     * @example
+     * // Create one ProposalContract
+     * const ProposalContract = await prisma.proposalContract.create({
+     *   data: {
+     *     // ... data to create a ProposalContract
+     *   }
+     * })
+     * 
+     */
+    create<T extends ProposalContractCreateArgs>(args: SelectSubset<T, ProposalContractCreateArgs<ExtArgs>>): Prisma__ProposalContractClient<$Result.GetResult<Prisma.$ProposalContractPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many ProposalContracts.
+     * @param {ProposalContractCreateManyArgs} args - Arguments to create many ProposalContracts.
+     * @example
+     * // Create many ProposalContracts
+     * const proposalContract = await prisma.proposalContract.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ProposalContractCreateManyArgs>(args?: SelectSubset<T, ProposalContractCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ProposalContracts and returns the data saved in the database.
+     * @param {ProposalContractCreateManyAndReturnArgs} args - Arguments to create many ProposalContracts.
+     * @example
+     * // Create many ProposalContracts
+     * const proposalContract = await prisma.proposalContract.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ProposalContracts and only return the `id`
+     * const proposalContractWithIdOnly = await prisma.proposalContract.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ProposalContractCreateManyAndReturnArgs>(args?: SelectSubset<T, ProposalContractCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProposalContractPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a ProposalContract.
+     * @param {ProposalContractDeleteArgs} args - Arguments to delete one ProposalContract.
+     * @example
+     * // Delete one ProposalContract
+     * const ProposalContract = await prisma.proposalContract.delete({
+     *   where: {
+     *     // ... filter to delete one ProposalContract
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ProposalContractDeleteArgs>(args: SelectSubset<T, ProposalContractDeleteArgs<ExtArgs>>): Prisma__ProposalContractClient<$Result.GetResult<Prisma.$ProposalContractPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one ProposalContract.
+     * @param {ProposalContractUpdateArgs} args - Arguments to update one ProposalContract.
+     * @example
+     * // Update one ProposalContract
+     * const proposalContract = await prisma.proposalContract.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ProposalContractUpdateArgs>(args: SelectSubset<T, ProposalContractUpdateArgs<ExtArgs>>): Prisma__ProposalContractClient<$Result.GetResult<Prisma.$ProposalContractPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more ProposalContracts.
+     * @param {ProposalContractDeleteManyArgs} args - Arguments to filter ProposalContracts to delete.
+     * @example
+     * // Delete a few ProposalContracts
+     * const { count } = await prisma.proposalContract.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ProposalContractDeleteManyArgs>(args?: SelectSubset<T, ProposalContractDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProposalContracts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalContractUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ProposalContracts
+     * const proposalContract = await prisma.proposalContract.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ProposalContractUpdateManyArgs>(args: SelectSubset<T, ProposalContractUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ProposalContract.
+     * @param {ProposalContractUpsertArgs} args - Arguments to update or create a ProposalContract.
+     * @example
+     * // Update or create a ProposalContract
+     * const proposalContract = await prisma.proposalContract.upsert({
+     *   create: {
+     *     // ... data to create a ProposalContract
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ProposalContract we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ProposalContractUpsertArgs>(args: SelectSubset<T, ProposalContractUpsertArgs<ExtArgs>>): Prisma__ProposalContractClient<$Result.GetResult<Prisma.$ProposalContractPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of ProposalContracts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalContractCountArgs} args - Arguments to filter ProposalContracts to count.
+     * @example
+     * // Count the number of ProposalContracts
+     * const count = await prisma.proposalContract.count({
+     *   where: {
+     *     // ... the filter for the ProposalContracts we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProposalContractCountArgs>(
+      args?: Subset<T, ProposalContractCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProposalContractCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ProposalContract.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalContractAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProposalContractAggregateArgs>(args: Subset<T, ProposalContractAggregateArgs>): Prisma.PrismaPromise<GetProposalContractAggregateType<T>>
+
+    /**
+     * Group by ProposalContract.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalContractGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProposalContractGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProposalContractGroupByArgs['orderBy'] }
+        : { orderBy?: ProposalContractGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProposalContractGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProposalContractGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ProposalContract model
+   */
+  readonly fields: ProposalContractFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ProposalContract.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProposalContractClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    proposal<T extends ProposalDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProposalDefaultArgs<ExtArgs>>): Prisma__ProposalClient<$Result.GetResult<Prisma.$ProposalPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ProposalContract model
+   */ 
+  interface ProposalContractFieldRefs {
+    readonly id: FieldRef<"ProposalContract", 'String'>
+    readonly proposalId: FieldRef<"ProposalContract", 'String'>
+    readonly title: FieldRef<"ProposalContract", 'String'>
+    readonly content: FieldRef<"ProposalContract", 'String'>
+    readonly createdAt: FieldRef<"ProposalContract", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ProposalContract findUnique
+   */
+  export type ProposalContractFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalContract
+     */
+    select?: ProposalContractSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalContractInclude<ExtArgs> | null
+    /**
+     * Filter, which ProposalContract to fetch.
+     */
+    where: ProposalContractWhereUniqueInput
+  }
+
+  /**
+   * ProposalContract findUniqueOrThrow
+   */
+  export type ProposalContractFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalContract
+     */
+    select?: ProposalContractSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalContractInclude<ExtArgs> | null
+    /**
+     * Filter, which ProposalContract to fetch.
+     */
+    where: ProposalContractWhereUniqueInput
+  }
+
+  /**
+   * ProposalContract findFirst
+   */
+  export type ProposalContractFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalContract
+     */
+    select?: ProposalContractSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalContractInclude<ExtArgs> | null
+    /**
+     * Filter, which ProposalContract to fetch.
+     */
+    where?: ProposalContractWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProposalContracts to fetch.
+     */
+    orderBy?: ProposalContractOrderByWithRelationInput | ProposalContractOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProposalContracts.
+     */
+    cursor?: ProposalContractWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProposalContracts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProposalContracts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProposalContracts.
+     */
+    distinct?: ProposalContractScalarFieldEnum | ProposalContractScalarFieldEnum[]
+  }
+
+  /**
+   * ProposalContract findFirstOrThrow
+   */
+  export type ProposalContractFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalContract
+     */
+    select?: ProposalContractSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalContractInclude<ExtArgs> | null
+    /**
+     * Filter, which ProposalContract to fetch.
+     */
+    where?: ProposalContractWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProposalContracts to fetch.
+     */
+    orderBy?: ProposalContractOrderByWithRelationInput | ProposalContractOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProposalContracts.
+     */
+    cursor?: ProposalContractWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProposalContracts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProposalContracts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProposalContracts.
+     */
+    distinct?: ProposalContractScalarFieldEnum | ProposalContractScalarFieldEnum[]
+  }
+
+  /**
+   * ProposalContract findMany
+   */
+  export type ProposalContractFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalContract
+     */
+    select?: ProposalContractSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalContractInclude<ExtArgs> | null
+    /**
+     * Filter, which ProposalContracts to fetch.
+     */
+    where?: ProposalContractWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProposalContracts to fetch.
+     */
+    orderBy?: ProposalContractOrderByWithRelationInput | ProposalContractOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ProposalContracts.
+     */
+    cursor?: ProposalContractWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProposalContracts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProposalContracts.
+     */
+    skip?: number
+    distinct?: ProposalContractScalarFieldEnum | ProposalContractScalarFieldEnum[]
+  }
+
+  /**
+   * ProposalContract create
+   */
+  export type ProposalContractCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalContract
+     */
+    select?: ProposalContractSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalContractInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ProposalContract.
+     */
+    data: XOR<ProposalContractCreateInput, ProposalContractUncheckedCreateInput>
+  }
+
+  /**
+   * ProposalContract createMany
+   */
+  export type ProposalContractCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ProposalContracts.
+     */
+    data: ProposalContractCreateManyInput | ProposalContractCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ProposalContract createManyAndReturn
+   */
+  export type ProposalContractCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalContract
+     */
+    select?: ProposalContractSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many ProposalContracts.
+     */
+    data: ProposalContractCreateManyInput | ProposalContractCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalContractIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ProposalContract update
+   */
+  export type ProposalContractUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalContract
+     */
+    select?: ProposalContractSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalContractInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ProposalContract.
+     */
+    data: XOR<ProposalContractUpdateInput, ProposalContractUncheckedUpdateInput>
+    /**
+     * Choose, which ProposalContract to update.
+     */
+    where: ProposalContractWhereUniqueInput
+  }
+
+  /**
+   * ProposalContract updateMany
+   */
+  export type ProposalContractUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ProposalContracts.
+     */
+    data: XOR<ProposalContractUpdateManyMutationInput, ProposalContractUncheckedUpdateManyInput>
+    /**
+     * Filter which ProposalContracts to update
+     */
+    where?: ProposalContractWhereInput
+  }
+
+  /**
+   * ProposalContract upsert
+   */
+  export type ProposalContractUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalContract
+     */
+    select?: ProposalContractSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalContractInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ProposalContract to update in case it exists.
+     */
+    where: ProposalContractWhereUniqueInput
+    /**
+     * In case the ProposalContract found by the `where` argument doesn't exist, create a new ProposalContract with this data.
+     */
+    create: XOR<ProposalContractCreateInput, ProposalContractUncheckedCreateInput>
+    /**
+     * In case the ProposalContract was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProposalContractUpdateInput, ProposalContractUncheckedUpdateInput>
+  }
+
+  /**
+   * ProposalContract delete
+   */
+  export type ProposalContractDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalContract
+     */
+    select?: ProposalContractSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalContractInclude<ExtArgs> | null
+    /**
+     * Filter which ProposalContract to delete.
+     */
+    where: ProposalContractWhereUniqueInput
+  }
+
+  /**
+   * ProposalContract deleteMany
+   */
+  export type ProposalContractDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProposalContracts to delete
+     */
+    where?: ProposalContractWhereInput
+  }
+
+  /**
+   * ProposalContract without action
+   */
+  export type ProposalContractDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalContract
+     */
+    select?: ProposalContractSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalContractInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ProposalComment
+   */
+
+  export type AggregateProposalComment = {
+    _count: ProposalCommentCountAggregateOutputType | null
+    _min: ProposalCommentMinAggregateOutputType | null
+    _max: ProposalCommentMaxAggregateOutputType | null
+  }
+
+  export type ProposalCommentMinAggregateOutputType = {
+    id: string | null
+    proposalId: string | null
+    authorName: string | null
+    content: string | null
+    createdAt: Date | null
+  }
+
+  export type ProposalCommentMaxAggregateOutputType = {
+    id: string | null
+    proposalId: string | null
+    authorName: string | null
+    content: string | null
+    createdAt: Date | null
+  }
+
+  export type ProposalCommentCountAggregateOutputType = {
+    id: number
+    proposalId: number
+    authorName: number
+    content: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type ProposalCommentMinAggregateInputType = {
+    id?: true
+    proposalId?: true
+    authorName?: true
+    content?: true
+    createdAt?: true
+  }
+
+  export type ProposalCommentMaxAggregateInputType = {
+    id?: true
+    proposalId?: true
+    authorName?: true
+    content?: true
+    createdAt?: true
+  }
+
+  export type ProposalCommentCountAggregateInputType = {
+    id?: true
+    proposalId?: true
+    authorName?: true
+    content?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type ProposalCommentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProposalComment to aggregate.
+     */
+    where?: ProposalCommentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProposalComments to fetch.
+     */
+    orderBy?: ProposalCommentOrderByWithRelationInput | ProposalCommentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProposalCommentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProposalComments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProposalComments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ProposalComments
+    **/
+    _count?: true | ProposalCommentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProposalCommentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProposalCommentMaxAggregateInputType
+  }
+
+  export type GetProposalCommentAggregateType<T extends ProposalCommentAggregateArgs> = {
+        [P in keyof T & keyof AggregateProposalComment]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProposalComment[P]>
+      : GetScalarType<T[P], AggregateProposalComment[P]>
+  }
+
+
+
+
+  export type ProposalCommentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProposalCommentWhereInput
+    orderBy?: ProposalCommentOrderByWithAggregationInput | ProposalCommentOrderByWithAggregationInput[]
+    by: ProposalCommentScalarFieldEnum[] | ProposalCommentScalarFieldEnum
+    having?: ProposalCommentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProposalCommentCountAggregateInputType | true
+    _min?: ProposalCommentMinAggregateInputType
+    _max?: ProposalCommentMaxAggregateInputType
+  }
+
+  export type ProposalCommentGroupByOutputType = {
+    id: string
+    proposalId: string
+    authorName: string
+    content: string
+    createdAt: Date
+    _count: ProposalCommentCountAggregateOutputType | null
+    _min: ProposalCommentMinAggregateOutputType | null
+    _max: ProposalCommentMaxAggregateOutputType | null
+  }
+
+  type GetProposalCommentGroupByPayload<T extends ProposalCommentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProposalCommentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProposalCommentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProposalCommentGroupByOutputType[P]>
+            : GetScalarType<T[P], ProposalCommentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProposalCommentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    proposalId?: boolean
+    authorName?: boolean
+    content?: boolean
+    createdAt?: boolean
+    proposal?: boolean | ProposalDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["proposalComment"]>
+
+  export type ProposalCommentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    proposalId?: boolean
+    authorName?: boolean
+    content?: boolean
+    createdAt?: boolean
+    proposal?: boolean | ProposalDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["proposalComment"]>
+
+  export type ProposalCommentSelectScalar = {
+    id?: boolean
+    proposalId?: boolean
+    authorName?: boolean
+    content?: boolean
+    createdAt?: boolean
+  }
+
+  export type ProposalCommentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    proposal?: boolean | ProposalDefaultArgs<ExtArgs>
+  }
+  export type ProposalCommentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    proposal?: boolean | ProposalDefaultArgs<ExtArgs>
+  }
+
+  export type $ProposalCommentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ProposalComment"
+    objects: {
+      proposal: Prisma.$ProposalPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      proposalId: string
+      authorName: string
+      content: string
+      createdAt: Date
+    }, ExtArgs["result"]["proposalComment"]>
+    composites: {}
+  }
+
+  type ProposalCommentGetPayload<S extends boolean | null | undefined | ProposalCommentDefaultArgs> = $Result.GetResult<Prisma.$ProposalCommentPayload, S>
+
+  type ProposalCommentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ProposalCommentFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: ProposalCommentCountAggregateInputType | true
+    }
+
+  export interface ProposalCommentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ProposalComment'], meta: { name: 'ProposalComment' } }
+    /**
+     * Find zero or one ProposalComment that matches the filter.
+     * @param {ProposalCommentFindUniqueArgs} args - Arguments to find a ProposalComment
+     * @example
+     * // Get one ProposalComment
+     * const proposalComment = await prisma.proposalComment.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ProposalCommentFindUniqueArgs>(args: SelectSubset<T, ProposalCommentFindUniqueArgs<ExtArgs>>): Prisma__ProposalCommentClient<$Result.GetResult<Prisma.$ProposalCommentPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one ProposalComment that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {ProposalCommentFindUniqueOrThrowArgs} args - Arguments to find a ProposalComment
+     * @example
+     * // Get one ProposalComment
+     * const proposalComment = await prisma.proposalComment.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ProposalCommentFindUniqueOrThrowArgs>(args: SelectSubset<T, ProposalCommentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProposalCommentClient<$Result.GetResult<Prisma.$ProposalCommentPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first ProposalComment that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalCommentFindFirstArgs} args - Arguments to find a ProposalComment
+     * @example
+     * // Get one ProposalComment
+     * const proposalComment = await prisma.proposalComment.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ProposalCommentFindFirstArgs>(args?: SelectSubset<T, ProposalCommentFindFirstArgs<ExtArgs>>): Prisma__ProposalCommentClient<$Result.GetResult<Prisma.$ProposalCommentPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first ProposalComment that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalCommentFindFirstOrThrowArgs} args - Arguments to find a ProposalComment
+     * @example
+     * // Get one ProposalComment
+     * const proposalComment = await prisma.proposalComment.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ProposalCommentFindFirstOrThrowArgs>(args?: SelectSubset<T, ProposalCommentFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProposalCommentClient<$Result.GetResult<Prisma.$ProposalCommentPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more ProposalComments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalCommentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ProposalComments
+     * const proposalComments = await prisma.proposalComment.findMany()
+     * 
+     * // Get first 10 ProposalComments
+     * const proposalComments = await prisma.proposalComment.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const proposalCommentWithIdOnly = await prisma.proposalComment.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ProposalCommentFindManyArgs>(args?: SelectSubset<T, ProposalCommentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProposalCommentPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a ProposalComment.
+     * @param {ProposalCommentCreateArgs} args - Arguments to create a ProposalComment.
+     * @example
+     * // Create one ProposalComment
+     * const ProposalComment = await prisma.proposalComment.create({
+     *   data: {
+     *     // ... data to create a ProposalComment
+     *   }
+     * })
+     * 
+     */
+    create<T extends ProposalCommentCreateArgs>(args: SelectSubset<T, ProposalCommentCreateArgs<ExtArgs>>): Prisma__ProposalCommentClient<$Result.GetResult<Prisma.$ProposalCommentPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many ProposalComments.
+     * @param {ProposalCommentCreateManyArgs} args - Arguments to create many ProposalComments.
+     * @example
+     * // Create many ProposalComments
+     * const proposalComment = await prisma.proposalComment.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ProposalCommentCreateManyArgs>(args?: SelectSubset<T, ProposalCommentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ProposalComments and returns the data saved in the database.
+     * @param {ProposalCommentCreateManyAndReturnArgs} args - Arguments to create many ProposalComments.
+     * @example
+     * // Create many ProposalComments
+     * const proposalComment = await prisma.proposalComment.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ProposalComments and only return the `id`
+     * const proposalCommentWithIdOnly = await prisma.proposalComment.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ProposalCommentCreateManyAndReturnArgs>(args?: SelectSubset<T, ProposalCommentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProposalCommentPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a ProposalComment.
+     * @param {ProposalCommentDeleteArgs} args - Arguments to delete one ProposalComment.
+     * @example
+     * // Delete one ProposalComment
+     * const ProposalComment = await prisma.proposalComment.delete({
+     *   where: {
+     *     // ... filter to delete one ProposalComment
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ProposalCommentDeleteArgs>(args: SelectSubset<T, ProposalCommentDeleteArgs<ExtArgs>>): Prisma__ProposalCommentClient<$Result.GetResult<Prisma.$ProposalCommentPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one ProposalComment.
+     * @param {ProposalCommentUpdateArgs} args - Arguments to update one ProposalComment.
+     * @example
+     * // Update one ProposalComment
+     * const proposalComment = await prisma.proposalComment.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ProposalCommentUpdateArgs>(args: SelectSubset<T, ProposalCommentUpdateArgs<ExtArgs>>): Prisma__ProposalCommentClient<$Result.GetResult<Prisma.$ProposalCommentPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more ProposalComments.
+     * @param {ProposalCommentDeleteManyArgs} args - Arguments to filter ProposalComments to delete.
+     * @example
+     * // Delete a few ProposalComments
+     * const { count } = await prisma.proposalComment.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ProposalCommentDeleteManyArgs>(args?: SelectSubset<T, ProposalCommentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProposalComments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalCommentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ProposalComments
+     * const proposalComment = await prisma.proposalComment.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ProposalCommentUpdateManyArgs>(args: SelectSubset<T, ProposalCommentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ProposalComment.
+     * @param {ProposalCommentUpsertArgs} args - Arguments to update or create a ProposalComment.
+     * @example
+     * // Update or create a ProposalComment
+     * const proposalComment = await prisma.proposalComment.upsert({
+     *   create: {
+     *     // ... data to create a ProposalComment
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ProposalComment we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ProposalCommentUpsertArgs>(args: SelectSubset<T, ProposalCommentUpsertArgs<ExtArgs>>): Prisma__ProposalCommentClient<$Result.GetResult<Prisma.$ProposalCommentPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of ProposalComments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalCommentCountArgs} args - Arguments to filter ProposalComments to count.
+     * @example
+     * // Count the number of ProposalComments
+     * const count = await prisma.proposalComment.count({
+     *   where: {
+     *     // ... the filter for the ProposalComments we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProposalCommentCountArgs>(
+      args?: Subset<T, ProposalCommentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProposalCommentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ProposalComment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalCommentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProposalCommentAggregateArgs>(args: Subset<T, ProposalCommentAggregateArgs>): Prisma.PrismaPromise<GetProposalCommentAggregateType<T>>
+
+    /**
+     * Group by ProposalComment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalCommentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProposalCommentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProposalCommentGroupByArgs['orderBy'] }
+        : { orderBy?: ProposalCommentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProposalCommentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProposalCommentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ProposalComment model
+   */
+  readonly fields: ProposalCommentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ProposalComment.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProposalCommentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    proposal<T extends ProposalDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProposalDefaultArgs<ExtArgs>>): Prisma__ProposalClient<$Result.GetResult<Prisma.$ProposalPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ProposalComment model
+   */ 
+  interface ProposalCommentFieldRefs {
+    readonly id: FieldRef<"ProposalComment", 'String'>
+    readonly proposalId: FieldRef<"ProposalComment", 'String'>
+    readonly authorName: FieldRef<"ProposalComment", 'String'>
+    readonly content: FieldRef<"ProposalComment", 'String'>
+    readonly createdAt: FieldRef<"ProposalComment", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ProposalComment findUnique
+   */
+  export type ProposalCommentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalComment
+     */
+    select?: ProposalCommentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalCommentInclude<ExtArgs> | null
+    /**
+     * Filter, which ProposalComment to fetch.
+     */
+    where: ProposalCommentWhereUniqueInput
+  }
+
+  /**
+   * ProposalComment findUniqueOrThrow
+   */
+  export type ProposalCommentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalComment
+     */
+    select?: ProposalCommentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalCommentInclude<ExtArgs> | null
+    /**
+     * Filter, which ProposalComment to fetch.
+     */
+    where: ProposalCommentWhereUniqueInput
+  }
+
+  /**
+   * ProposalComment findFirst
+   */
+  export type ProposalCommentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalComment
+     */
+    select?: ProposalCommentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalCommentInclude<ExtArgs> | null
+    /**
+     * Filter, which ProposalComment to fetch.
+     */
+    where?: ProposalCommentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProposalComments to fetch.
+     */
+    orderBy?: ProposalCommentOrderByWithRelationInput | ProposalCommentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProposalComments.
+     */
+    cursor?: ProposalCommentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProposalComments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProposalComments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProposalComments.
+     */
+    distinct?: ProposalCommentScalarFieldEnum | ProposalCommentScalarFieldEnum[]
+  }
+
+  /**
+   * ProposalComment findFirstOrThrow
+   */
+  export type ProposalCommentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalComment
+     */
+    select?: ProposalCommentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalCommentInclude<ExtArgs> | null
+    /**
+     * Filter, which ProposalComment to fetch.
+     */
+    where?: ProposalCommentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProposalComments to fetch.
+     */
+    orderBy?: ProposalCommentOrderByWithRelationInput | ProposalCommentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProposalComments.
+     */
+    cursor?: ProposalCommentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProposalComments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProposalComments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProposalComments.
+     */
+    distinct?: ProposalCommentScalarFieldEnum | ProposalCommentScalarFieldEnum[]
+  }
+
+  /**
+   * ProposalComment findMany
+   */
+  export type ProposalCommentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalComment
+     */
+    select?: ProposalCommentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalCommentInclude<ExtArgs> | null
+    /**
+     * Filter, which ProposalComments to fetch.
+     */
+    where?: ProposalCommentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProposalComments to fetch.
+     */
+    orderBy?: ProposalCommentOrderByWithRelationInput | ProposalCommentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ProposalComments.
+     */
+    cursor?: ProposalCommentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProposalComments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProposalComments.
+     */
+    skip?: number
+    distinct?: ProposalCommentScalarFieldEnum | ProposalCommentScalarFieldEnum[]
+  }
+
+  /**
+   * ProposalComment create
+   */
+  export type ProposalCommentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalComment
+     */
+    select?: ProposalCommentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalCommentInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ProposalComment.
+     */
+    data: XOR<ProposalCommentCreateInput, ProposalCommentUncheckedCreateInput>
+  }
+
+  /**
+   * ProposalComment createMany
+   */
+  export type ProposalCommentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ProposalComments.
+     */
+    data: ProposalCommentCreateManyInput | ProposalCommentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ProposalComment createManyAndReturn
+   */
+  export type ProposalCommentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalComment
+     */
+    select?: ProposalCommentSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many ProposalComments.
+     */
+    data: ProposalCommentCreateManyInput | ProposalCommentCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalCommentIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ProposalComment update
+   */
+  export type ProposalCommentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalComment
+     */
+    select?: ProposalCommentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalCommentInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ProposalComment.
+     */
+    data: XOR<ProposalCommentUpdateInput, ProposalCommentUncheckedUpdateInput>
+    /**
+     * Choose, which ProposalComment to update.
+     */
+    where: ProposalCommentWhereUniqueInput
+  }
+
+  /**
+   * ProposalComment updateMany
+   */
+  export type ProposalCommentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ProposalComments.
+     */
+    data: XOR<ProposalCommentUpdateManyMutationInput, ProposalCommentUncheckedUpdateManyInput>
+    /**
+     * Filter which ProposalComments to update
+     */
+    where?: ProposalCommentWhereInput
+  }
+
+  /**
+   * ProposalComment upsert
+   */
+  export type ProposalCommentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalComment
+     */
+    select?: ProposalCommentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalCommentInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ProposalComment to update in case it exists.
+     */
+    where: ProposalCommentWhereUniqueInput
+    /**
+     * In case the ProposalComment found by the `where` argument doesn't exist, create a new ProposalComment with this data.
+     */
+    create: XOR<ProposalCommentCreateInput, ProposalCommentUncheckedCreateInput>
+    /**
+     * In case the ProposalComment was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProposalCommentUpdateInput, ProposalCommentUncheckedUpdateInput>
+  }
+
+  /**
+   * ProposalComment delete
+   */
+  export type ProposalCommentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalComment
+     */
+    select?: ProposalCommentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalCommentInclude<ExtArgs> | null
+    /**
+     * Filter which ProposalComment to delete.
+     */
+    where: ProposalCommentWhereUniqueInput
+  }
+
+  /**
+   * ProposalComment deleteMany
+   */
+  export type ProposalCommentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProposalComments to delete
+     */
+    where?: ProposalCommentWhereInput
+  }
+
+  /**
+   * ProposalComment without action
+   */
+  export type ProposalCommentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalComment
+     */
+    select?: ProposalCommentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalCommentInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ProposalTemplate
+   */
+
+  export type AggregateProposalTemplate = {
+    _count: ProposalTemplateCountAggregateOutputType | null
+    _min: ProposalTemplateMinAggregateOutputType | null
+    _max: ProposalTemplateMaxAggregateOutputType | null
+  }
+
+  export type ProposalTemplateMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    description: string | null
+    eventType: $Enums.EventType | null
+    coverImage: string | null
+    sections: string | null
+    contractTerms: string | null
+    isActive: boolean | null
+    createdById: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ProposalTemplateMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    description: string | null
+    eventType: $Enums.EventType | null
+    coverImage: string | null
+    sections: string | null
+    contractTerms: string | null
+    isActive: boolean | null
+    createdById: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ProposalTemplateCountAggregateOutputType = {
+    id: number
+    name: number
+    description: number
+    eventType: number
+    coverImage: number
+    sections: number
+    contractTerms: number
+    isActive: number
+    createdById: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ProposalTemplateMinAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    eventType?: true
+    coverImage?: true
+    sections?: true
+    contractTerms?: true
+    isActive?: true
+    createdById?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ProposalTemplateMaxAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    eventType?: true
+    coverImage?: true
+    sections?: true
+    contractTerms?: true
+    isActive?: true
+    createdById?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ProposalTemplateCountAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    eventType?: true
+    coverImage?: true
+    sections?: true
+    contractTerms?: true
+    isActive?: true
+    createdById?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ProposalTemplateAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProposalTemplate to aggregate.
+     */
+    where?: ProposalTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProposalTemplates to fetch.
+     */
+    orderBy?: ProposalTemplateOrderByWithRelationInput | ProposalTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProposalTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProposalTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProposalTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ProposalTemplates
+    **/
+    _count?: true | ProposalTemplateCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProposalTemplateMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProposalTemplateMaxAggregateInputType
+  }
+
+  export type GetProposalTemplateAggregateType<T extends ProposalTemplateAggregateArgs> = {
+        [P in keyof T & keyof AggregateProposalTemplate]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProposalTemplate[P]>
+      : GetScalarType<T[P], AggregateProposalTemplate[P]>
+  }
+
+
+
+
+  export type ProposalTemplateGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProposalTemplateWhereInput
+    orderBy?: ProposalTemplateOrderByWithAggregationInput | ProposalTemplateOrderByWithAggregationInput[]
+    by: ProposalTemplateScalarFieldEnum[] | ProposalTemplateScalarFieldEnum
+    having?: ProposalTemplateScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProposalTemplateCountAggregateInputType | true
+    _min?: ProposalTemplateMinAggregateInputType
+    _max?: ProposalTemplateMaxAggregateInputType
+  }
+
+  export type ProposalTemplateGroupByOutputType = {
+    id: string
+    name: string
+    description: string | null
+    eventType: $Enums.EventType | null
+    coverImage: string | null
+    sections: string
+    contractTerms: string | null
+    isActive: boolean
+    createdById: string
+    createdAt: Date
+    updatedAt: Date
+    _count: ProposalTemplateCountAggregateOutputType | null
+    _min: ProposalTemplateMinAggregateOutputType | null
+    _max: ProposalTemplateMaxAggregateOutputType | null
+  }
+
+  type GetProposalTemplateGroupByPayload<T extends ProposalTemplateGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProposalTemplateGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProposalTemplateGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProposalTemplateGroupByOutputType[P]>
+            : GetScalarType<T[P], ProposalTemplateGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProposalTemplateSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    eventType?: boolean
+    coverImage?: boolean
+    sections?: boolean
+    contractTerms?: boolean
+    isActive?: boolean
+    createdById?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    createdBy?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["proposalTemplate"]>
+
+  export type ProposalTemplateSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    eventType?: boolean
+    coverImage?: boolean
+    sections?: boolean
+    contractTerms?: boolean
+    isActive?: boolean
+    createdById?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    createdBy?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["proposalTemplate"]>
+
+  export type ProposalTemplateSelectScalar = {
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    eventType?: boolean
+    coverImage?: boolean
+    sections?: boolean
+    contractTerms?: boolean
+    isActive?: boolean
+    createdById?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ProposalTemplateInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    createdBy?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ProposalTemplateIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    createdBy?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $ProposalTemplatePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ProposalTemplate"
+    objects: {
+      createdBy: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      description: string | null
+      eventType: $Enums.EventType | null
+      coverImage: string | null
+      sections: string
+      contractTerms: string | null
+      isActive: boolean
+      createdById: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["proposalTemplate"]>
+    composites: {}
+  }
+
+  type ProposalTemplateGetPayload<S extends boolean | null | undefined | ProposalTemplateDefaultArgs> = $Result.GetResult<Prisma.$ProposalTemplatePayload, S>
+
+  type ProposalTemplateCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ProposalTemplateFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: ProposalTemplateCountAggregateInputType | true
+    }
+
+  export interface ProposalTemplateDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ProposalTemplate'], meta: { name: 'ProposalTemplate' } }
+    /**
+     * Find zero or one ProposalTemplate that matches the filter.
+     * @param {ProposalTemplateFindUniqueArgs} args - Arguments to find a ProposalTemplate
+     * @example
+     * // Get one ProposalTemplate
+     * const proposalTemplate = await prisma.proposalTemplate.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ProposalTemplateFindUniqueArgs>(args: SelectSubset<T, ProposalTemplateFindUniqueArgs<ExtArgs>>): Prisma__ProposalTemplateClient<$Result.GetResult<Prisma.$ProposalTemplatePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one ProposalTemplate that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {ProposalTemplateFindUniqueOrThrowArgs} args - Arguments to find a ProposalTemplate
+     * @example
+     * // Get one ProposalTemplate
+     * const proposalTemplate = await prisma.proposalTemplate.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ProposalTemplateFindUniqueOrThrowArgs>(args: SelectSubset<T, ProposalTemplateFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProposalTemplateClient<$Result.GetResult<Prisma.$ProposalTemplatePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first ProposalTemplate that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalTemplateFindFirstArgs} args - Arguments to find a ProposalTemplate
+     * @example
+     * // Get one ProposalTemplate
+     * const proposalTemplate = await prisma.proposalTemplate.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ProposalTemplateFindFirstArgs>(args?: SelectSubset<T, ProposalTemplateFindFirstArgs<ExtArgs>>): Prisma__ProposalTemplateClient<$Result.GetResult<Prisma.$ProposalTemplatePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first ProposalTemplate that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalTemplateFindFirstOrThrowArgs} args - Arguments to find a ProposalTemplate
+     * @example
+     * // Get one ProposalTemplate
+     * const proposalTemplate = await prisma.proposalTemplate.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ProposalTemplateFindFirstOrThrowArgs>(args?: SelectSubset<T, ProposalTemplateFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProposalTemplateClient<$Result.GetResult<Prisma.$ProposalTemplatePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more ProposalTemplates that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalTemplateFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ProposalTemplates
+     * const proposalTemplates = await prisma.proposalTemplate.findMany()
+     * 
+     * // Get first 10 ProposalTemplates
+     * const proposalTemplates = await prisma.proposalTemplate.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const proposalTemplateWithIdOnly = await prisma.proposalTemplate.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ProposalTemplateFindManyArgs>(args?: SelectSubset<T, ProposalTemplateFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProposalTemplatePayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a ProposalTemplate.
+     * @param {ProposalTemplateCreateArgs} args - Arguments to create a ProposalTemplate.
+     * @example
+     * // Create one ProposalTemplate
+     * const ProposalTemplate = await prisma.proposalTemplate.create({
+     *   data: {
+     *     // ... data to create a ProposalTemplate
+     *   }
+     * })
+     * 
+     */
+    create<T extends ProposalTemplateCreateArgs>(args: SelectSubset<T, ProposalTemplateCreateArgs<ExtArgs>>): Prisma__ProposalTemplateClient<$Result.GetResult<Prisma.$ProposalTemplatePayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many ProposalTemplates.
+     * @param {ProposalTemplateCreateManyArgs} args - Arguments to create many ProposalTemplates.
+     * @example
+     * // Create many ProposalTemplates
+     * const proposalTemplate = await prisma.proposalTemplate.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ProposalTemplateCreateManyArgs>(args?: SelectSubset<T, ProposalTemplateCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ProposalTemplates and returns the data saved in the database.
+     * @param {ProposalTemplateCreateManyAndReturnArgs} args - Arguments to create many ProposalTemplates.
+     * @example
+     * // Create many ProposalTemplates
+     * const proposalTemplate = await prisma.proposalTemplate.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ProposalTemplates and only return the `id`
+     * const proposalTemplateWithIdOnly = await prisma.proposalTemplate.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ProposalTemplateCreateManyAndReturnArgs>(args?: SelectSubset<T, ProposalTemplateCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProposalTemplatePayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a ProposalTemplate.
+     * @param {ProposalTemplateDeleteArgs} args - Arguments to delete one ProposalTemplate.
+     * @example
+     * // Delete one ProposalTemplate
+     * const ProposalTemplate = await prisma.proposalTemplate.delete({
+     *   where: {
+     *     // ... filter to delete one ProposalTemplate
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ProposalTemplateDeleteArgs>(args: SelectSubset<T, ProposalTemplateDeleteArgs<ExtArgs>>): Prisma__ProposalTemplateClient<$Result.GetResult<Prisma.$ProposalTemplatePayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one ProposalTemplate.
+     * @param {ProposalTemplateUpdateArgs} args - Arguments to update one ProposalTemplate.
+     * @example
+     * // Update one ProposalTemplate
+     * const proposalTemplate = await prisma.proposalTemplate.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ProposalTemplateUpdateArgs>(args: SelectSubset<T, ProposalTemplateUpdateArgs<ExtArgs>>): Prisma__ProposalTemplateClient<$Result.GetResult<Prisma.$ProposalTemplatePayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more ProposalTemplates.
+     * @param {ProposalTemplateDeleteManyArgs} args - Arguments to filter ProposalTemplates to delete.
+     * @example
+     * // Delete a few ProposalTemplates
+     * const { count } = await prisma.proposalTemplate.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ProposalTemplateDeleteManyArgs>(args?: SelectSubset<T, ProposalTemplateDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProposalTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalTemplateUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ProposalTemplates
+     * const proposalTemplate = await prisma.proposalTemplate.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ProposalTemplateUpdateManyArgs>(args: SelectSubset<T, ProposalTemplateUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ProposalTemplate.
+     * @param {ProposalTemplateUpsertArgs} args - Arguments to update or create a ProposalTemplate.
+     * @example
+     * // Update or create a ProposalTemplate
+     * const proposalTemplate = await prisma.proposalTemplate.upsert({
+     *   create: {
+     *     // ... data to create a ProposalTemplate
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ProposalTemplate we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ProposalTemplateUpsertArgs>(args: SelectSubset<T, ProposalTemplateUpsertArgs<ExtArgs>>): Prisma__ProposalTemplateClient<$Result.GetResult<Prisma.$ProposalTemplatePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of ProposalTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalTemplateCountArgs} args - Arguments to filter ProposalTemplates to count.
+     * @example
+     * // Count the number of ProposalTemplates
+     * const count = await prisma.proposalTemplate.count({
+     *   where: {
+     *     // ... the filter for the ProposalTemplates we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProposalTemplateCountArgs>(
+      args?: Subset<T, ProposalTemplateCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProposalTemplateCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ProposalTemplate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalTemplateAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProposalTemplateAggregateArgs>(args: Subset<T, ProposalTemplateAggregateArgs>): Prisma.PrismaPromise<GetProposalTemplateAggregateType<T>>
+
+    /**
+     * Group by ProposalTemplate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProposalTemplateGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProposalTemplateGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProposalTemplateGroupByArgs['orderBy'] }
+        : { orderBy?: ProposalTemplateGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProposalTemplateGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProposalTemplateGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ProposalTemplate model
+   */
+  readonly fields: ProposalTemplateFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ProposalTemplate.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProposalTemplateClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    createdBy<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ProposalTemplate model
+   */ 
+  interface ProposalTemplateFieldRefs {
+    readonly id: FieldRef<"ProposalTemplate", 'String'>
+    readonly name: FieldRef<"ProposalTemplate", 'String'>
+    readonly description: FieldRef<"ProposalTemplate", 'String'>
+    readonly eventType: FieldRef<"ProposalTemplate", 'EventType'>
+    readonly coverImage: FieldRef<"ProposalTemplate", 'String'>
+    readonly sections: FieldRef<"ProposalTemplate", 'String'>
+    readonly contractTerms: FieldRef<"ProposalTemplate", 'String'>
+    readonly isActive: FieldRef<"ProposalTemplate", 'Boolean'>
+    readonly createdById: FieldRef<"ProposalTemplate", 'String'>
+    readonly createdAt: FieldRef<"ProposalTemplate", 'DateTime'>
+    readonly updatedAt: FieldRef<"ProposalTemplate", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ProposalTemplate findUnique
+   */
+  export type ProposalTemplateFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalTemplate
+     */
+    select?: ProposalTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which ProposalTemplate to fetch.
+     */
+    where: ProposalTemplateWhereUniqueInput
+  }
+
+  /**
+   * ProposalTemplate findUniqueOrThrow
+   */
+  export type ProposalTemplateFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalTemplate
+     */
+    select?: ProposalTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which ProposalTemplate to fetch.
+     */
+    where: ProposalTemplateWhereUniqueInput
+  }
+
+  /**
+   * ProposalTemplate findFirst
+   */
+  export type ProposalTemplateFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalTemplate
+     */
+    select?: ProposalTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which ProposalTemplate to fetch.
+     */
+    where?: ProposalTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProposalTemplates to fetch.
+     */
+    orderBy?: ProposalTemplateOrderByWithRelationInput | ProposalTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProposalTemplates.
+     */
+    cursor?: ProposalTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProposalTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProposalTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProposalTemplates.
+     */
+    distinct?: ProposalTemplateScalarFieldEnum | ProposalTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * ProposalTemplate findFirstOrThrow
+   */
+  export type ProposalTemplateFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalTemplate
+     */
+    select?: ProposalTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which ProposalTemplate to fetch.
+     */
+    where?: ProposalTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProposalTemplates to fetch.
+     */
+    orderBy?: ProposalTemplateOrderByWithRelationInput | ProposalTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProposalTemplates.
+     */
+    cursor?: ProposalTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProposalTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProposalTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProposalTemplates.
+     */
+    distinct?: ProposalTemplateScalarFieldEnum | ProposalTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * ProposalTemplate findMany
+   */
+  export type ProposalTemplateFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalTemplate
+     */
+    select?: ProposalTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which ProposalTemplates to fetch.
+     */
+    where?: ProposalTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProposalTemplates to fetch.
+     */
+    orderBy?: ProposalTemplateOrderByWithRelationInput | ProposalTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ProposalTemplates.
+     */
+    cursor?: ProposalTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProposalTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProposalTemplates.
+     */
+    skip?: number
+    distinct?: ProposalTemplateScalarFieldEnum | ProposalTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * ProposalTemplate create
+   */
+  export type ProposalTemplateCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalTemplate
+     */
+    select?: ProposalTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalTemplateInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ProposalTemplate.
+     */
+    data: XOR<ProposalTemplateCreateInput, ProposalTemplateUncheckedCreateInput>
+  }
+
+  /**
+   * ProposalTemplate createMany
+   */
+  export type ProposalTemplateCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ProposalTemplates.
+     */
+    data: ProposalTemplateCreateManyInput | ProposalTemplateCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ProposalTemplate createManyAndReturn
+   */
+  export type ProposalTemplateCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalTemplate
+     */
+    select?: ProposalTemplateSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many ProposalTemplates.
+     */
+    data: ProposalTemplateCreateManyInput | ProposalTemplateCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalTemplateIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ProposalTemplate update
+   */
+  export type ProposalTemplateUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalTemplate
+     */
+    select?: ProposalTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalTemplateInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ProposalTemplate.
+     */
+    data: XOR<ProposalTemplateUpdateInput, ProposalTemplateUncheckedUpdateInput>
+    /**
+     * Choose, which ProposalTemplate to update.
+     */
+    where: ProposalTemplateWhereUniqueInput
+  }
+
+  /**
+   * ProposalTemplate updateMany
+   */
+  export type ProposalTemplateUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ProposalTemplates.
+     */
+    data: XOR<ProposalTemplateUpdateManyMutationInput, ProposalTemplateUncheckedUpdateManyInput>
+    /**
+     * Filter which ProposalTemplates to update
+     */
+    where?: ProposalTemplateWhereInput
+  }
+
+  /**
+   * ProposalTemplate upsert
+   */
+  export type ProposalTemplateUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalTemplate
+     */
+    select?: ProposalTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalTemplateInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ProposalTemplate to update in case it exists.
+     */
+    where: ProposalTemplateWhereUniqueInput
+    /**
+     * In case the ProposalTemplate found by the `where` argument doesn't exist, create a new ProposalTemplate with this data.
+     */
+    create: XOR<ProposalTemplateCreateInput, ProposalTemplateUncheckedCreateInput>
+    /**
+     * In case the ProposalTemplate was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProposalTemplateUpdateInput, ProposalTemplateUncheckedUpdateInput>
+  }
+
+  /**
+   * ProposalTemplate delete
+   */
+  export type ProposalTemplateDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalTemplate
+     */
+    select?: ProposalTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalTemplateInclude<ExtArgs> | null
+    /**
+     * Filter which ProposalTemplate to delete.
+     */
+    where: ProposalTemplateWhereUniqueInput
+  }
+
+  /**
+   * ProposalTemplate deleteMany
+   */
+  export type ProposalTemplateDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProposalTemplates to delete
+     */
+    where?: ProposalTemplateWhereInput
+  }
+
+  /**
+   * ProposalTemplate without action
+   */
+  export type ProposalTemplateDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProposalTemplate
+     */
+    select?: ProposalTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProposalTemplateInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -13645,6 +20574,100 @@ export namespace Prisma {
   };
 
   export type DesignAssetScalarFieldEnum = (typeof DesignAssetScalarFieldEnum)[keyof typeof DesignAssetScalarFieldEnum]
+
+
+  export const ProposalScalarFieldEnum: {
+    id: 'id',
+    bookingId: 'bookingId',
+    title: 'title',
+    proposalNumber: 'proposalNumber',
+    introduction: 'introduction',
+    eventVision: 'eventVision',
+    themeConcept: 'themeConcept',
+    totalAmount: 'totalAmount',
+    currency: 'currency',
+    status: 'status',
+    validUntil: 'validUntil',
+    pdfUrl: 'pdfUrl',
+    publicToken: 'publicToken',
+    clientApproved: 'clientApproved',
+    clientApprovedAt: 'clientApprovedAt',
+    clientRejected: 'clientRejected',
+    rejectionReason: 'rejectionReason',
+    notes: 'notes',
+    createdById: 'createdById',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ProposalScalarFieldEnum = (typeof ProposalScalarFieldEnum)[keyof typeof ProposalScalarFieldEnum]
+
+
+  export const ProposalItemScalarFieldEnum: {
+    id: 'id',
+    proposalId: 'proposalId',
+    title: 'title',
+    description: 'description',
+    quantity: 'quantity',
+    unitPrice: 'unitPrice',
+    totalPrice: 'totalPrice',
+    category: 'category',
+    sortOrder: 'sortOrder',
+    createdAt: 'createdAt'
+  };
+
+  export type ProposalItemScalarFieldEnum = (typeof ProposalItemScalarFieldEnum)[keyof typeof ProposalItemScalarFieldEnum]
+
+
+  export const ProposalSectionScalarFieldEnum: {
+    id: 'id',
+    proposalId: 'proposalId',
+    title: 'title',
+    content: 'content',
+    sortOrder: 'sortOrder',
+    createdAt: 'createdAt'
+  };
+
+  export type ProposalSectionScalarFieldEnum = (typeof ProposalSectionScalarFieldEnum)[keyof typeof ProposalSectionScalarFieldEnum]
+
+
+  export const ProposalContractScalarFieldEnum: {
+    id: 'id',
+    proposalId: 'proposalId',
+    title: 'title',
+    content: 'content',
+    createdAt: 'createdAt'
+  };
+
+  export type ProposalContractScalarFieldEnum = (typeof ProposalContractScalarFieldEnum)[keyof typeof ProposalContractScalarFieldEnum]
+
+
+  export const ProposalCommentScalarFieldEnum: {
+    id: 'id',
+    proposalId: 'proposalId',
+    authorName: 'authorName',
+    content: 'content',
+    createdAt: 'createdAt'
+  };
+
+  export type ProposalCommentScalarFieldEnum = (typeof ProposalCommentScalarFieldEnum)[keyof typeof ProposalCommentScalarFieldEnum]
+
+
+  export const ProposalTemplateScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    description: 'description',
+    eventType: 'eventType',
+    coverImage: 'coverImage',
+    sections: 'sections',
+    contractTerms: 'contractTerms',
+    isActive: 'isActive',
+    createdById: 'createdById',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ProposalTemplateScalarFieldEnum = (typeof ProposalTemplateScalarFieldEnum)[keyof typeof ProposalTemplateScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -13891,6 +20914,34 @@ export namespace Prisma {
    */
   export type ListEnumAssetCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AssetCategory[]'>
     
+
+
+  /**
+   * Reference to a field of type 'ProposalStatus'
+   */
+  export type EnumProposalStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProposalStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'ProposalStatus[]'
+   */
+  export type ListEnumProposalStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProposalStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'ProposalItemCategory'
+   */
+  export type EnumProposalItemCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProposalItemCategory'>
+    
+
+
+  /**
+   * Reference to a field of type 'ProposalItemCategory[]'
+   */
+  export type ListEnumProposalItemCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProposalItemCategory[]'>
+    
   /**
    * Deep Input Types
    */
@@ -13909,6 +20960,8 @@ export namespace Prisma {
     avatarUrl?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
+    proposals?: ProposalListRelationFilter
+    proposalTemplates?: ProposalTemplateListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -13921,6 +20974,8 @@ export namespace Prisma {
     avatarUrl?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    proposals?: ProposalOrderByRelationAggregateInput
+    proposalTemplates?: ProposalTemplateOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -13936,6 +20991,8 @@ export namespace Prisma {
     avatarUrl?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
+    proposals?: ProposalListRelationFilter
+    proposalTemplates?: ProposalTemplateListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -13995,6 +21052,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Booking"> | Date | string
     messages?: MessageListRelationFilter
     invitations?: WeddingInvitationListRelationFilter
+    proposals?: ProposalListRelationFilter
   }
 
   export type BookingOrderByWithRelationInput = {
@@ -14021,6 +21079,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     messages?: MessageOrderByRelationAggregateInput
     invitations?: WeddingInvitationOrderByRelationAggregateInput
+    proposals?: ProposalOrderByRelationAggregateInput
   }
 
   export type BookingWhereUniqueInput = Prisma.AtLeast<{
@@ -14050,6 +21109,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Booking"> | Date | string
     messages?: MessageListRelationFilter
     invitations?: WeddingInvitationListRelationFilter
+    proposals?: ProposalListRelationFilter
   }, "id">
 
   export type BookingOrderByWithAggregationInput = {
@@ -14930,6 +21990,497 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"DesignAsset"> | Date | string
   }
 
+  export type ProposalWhereInput = {
+    AND?: ProposalWhereInput | ProposalWhereInput[]
+    OR?: ProposalWhereInput[]
+    NOT?: ProposalWhereInput | ProposalWhereInput[]
+    id?: StringFilter<"Proposal"> | string
+    bookingId?: StringFilter<"Proposal"> | string
+    title?: StringFilter<"Proposal"> | string
+    proposalNumber?: StringFilter<"Proposal"> | string
+    introduction?: StringNullableFilter<"Proposal"> | string | null
+    eventVision?: StringNullableFilter<"Proposal"> | string | null
+    themeConcept?: StringNullableFilter<"Proposal"> | string | null
+    totalAmount?: FloatFilter<"Proposal"> | number
+    currency?: StringFilter<"Proposal"> | string
+    status?: EnumProposalStatusFilter<"Proposal"> | $Enums.ProposalStatus
+    validUntil?: DateTimeNullableFilter<"Proposal"> | Date | string | null
+    pdfUrl?: StringNullableFilter<"Proposal"> | string | null
+    publicToken?: StringFilter<"Proposal"> | string
+    clientApproved?: BoolFilter<"Proposal"> | boolean
+    clientApprovedAt?: DateTimeNullableFilter<"Proposal"> | Date | string | null
+    clientRejected?: BoolFilter<"Proposal"> | boolean
+    rejectionReason?: StringNullableFilter<"Proposal"> | string | null
+    notes?: StringNullableFilter<"Proposal"> | string | null
+    createdById?: StringFilter<"Proposal"> | string
+    createdAt?: DateTimeFilter<"Proposal"> | Date | string
+    updatedAt?: DateTimeFilter<"Proposal"> | Date | string
+    booking?: XOR<BookingRelationFilter, BookingWhereInput>
+    createdBy?: XOR<UserRelationFilter, UserWhereInput>
+    items?: ProposalItemListRelationFilter
+    sections?: ProposalSectionListRelationFilter
+    contracts?: ProposalContractListRelationFilter
+    comments?: ProposalCommentListRelationFilter
+  }
+
+  export type ProposalOrderByWithRelationInput = {
+    id?: SortOrder
+    bookingId?: SortOrder
+    title?: SortOrder
+    proposalNumber?: SortOrder
+    introduction?: SortOrderInput | SortOrder
+    eventVision?: SortOrderInput | SortOrder
+    themeConcept?: SortOrderInput | SortOrder
+    totalAmount?: SortOrder
+    currency?: SortOrder
+    status?: SortOrder
+    validUntil?: SortOrderInput | SortOrder
+    pdfUrl?: SortOrderInput | SortOrder
+    publicToken?: SortOrder
+    clientApproved?: SortOrder
+    clientApprovedAt?: SortOrderInput | SortOrder
+    clientRejected?: SortOrder
+    rejectionReason?: SortOrderInput | SortOrder
+    notes?: SortOrderInput | SortOrder
+    createdById?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    booking?: BookingOrderByWithRelationInput
+    createdBy?: UserOrderByWithRelationInput
+    items?: ProposalItemOrderByRelationAggregateInput
+    sections?: ProposalSectionOrderByRelationAggregateInput
+    contracts?: ProposalContractOrderByRelationAggregateInput
+    comments?: ProposalCommentOrderByRelationAggregateInput
+  }
+
+  export type ProposalWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    proposalNumber?: string
+    publicToken?: string
+    AND?: ProposalWhereInput | ProposalWhereInput[]
+    OR?: ProposalWhereInput[]
+    NOT?: ProposalWhereInput | ProposalWhereInput[]
+    bookingId?: StringFilter<"Proposal"> | string
+    title?: StringFilter<"Proposal"> | string
+    introduction?: StringNullableFilter<"Proposal"> | string | null
+    eventVision?: StringNullableFilter<"Proposal"> | string | null
+    themeConcept?: StringNullableFilter<"Proposal"> | string | null
+    totalAmount?: FloatFilter<"Proposal"> | number
+    currency?: StringFilter<"Proposal"> | string
+    status?: EnumProposalStatusFilter<"Proposal"> | $Enums.ProposalStatus
+    validUntil?: DateTimeNullableFilter<"Proposal"> | Date | string | null
+    pdfUrl?: StringNullableFilter<"Proposal"> | string | null
+    clientApproved?: BoolFilter<"Proposal"> | boolean
+    clientApprovedAt?: DateTimeNullableFilter<"Proposal"> | Date | string | null
+    clientRejected?: BoolFilter<"Proposal"> | boolean
+    rejectionReason?: StringNullableFilter<"Proposal"> | string | null
+    notes?: StringNullableFilter<"Proposal"> | string | null
+    createdById?: StringFilter<"Proposal"> | string
+    createdAt?: DateTimeFilter<"Proposal"> | Date | string
+    updatedAt?: DateTimeFilter<"Proposal"> | Date | string
+    booking?: XOR<BookingRelationFilter, BookingWhereInput>
+    createdBy?: XOR<UserRelationFilter, UserWhereInput>
+    items?: ProposalItemListRelationFilter
+    sections?: ProposalSectionListRelationFilter
+    contracts?: ProposalContractListRelationFilter
+    comments?: ProposalCommentListRelationFilter
+  }, "id" | "proposalNumber" | "publicToken">
+
+  export type ProposalOrderByWithAggregationInput = {
+    id?: SortOrder
+    bookingId?: SortOrder
+    title?: SortOrder
+    proposalNumber?: SortOrder
+    introduction?: SortOrderInput | SortOrder
+    eventVision?: SortOrderInput | SortOrder
+    themeConcept?: SortOrderInput | SortOrder
+    totalAmount?: SortOrder
+    currency?: SortOrder
+    status?: SortOrder
+    validUntil?: SortOrderInput | SortOrder
+    pdfUrl?: SortOrderInput | SortOrder
+    publicToken?: SortOrder
+    clientApproved?: SortOrder
+    clientApprovedAt?: SortOrderInput | SortOrder
+    clientRejected?: SortOrder
+    rejectionReason?: SortOrderInput | SortOrder
+    notes?: SortOrderInput | SortOrder
+    createdById?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ProposalCountOrderByAggregateInput
+    _avg?: ProposalAvgOrderByAggregateInput
+    _max?: ProposalMaxOrderByAggregateInput
+    _min?: ProposalMinOrderByAggregateInput
+    _sum?: ProposalSumOrderByAggregateInput
+  }
+
+  export type ProposalScalarWhereWithAggregatesInput = {
+    AND?: ProposalScalarWhereWithAggregatesInput | ProposalScalarWhereWithAggregatesInput[]
+    OR?: ProposalScalarWhereWithAggregatesInput[]
+    NOT?: ProposalScalarWhereWithAggregatesInput | ProposalScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Proposal"> | string
+    bookingId?: StringWithAggregatesFilter<"Proposal"> | string
+    title?: StringWithAggregatesFilter<"Proposal"> | string
+    proposalNumber?: StringWithAggregatesFilter<"Proposal"> | string
+    introduction?: StringNullableWithAggregatesFilter<"Proposal"> | string | null
+    eventVision?: StringNullableWithAggregatesFilter<"Proposal"> | string | null
+    themeConcept?: StringNullableWithAggregatesFilter<"Proposal"> | string | null
+    totalAmount?: FloatWithAggregatesFilter<"Proposal"> | number
+    currency?: StringWithAggregatesFilter<"Proposal"> | string
+    status?: EnumProposalStatusWithAggregatesFilter<"Proposal"> | $Enums.ProposalStatus
+    validUntil?: DateTimeNullableWithAggregatesFilter<"Proposal"> | Date | string | null
+    pdfUrl?: StringNullableWithAggregatesFilter<"Proposal"> | string | null
+    publicToken?: StringWithAggregatesFilter<"Proposal"> | string
+    clientApproved?: BoolWithAggregatesFilter<"Proposal"> | boolean
+    clientApprovedAt?: DateTimeNullableWithAggregatesFilter<"Proposal"> | Date | string | null
+    clientRejected?: BoolWithAggregatesFilter<"Proposal"> | boolean
+    rejectionReason?: StringNullableWithAggregatesFilter<"Proposal"> | string | null
+    notes?: StringNullableWithAggregatesFilter<"Proposal"> | string | null
+    createdById?: StringWithAggregatesFilter<"Proposal"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Proposal"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Proposal"> | Date | string
+  }
+
+  export type ProposalItemWhereInput = {
+    AND?: ProposalItemWhereInput | ProposalItemWhereInput[]
+    OR?: ProposalItemWhereInput[]
+    NOT?: ProposalItemWhereInput | ProposalItemWhereInput[]
+    id?: StringFilter<"ProposalItem"> | string
+    proposalId?: StringFilter<"ProposalItem"> | string
+    title?: StringFilter<"ProposalItem"> | string
+    description?: StringNullableFilter<"ProposalItem"> | string | null
+    quantity?: IntFilter<"ProposalItem"> | number
+    unitPrice?: FloatFilter<"ProposalItem"> | number
+    totalPrice?: FloatFilter<"ProposalItem"> | number
+    category?: EnumProposalItemCategoryFilter<"ProposalItem"> | $Enums.ProposalItemCategory
+    sortOrder?: IntFilter<"ProposalItem"> | number
+    createdAt?: DateTimeFilter<"ProposalItem"> | Date | string
+    proposal?: XOR<ProposalRelationFilter, ProposalWhereInput>
+  }
+
+  export type ProposalItemOrderByWithRelationInput = {
+    id?: SortOrder
+    proposalId?: SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    totalPrice?: SortOrder
+    category?: SortOrder
+    sortOrder?: SortOrder
+    createdAt?: SortOrder
+    proposal?: ProposalOrderByWithRelationInput
+  }
+
+  export type ProposalItemWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ProposalItemWhereInput | ProposalItemWhereInput[]
+    OR?: ProposalItemWhereInput[]
+    NOT?: ProposalItemWhereInput | ProposalItemWhereInput[]
+    proposalId?: StringFilter<"ProposalItem"> | string
+    title?: StringFilter<"ProposalItem"> | string
+    description?: StringNullableFilter<"ProposalItem"> | string | null
+    quantity?: IntFilter<"ProposalItem"> | number
+    unitPrice?: FloatFilter<"ProposalItem"> | number
+    totalPrice?: FloatFilter<"ProposalItem"> | number
+    category?: EnumProposalItemCategoryFilter<"ProposalItem"> | $Enums.ProposalItemCategory
+    sortOrder?: IntFilter<"ProposalItem"> | number
+    createdAt?: DateTimeFilter<"ProposalItem"> | Date | string
+    proposal?: XOR<ProposalRelationFilter, ProposalWhereInput>
+  }, "id">
+
+  export type ProposalItemOrderByWithAggregationInput = {
+    id?: SortOrder
+    proposalId?: SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    totalPrice?: SortOrder
+    category?: SortOrder
+    sortOrder?: SortOrder
+    createdAt?: SortOrder
+    _count?: ProposalItemCountOrderByAggregateInput
+    _avg?: ProposalItemAvgOrderByAggregateInput
+    _max?: ProposalItemMaxOrderByAggregateInput
+    _min?: ProposalItemMinOrderByAggregateInput
+    _sum?: ProposalItemSumOrderByAggregateInput
+  }
+
+  export type ProposalItemScalarWhereWithAggregatesInput = {
+    AND?: ProposalItemScalarWhereWithAggregatesInput | ProposalItemScalarWhereWithAggregatesInput[]
+    OR?: ProposalItemScalarWhereWithAggregatesInput[]
+    NOT?: ProposalItemScalarWhereWithAggregatesInput | ProposalItemScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ProposalItem"> | string
+    proposalId?: StringWithAggregatesFilter<"ProposalItem"> | string
+    title?: StringWithAggregatesFilter<"ProposalItem"> | string
+    description?: StringNullableWithAggregatesFilter<"ProposalItem"> | string | null
+    quantity?: IntWithAggregatesFilter<"ProposalItem"> | number
+    unitPrice?: FloatWithAggregatesFilter<"ProposalItem"> | number
+    totalPrice?: FloatWithAggregatesFilter<"ProposalItem"> | number
+    category?: EnumProposalItemCategoryWithAggregatesFilter<"ProposalItem"> | $Enums.ProposalItemCategory
+    sortOrder?: IntWithAggregatesFilter<"ProposalItem"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"ProposalItem"> | Date | string
+  }
+
+  export type ProposalSectionWhereInput = {
+    AND?: ProposalSectionWhereInput | ProposalSectionWhereInput[]
+    OR?: ProposalSectionWhereInput[]
+    NOT?: ProposalSectionWhereInput | ProposalSectionWhereInput[]
+    id?: StringFilter<"ProposalSection"> | string
+    proposalId?: StringFilter<"ProposalSection"> | string
+    title?: StringFilter<"ProposalSection"> | string
+    content?: StringFilter<"ProposalSection"> | string
+    sortOrder?: IntFilter<"ProposalSection"> | number
+    createdAt?: DateTimeFilter<"ProposalSection"> | Date | string
+    proposal?: XOR<ProposalRelationFilter, ProposalWhereInput>
+  }
+
+  export type ProposalSectionOrderByWithRelationInput = {
+    id?: SortOrder
+    proposalId?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    sortOrder?: SortOrder
+    createdAt?: SortOrder
+    proposal?: ProposalOrderByWithRelationInput
+  }
+
+  export type ProposalSectionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ProposalSectionWhereInput | ProposalSectionWhereInput[]
+    OR?: ProposalSectionWhereInput[]
+    NOT?: ProposalSectionWhereInput | ProposalSectionWhereInput[]
+    proposalId?: StringFilter<"ProposalSection"> | string
+    title?: StringFilter<"ProposalSection"> | string
+    content?: StringFilter<"ProposalSection"> | string
+    sortOrder?: IntFilter<"ProposalSection"> | number
+    createdAt?: DateTimeFilter<"ProposalSection"> | Date | string
+    proposal?: XOR<ProposalRelationFilter, ProposalWhereInput>
+  }, "id">
+
+  export type ProposalSectionOrderByWithAggregationInput = {
+    id?: SortOrder
+    proposalId?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    sortOrder?: SortOrder
+    createdAt?: SortOrder
+    _count?: ProposalSectionCountOrderByAggregateInput
+    _avg?: ProposalSectionAvgOrderByAggregateInput
+    _max?: ProposalSectionMaxOrderByAggregateInput
+    _min?: ProposalSectionMinOrderByAggregateInput
+    _sum?: ProposalSectionSumOrderByAggregateInput
+  }
+
+  export type ProposalSectionScalarWhereWithAggregatesInput = {
+    AND?: ProposalSectionScalarWhereWithAggregatesInput | ProposalSectionScalarWhereWithAggregatesInput[]
+    OR?: ProposalSectionScalarWhereWithAggregatesInput[]
+    NOT?: ProposalSectionScalarWhereWithAggregatesInput | ProposalSectionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ProposalSection"> | string
+    proposalId?: StringWithAggregatesFilter<"ProposalSection"> | string
+    title?: StringWithAggregatesFilter<"ProposalSection"> | string
+    content?: StringWithAggregatesFilter<"ProposalSection"> | string
+    sortOrder?: IntWithAggregatesFilter<"ProposalSection"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"ProposalSection"> | Date | string
+  }
+
+  export type ProposalContractWhereInput = {
+    AND?: ProposalContractWhereInput | ProposalContractWhereInput[]
+    OR?: ProposalContractWhereInput[]
+    NOT?: ProposalContractWhereInput | ProposalContractWhereInput[]
+    id?: StringFilter<"ProposalContract"> | string
+    proposalId?: StringFilter<"ProposalContract"> | string
+    title?: StringFilter<"ProposalContract"> | string
+    content?: StringFilter<"ProposalContract"> | string
+    createdAt?: DateTimeFilter<"ProposalContract"> | Date | string
+    proposal?: XOR<ProposalRelationFilter, ProposalWhereInput>
+  }
+
+  export type ProposalContractOrderByWithRelationInput = {
+    id?: SortOrder
+    proposalId?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    proposal?: ProposalOrderByWithRelationInput
+  }
+
+  export type ProposalContractWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ProposalContractWhereInput | ProposalContractWhereInput[]
+    OR?: ProposalContractWhereInput[]
+    NOT?: ProposalContractWhereInput | ProposalContractWhereInput[]
+    proposalId?: StringFilter<"ProposalContract"> | string
+    title?: StringFilter<"ProposalContract"> | string
+    content?: StringFilter<"ProposalContract"> | string
+    createdAt?: DateTimeFilter<"ProposalContract"> | Date | string
+    proposal?: XOR<ProposalRelationFilter, ProposalWhereInput>
+  }, "id">
+
+  export type ProposalContractOrderByWithAggregationInput = {
+    id?: SortOrder
+    proposalId?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    _count?: ProposalContractCountOrderByAggregateInput
+    _max?: ProposalContractMaxOrderByAggregateInput
+    _min?: ProposalContractMinOrderByAggregateInput
+  }
+
+  export type ProposalContractScalarWhereWithAggregatesInput = {
+    AND?: ProposalContractScalarWhereWithAggregatesInput | ProposalContractScalarWhereWithAggregatesInput[]
+    OR?: ProposalContractScalarWhereWithAggregatesInput[]
+    NOT?: ProposalContractScalarWhereWithAggregatesInput | ProposalContractScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ProposalContract"> | string
+    proposalId?: StringWithAggregatesFilter<"ProposalContract"> | string
+    title?: StringWithAggregatesFilter<"ProposalContract"> | string
+    content?: StringWithAggregatesFilter<"ProposalContract"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"ProposalContract"> | Date | string
+  }
+
+  export type ProposalCommentWhereInput = {
+    AND?: ProposalCommentWhereInput | ProposalCommentWhereInput[]
+    OR?: ProposalCommentWhereInput[]
+    NOT?: ProposalCommentWhereInput | ProposalCommentWhereInput[]
+    id?: StringFilter<"ProposalComment"> | string
+    proposalId?: StringFilter<"ProposalComment"> | string
+    authorName?: StringFilter<"ProposalComment"> | string
+    content?: StringFilter<"ProposalComment"> | string
+    createdAt?: DateTimeFilter<"ProposalComment"> | Date | string
+    proposal?: XOR<ProposalRelationFilter, ProposalWhereInput>
+  }
+
+  export type ProposalCommentOrderByWithRelationInput = {
+    id?: SortOrder
+    proposalId?: SortOrder
+    authorName?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    proposal?: ProposalOrderByWithRelationInput
+  }
+
+  export type ProposalCommentWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ProposalCommentWhereInput | ProposalCommentWhereInput[]
+    OR?: ProposalCommentWhereInput[]
+    NOT?: ProposalCommentWhereInput | ProposalCommentWhereInput[]
+    proposalId?: StringFilter<"ProposalComment"> | string
+    authorName?: StringFilter<"ProposalComment"> | string
+    content?: StringFilter<"ProposalComment"> | string
+    createdAt?: DateTimeFilter<"ProposalComment"> | Date | string
+    proposal?: XOR<ProposalRelationFilter, ProposalWhereInput>
+  }, "id">
+
+  export type ProposalCommentOrderByWithAggregationInput = {
+    id?: SortOrder
+    proposalId?: SortOrder
+    authorName?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    _count?: ProposalCommentCountOrderByAggregateInput
+    _max?: ProposalCommentMaxOrderByAggregateInput
+    _min?: ProposalCommentMinOrderByAggregateInput
+  }
+
+  export type ProposalCommentScalarWhereWithAggregatesInput = {
+    AND?: ProposalCommentScalarWhereWithAggregatesInput | ProposalCommentScalarWhereWithAggregatesInput[]
+    OR?: ProposalCommentScalarWhereWithAggregatesInput[]
+    NOT?: ProposalCommentScalarWhereWithAggregatesInput | ProposalCommentScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ProposalComment"> | string
+    proposalId?: StringWithAggregatesFilter<"ProposalComment"> | string
+    authorName?: StringWithAggregatesFilter<"ProposalComment"> | string
+    content?: StringWithAggregatesFilter<"ProposalComment"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"ProposalComment"> | Date | string
+  }
+
+  export type ProposalTemplateWhereInput = {
+    AND?: ProposalTemplateWhereInput | ProposalTemplateWhereInput[]
+    OR?: ProposalTemplateWhereInput[]
+    NOT?: ProposalTemplateWhereInput | ProposalTemplateWhereInput[]
+    id?: StringFilter<"ProposalTemplate"> | string
+    name?: StringFilter<"ProposalTemplate"> | string
+    description?: StringNullableFilter<"ProposalTemplate"> | string | null
+    eventType?: EnumEventTypeNullableFilter<"ProposalTemplate"> | $Enums.EventType | null
+    coverImage?: StringNullableFilter<"ProposalTemplate"> | string | null
+    sections?: StringFilter<"ProposalTemplate"> | string
+    contractTerms?: StringNullableFilter<"ProposalTemplate"> | string | null
+    isActive?: BoolFilter<"ProposalTemplate"> | boolean
+    createdById?: StringFilter<"ProposalTemplate"> | string
+    createdAt?: DateTimeFilter<"ProposalTemplate"> | Date | string
+    updatedAt?: DateTimeFilter<"ProposalTemplate"> | Date | string
+    createdBy?: XOR<UserRelationFilter, UserWhereInput>
+  }
+
+  export type ProposalTemplateOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    eventType?: SortOrderInput | SortOrder
+    coverImage?: SortOrderInput | SortOrder
+    sections?: SortOrder
+    contractTerms?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdById?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    createdBy?: UserOrderByWithRelationInput
+  }
+
+  export type ProposalTemplateWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ProposalTemplateWhereInput | ProposalTemplateWhereInput[]
+    OR?: ProposalTemplateWhereInput[]
+    NOT?: ProposalTemplateWhereInput | ProposalTemplateWhereInput[]
+    name?: StringFilter<"ProposalTemplate"> | string
+    description?: StringNullableFilter<"ProposalTemplate"> | string | null
+    eventType?: EnumEventTypeNullableFilter<"ProposalTemplate"> | $Enums.EventType | null
+    coverImage?: StringNullableFilter<"ProposalTemplate"> | string | null
+    sections?: StringFilter<"ProposalTemplate"> | string
+    contractTerms?: StringNullableFilter<"ProposalTemplate"> | string | null
+    isActive?: BoolFilter<"ProposalTemplate"> | boolean
+    createdById?: StringFilter<"ProposalTemplate"> | string
+    createdAt?: DateTimeFilter<"ProposalTemplate"> | Date | string
+    updatedAt?: DateTimeFilter<"ProposalTemplate"> | Date | string
+    createdBy?: XOR<UserRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type ProposalTemplateOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    eventType?: SortOrderInput | SortOrder
+    coverImage?: SortOrderInput | SortOrder
+    sections?: SortOrder
+    contractTerms?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdById?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ProposalTemplateCountOrderByAggregateInput
+    _max?: ProposalTemplateMaxOrderByAggregateInput
+    _min?: ProposalTemplateMinOrderByAggregateInput
+  }
+
+  export type ProposalTemplateScalarWhereWithAggregatesInput = {
+    AND?: ProposalTemplateScalarWhereWithAggregatesInput | ProposalTemplateScalarWhereWithAggregatesInput[]
+    OR?: ProposalTemplateScalarWhereWithAggregatesInput[]
+    NOT?: ProposalTemplateScalarWhereWithAggregatesInput | ProposalTemplateScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ProposalTemplate"> | string
+    name?: StringWithAggregatesFilter<"ProposalTemplate"> | string
+    description?: StringNullableWithAggregatesFilter<"ProposalTemplate"> | string | null
+    eventType?: EnumEventTypeNullableWithAggregatesFilter<"ProposalTemplate"> | $Enums.EventType | null
+    coverImage?: StringNullableWithAggregatesFilter<"ProposalTemplate"> | string | null
+    sections?: StringWithAggregatesFilter<"ProposalTemplate"> | string
+    contractTerms?: StringNullableWithAggregatesFilter<"ProposalTemplate"> | string | null
+    isActive?: BoolWithAggregatesFilter<"ProposalTemplate"> | boolean
+    createdById?: StringWithAggregatesFilter<"ProposalTemplate"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"ProposalTemplate"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ProposalTemplate"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     name: string
@@ -14940,6 +22491,8 @@ export namespace Prisma {
     avatarUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    proposals?: ProposalCreateNestedManyWithoutCreatedByInput
+    proposalTemplates?: ProposalTemplateCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -14952,6 +22505,8 @@ export namespace Prisma {
     avatarUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    proposals?: ProposalUncheckedCreateNestedManyWithoutCreatedByInput
+    proposalTemplates?: ProposalTemplateUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserUpdateInput = {
@@ -14964,6 +22519,8 @@ export namespace Prisma {
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    proposals?: ProposalUpdateManyWithoutCreatedByNestedInput
+    proposalTemplates?: ProposalTemplateUpdateManyWithoutCreatedByNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -14976,6 +22533,8 @@ export namespace Prisma {
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    proposals?: ProposalUncheckedUpdateManyWithoutCreatedByNestedInput
+    proposalTemplates?: ProposalTemplateUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -15038,6 +22597,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     messages?: MessageCreateNestedManyWithoutBookingInput
     invitations?: WeddingInvitationCreateNestedManyWithoutBookingInput
+    proposals?: ProposalCreateNestedManyWithoutBookingInput
   }
 
   export type BookingUncheckedCreateInput = {
@@ -15064,6 +22624,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     messages?: MessageUncheckedCreateNestedManyWithoutBookingInput
     invitations?: WeddingInvitationUncheckedCreateNestedManyWithoutBookingInput
+    proposals?: ProposalUncheckedCreateNestedManyWithoutBookingInput
   }
 
   export type BookingUpdateInput = {
@@ -15090,6 +22651,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     messages?: MessageUpdateManyWithoutBookingNestedInput
     invitations?: WeddingInvitationUpdateManyWithoutBookingNestedInput
+    proposals?: ProposalUpdateManyWithoutBookingNestedInput
   }
 
   export type BookingUncheckedUpdateInput = {
@@ -15116,6 +22678,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     messages?: MessageUncheckedUpdateManyWithoutBookingNestedInput
     invitations?: WeddingInvitationUncheckedUpdateManyWithoutBookingNestedInput
+    proposals?: ProposalUncheckedUpdateManyWithoutBookingNestedInput
   }
 
   export type BookingCreateManyInput = {
@@ -16141,6 +23704,547 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ProposalCreateInput = {
+    id?: string
+    title: string
+    proposalNumber: string
+    introduction?: string | null
+    eventVision?: string | null
+    themeConcept?: string | null
+    totalAmount: number
+    currency?: string
+    status?: $Enums.ProposalStatus
+    validUntil?: Date | string | null
+    pdfUrl?: string | null
+    publicToken: string
+    clientApproved?: boolean
+    clientApprovedAt?: Date | string | null
+    clientRejected?: boolean
+    rejectionReason?: string | null
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    booking: BookingCreateNestedOneWithoutProposalsInput
+    createdBy: UserCreateNestedOneWithoutProposalsInput
+    items?: ProposalItemCreateNestedManyWithoutProposalInput
+    sections?: ProposalSectionCreateNestedManyWithoutProposalInput
+    contracts?: ProposalContractCreateNestedManyWithoutProposalInput
+    comments?: ProposalCommentCreateNestedManyWithoutProposalInput
+  }
+
+  export type ProposalUncheckedCreateInput = {
+    id?: string
+    bookingId: string
+    title: string
+    proposalNumber: string
+    introduction?: string | null
+    eventVision?: string | null
+    themeConcept?: string | null
+    totalAmount: number
+    currency?: string
+    status?: $Enums.ProposalStatus
+    validUntil?: Date | string | null
+    pdfUrl?: string | null
+    publicToken: string
+    clientApproved?: boolean
+    clientApprovedAt?: Date | string | null
+    clientRejected?: boolean
+    rejectionReason?: string | null
+    notes?: string | null
+    createdById: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    items?: ProposalItemUncheckedCreateNestedManyWithoutProposalInput
+    sections?: ProposalSectionUncheckedCreateNestedManyWithoutProposalInput
+    contracts?: ProposalContractUncheckedCreateNestedManyWithoutProposalInput
+    comments?: ProposalCommentUncheckedCreateNestedManyWithoutProposalInput
+  }
+
+  export type ProposalUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    proposalNumber?: StringFieldUpdateOperationsInput | string
+    introduction?: NullableStringFieldUpdateOperationsInput | string | null
+    eventVision?: NullableStringFieldUpdateOperationsInput | string | null
+    themeConcept?: NullableStringFieldUpdateOperationsInput | string | null
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    status?: EnumProposalStatusFieldUpdateOperationsInput | $Enums.ProposalStatus
+    validUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    publicToken?: StringFieldUpdateOperationsInput | string
+    clientApproved?: BoolFieldUpdateOperationsInput | boolean
+    clientApprovedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clientRejected?: BoolFieldUpdateOperationsInput | boolean
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    booking?: BookingUpdateOneRequiredWithoutProposalsNestedInput
+    createdBy?: UserUpdateOneRequiredWithoutProposalsNestedInput
+    items?: ProposalItemUpdateManyWithoutProposalNestedInput
+    sections?: ProposalSectionUpdateManyWithoutProposalNestedInput
+    contracts?: ProposalContractUpdateManyWithoutProposalNestedInput
+    comments?: ProposalCommentUpdateManyWithoutProposalNestedInput
+  }
+
+  export type ProposalUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookingId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    proposalNumber?: StringFieldUpdateOperationsInput | string
+    introduction?: NullableStringFieldUpdateOperationsInput | string | null
+    eventVision?: NullableStringFieldUpdateOperationsInput | string | null
+    themeConcept?: NullableStringFieldUpdateOperationsInput | string | null
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    status?: EnumProposalStatusFieldUpdateOperationsInput | $Enums.ProposalStatus
+    validUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    publicToken?: StringFieldUpdateOperationsInput | string
+    clientApproved?: BoolFieldUpdateOperationsInput | boolean
+    clientApprovedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clientRejected?: BoolFieldUpdateOperationsInput | boolean
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdById?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    items?: ProposalItemUncheckedUpdateManyWithoutProposalNestedInput
+    sections?: ProposalSectionUncheckedUpdateManyWithoutProposalNestedInput
+    contracts?: ProposalContractUncheckedUpdateManyWithoutProposalNestedInput
+    comments?: ProposalCommentUncheckedUpdateManyWithoutProposalNestedInput
+  }
+
+  export type ProposalCreateManyInput = {
+    id?: string
+    bookingId: string
+    title: string
+    proposalNumber: string
+    introduction?: string | null
+    eventVision?: string | null
+    themeConcept?: string | null
+    totalAmount: number
+    currency?: string
+    status?: $Enums.ProposalStatus
+    validUntil?: Date | string | null
+    pdfUrl?: string | null
+    publicToken: string
+    clientApproved?: boolean
+    clientApprovedAt?: Date | string | null
+    clientRejected?: boolean
+    rejectionReason?: string | null
+    notes?: string | null
+    createdById: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProposalUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    proposalNumber?: StringFieldUpdateOperationsInput | string
+    introduction?: NullableStringFieldUpdateOperationsInput | string | null
+    eventVision?: NullableStringFieldUpdateOperationsInput | string | null
+    themeConcept?: NullableStringFieldUpdateOperationsInput | string | null
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    status?: EnumProposalStatusFieldUpdateOperationsInput | $Enums.ProposalStatus
+    validUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    publicToken?: StringFieldUpdateOperationsInput | string
+    clientApproved?: BoolFieldUpdateOperationsInput | boolean
+    clientApprovedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clientRejected?: BoolFieldUpdateOperationsInput | boolean
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookingId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    proposalNumber?: StringFieldUpdateOperationsInput | string
+    introduction?: NullableStringFieldUpdateOperationsInput | string | null
+    eventVision?: NullableStringFieldUpdateOperationsInput | string | null
+    themeConcept?: NullableStringFieldUpdateOperationsInput | string | null
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    status?: EnumProposalStatusFieldUpdateOperationsInput | $Enums.ProposalStatus
+    validUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    publicToken?: StringFieldUpdateOperationsInput | string
+    clientApproved?: BoolFieldUpdateOperationsInput | boolean
+    clientApprovedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clientRejected?: BoolFieldUpdateOperationsInput | boolean
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdById?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalItemCreateInput = {
+    id?: string
+    title: string
+    description?: string | null
+    quantity?: number
+    unitPrice: number
+    totalPrice: number
+    category: $Enums.ProposalItemCategory
+    sortOrder?: number
+    createdAt?: Date | string
+    proposal: ProposalCreateNestedOneWithoutItemsInput
+  }
+
+  export type ProposalItemUncheckedCreateInput = {
+    id?: string
+    proposalId: string
+    title: string
+    description?: string | null
+    quantity?: number
+    unitPrice: number
+    totalPrice: number
+    category: $Enums.ProposalItemCategory
+    sortOrder?: number
+    createdAt?: Date | string
+  }
+
+  export type ProposalItemUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    category?: EnumProposalItemCategoryFieldUpdateOperationsInput | $Enums.ProposalItemCategory
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    proposal?: ProposalUpdateOneRequiredWithoutItemsNestedInput
+  }
+
+  export type ProposalItemUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    proposalId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    category?: EnumProposalItemCategoryFieldUpdateOperationsInput | $Enums.ProposalItemCategory
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalItemCreateManyInput = {
+    id?: string
+    proposalId: string
+    title: string
+    description?: string | null
+    quantity?: number
+    unitPrice: number
+    totalPrice: number
+    category: $Enums.ProposalItemCategory
+    sortOrder?: number
+    createdAt?: Date | string
+  }
+
+  export type ProposalItemUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    category?: EnumProposalItemCategoryFieldUpdateOperationsInput | $Enums.ProposalItemCategory
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalItemUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    proposalId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    category?: EnumProposalItemCategoryFieldUpdateOperationsInput | $Enums.ProposalItemCategory
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalSectionCreateInput = {
+    id?: string
+    title: string
+    content: string
+    sortOrder?: number
+    createdAt?: Date | string
+    proposal: ProposalCreateNestedOneWithoutSectionsInput
+  }
+
+  export type ProposalSectionUncheckedCreateInput = {
+    id?: string
+    proposalId: string
+    title: string
+    content: string
+    sortOrder?: number
+    createdAt?: Date | string
+  }
+
+  export type ProposalSectionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    proposal?: ProposalUpdateOneRequiredWithoutSectionsNestedInput
+  }
+
+  export type ProposalSectionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    proposalId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalSectionCreateManyInput = {
+    id?: string
+    proposalId: string
+    title: string
+    content: string
+    sortOrder?: number
+    createdAt?: Date | string
+  }
+
+  export type ProposalSectionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalSectionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    proposalId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalContractCreateInput = {
+    id?: string
+    title: string
+    content: string
+    createdAt?: Date | string
+    proposal: ProposalCreateNestedOneWithoutContractsInput
+  }
+
+  export type ProposalContractUncheckedCreateInput = {
+    id?: string
+    proposalId: string
+    title: string
+    content: string
+    createdAt?: Date | string
+  }
+
+  export type ProposalContractUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    proposal?: ProposalUpdateOneRequiredWithoutContractsNestedInput
+  }
+
+  export type ProposalContractUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    proposalId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalContractCreateManyInput = {
+    id?: string
+    proposalId: string
+    title: string
+    content: string
+    createdAt?: Date | string
+  }
+
+  export type ProposalContractUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalContractUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    proposalId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalCommentCreateInput = {
+    id?: string
+    authorName: string
+    content: string
+    createdAt?: Date | string
+    proposal: ProposalCreateNestedOneWithoutCommentsInput
+  }
+
+  export type ProposalCommentUncheckedCreateInput = {
+    id?: string
+    proposalId: string
+    authorName: string
+    content: string
+    createdAt?: Date | string
+  }
+
+  export type ProposalCommentUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authorName?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    proposal?: ProposalUpdateOneRequiredWithoutCommentsNestedInput
+  }
+
+  export type ProposalCommentUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    proposalId?: StringFieldUpdateOperationsInput | string
+    authorName?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalCommentCreateManyInput = {
+    id?: string
+    proposalId: string
+    authorName: string
+    content: string
+    createdAt?: Date | string
+  }
+
+  export type ProposalCommentUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authorName?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalCommentUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    proposalId?: StringFieldUpdateOperationsInput | string
+    authorName?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalTemplateCreateInput = {
+    id?: string
+    name: string
+    description?: string | null
+    eventType?: $Enums.EventType | null
+    coverImage?: string | null
+    sections: string
+    contractTerms?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    createdBy: UserCreateNestedOneWithoutProposalTemplatesInput
+  }
+
+  export type ProposalTemplateUncheckedCreateInput = {
+    id?: string
+    name: string
+    description?: string | null
+    eventType?: $Enums.EventType | null
+    coverImage?: string | null
+    sections: string
+    contractTerms?: string | null
+    isActive?: boolean
+    createdById: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProposalTemplateUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    eventType?: NullableEnumEventTypeFieldUpdateOperationsInput | $Enums.EventType | null
+    coverImage?: NullableStringFieldUpdateOperationsInput | string | null
+    sections?: StringFieldUpdateOperationsInput | string
+    contractTerms?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdBy?: UserUpdateOneRequiredWithoutProposalTemplatesNestedInput
+  }
+
+  export type ProposalTemplateUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    eventType?: NullableEnumEventTypeFieldUpdateOperationsInput | $Enums.EventType | null
+    coverImage?: NullableStringFieldUpdateOperationsInput | string | null
+    sections?: StringFieldUpdateOperationsInput | string
+    contractTerms?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdById?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalTemplateCreateManyInput = {
+    id?: string
+    name: string
+    description?: string | null
+    eventType?: $Enums.EventType | null
+    coverImage?: string | null
+    sections: string
+    contractTerms?: string | null
+    isActive?: boolean
+    createdById: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProposalTemplateUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    eventType?: NullableEnumEventTypeFieldUpdateOperationsInput | $Enums.EventType | null
+    coverImage?: NullableStringFieldUpdateOperationsInput | string | null
+    sections?: StringFieldUpdateOperationsInput | string
+    contractTerms?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalTemplateUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    eventType?: NullableEnumEventTypeFieldUpdateOperationsInput | $Enums.EventType | null
+    coverImage?: NullableStringFieldUpdateOperationsInput | string | null
+    sections?: StringFieldUpdateOperationsInput | string
+    contractTerms?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdById?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -16194,9 +24298,29 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type ProposalListRelationFilter = {
+    every?: ProposalWhereInput
+    some?: ProposalWhereInput
+    none?: ProposalWhereInput
+  }
+
+  export type ProposalTemplateListRelationFilter = {
+    every?: ProposalTemplateWhereInput
+    some?: ProposalTemplateWhereInput
+    none?: ProposalTemplateWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
+  }
+
+  export type ProposalOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ProposalTemplateOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type UserCountOrderByAggregateInput = {
@@ -17179,6 +25303,420 @@ export namespace Prisma {
     _max?: NestedEnumAssetCategoryFilter<$PrismaModel>
   }
 
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type EnumProposalStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProposalStatus | EnumProposalStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ProposalStatus[] | ListEnumProposalStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProposalStatus[] | ListEnumProposalStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumProposalStatusFilter<$PrismaModel> | $Enums.ProposalStatus
+  }
+
+  export type UserRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
+  export type ProposalItemListRelationFilter = {
+    every?: ProposalItemWhereInput
+    some?: ProposalItemWhereInput
+    none?: ProposalItemWhereInput
+  }
+
+  export type ProposalSectionListRelationFilter = {
+    every?: ProposalSectionWhereInput
+    some?: ProposalSectionWhereInput
+    none?: ProposalSectionWhereInput
+  }
+
+  export type ProposalContractListRelationFilter = {
+    every?: ProposalContractWhereInput
+    some?: ProposalContractWhereInput
+    none?: ProposalContractWhereInput
+  }
+
+  export type ProposalCommentListRelationFilter = {
+    every?: ProposalCommentWhereInput
+    some?: ProposalCommentWhereInput
+    none?: ProposalCommentWhereInput
+  }
+
+  export type ProposalItemOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ProposalSectionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ProposalContractOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ProposalCommentOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ProposalCountOrderByAggregateInput = {
+    id?: SortOrder
+    bookingId?: SortOrder
+    title?: SortOrder
+    proposalNumber?: SortOrder
+    introduction?: SortOrder
+    eventVision?: SortOrder
+    themeConcept?: SortOrder
+    totalAmount?: SortOrder
+    currency?: SortOrder
+    status?: SortOrder
+    validUntil?: SortOrder
+    pdfUrl?: SortOrder
+    publicToken?: SortOrder
+    clientApproved?: SortOrder
+    clientApprovedAt?: SortOrder
+    clientRejected?: SortOrder
+    rejectionReason?: SortOrder
+    notes?: SortOrder
+    createdById?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ProposalAvgOrderByAggregateInput = {
+    totalAmount?: SortOrder
+  }
+
+  export type ProposalMaxOrderByAggregateInput = {
+    id?: SortOrder
+    bookingId?: SortOrder
+    title?: SortOrder
+    proposalNumber?: SortOrder
+    introduction?: SortOrder
+    eventVision?: SortOrder
+    themeConcept?: SortOrder
+    totalAmount?: SortOrder
+    currency?: SortOrder
+    status?: SortOrder
+    validUntil?: SortOrder
+    pdfUrl?: SortOrder
+    publicToken?: SortOrder
+    clientApproved?: SortOrder
+    clientApprovedAt?: SortOrder
+    clientRejected?: SortOrder
+    rejectionReason?: SortOrder
+    notes?: SortOrder
+    createdById?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ProposalMinOrderByAggregateInput = {
+    id?: SortOrder
+    bookingId?: SortOrder
+    title?: SortOrder
+    proposalNumber?: SortOrder
+    introduction?: SortOrder
+    eventVision?: SortOrder
+    themeConcept?: SortOrder
+    totalAmount?: SortOrder
+    currency?: SortOrder
+    status?: SortOrder
+    validUntil?: SortOrder
+    pdfUrl?: SortOrder
+    publicToken?: SortOrder
+    clientApproved?: SortOrder
+    clientApprovedAt?: SortOrder
+    clientRejected?: SortOrder
+    rejectionReason?: SortOrder
+    notes?: SortOrder
+    createdById?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ProposalSumOrderByAggregateInput = {
+    totalAmount?: SortOrder
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type EnumProposalStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProposalStatus | EnumProposalStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ProposalStatus[] | ListEnumProposalStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProposalStatus[] | ListEnumProposalStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumProposalStatusWithAggregatesFilter<$PrismaModel> | $Enums.ProposalStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumProposalStatusFilter<$PrismaModel>
+    _max?: NestedEnumProposalStatusFilter<$PrismaModel>
+  }
+
+  export type EnumProposalItemCategoryFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProposalItemCategory | EnumProposalItemCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.ProposalItemCategory[] | ListEnumProposalItemCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProposalItemCategory[] | ListEnumProposalItemCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumProposalItemCategoryFilter<$PrismaModel> | $Enums.ProposalItemCategory
+  }
+
+  export type ProposalRelationFilter = {
+    is?: ProposalWhereInput
+    isNot?: ProposalWhereInput
+  }
+
+  export type ProposalItemCountOrderByAggregateInput = {
+    id?: SortOrder
+    proposalId?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    totalPrice?: SortOrder
+    category?: SortOrder
+    sortOrder?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ProposalItemAvgOrderByAggregateInput = {
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    totalPrice?: SortOrder
+    sortOrder?: SortOrder
+  }
+
+  export type ProposalItemMaxOrderByAggregateInput = {
+    id?: SortOrder
+    proposalId?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    totalPrice?: SortOrder
+    category?: SortOrder
+    sortOrder?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ProposalItemMinOrderByAggregateInput = {
+    id?: SortOrder
+    proposalId?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    totalPrice?: SortOrder
+    category?: SortOrder
+    sortOrder?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ProposalItemSumOrderByAggregateInput = {
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    totalPrice?: SortOrder
+    sortOrder?: SortOrder
+  }
+
+  export type EnumProposalItemCategoryWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProposalItemCategory | EnumProposalItemCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.ProposalItemCategory[] | ListEnumProposalItemCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProposalItemCategory[] | ListEnumProposalItemCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumProposalItemCategoryWithAggregatesFilter<$PrismaModel> | $Enums.ProposalItemCategory
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumProposalItemCategoryFilter<$PrismaModel>
+    _max?: NestedEnumProposalItemCategoryFilter<$PrismaModel>
+  }
+
+  export type ProposalSectionCountOrderByAggregateInput = {
+    id?: SortOrder
+    proposalId?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    sortOrder?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ProposalSectionAvgOrderByAggregateInput = {
+    sortOrder?: SortOrder
+  }
+
+  export type ProposalSectionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    proposalId?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    sortOrder?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ProposalSectionMinOrderByAggregateInput = {
+    id?: SortOrder
+    proposalId?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    sortOrder?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ProposalSectionSumOrderByAggregateInput = {
+    sortOrder?: SortOrder
+  }
+
+  export type ProposalContractCountOrderByAggregateInput = {
+    id?: SortOrder
+    proposalId?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ProposalContractMaxOrderByAggregateInput = {
+    id?: SortOrder
+    proposalId?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ProposalContractMinOrderByAggregateInput = {
+    id?: SortOrder
+    proposalId?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ProposalCommentCountOrderByAggregateInput = {
+    id?: SortOrder
+    proposalId?: SortOrder
+    authorName?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ProposalCommentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    proposalId?: SortOrder
+    authorName?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ProposalCommentMinOrderByAggregateInput = {
+    id?: SortOrder
+    proposalId?: SortOrder
+    authorName?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type EnumEventTypeNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.EventType | EnumEventTypeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.EventType[] | ListEnumEventTypeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.EventType[] | ListEnumEventTypeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumEventTypeNullableFilter<$PrismaModel> | $Enums.EventType | null
+  }
+
+  export type ProposalTemplateCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    eventType?: SortOrder
+    coverImage?: SortOrder
+    sections?: SortOrder
+    contractTerms?: SortOrder
+    isActive?: SortOrder
+    createdById?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ProposalTemplateMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    eventType?: SortOrder
+    coverImage?: SortOrder
+    sections?: SortOrder
+    contractTerms?: SortOrder
+    isActive?: SortOrder
+    createdById?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ProposalTemplateMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    eventType?: SortOrder
+    coverImage?: SortOrder
+    sections?: SortOrder
+    contractTerms?: SortOrder
+    isActive?: SortOrder
+    createdById?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumEventTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.EventType | EnumEventTypeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.EventType[] | ListEnumEventTypeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.EventType[] | ListEnumEventTypeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumEventTypeNullableWithAggregatesFilter<$PrismaModel> | $Enums.EventType | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumEventTypeNullableFilter<$PrismaModel>
+    _max?: NestedEnumEventTypeNullableFilter<$PrismaModel>
+  }
+
+  export type ProposalCreateNestedManyWithoutCreatedByInput = {
+    create?: XOR<ProposalCreateWithoutCreatedByInput, ProposalUncheckedCreateWithoutCreatedByInput> | ProposalCreateWithoutCreatedByInput[] | ProposalUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: ProposalCreateOrConnectWithoutCreatedByInput | ProposalCreateOrConnectWithoutCreatedByInput[]
+    createMany?: ProposalCreateManyCreatedByInputEnvelope
+    connect?: ProposalWhereUniqueInput | ProposalWhereUniqueInput[]
+  }
+
+  export type ProposalTemplateCreateNestedManyWithoutCreatedByInput = {
+    create?: XOR<ProposalTemplateCreateWithoutCreatedByInput, ProposalTemplateUncheckedCreateWithoutCreatedByInput> | ProposalTemplateCreateWithoutCreatedByInput[] | ProposalTemplateUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: ProposalTemplateCreateOrConnectWithoutCreatedByInput | ProposalTemplateCreateOrConnectWithoutCreatedByInput[]
+    createMany?: ProposalTemplateCreateManyCreatedByInputEnvelope
+    connect?: ProposalTemplateWhereUniqueInput | ProposalTemplateWhereUniqueInput[]
+  }
+
+  export type ProposalUncheckedCreateNestedManyWithoutCreatedByInput = {
+    create?: XOR<ProposalCreateWithoutCreatedByInput, ProposalUncheckedCreateWithoutCreatedByInput> | ProposalCreateWithoutCreatedByInput[] | ProposalUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: ProposalCreateOrConnectWithoutCreatedByInput | ProposalCreateOrConnectWithoutCreatedByInput[]
+    createMany?: ProposalCreateManyCreatedByInputEnvelope
+    connect?: ProposalWhereUniqueInput | ProposalWhereUniqueInput[]
+  }
+
+  export type ProposalTemplateUncheckedCreateNestedManyWithoutCreatedByInput = {
+    create?: XOR<ProposalTemplateCreateWithoutCreatedByInput, ProposalTemplateUncheckedCreateWithoutCreatedByInput> | ProposalTemplateCreateWithoutCreatedByInput[] | ProposalTemplateUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: ProposalTemplateCreateOrConnectWithoutCreatedByInput | ProposalTemplateCreateOrConnectWithoutCreatedByInput[]
+    createMany?: ProposalTemplateCreateManyCreatedByInputEnvelope
+    connect?: ProposalTemplateWhereUniqueInput | ProposalTemplateWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -17199,6 +25737,62 @@ export namespace Prisma {
     set?: Date | string
   }
 
+  export type ProposalUpdateManyWithoutCreatedByNestedInput = {
+    create?: XOR<ProposalCreateWithoutCreatedByInput, ProposalUncheckedCreateWithoutCreatedByInput> | ProposalCreateWithoutCreatedByInput[] | ProposalUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: ProposalCreateOrConnectWithoutCreatedByInput | ProposalCreateOrConnectWithoutCreatedByInput[]
+    upsert?: ProposalUpsertWithWhereUniqueWithoutCreatedByInput | ProposalUpsertWithWhereUniqueWithoutCreatedByInput[]
+    createMany?: ProposalCreateManyCreatedByInputEnvelope
+    set?: ProposalWhereUniqueInput | ProposalWhereUniqueInput[]
+    disconnect?: ProposalWhereUniqueInput | ProposalWhereUniqueInput[]
+    delete?: ProposalWhereUniqueInput | ProposalWhereUniqueInput[]
+    connect?: ProposalWhereUniqueInput | ProposalWhereUniqueInput[]
+    update?: ProposalUpdateWithWhereUniqueWithoutCreatedByInput | ProposalUpdateWithWhereUniqueWithoutCreatedByInput[]
+    updateMany?: ProposalUpdateManyWithWhereWithoutCreatedByInput | ProposalUpdateManyWithWhereWithoutCreatedByInput[]
+    deleteMany?: ProposalScalarWhereInput | ProposalScalarWhereInput[]
+  }
+
+  export type ProposalTemplateUpdateManyWithoutCreatedByNestedInput = {
+    create?: XOR<ProposalTemplateCreateWithoutCreatedByInput, ProposalTemplateUncheckedCreateWithoutCreatedByInput> | ProposalTemplateCreateWithoutCreatedByInput[] | ProposalTemplateUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: ProposalTemplateCreateOrConnectWithoutCreatedByInput | ProposalTemplateCreateOrConnectWithoutCreatedByInput[]
+    upsert?: ProposalTemplateUpsertWithWhereUniqueWithoutCreatedByInput | ProposalTemplateUpsertWithWhereUniqueWithoutCreatedByInput[]
+    createMany?: ProposalTemplateCreateManyCreatedByInputEnvelope
+    set?: ProposalTemplateWhereUniqueInput | ProposalTemplateWhereUniqueInput[]
+    disconnect?: ProposalTemplateWhereUniqueInput | ProposalTemplateWhereUniqueInput[]
+    delete?: ProposalTemplateWhereUniqueInput | ProposalTemplateWhereUniqueInput[]
+    connect?: ProposalTemplateWhereUniqueInput | ProposalTemplateWhereUniqueInput[]
+    update?: ProposalTemplateUpdateWithWhereUniqueWithoutCreatedByInput | ProposalTemplateUpdateWithWhereUniqueWithoutCreatedByInput[]
+    updateMany?: ProposalTemplateUpdateManyWithWhereWithoutCreatedByInput | ProposalTemplateUpdateManyWithWhereWithoutCreatedByInput[]
+    deleteMany?: ProposalTemplateScalarWhereInput | ProposalTemplateScalarWhereInput[]
+  }
+
+  export type ProposalUncheckedUpdateManyWithoutCreatedByNestedInput = {
+    create?: XOR<ProposalCreateWithoutCreatedByInput, ProposalUncheckedCreateWithoutCreatedByInput> | ProposalCreateWithoutCreatedByInput[] | ProposalUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: ProposalCreateOrConnectWithoutCreatedByInput | ProposalCreateOrConnectWithoutCreatedByInput[]
+    upsert?: ProposalUpsertWithWhereUniqueWithoutCreatedByInput | ProposalUpsertWithWhereUniqueWithoutCreatedByInput[]
+    createMany?: ProposalCreateManyCreatedByInputEnvelope
+    set?: ProposalWhereUniqueInput | ProposalWhereUniqueInput[]
+    disconnect?: ProposalWhereUniqueInput | ProposalWhereUniqueInput[]
+    delete?: ProposalWhereUniqueInput | ProposalWhereUniqueInput[]
+    connect?: ProposalWhereUniqueInput | ProposalWhereUniqueInput[]
+    update?: ProposalUpdateWithWhereUniqueWithoutCreatedByInput | ProposalUpdateWithWhereUniqueWithoutCreatedByInput[]
+    updateMany?: ProposalUpdateManyWithWhereWithoutCreatedByInput | ProposalUpdateManyWithWhereWithoutCreatedByInput[]
+    deleteMany?: ProposalScalarWhereInput | ProposalScalarWhereInput[]
+  }
+
+  export type ProposalTemplateUncheckedUpdateManyWithoutCreatedByNestedInput = {
+    create?: XOR<ProposalTemplateCreateWithoutCreatedByInput, ProposalTemplateUncheckedCreateWithoutCreatedByInput> | ProposalTemplateCreateWithoutCreatedByInput[] | ProposalTemplateUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: ProposalTemplateCreateOrConnectWithoutCreatedByInput | ProposalTemplateCreateOrConnectWithoutCreatedByInput[]
+    upsert?: ProposalTemplateUpsertWithWhereUniqueWithoutCreatedByInput | ProposalTemplateUpsertWithWhereUniqueWithoutCreatedByInput[]
+    createMany?: ProposalTemplateCreateManyCreatedByInputEnvelope
+    set?: ProposalTemplateWhereUniqueInput | ProposalTemplateWhereUniqueInput[]
+    disconnect?: ProposalTemplateWhereUniqueInput | ProposalTemplateWhereUniqueInput[]
+    delete?: ProposalTemplateWhereUniqueInput | ProposalTemplateWhereUniqueInput[]
+    connect?: ProposalTemplateWhereUniqueInput | ProposalTemplateWhereUniqueInput[]
+    update?: ProposalTemplateUpdateWithWhereUniqueWithoutCreatedByInput | ProposalTemplateUpdateWithWhereUniqueWithoutCreatedByInput[]
+    updateMany?: ProposalTemplateUpdateManyWithWhereWithoutCreatedByInput | ProposalTemplateUpdateManyWithWhereWithoutCreatedByInput[]
+    deleteMany?: ProposalTemplateScalarWhereInput | ProposalTemplateScalarWhereInput[]
+  }
+
   export type MessageCreateNestedManyWithoutBookingInput = {
     create?: XOR<MessageCreateWithoutBookingInput, MessageUncheckedCreateWithoutBookingInput> | MessageCreateWithoutBookingInput[] | MessageUncheckedCreateWithoutBookingInput[]
     connectOrCreate?: MessageCreateOrConnectWithoutBookingInput | MessageCreateOrConnectWithoutBookingInput[]
@@ -17213,6 +25807,13 @@ export namespace Prisma {
     connect?: WeddingInvitationWhereUniqueInput | WeddingInvitationWhereUniqueInput[]
   }
 
+  export type ProposalCreateNestedManyWithoutBookingInput = {
+    create?: XOR<ProposalCreateWithoutBookingInput, ProposalUncheckedCreateWithoutBookingInput> | ProposalCreateWithoutBookingInput[] | ProposalUncheckedCreateWithoutBookingInput[]
+    connectOrCreate?: ProposalCreateOrConnectWithoutBookingInput | ProposalCreateOrConnectWithoutBookingInput[]
+    createMany?: ProposalCreateManyBookingInputEnvelope
+    connect?: ProposalWhereUniqueInput | ProposalWhereUniqueInput[]
+  }
+
   export type MessageUncheckedCreateNestedManyWithoutBookingInput = {
     create?: XOR<MessageCreateWithoutBookingInput, MessageUncheckedCreateWithoutBookingInput> | MessageCreateWithoutBookingInput[] | MessageUncheckedCreateWithoutBookingInput[]
     connectOrCreate?: MessageCreateOrConnectWithoutBookingInput | MessageCreateOrConnectWithoutBookingInput[]
@@ -17225,6 +25826,13 @@ export namespace Prisma {
     connectOrCreate?: WeddingInvitationCreateOrConnectWithoutBookingInput | WeddingInvitationCreateOrConnectWithoutBookingInput[]
     createMany?: WeddingInvitationCreateManyBookingInputEnvelope
     connect?: WeddingInvitationWhereUniqueInput | WeddingInvitationWhereUniqueInput[]
+  }
+
+  export type ProposalUncheckedCreateNestedManyWithoutBookingInput = {
+    create?: XOR<ProposalCreateWithoutBookingInput, ProposalUncheckedCreateWithoutBookingInput> | ProposalCreateWithoutBookingInput[] | ProposalUncheckedCreateWithoutBookingInput[]
+    connectOrCreate?: ProposalCreateOrConnectWithoutBookingInput | ProposalCreateOrConnectWithoutBookingInput[]
+    createMany?: ProposalCreateManyBookingInputEnvelope
+    connect?: ProposalWhereUniqueInput | ProposalWhereUniqueInput[]
   }
 
   export type EnumEventTypeFieldUpdateOperationsInput = {
@@ -17287,6 +25895,20 @@ export namespace Prisma {
     deleteMany?: WeddingInvitationScalarWhereInput | WeddingInvitationScalarWhereInput[]
   }
 
+  export type ProposalUpdateManyWithoutBookingNestedInput = {
+    create?: XOR<ProposalCreateWithoutBookingInput, ProposalUncheckedCreateWithoutBookingInput> | ProposalCreateWithoutBookingInput[] | ProposalUncheckedCreateWithoutBookingInput[]
+    connectOrCreate?: ProposalCreateOrConnectWithoutBookingInput | ProposalCreateOrConnectWithoutBookingInput[]
+    upsert?: ProposalUpsertWithWhereUniqueWithoutBookingInput | ProposalUpsertWithWhereUniqueWithoutBookingInput[]
+    createMany?: ProposalCreateManyBookingInputEnvelope
+    set?: ProposalWhereUniqueInput | ProposalWhereUniqueInput[]
+    disconnect?: ProposalWhereUniqueInput | ProposalWhereUniqueInput[]
+    delete?: ProposalWhereUniqueInput | ProposalWhereUniqueInput[]
+    connect?: ProposalWhereUniqueInput | ProposalWhereUniqueInput[]
+    update?: ProposalUpdateWithWhereUniqueWithoutBookingInput | ProposalUpdateWithWhereUniqueWithoutBookingInput[]
+    updateMany?: ProposalUpdateManyWithWhereWithoutBookingInput | ProposalUpdateManyWithWhereWithoutBookingInput[]
+    deleteMany?: ProposalScalarWhereInput | ProposalScalarWhereInput[]
+  }
+
   export type MessageUncheckedUpdateManyWithoutBookingNestedInput = {
     create?: XOR<MessageCreateWithoutBookingInput, MessageUncheckedCreateWithoutBookingInput> | MessageCreateWithoutBookingInput[] | MessageUncheckedCreateWithoutBookingInput[]
     connectOrCreate?: MessageCreateOrConnectWithoutBookingInput | MessageCreateOrConnectWithoutBookingInput[]
@@ -17313,6 +25935,20 @@ export namespace Prisma {
     update?: WeddingInvitationUpdateWithWhereUniqueWithoutBookingInput | WeddingInvitationUpdateWithWhereUniqueWithoutBookingInput[]
     updateMany?: WeddingInvitationUpdateManyWithWhereWithoutBookingInput | WeddingInvitationUpdateManyWithWhereWithoutBookingInput[]
     deleteMany?: WeddingInvitationScalarWhereInput | WeddingInvitationScalarWhereInput[]
+  }
+
+  export type ProposalUncheckedUpdateManyWithoutBookingNestedInput = {
+    create?: XOR<ProposalCreateWithoutBookingInput, ProposalUncheckedCreateWithoutBookingInput> | ProposalCreateWithoutBookingInput[] | ProposalUncheckedCreateWithoutBookingInput[]
+    connectOrCreate?: ProposalCreateOrConnectWithoutBookingInput | ProposalCreateOrConnectWithoutBookingInput[]
+    upsert?: ProposalUpsertWithWhereUniqueWithoutBookingInput | ProposalUpsertWithWhereUniqueWithoutBookingInput[]
+    createMany?: ProposalCreateManyBookingInputEnvelope
+    set?: ProposalWhereUniqueInput | ProposalWhereUniqueInput[]
+    disconnect?: ProposalWhereUniqueInput | ProposalWhereUniqueInput[]
+    delete?: ProposalWhereUniqueInput | ProposalWhereUniqueInput[]
+    connect?: ProposalWhereUniqueInput | ProposalWhereUniqueInput[]
+    update?: ProposalUpdateWithWhereUniqueWithoutBookingInput | ProposalUpdateWithWhereUniqueWithoutBookingInput[]
+    updateMany?: ProposalUpdateManyWithWhereWithoutBookingInput | ProposalUpdateManyWithWhereWithoutBookingInput[]
+    deleteMany?: ProposalScalarWhereInput | ProposalScalarWhereInput[]
   }
 
   export type BookingCreateNestedOneWithoutMessagesInput = {
@@ -17693,6 +26329,292 @@ export namespace Prisma {
 
   export type EnumAssetCategoryFieldUpdateOperationsInput = {
     set?: $Enums.AssetCategory
+  }
+
+  export type BookingCreateNestedOneWithoutProposalsInput = {
+    create?: XOR<BookingCreateWithoutProposalsInput, BookingUncheckedCreateWithoutProposalsInput>
+    connectOrCreate?: BookingCreateOrConnectWithoutProposalsInput
+    connect?: BookingWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutProposalsInput = {
+    create?: XOR<UserCreateWithoutProposalsInput, UserUncheckedCreateWithoutProposalsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProposalsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ProposalItemCreateNestedManyWithoutProposalInput = {
+    create?: XOR<ProposalItemCreateWithoutProposalInput, ProposalItemUncheckedCreateWithoutProposalInput> | ProposalItemCreateWithoutProposalInput[] | ProposalItemUncheckedCreateWithoutProposalInput[]
+    connectOrCreate?: ProposalItemCreateOrConnectWithoutProposalInput | ProposalItemCreateOrConnectWithoutProposalInput[]
+    createMany?: ProposalItemCreateManyProposalInputEnvelope
+    connect?: ProposalItemWhereUniqueInput | ProposalItemWhereUniqueInput[]
+  }
+
+  export type ProposalSectionCreateNestedManyWithoutProposalInput = {
+    create?: XOR<ProposalSectionCreateWithoutProposalInput, ProposalSectionUncheckedCreateWithoutProposalInput> | ProposalSectionCreateWithoutProposalInput[] | ProposalSectionUncheckedCreateWithoutProposalInput[]
+    connectOrCreate?: ProposalSectionCreateOrConnectWithoutProposalInput | ProposalSectionCreateOrConnectWithoutProposalInput[]
+    createMany?: ProposalSectionCreateManyProposalInputEnvelope
+    connect?: ProposalSectionWhereUniqueInput | ProposalSectionWhereUniqueInput[]
+  }
+
+  export type ProposalContractCreateNestedManyWithoutProposalInput = {
+    create?: XOR<ProposalContractCreateWithoutProposalInput, ProposalContractUncheckedCreateWithoutProposalInput> | ProposalContractCreateWithoutProposalInput[] | ProposalContractUncheckedCreateWithoutProposalInput[]
+    connectOrCreate?: ProposalContractCreateOrConnectWithoutProposalInput | ProposalContractCreateOrConnectWithoutProposalInput[]
+    createMany?: ProposalContractCreateManyProposalInputEnvelope
+    connect?: ProposalContractWhereUniqueInput | ProposalContractWhereUniqueInput[]
+  }
+
+  export type ProposalCommentCreateNestedManyWithoutProposalInput = {
+    create?: XOR<ProposalCommentCreateWithoutProposalInput, ProposalCommentUncheckedCreateWithoutProposalInput> | ProposalCommentCreateWithoutProposalInput[] | ProposalCommentUncheckedCreateWithoutProposalInput[]
+    connectOrCreate?: ProposalCommentCreateOrConnectWithoutProposalInput | ProposalCommentCreateOrConnectWithoutProposalInput[]
+    createMany?: ProposalCommentCreateManyProposalInputEnvelope
+    connect?: ProposalCommentWhereUniqueInput | ProposalCommentWhereUniqueInput[]
+  }
+
+  export type ProposalItemUncheckedCreateNestedManyWithoutProposalInput = {
+    create?: XOR<ProposalItemCreateWithoutProposalInput, ProposalItemUncheckedCreateWithoutProposalInput> | ProposalItemCreateWithoutProposalInput[] | ProposalItemUncheckedCreateWithoutProposalInput[]
+    connectOrCreate?: ProposalItemCreateOrConnectWithoutProposalInput | ProposalItemCreateOrConnectWithoutProposalInput[]
+    createMany?: ProposalItemCreateManyProposalInputEnvelope
+    connect?: ProposalItemWhereUniqueInput | ProposalItemWhereUniqueInput[]
+  }
+
+  export type ProposalSectionUncheckedCreateNestedManyWithoutProposalInput = {
+    create?: XOR<ProposalSectionCreateWithoutProposalInput, ProposalSectionUncheckedCreateWithoutProposalInput> | ProposalSectionCreateWithoutProposalInput[] | ProposalSectionUncheckedCreateWithoutProposalInput[]
+    connectOrCreate?: ProposalSectionCreateOrConnectWithoutProposalInput | ProposalSectionCreateOrConnectWithoutProposalInput[]
+    createMany?: ProposalSectionCreateManyProposalInputEnvelope
+    connect?: ProposalSectionWhereUniqueInput | ProposalSectionWhereUniqueInput[]
+  }
+
+  export type ProposalContractUncheckedCreateNestedManyWithoutProposalInput = {
+    create?: XOR<ProposalContractCreateWithoutProposalInput, ProposalContractUncheckedCreateWithoutProposalInput> | ProposalContractCreateWithoutProposalInput[] | ProposalContractUncheckedCreateWithoutProposalInput[]
+    connectOrCreate?: ProposalContractCreateOrConnectWithoutProposalInput | ProposalContractCreateOrConnectWithoutProposalInput[]
+    createMany?: ProposalContractCreateManyProposalInputEnvelope
+    connect?: ProposalContractWhereUniqueInput | ProposalContractWhereUniqueInput[]
+  }
+
+  export type ProposalCommentUncheckedCreateNestedManyWithoutProposalInput = {
+    create?: XOR<ProposalCommentCreateWithoutProposalInput, ProposalCommentUncheckedCreateWithoutProposalInput> | ProposalCommentCreateWithoutProposalInput[] | ProposalCommentUncheckedCreateWithoutProposalInput[]
+    connectOrCreate?: ProposalCommentCreateOrConnectWithoutProposalInput | ProposalCommentCreateOrConnectWithoutProposalInput[]
+    createMany?: ProposalCommentCreateManyProposalInputEnvelope
+    connect?: ProposalCommentWhereUniqueInput | ProposalCommentWhereUniqueInput[]
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type EnumProposalStatusFieldUpdateOperationsInput = {
+    set?: $Enums.ProposalStatus
+  }
+
+  export type BookingUpdateOneRequiredWithoutProposalsNestedInput = {
+    create?: XOR<BookingCreateWithoutProposalsInput, BookingUncheckedCreateWithoutProposalsInput>
+    connectOrCreate?: BookingCreateOrConnectWithoutProposalsInput
+    upsert?: BookingUpsertWithoutProposalsInput
+    connect?: BookingWhereUniqueInput
+    update?: XOR<XOR<BookingUpdateToOneWithWhereWithoutProposalsInput, BookingUpdateWithoutProposalsInput>, BookingUncheckedUpdateWithoutProposalsInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutProposalsNestedInput = {
+    create?: XOR<UserCreateWithoutProposalsInput, UserUncheckedCreateWithoutProposalsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProposalsInput
+    upsert?: UserUpsertWithoutProposalsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProposalsInput, UserUpdateWithoutProposalsInput>, UserUncheckedUpdateWithoutProposalsInput>
+  }
+
+  export type ProposalItemUpdateManyWithoutProposalNestedInput = {
+    create?: XOR<ProposalItemCreateWithoutProposalInput, ProposalItemUncheckedCreateWithoutProposalInput> | ProposalItemCreateWithoutProposalInput[] | ProposalItemUncheckedCreateWithoutProposalInput[]
+    connectOrCreate?: ProposalItemCreateOrConnectWithoutProposalInput | ProposalItemCreateOrConnectWithoutProposalInput[]
+    upsert?: ProposalItemUpsertWithWhereUniqueWithoutProposalInput | ProposalItemUpsertWithWhereUniqueWithoutProposalInput[]
+    createMany?: ProposalItemCreateManyProposalInputEnvelope
+    set?: ProposalItemWhereUniqueInput | ProposalItemWhereUniqueInput[]
+    disconnect?: ProposalItemWhereUniqueInput | ProposalItemWhereUniqueInput[]
+    delete?: ProposalItemWhereUniqueInput | ProposalItemWhereUniqueInput[]
+    connect?: ProposalItemWhereUniqueInput | ProposalItemWhereUniqueInput[]
+    update?: ProposalItemUpdateWithWhereUniqueWithoutProposalInput | ProposalItemUpdateWithWhereUniqueWithoutProposalInput[]
+    updateMany?: ProposalItemUpdateManyWithWhereWithoutProposalInput | ProposalItemUpdateManyWithWhereWithoutProposalInput[]
+    deleteMany?: ProposalItemScalarWhereInput | ProposalItemScalarWhereInput[]
+  }
+
+  export type ProposalSectionUpdateManyWithoutProposalNestedInput = {
+    create?: XOR<ProposalSectionCreateWithoutProposalInput, ProposalSectionUncheckedCreateWithoutProposalInput> | ProposalSectionCreateWithoutProposalInput[] | ProposalSectionUncheckedCreateWithoutProposalInput[]
+    connectOrCreate?: ProposalSectionCreateOrConnectWithoutProposalInput | ProposalSectionCreateOrConnectWithoutProposalInput[]
+    upsert?: ProposalSectionUpsertWithWhereUniqueWithoutProposalInput | ProposalSectionUpsertWithWhereUniqueWithoutProposalInput[]
+    createMany?: ProposalSectionCreateManyProposalInputEnvelope
+    set?: ProposalSectionWhereUniqueInput | ProposalSectionWhereUniqueInput[]
+    disconnect?: ProposalSectionWhereUniqueInput | ProposalSectionWhereUniqueInput[]
+    delete?: ProposalSectionWhereUniqueInput | ProposalSectionWhereUniqueInput[]
+    connect?: ProposalSectionWhereUniqueInput | ProposalSectionWhereUniqueInput[]
+    update?: ProposalSectionUpdateWithWhereUniqueWithoutProposalInput | ProposalSectionUpdateWithWhereUniqueWithoutProposalInput[]
+    updateMany?: ProposalSectionUpdateManyWithWhereWithoutProposalInput | ProposalSectionUpdateManyWithWhereWithoutProposalInput[]
+    deleteMany?: ProposalSectionScalarWhereInput | ProposalSectionScalarWhereInput[]
+  }
+
+  export type ProposalContractUpdateManyWithoutProposalNestedInput = {
+    create?: XOR<ProposalContractCreateWithoutProposalInput, ProposalContractUncheckedCreateWithoutProposalInput> | ProposalContractCreateWithoutProposalInput[] | ProposalContractUncheckedCreateWithoutProposalInput[]
+    connectOrCreate?: ProposalContractCreateOrConnectWithoutProposalInput | ProposalContractCreateOrConnectWithoutProposalInput[]
+    upsert?: ProposalContractUpsertWithWhereUniqueWithoutProposalInput | ProposalContractUpsertWithWhereUniqueWithoutProposalInput[]
+    createMany?: ProposalContractCreateManyProposalInputEnvelope
+    set?: ProposalContractWhereUniqueInput | ProposalContractWhereUniqueInput[]
+    disconnect?: ProposalContractWhereUniqueInput | ProposalContractWhereUniqueInput[]
+    delete?: ProposalContractWhereUniqueInput | ProposalContractWhereUniqueInput[]
+    connect?: ProposalContractWhereUniqueInput | ProposalContractWhereUniqueInput[]
+    update?: ProposalContractUpdateWithWhereUniqueWithoutProposalInput | ProposalContractUpdateWithWhereUniqueWithoutProposalInput[]
+    updateMany?: ProposalContractUpdateManyWithWhereWithoutProposalInput | ProposalContractUpdateManyWithWhereWithoutProposalInput[]
+    deleteMany?: ProposalContractScalarWhereInput | ProposalContractScalarWhereInput[]
+  }
+
+  export type ProposalCommentUpdateManyWithoutProposalNestedInput = {
+    create?: XOR<ProposalCommentCreateWithoutProposalInput, ProposalCommentUncheckedCreateWithoutProposalInput> | ProposalCommentCreateWithoutProposalInput[] | ProposalCommentUncheckedCreateWithoutProposalInput[]
+    connectOrCreate?: ProposalCommentCreateOrConnectWithoutProposalInput | ProposalCommentCreateOrConnectWithoutProposalInput[]
+    upsert?: ProposalCommentUpsertWithWhereUniqueWithoutProposalInput | ProposalCommentUpsertWithWhereUniqueWithoutProposalInput[]
+    createMany?: ProposalCommentCreateManyProposalInputEnvelope
+    set?: ProposalCommentWhereUniqueInput | ProposalCommentWhereUniqueInput[]
+    disconnect?: ProposalCommentWhereUniqueInput | ProposalCommentWhereUniqueInput[]
+    delete?: ProposalCommentWhereUniqueInput | ProposalCommentWhereUniqueInput[]
+    connect?: ProposalCommentWhereUniqueInput | ProposalCommentWhereUniqueInput[]
+    update?: ProposalCommentUpdateWithWhereUniqueWithoutProposalInput | ProposalCommentUpdateWithWhereUniqueWithoutProposalInput[]
+    updateMany?: ProposalCommentUpdateManyWithWhereWithoutProposalInput | ProposalCommentUpdateManyWithWhereWithoutProposalInput[]
+    deleteMany?: ProposalCommentScalarWhereInput | ProposalCommentScalarWhereInput[]
+  }
+
+  export type ProposalItemUncheckedUpdateManyWithoutProposalNestedInput = {
+    create?: XOR<ProposalItemCreateWithoutProposalInput, ProposalItemUncheckedCreateWithoutProposalInput> | ProposalItemCreateWithoutProposalInput[] | ProposalItemUncheckedCreateWithoutProposalInput[]
+    connectOrCreate?: ProposalItemCreateOrConnectWithoutProposalInput | ProposalItemCreateOrConnectWithoutProposalInput[]
+    upsert?: ProposalItemUpsertWithWhereUniqueWithoutProposalInput | ProposalItemUpsertWithWhereUniqueWithoutProposalInput[]
+    createMany?: ProposalItemCreateManyProposalInputEnvelope
+    set?: ProposalItemWhereUniqueInput | ProposalItemWhereUniqueInput[]
+    disconnect?: ProposalItemWhereUniqueInput | ProposalItemWhereUniqueInput[]
+    delete?: ProposalItemWhereUniqueInput | ProposalItemWhereUniqueInput[]
+    connect?: ProposalItemWhereUniqueInput | ProposalItemWhereUniqueInput[]
+    update?: ProposalItemUpdateWithWhereUniqueWithoutProposalInput | ProposalItemUpdateWithWhereUniqueWithoutProposalInput[]
+    updateMany?: ProposalItemUpdateManyWithWhereWithoutProposalInput | ProposalItemUpdateManyWithWhereWithoutProposalInput[]
+    deleteMany?: ProposalItemScalarWhereInput | ProposalItemScalarWhereInput[]
+  }
+
+  export type ProposalSectionUncheckedUpdateManyWithoutProposalNestedInput = {
+    create?: XOR<ProposalSectionCreateWithoutProposalInput, ProposalSectionUncheckedCreateWithoutProposalInput> | ProposalSectionCreateWithoutProposalInput[] | ProposalSectionUncheckedCreateWithoutProposalInput[]
+    connectOrCreate?: ProposalSectionCreateOrConnectWithoutProposalInput | ProposalSectionCreateOrConnectWithoutProposalInput[]
+    upsert?: ProposalSectionUpsertWithWhereUniqueWithoutProposalInput | ProposalSectionUpsertWithWhereUniqueWithoutProposalInput[]
+    createMany?: ProposalSectionCreateManyProposalInputEnvelope
+    set?: ProposalSectionWhereUniqueInput | ProposalSectionWhereUniqueInput[]
+    disconnect?: ProposalSectionWhereUniqueInput | ProposalSectionWhereUniqueInput[]
+    delete?: ProposalSectionWhereUniqueInput | ProposalSectionWhereUniqueInput[]
+    connect?: ProposalSectionWhereUniqueInput | ProposalSectionWhereUniqueInput[]
+    update?: ProposalSectionUpdateWithWhereUniqueWithoutProposalInput | ProposalSectionUpdateWithWhereUniqueWithoutProposalInput[]
+    updateMany?: ProposalSectionUpdateManyWithWhereWithoutProposalInput | ProposalSectionUpdateManyWithWhereWithoutProposalInput[]
+    deleteMany?: ProposalSectionScalarWhereInput | ProposalSectionScalarWhereInput[]
+  }
+
+  export type ProposalContractUncheckedUpdateManyWithoutProposalNestedInput = {
+    create?: XOR<ProposalContractCreateWithoutProposalInput, ProposalContractUncheckedCreateWithoutProposalInput> | ProposalContractCreateWithoutProposalInput[] | ProposalContractUncheckedCreateWithoutProposalInput[]
+    connectOrCreate?: ProposalContractCreateOrConnectWithoutProposalInput | ProposalContractCreateOrConnectWithoutProposalInput[]
+    upsert?: ProposalContractUpsertWithWhereUniqueWithoutProposalInput | ProposalContractUpsertWithWhereUniqueWithoutProposalInput[]
+    createMany?: ProposalContractCreateManyProposalInputEnvelope
+    set?: ProposalContractWhereUniqueInput | ProposalContractWhereUniqueInput[]
+    disconnect?: ProposalContractWhereUniqueInput | ProposalContractWhereUniqueInput[]
+    delete?: ProposalContractWhereUniqueInput | ProposalContractWhereUniqueInput[]
+    connect?: ProposalContractWhereUniqueInput | ProposalContractWhereUniqueInput[]
+    update?: ProposalContractUpdateWithWhereUniqueWithoutProposalInput | ProposalContractUpdateWithWhereUniqueWithoutProposalInput[]
+    updateMany?: ProposalContractUpdateManyWithWhereWithoutProposalInput | ProposalContractUpdateManyWithWhereWithoutProposalInput[]
+    deleteMany?: ProposalContractScalarWhereInput | ProposalContractScalarWhereInput[]
+  }
+
+  export type ProposalCommentUncheckedUpdateManyWithoutProposalNestedInput = {
+    create?: XOR<ProposalCommentCreateWithoutProposalInput, ProposalCommentUncheckedCreateWithoutProposalInput> | ProposalCommentCreateWithoutProposalInput[] | ProposalCommentUncheckedCreateWithoutProposalInput[]
+    connectOrCreate?: ProposalCommentCreateOrConnectWithoutProposalInput | ProposalCommentCreateOrConnectWithoutProposalInput[]
+    upsert?: ProposalCommentUpsertWithWhereUniqueWithoutProposalInput | ProposalCommentUpsertWithWhereUniqueWithoutProposalInput[]
+    createMany?: ProposalCommentCreateManyProposalInputEnvelope
+    set?: ProposalCommentWhereUniqueInput | ProposalCommentWhereUniqueInput[]
+    disconnect?: ProposalCommentWhereUniqueInput | ProposalCommentWhereUniqueInput[]
+    delete?: ProposalCommentWhereUniqueInput | ProposalCommentWhereUniqueInput[]
+    connect?: ProposalCommentWhereUniqueInput | ProposalCommentWhereUniqueInput[]
+    update?: ProposalCommentUpdateWithWhereUniqueWithoutProposalInput | ProposalCommentUpdateWithWhereUniqueWithoutProposalInput[]
+    updateMany?: ProposalCommentUpdateManyWithWhereWithoutProposalInput | ProposalCommentUpdateManyWithWhereWithoutProposalInput[]
+    deleteMany?: ProposalCommentScalarWhereInput | ProposalCommentScalarWhereInput[]
+  }
+
+  export type ProposalCreateNestedOneWithoutItemsInput = {
+    create?: XOR<ProposalCreateWithoutItemsInput, ProposalUncheckedCreateWithoutItemsInput>
+    connectOrCreate?: ProposalCreateOrConnectWithoutItemsInput
+    connect?: ProposalWhereUniqueInput
+  }
+
+  export type EnumProposalItemCategoryFieldUpdateOperationsInput = {
+    set?: $Enums.ProposalItemCategory
+  }
+
+  export type ProposalUpdateOneRequiredWithoutItemsNestedInput = {
+    create?: XOR<ProposalCreateWithoutItemsInput, ProposalUncheckedCreateWithoutItemsInput>
+    connectOrCreate?: ProposalCreateOrConnectWithoutItemsInput
+    upsert?: ProposalUpsertWithoutItemsInput
+    connect?: ProposalWhereUniqueInput
+    update?: XOR<XOR<ProposalUpdateToOneWithWhereWithoutItemsInput, ProposalUpdateWithoutItemsInput>, ProposalUncheckedUpdateWithoutItemsInput>
+  }
+
+  export type ProposalCreateNestedOneWithoutSectionsInput = {
+    create?: XOR<ProposalCreateWithoutSectionsInput, ProposalUncheckedCreateWithoutSectionsInput>
+    connectOrCreate?: ProposalCreateOrConnectWithoutSectionsInput
+    connect?: ProposalWhereUniqueInput
+  }
+
+  export type ProposalUpdateOneRequiredWithoutSectionsNestedInput = {
+    create?: XOR<ProposalCreateWithoutSectionsInput, ProposalUncheckedCreateWithoutSectionsInput>
+    connectOrCreate?: ProposalCreateOrConnectWithoutSectionsInput
+    upsert?: ProposalUpsertWithoutSectionsInput
+    connect?: ProposalWhereUniqueInput
+    update?: XOR<XOR<ProposalUpdateToOneWithWhereWithoutSectionsInput, ProposalUpdateWithoutSectionsInput>, ProposalUncheckedUpdateWithoutSectionsInput>
+  }
+
+  export type ProposalCreateNestedOneWithoutContractsInput = {
+    create?: XOR<ProposalCreateWithoutContractsInput, ProposalUncheckedCreateWithoutContractsInput>
+    connectOrCreate?: ProposalCreateOrConnectWithoutContractsInput
+    connect?: ProposalWhereUniqueInput
+  }
+
+  export type ProposalUpdateOneRequiredWithoutContractsNestedInput = {
+    create?: XOR<ProposalCreateWithoutContractsInput, ProposalUncheckedCreateWithoutContractsInput>
+    connectOrCreate?: ProposalCreateOrConnectWithoutContractsInput
+    upsert?: ProposalUpsertWithoutContractsInput
+    connect?: ProposalWhereUniqueInput
+    update?: XOR<XOR<ProposalUpdateToOneWithWhereWithoutContractsInput, ProposalUpdateWithoutContractsInput>, ProposalUncheckedUpdateWithoutContractsInput>
+  }
+
+  export type ProposalCreateNestedOneWithoutCommentsInput = {
+    create?: XOR<ProposalCreateWithoutCommentsInput, ProposalUncheckedCreateWithoutCommentsInput>
+    connectOrCreate?: ProposalCreateOrConnectWithoutCommentsInput
+    connect?: ProposalWhereUniqueInput
+  }
+
+  export type ProposalUpdateOneRequiredWithoutCommentsNestedInput = {
+    create?: XOR<ProposalCreateWithoutCommentsInput, ProposalUncheckedCreateWithoutCommentsInput>
+    connectOrCreate?: ProposalCreateOrConnectWithoutCommentsInput
+    upsert?: ProposalUpsertWithoutCommentsInput
+    connect?: ProposalWhereUniqueInput
+    update?: XOR<XOR<ProposalUpdateToOneWithWhereWithoutCommentsInput, ProposalUpdateWithoutCommentsInput>, ProposalUncheckedUpdateWithoutCommentsInput>
+  }
+
+  export type UserCreateNestedOneWithoutProposalTemplatesInput = {
+    create?: XOR<UserCreateWithoutProposalTemplatesInput, UserUncheckedCreateWithoutProposalTemplatesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProposalTemplatesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type NullableEnumEventTypeFieldUpdateOperationsInput = {
+    set?: $Enums.EventType | null
+  }
+
+  export type UserUpdateOneRequiredWithoutProposalTemplatesNestedInput = {
+    create?: XOR<UserCreateWithoutProposalTemplatesInput, UserUncheckedCreateWithoutProposalTemplatesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProposalTemplatesInput
+    upsert?: UserUpsertWithoutProposalTemplatesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProposalTemplatesInput, UserUpdateWithoutProposalTemplatesInput>, UserUncheckedUpdateWithoutProposalTemplatesInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -18099,6 +27021,249 @@ export namespace Prisma {
     _max?: NestedEnumAssetCategoryFilter<$PrismaModel>
   }
 
+  export type NestedEnumProposalStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProposalStatus | EnumProposalStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ProposalStatus[] | ListEnumProposalStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProposalStatus[] | ListEnumProposalStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumProposalStatusFilter<$PrismaModel> | $Enums.ProposalStatus
+  }
+
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type NestedEnumProposalStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProposalStatus | EnumProposalStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ProposalStatus[] | ListEnumProposalStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProposalStatus[] | ListEnumProposalStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumProposalStatusWithAggregatesFilter<$PrismaModel> | $Enums.ProposalStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumProposalStatusFilter<$PrismaModel>
+    _max?: NestedEnumProposalStatusFilter<$PrismaModel>
+  }
+
+  export type NestedEnumProposalItemCategoryFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProposalItemCategory | EnumProposalItemCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.ProposalItemCategory[] | ListEnumProposalItemCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProposalItemCategory[] | ListEnumProposalItemCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumProposalItemCategoryFilter<$PrismaModel> | $Enums.ProposalItemCategory
+  }
+
+  export type NestedEnumProposalItemCategoryWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProposalItemCategory | EnumProposalItemCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.ProposalItemCategory[] | ListEnumProposalItemCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProposalItemCategory[] | ListEnumProposalItemCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumProposalItemCategoryWithAggregatesFilter<$PrismaModel> | $Enums.ProposalItemCategory
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumProposalItemCategoryFilter<$PrismaModel>
+    _max?: NestedEnumProposalItemCategoryFilter<$PrismaModel>
+  }
+
+  export type NestedEnumEventTypeNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.EventType | EnumEventTypeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.EventType[] | ListEnumEventTypeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.EventType[] | ListEnumEventTypeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumEventTypeNullableFilter<$PrismaModel> | $Enums.EventType | null
+  }
+
+  export type NestedEnumEventTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.EventType | EnumEventTypeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.EventType[] | ListEnumEventTypeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.EventType[] | ListEnumEventTypeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumEventTypeNullableWithAggregatesFilter<$PrismaModel> | $Enums.EventType | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumEventTypeNullableFilter<$PrismaModel>
+    _max?: NestedEnumEventTypeNullableFilter<$PrismaModel>
+  }
+
+  export type ProposalCreateWithoutCreatedByInput = {
+    id?: string
+    title: string
+    proposalNumber: string
+    introduction?: string | null
+    eventVision?: string | null
+    themeConcept?: string | null
+    totalAmount: number
+    currency?: string
+    status?: $Enums.ProposalStatus
+    validUntil?: Date | string | null
+    pdfUrl?: string | null
+    publicToken: string
+    clientApproved?: boolean
+    clientApprovedAt?: Date | string | null
+    clientRejected?: boolean
+    rejectionReason?: string | null
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    booking: BookingCreateNestedOneWithoutProposalsInput
+    items?: ProposalItemCreateNestedManyWithoutProposalInput
+    sections?: ProposalSectionCreateNestedManyWithoutProposalInput
+    contracts?: ProposalContractCreateNestedManyWithoutProposalInput
+    comments?: ProposalCommentCreateNestedManyWithoutProposalInput
+  }
+
+  export type ProposalUncheckedCreateWithoutCreatedByInput = {
+    id?: string
+    bookingId: string
+    title: string
+    proposalNumber: string
+    introduction?: string | null
+    eventVision?: string | null
+    themeConcept?: string | null
+    totalAmount: number
+    currency?: string
+    status?: $Enums.ProposalStatus
+    validUntil?: Date | string | null
+    pdfUrl?: string | null
+    publicToken: string
+    clientApproved?: boolean
+    clientApprovedAt?: Date | string | null
+    clientRejected?: boolean
+    rejectionReason?: string | null
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    items?: ProposalItemUncheckedCreateNestedManyWithoutProposalInput
+    sections?: ProposalSectionUncheckedCreateNestedManyWithoutProposalInput
+    contracts?: ProposalContractUncheckedCreateNestedManyWithoutProposalInput
+    comments?: ProposalCommentUncheckedCreateNestedManyWithoutProposalInput
+  }
+
+  export type ProposalCreateOrConnectWithoutCreatedByInput = {
+    where: ProposalWhereUniqueInput
+    create: XOR<ProposalCreateWithoutCreatedByInput, ProposalUncheckedCreateWithoutCreatedByInput>
+  }
+
+  export type ProposalCreateManyCreatedByInputEnvelope = {
+    data: ProposalCreateManyCreatedByInput | ProposalCreateManyCreatedByInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ProposalTemplateCreateWithoutCreatedByInput = {
+    id?: string
+    name: string
+    description?: string | null
+    eventType?: $Enums.EventType | null
+    coverImage?: string | null
+    sections: string
+    contractTerms?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProposalTemplateUncheckedCreateWithoutCreatedByInput = {
+    id?: string
+    name: string
+    description?: string | null
+    eventType?: $Enums.EventType | null
+    coverImage?: string | null
+    sections: string
+    contractTerms?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProposalTemplateCreateOrConnectWithoutCreatedByInput = {
+    where: ProposalTemplateWhereUniqueInput
+    create: XOR<ProposalTemplateCreateWithoutCreatedByInput, ProposalTemplateUncheckedCreateWithoutCreatedByInput>
+  }
+
+  export type ProposalTemplateCreateManyCreatedByInputEnvelope = {
+    data: ProposalTemplateCreateManyCreatedByInput | ProposalTemplateCreateManyCreatedByInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ProposalUpsertWithWhereUniqueWithoutCreatedByInput = {
+    where: ProposalWhereUniqueInput
+    update: XOR<ProposalUpdateWithoutCreatedByInput, ProposalUncheckedUpdateWithoutCreatedByInput>
+    create: XOR<ProposalCreateWithoutCreatedByInput, ProposalUncheckedCreateWithoutCreatedByInput>
+  }
+
+  export type ProposalUpdateWithWhereUniqueWithoutCreatedByInput = {
+    where: ProposalWhereUniqueInput
+    data: XOR<ProposalUpdateWithoutCreatedByInput, ProposalUncheckedUpdateWithoutCreatedByInput>
+  }
+
+  export type ProposalUpdateManyWithWhereWithoutCreatedByInput = {
+    where: ProposalScalarWhereInput
+    data: XOR<ProposalUpdateManyMutationInput, ProposalUncheckedUpdateManyWithoutCreatedByInput>
+  }
+
+  export type ProposalScalarWhereInput = {
+    AND?: ProposalScalarWhereInput | ProposalScalarWhereInput[]
+    OR?: ProposalScalarWhereInput[]
+    NOT?: ProposalScalarWhereInput | ProposalScalarWhereInput[]
+    id?: StringFilter<"Proposal"> | string
+    bookingId?: StringFilter<"Proposal"> | string
+    title?: StringFilter<"Proposal"> | string
+    proposalNumber?: StringFilter<"Proposal"> | string
+    introduction?: StringNullableFilter<"Proposal"> | string | null
+    eventVision?: StringNullableFilter<"Proposal"> | string | null
+    themeConcept?: StringNullableFilter<"Proposal"> | string | null
+    totalAmount?: FloatFilter<"Proposal"> | number
+    currency?: StringFilter<"Proposal"> | string
+    status?: EnumProposalStatusFilter<"Proposal"> | $Enums.ProposalStatus
+    validUntil?: DateTimeNullableFilter<"Proposal"> | Date | string | null
+    pdfUrl?: StringNullableFilter<"Proposal"> | string | null
+    publicToken?: StringFilter<"Proposal"> | string
+    clientApproved?: BoolFilter<"Proposal"> | boolean
+    clientApprovedAt?: DateTimeNullableFilter<"Proposal"> | Date | string | null
+    clientRejected?: BoolFilter<"Proposal"> | boolean
+    rejectionReason?: StringNullableFilter<"Proposal"> | string | null
+    notes?: StringNullableFilter<"Proposal"> | string | null
+    createdById?: StringFilter<"Proposal"> | string
+    createdAt?: DateTimeFilter<"Proposal"> | Date | string
+    updatedAt?: DateTimeFilter<"Proposal"> | Date | string
+  }
+
+  export type ProposalTemplateUpsertWithWhereUniqueWithoutCreatedByInput = {
+    where: ProposalTemplateWhereUniqueInput
+    update: XOR<ProposalTemplateUpdateWithoutCreatedByInput, ProposalTemplateUncheckedUpdateWithoutCreatedByInput>
+    create: XOR<ProposalTemplateCreateWithoutCreatedByInput, ProposalTemplateUncheckedCreateWithoutCreatedByInput>
+  }
+
+  export type ProposalTemplateUpdateWithWhereUniqueWithoutCreatedByInput = {
+    where: ProposalTemplateWhereUniqueInput
+    data: XOR<ProposalTemplateUpdateWithoutCreatedByInput, ProposalTemplateUncheckedUpdateWithoutCreatedByInput>
+  }
+
+  export type ProposalTemplateUpdateManyWithWhereWithoutCreatedByInput = {
+    where: ProposalTemplateScalarWhereInput
+    data: XOR<ProposalTemplateUpdateManyMutationInput, ProposalTemplateUncheckedUpdateManyWithoutCreatedByInput>
+  }
+
+  export type ProposalTemplateScalarWhereInput = {
+    AND?: ProposalTemplateScalarWhereInput | ProposalTemplateScalarWhereInput[]
+    OR?: ProposalTemplateScalarWhereInput[]
+    NOT?: ProposalTemplateScalarWhereInput | ProposalTemplateScalarWhereInput[]
+    id?: StringFilter<"ProposalTemplate"> | string
+    name?: StringFilter<"ProposalTemplate"> | string
+    description?: StringNullableFilter<"ProposalTemplate"> | string | null
+    eventType?: EnumEventTypeNullableFilter<"ProposalTemplate"> | $Enums.EventType | null
+    coverImage?: StringNullableFilter<"ProposalTemplate"> | string | null
+    sections?: StringFilter<"ProposalTemplate"> | string
+    contractTerms?: StringNullableFilter<"ProposalTemplate"> | string | null
+    isActive?: BoolFilter<"ProposalTemplate"> | boolean
+    createdById?: StringFilter<"ProposalTemplate"> | string
+    createdAt?: DateTimeFilter<"ProposalTemplate"> | Date | string
+    updatedAt?: DateTimeFilter<"ProposalTemplate"> | Date | string
+  }
+
   export type MessageCreateWithoutBookingInput = {
     id?: string
     sender: $Enums.MessageSender
@@ -18211,6 +27376,70 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ProposalCreateWithoutBookingInput = {
+    id?: string
+    title: string
+    proposalNumber: string
+    introduction?: string | null
+    eventVision?: string | null
+    themeConcept?: string | null
+    totalAmount: number
+    currency?: string
+    status?: $Enums.ProposalStatus
+    validUntil?: Date | string | null
+    pdfUrl?: string | null
+    publicToken: string
+    clientApproved?: boolean
+    clientApprovedAt?: Date | string | null
+    clientRejected?: boolean
+    rejectionReason?: string | null
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    createdBy: UserCreateNestedOneWithoutProposalsInput
+    items?: ProposalItemCreateNestedManyWithoutProposalInput
+    sections?: ProposalSectionCreateNestedManyWithoutProposalInput
+    contracts?: ProposalContractCreateNestedManyWithoutProposalInput
+    comments?: ProposalCommentCreateNestedManyWithoutProposalInput
+  }
+
+  export type ProposalUncheckedCreateWithoutBookingInput = {
+    id?: string
+    title: string
+    proposalNumber: string
+    introduction?: string | null
+    eventVision?: string | null
+    themeConcept?: string | null
+    totalAmount: number
+    currency?: string
+    status?: $Enums.ProposalStatus
+    validUntil?: Date | string | null
+    pdfUrl?: string | null
+    publicToken: string
+    clientApproved?: boolean
+    clientApprovedAt?: Date | string | null
+    clientRejected?: boolean
+    rejectionReason?: string | null
+    notes?: string | null
+    createdById: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    items?: ProposalItemUncheckedCreateNestedManyWithoutProposalInput
+    sections?: ProposalSectionUncheckedCreateNestedManyWithoutProposalInput
+    contracts?: ProposalContractUncheckedCreateNestedManyWithoutProposalInput
+    comments?: ProposalCommentUncheckedCreateNestedManyWithoutProposalInput
+  }
+
+  export type ProposalCreateOrConnectWithoutBookingInput = {
+    where: ProposalWhereUniqueInput
+    create: XOR<ProposalCreateWithoutBookingInput, ProposalUncheckedCreateWithoutBookingInput>
+  }
+
+  export type ProposalCreateManyBookingInputEnvelope = {
+    data: ProposalCreateManyBookingInput | ProposalCreateManyBookingInput[]
+    skipDuplicates?: boolean
+  }
+
   export type MessageUpsertWithWhereUniqueWithoutBookingInput = {
     where: MessageWhereUniqueInput
     update: XOR<MessageUpdateWithoutBookingInput, MessageUncheckedUpdateWithoutBookingInput>
@@ -18294,6 +27523,22 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"WeddingInvitation"> | Date | string
   }
 
+  export type ProposalUpsertWithWhereUniqueWithoutBookingInput = {
+    where: ProposalWhereUniqueInput
+    update: XOR<ProposalUpdateWithoutBookingInput, ProposalUncheckedUpdateWithoutBookingInput>
+    create: XOR<ProposalCreateWithoutBookingInput, ProposalUncheckedCreateWithoutBookingInput>
+  }
+
+  export type ProposalUpdateWithWhereUniqueWithoutBookingInput = {
+    where: ProposalWhereUniqueInput
+    data: XOR<ProposalUpdateWithoutBookingInput, ProposalUncheckedUpdateWithoutBookingInput>
+  }
+
+  export type ProposalUpdateManyWithWhereWithoutBookingInput = {
+    where: ProposalScalarWhereInput
+    data: XOR<ProposalUpdateManyMutationInput, ProposalUncheckedUpdateManyWithoutBookingInput>
+  }
+
   export type BookingCreateWithoutMessagesInput = {
     id?: string
     clientName: string
@@ -18317,6 +27562,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     invitations?: WeddingInvitationCreateNestedManyWithoutBookingInput
+    proposals?: ProposalCreateNestedManyWithoutBookingInput
   }
 
   export type BookingUncheckedCreateWithoutMessagesInput = {
@@ -18342,6 +27588,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     invitations?: WeddingInvitationUncheckedCreateNestedManyWithoutBookingInput
+    proposals?: ProposalUncheckedCreateNestedManyWithoutBookingInput
   }
 
   export type BookingCreateOrConnectWithoutMessagesInput = {
@@ -18383,6 +27630,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     invitations?: WeddingInvitationUpdateManyWithoutBookingNestedInput
+    proposals?: ProposalUpdateManyWithoutBookingNestedInput
   }
 
   export type BookingUncheckedUpdateWithoutMessagesInput = {
@@ -18408,6 +27656,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     invitations?: WeddingInvitationUncheckedUpdateManyWithoutBookingNestedInput
+    proposals?: ProposalUncheckedUpdateManyWithoutBookingNestedInput
   }
 
   export type PackageCreateWithoutCategoryInput = {
@@ -18584,6 +27833,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     messages?: MessageCreateNestedManyWithoutBookingInput
+    proposals?: ProposalCreateNestedManyWithoutBookingInput
   }
 
   export type BookingUncheckedCreateWithoutInvitationsInput = {
@@ -18609,6 +27859,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     messages?: MessageUncheckedCreateNestedManyWithoutBookingInput
+    proposals?: ProposalUncheckedCreateNestedManyWithoutBookingInput
   }
 
   export type BookingCreateOrConnectWithoutInvitationsInput = {
@@ -18746,6 +27997,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     messages?: MessageUpdateManyWithoutBookingNestedInput
+    proposals?: ProposalUpdateManyWithoutBookingNestedInput
   }
 
   export type BookingUncheckedUpdateWithoutInvitationsInput = {
@@ -18771,6 +28023,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     messages?: MessageUncheckedUpdateManyWithoutBookingNestedInput
+    proposals?: ProposalUncheckedUpdateManyWithoutBookingNestedInput
   }
 
   export type GiftRegistryUpsertWithWhereUniqueWithoutInvitationInput = {
@@ -19503,6 +28756,1132 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type BookingCreateWithoutProposalsInput = {
+    id?: string
+    clientName: string
+    clientEmail: string
+    clientPhone: string
+    eventType: $Enums.EventType
+    eventDate: Date | string
+    location: string
+    guestCount?: number | null
+    budgetRange: $Enums.BudgetRange
+    notes?: string | null
+    status?: $Enums.BookingStatus
+    internalNotes?: string | null
+    assignedTo?: string | null
+    agreedAmount?: number | null
+    depositAmount?: number | null
+    depositPaid?: boolean
+    depositDate?: Date | string | null
+    balancePaid?: boolean
+    balanceDate?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    messages?: MessageCreateNestedManyWithoutBookingInput
+    invitations?: WeddingInvitationCreateNestedManyWithoutBookingInput
+  }
+
+  export type BookingUncheckedCreateWithoutProposalsInput = {
+    id?: string
+    clientName: string
+    clientEmail: string
+    clientPhone: string
+    eventType: $Enums.EventType
+    eventDate: Date | string
+    location: string
+    guestCount?: number | null
+    budgetRange: $Enums.BudgetRange
+    notes?: string | null
+    status?: $Enums.BookingStatus
+    internalNotes?: string | null
+    assignedTo?: string | null
+    agreedAmount?: number | null
+    depositAmount?: number | null
+    depositPaid?: boolean
+    depositDate?: Date | string | null
+    balancePaid?: boolean
+    balanceDate?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    messages?: MessageUncheckedCreateNestedManyWithoutBookingInput
+    invitations?: WeddingInvitationUncheckedCreateNestedManyWithoutBookingInput
+  }
+
+  export type BookingCreateOrConnectWithoutProposalsInput = {
+    where: BookingWhereUniqueInput
+    create: XOR<BookingCreateWithoutProposalsInput, BookingUncheckedCreateWithoutProposalsInput>
+  }
+
+  export type UserCreateWithoutProposalsInput = {
+    id?: string
+    name: string
+    email: string
+    password: string
+    role?: $Enums.UserRole
+    isActive?: boolean
+    avatarUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    proposalTemplates?: ProposalTemplateCreateNestedManyWithoutCreatedByInput
+  }
+
+  export type UserUncheckedCreateWithoutProposalsInput = {
+    id?: string
+    name: string
+    email: string
+    password: string
+    role?: $Enums.UserRole
+    isActive?: boolean
+    avatarUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    proposalTemplates?: ProposalTemplateUncheckedCreateNestedManyWithoutCreatedByInput
+  }
+
+  export type UserCreateOrConnectWithoutProposalsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutProposalsInput, UserUncheckedCreateWithoutProposalsInput>
+  }
+
+  export type ProposalItemCreateWithoutProposalInput = {
+    id?: string
+    title: string
+    description?: string | null
+    quantity?: number
+    unitPrice: number
+    totalPrice: number
+    category: $Enums.ProposalItemCategory
+    sortOrder?: number
+    createdAt?: Date | string
+  }
+
+  export type ProposalItemUncheckedCreateWithoutProposalInput = {
+    id?: string
+    title: string
+    description?: string | null
+    quantity?: number
+    unitPrice: number
+    totalPrice: number
+    category: $Enums.ProposalItemCategory
+    sortOrder?: number
+    createdAt?: Date | string
+  }
+
+  export type ProposalItemCreateOrConnectWithoutProposalInput = {
+    where: ProposalItemWhereUniqueInput
+    create: XOR<ProposalItemCreateWithoutProposalInput, ProposalItemUncheckedCreateWithoutProposalInput>
+  }
+
+  export type ProposalItemCreateManyProposalInputEnvelope = {
+    data: ProposalItemCreateManyProposalInput | ProposalItemCreateManyProposalInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ProposalSectionCreateWithoutProposalInput = {
+    id?: string
+    title: string
+    content: string
+    sortOrder?: number
+    createdAt?: Date | string
+  }
+
+  export type ProposalSectionUncheckedCreateWithoutProposalInput = {
+    id?: string
+    title: string
+    content: string
+    sortOrder?: number
+    createdAt?: Date | string
+  }
+
+  export type ProposalSectionCreateOrConnectWithoutProposalInput = {
+    where: ProposalSectionWhereUniqueInput
+    create: XOR<ProposalSectionCreateWithoutProposalInput, ProposalSectionUncheckedCreateWithoutProposalInput>
+  }
+
+  export type ProposalSectionCreateManyProposalInputEnvelope = {
+    data: ProposalSectionCreateManyProposalInput | ProposalSectionCreateManyProposalInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ProposalContractCreateWithoutProposalInput = {
+    id?: string
+    title: string
+    content: string
+    createdAt?: Date | string
+  }
+
+  export type ProposalContractUncheckedCreateWithoutProposalInput = {
+    id?: string
+    title: string
+    content: string
+    createdAt?: Date | string
+  }
+
+  export type ProposalContractCreateOrConnectWithoutProposalInput = {
+    where: ProposalContractWhereUniqueInput
+    create: XOR<ProposalContractCreateWithoutProposalInput, ProposalContractUncheckedCreateWithoutProposalInput>
+  }
+
+  export type ProposalContractCreateManyProposalInputEnvelope = {
+    data: ProposalContractCreateManyProposalInput | ProposalContractCreateManyProposalInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ProposalCommentCreateWithoutProposalInput = {
+    id?: string
+    authorName: string
+    content: string
+    createdAt?: Date | string
+  }
+
+  export type ProposalCommentUncheckedCreateWithoutProposalInput = {
+    id?: string
+    authorName: string
+    content: string
+    createdAt?: Date | string
+  }
+
+  export type ProposalCommentCreateOrConnectWithoutProposalInput = {
+    where: ProposalCommentWhereUniqueInput
+    create: XOR<ProposalCommentCreateWithoutProposalInput, ProposalCommentUncheckedCreateWithoutProposalInput>
+  }
+
+  export type ProposalCommentCreateManyProposalInputEnvelope = {
+    data: ProposalCommentCreateManyProposalInput | ProposalCommentCreateManyProposalInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type BookingUpsertWithoutProposalsInput = {
+    update: XOR<BookingUpdateWithoutProposalsInput, BookingUncheckedUpdateWithoutProposalsInput>
+    create: XOR<BookingCreateWithoutProposalsInput, BookingUncheckedCreateWithoutProposalsInput>
+    where?: BookingWhereInput
+  }
+
+  export type BookingUpdateToOneWithWhereWithoutProposalsInput = {
+    where?: BookingWhereInput
+    data: XOR<BookingUpdateWithoutProposalsInput, BookingUncheckedUpdateWithoutProposalsInput>
+  }
+
+  export type BookingUpdateWithoutProposalsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clientName?: StringFieldUpdateOperationsInput | string
+    clientEmail?: StringFieldUpdateOperationsInput | string
+    clientPhone?: StringFieldUpdateOperationsInput | string
+    eventType?: EnumEventTypeFieldUpdateOperationsInput | $Enums.EventType
+    eventDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    guestCount?: NullableIntFieldUpdateOperationsInput | number | null
+    budgetRange?: EnumBudgetRangeFieldUpdateOperationsInput | $Enums.BudgetRange
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+    internalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    assignedTo?: NullableStringFieldUpdateOperationsInput | string | null
+    agreedAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    depositAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    depositPaid?: BoolFieldUpdateOperationsInput | boolean
+    depositDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    balancePaid?: BoolFieldUpdateOperationsInput | boolean
+    balanceDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MessageUpdateManyWithoutBookingNestedInput
+    invitations?: WeddingInvitationUpdateManyWithoutBookingNestedInput
+  }
+
+  export type BookingUncheckedUpdateWithoutProposalsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clientName?: StringFieldUpdateOperationsInput | string
+    clientEmail?: StringFieldUpdateOperationsInput | string
+    clientPhone?: StringFieldUpdateOperationsInput | string
+    eventType?: EnumEventTypeFieldUpdateOperationsInput | $Enums.EventType
+    eventDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    guestCount?: NullableIntFieldUpdateOperationsInput | number | null
+    budgetRange?: EnumBudgetRangeFieldUpdateOperationsInput | $Enums.BudgetRange
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+    internalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    assignedTo?: NullableStringFieldUpdateOperationsInput | string | null
+    agreedAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    depositAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    depositPaid?: BoolFieldUpdateOperationsInput | boolean
+    depositDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    balancePaid?: BoolFieldUpdateOperationsInput | boolean
+    balanceDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MessageUncheckedUpdateManyWithoutBookingNestedInput
+    invitations?: WeddingInvitationUncheckedUpdateManyWithoutBookingNestedInput
+  }
+
+  export type UserUpsertWithoutProposalsInput = {
+    update: XOR<UserUpdateWithoutProposalsInput, UserUncheckedUpdateWithoutProposalsInput>
+    create: XOR<UserCreateWithoutProposalsInput, UserUncheckedCreateWithoutProposalsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutProposalsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutProposalsInput, UserUncheckedUpdateWithoutProposalsInput>
+  }
+
+  export type UserUpdateWithoutProposalsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    proposalTemplates?: ProposalTemplateUpdateManyWithoutCreatedByNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutProposalsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    proposalTemplates?: ProposalTemplateUncheckedUpdateManyWithoutCreatedByNestedInput
+  }
+
+  export type ProposalItemUpsertWithWhereUniqueWithoutProposalInput = {
+    where: ProposalItemWhereUniqueInput
+    update: XOR<ProposalItemUpdateWithoutProposalInput, ProposalItemUncheckedUpdateWithoutProposalInput>
+    create: XOR<ProposalItemCreateWithoutProposalInput, ProposalItemUncheckedCreateWithoutProposalInput>
+  }
+
+  export type ProposalItemUpdateWithWhereUniqueWithoutProposalInput = {
+    where: ProposalItemWhereUniqueInput
+    data: XOR<ProposalItemUpdateWithoutProposalInput, ProposalItemUncheckedUpdateWithoutProposalInput>
+  }
+
+  export type ProposalItemUpdateManyWithWhereWithoutProposalInput = {
+    where: ProposalItemScalarWhereInput
+    data: XOR<ProposalItemUpdateManyMutationInput, ProposalItemUncheckedUpdateManyWithoutProposalInput>
+  }
+
+  export type ProposalItemScalarWhereInput = {
+    AND?: ProposalItemScalarWhereInput | ProposalItemScalarWhereInput[]
+    OR?: ProposalItemScalarWhereInput[]
+    NOT?: ProposalItemScalarWhereInput | ProposalItemScalarWhereInput[]
+    id?: StringFilter<"ProposalItem"> | string
+    proposalId?: StringFilter<"ProposalItem"> | string
+    title?: StringFilter<"ProposalItem"> | string
+    description?: StringNullableFilter<"ProposalItem"> | string | null
+    quantity?: IntFilter<"ProposalItem"> | number
+    unitPrice?: FloatFilter<"ProposalItem"> | number
+    totalPrice?: FloatFilter<"ProposalItem"> | number
+    category?: EnumProposalItemCategoryFilter<"ProposalItem"> | $Enums.ProposalItemCategory
+    sortOrder?: IntFilter<"ProposalItem"> | number
+    createdAt?: DateTimeFilter<"ProposalItem"> | Date | string
+  }
+
+  export type ProposalSectionUpsertWithWhereUniqueWithoutProposalInput = {
+    where: ProposalSectionWhereUniqueInput
+    update: XOR<ProposalSectionUpdateWithoutProposalInput, ProposalSectionUncheckedUpdateWithoutProposalInput>
+    create: XOR<ProposalSectionCreateWithoutProposalInput, ProposalSectionUncheckedCreateWithoutProposalInput>
+  }
+
+  export type ProposalSectionUpdateWithWhereUniqueWithoutProposalInput = {
+    where: ProposalSectionWhereUniqueInput
+    data: XOR<ProposalSectionUpdateWithoutProposalInput, ProposalSectionUncheckedUpdateWithoutProposalInput>
+  }
+
+  export type ProposalSectionUpdateManyWithWhereWithoutProposalInput = {
+    where: ProposalSectionScalarWhereInput
+    data: XOR<ProposalSectionUpdateManyMutationInput, ProposalSectionUncheckedUpdateManyWithoutProposalInput>
+  }
+
+  export type ProposalSectionScalarWhereInput = {
+    AND?: ProposalSectionScalarWhereInput | ProposalSectionScalarWhereInput[]
+    OR?: ProposalSectionScalarWhereInput[]
+    NOT?: ProposalSectionScalarWhereInput | ProposalSectionScalarWhereInput[]
+    id?: StringFilter<"ProposalSection"> | string
+    proposalId?: StringFilter<"ProposalSection"> | string
+    title?: StringFilter<"ProposalSection"> | string
+    content?: StringFilter<"ProposalSection"> | string
+    sortOrder?: IntFilter<"ProposalSection"> | number
+    createdAt?: DateTimeFilter<"ProposalSection"> | Date | string
+  }
+
+  export type ProposalContractUpsertWithWhereUniqueWithoutProposalInput = {
+    where: ProposalContractWhereUniqueInput
+    update: XOR<ProposalContractUpdateWithoutProposalInput, ProposalContractUncheckedUpdateWithoutProposalInput>
+    create: XOR<ProposalContractCreateWithoutProposalInput, ProposalContractUncheckedCreateWithoutProposalInput>
+  }
+
+  export type ProposalContractUpdateWithWhereUniqueWithoutProposalInput = {
+    where: ProposalContractWhereUniqueInput
+    data: XOR<ProposalContractUpdateWithoutProposalInput, ProposalContractUncheckedUpdateWithoutProposalInput>
+  }
+
+  export type ProposalContractUpdateManyWithWhereWithoutProposalInput = {
+    where: ProposalContractScalarWhereInput
+    data: XOR<ProposalContractUpdateManyMutationInput, ProposalContractUncheckedUpdateManyWithoutProposalInput>
+  }
+
+  export type ProposalContractScalarWhereInput = {
+    AND?: ProposalContractScalarWhereInput | ProposalContractScalarWhereInput[]
+    OR?: ProposalContractScalarWhereInput[]
+    NOT?: ProposalContractScalarWhereInput | ProposalContractScalarWhereInput[]
+    id?: StringFilter<"ProposalContract"> | string
+    proposalId?: StringFilter<"ProposalContract"> | string
+    title?: StringFilter<"ProposalContract"> | string
+    content?: StringFilter<"ProposalContract"> | string
+    createdAt?: DateTimeFilter<"ProposalContract"> | Date | string
+  }
+
+  export type ProposalCommentUpsertWithWhereUniqueWithoutProposalInput = {
+    where: ProposalCommentWhereUniqueInput
+    update: XOR<ProposalCommentUpdateWithoutProposalInput, ProposalCommentUncheckedUpdateWithoutProposalInput>
+    create: XOR<ProposalCommentCreateWithoutProposalInput, ProposalCommentUncheckedCreateWithoutProposalInput>
+  }
+
+  export type ProposalCommentUpdateWithWhereUniqueWithoutProposalInput = {
+    where: ProposalCommentWhereUniqueInput
+    data: XOR<ProposalCommentUpdateWithoutProposalInput, ProposalCommentUncheckedUpdateWithoutProposalInput>
+  }
+
+  export type ProposalCommentUpdateManyWithWhereWithoutProposalInput = {
+    where: ProposalCommentScalarWhereInput
+    data: XOR<ProposalCommentUpdateManyMutationInput, ProposalCommentUncheckedUpdateManyWithoutProposalInput>
+  }
+
+  export type ProposalCommentScalarWhereInput = {
+    AND?: ProposalCommentScalarWhereInput | ProposalCommentScalarWhereInput[]
+    OR?: ProposalCommentScalarWhereInput[]
+    NOT?: ProposalCommentScalarWhereInput | ProposalCommentScalarWhereInput[]
+    id?: StringFilter<"ProposalComment"> | string
+    proposalId?: StringFilter<"ProposalComment"> | string
+    authorName?: StringFilter<"ProposalComment"> | string
+    content?: StringFilter<"ProposalComment"> | string
+    createdAt?: DateTimeFilter<"ProposalComment"> | Date | string
+  }
+
+  export type ProposalCreateWithoutItemsInput = {
+    id?: string
+    title: string
+    proposalNumber: string
+    introduction?: string | null
+    eventVision?: string | null
+    themeConcept?: string | null
+    totalAmount: number
+    currency?: string
+    status?: $Enums.ProposalStatus
+    validUntil?: Date | string | null
+    pdfUrl?: string | null
+    publicToken: string
+    clientApproved?: boolean
+    clientApprovedAt?: Date | string | null
+    clientRejected?: boolean
+    rejectionReason?: string | null
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    booking: BookingCreateNestedOneWithoutProposalsInput
+    createdBy: UserCreateNestedOneWithoutProposalsInput
+    sections?: ProposalSectionCreateNestedManyWithoutProposalInput
+    contracts?: ProposalContractCreateNestedManyWithoutProposalInput
+    comments?: ProposalCommentCreateNestedManyWithoutProposalInput
+  }
+
+  export type ProposalUncheckedCreateWithoutItemsInput = {
+    id?: string
+    bookingId: string
+    title: string
+    proposalNumber: string
+    introduction?: string | null
+    eventVision?: string | null
+    themeConcept?: string | null
+    totalAmount: number
+    currency?: string
+    status?: $Enums.ProposalStatus
+    validUntil?: Date | string | null
+    pdfUrl?: string | null
+    publicToken: string
+    clientApproved?: boolean
+    clientApprovedAt?: Date | string | null
+    clientRejected?: boolean
+    rejectionReason?: string | null
+    notes?: string | null
+    createdById: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sections?: ProposalSectionUncheckedCreateNestedManyWithoutProposalInput
+    contracts?: ProposalContractUncheckedCreateNestedManyWithoutProposalInput
+    comments?: ProposalCommentUncheckedCreateNestedManyWithoutProposalInput
+  }
+
+  export type ProposalCreateOrConnectWithoutItemsInput = {
+    where: ProposalWhereUniqueInput
+    create: XOR<ProposalCreateWithoutItemsInput, ProposalUncheckedCreateWithoutItemsInput>
+  }
+
+  export type ProposalUpsertWithoutItemsInput = {
+    update: XOR<ProposalUpdateWithoutItemsInput, ProposalUncheckedUpdateWithoutItemsInput>
+    create: XOR<ProposalCreateWithoutItemsInput, ProposalUncheckedCreateWithoutItemsInput>
+    where?: ProposalWhereInput
+  }
+
+  export type ProposalUpdateToOneWithWhereWithoutItemsInput = {
+    where?: ProposalWhereInput
+    data: XOR<ProposalUpdateWithoutItemsInput, ProposalUncheckedUpdateWithoutItemsInput>
+  }
+
+  export type ProposalUpdateWithoutItemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    proposalNumber?: StringFieldUpdateOperationsInput | string
+    introduction?: NullableStringFieldUpdateOperationsInput | string | null
+    eventVision?: NullableStringFieldUpdateOperationsInput | string | null
+    themeConcept?: NullableStringFieldUpdateOperationsInput | string | null
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    status?: EnumProposalStatusFieldUpdateOperationsInput | $Enums.ProposalStatus
+    validUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    publicToken?: StringFieldUpdateOperationsInput | string
+    clientApproved?: BoolFieldUpdateOperationsInput | boolean
+    clientApprovedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clientRejected?: BoolFieldUpdateOperationsInput | boolean
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    booking?: BookingUpdateOneRequiredWithoutProposalsNestedInput
+    createdBy?: UserUpdateOneRequiredWithoutProposalsNestedInput
+    sections?: ProposalSectionUpdateManyWithoutProposalNestedInput
+    contracts?: ProposalContractUpdateManyWithoutProposalNestedInput
+    comments?: ProposalCommentUpdateManyWithoutProposalNestedInput
+  }
+
+  export type ProposalUncheckedUpdateWithoutItemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookingId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    proposalNumber?: StringFieldUpdateOperationsInput | string
+    introduction?: NullableStringFieldUpdateOperationsInput | string | null
+    eventVision?: NullableStringFieldUpdateOperationsInput | string | null
+    themeConcept?: NullableStringFieldUpdateOperationsInput | string | null
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    status?: EnumProposalStatusFieldUpdateOperationsInput | $Enums.ProposalStatus
+    validUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    publicToken?: StringFieldUpdateOperationsInput | string
+    clientApproved?: BoolFieldUpdateOperationsInput | boolean
+    clientApprovedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clientRejected?: BoolFieldUpdateOperationsInput | boolean
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdById?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sections?: ProposalSectionUncheckedUpdateManyWithoutProposalNestedInput
+    contracts?: ProposalContractUncheckedUpdateManyWithoutProposalNestedInput
+    comments?: ProposalCommentUncheckedUpdateManyWithoutProposalNestedInput
+  }
+
+  export type ProposalCreateWithoutSectionsInput = {
+    id?: string
+    title: string
+    proposalNumber: string
+    introduction?: string | null
+    eventVision?: string | null
+    themeConcept?: string | null
+    totalAmount: number
+    currency?: string
+    status?: $Enums.ProposalStatus
+    validUntil?: Date | string | null
+    pdfUrl?: string | null
+    publicToken: string
+    clientApproved?: boolean
+    clientApprovedAt?: Date | string | null
+    clientRejected?: boolean
+    rejectionReason?: string | null
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    booking: BookingCreateNestedOneWithoutProposalsInput
+    createdBy: UserCreateNestedOneWithoutProposalsInput
+    items?: ProposalItemCreateNestedManyWithoutProposalInput
+    contracts?: ProposalContractCreateNestedManyWithoutProposalInput
+    comments?: ProposalCommentCreateNestedManyWithoutProposalInput
+  }
+
+  export type ProposalUncheckedCreateWithoutSectionsInput = {
+    id?: string
+    bookingId: string
+    title: string
+    proposalNumber: string
+    introduction?: string | null
+    eventVision?: string | null
+    themeConcept?: string | null
+    totalAmount: number
+    currency?: string
+    status?: $Enums.ProposalStatus
+    validUntil?: Date | string | null
+    pdfUrl?: string | null
+    publicToken: string
+    clientApproved?: boolean
+    clientApprovedAt?: Date | string | null
+    clientRejected?: boolean
+    rejectionReason?: string | null
+    notes?: string | null
+    createdById: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    items?: ProposalItemUncheckedCreateNestedManyWithoutProposalInput
+    contracts?: ProposalContractUncheckedCreateNestedManyWithoutProposalInput
+    comments?: ProposalCommentUncheckedCreateNestedManyWithoutProposalInput
+  }
+
+  export type ProposalCreateOrConnectWithoutSectionsInput = {
+    where: ProposalWhereUniqueInput
+    create: XOR<ProposalCreateWithoutSectionsInput, ProposalUncheckedCreateWithoutSectionsInput>
+  }
+
+  export type ProposalUpsertWithoutSectionsInput = {
+    update: XOR<ProposalUpdateWithoutSectionsInput, ProposalUncheckedUpdateWithoutSectionsInput>
+    create: XOR<ProposalCreateWithoutSectionsInput, ProposalUncheckedCreateWithoutSectionsInput>
+    where?: ProposalWhereInput
+  }
+
+  export type ProposalUpdateToOneWithWhereWithoutSectionsInput = {
+    where?: ProposalWhereInput
+    data: XOR<ProposalUpdateWithoutSectionsInput, ProposalUncheckedUpdateWithoutSectionsInput>
+  }
+
+  export type ProposalUpdateWithoutSectionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    proposalNumber?: StringFieldUpdateOperationsInput | string
+    introduction?: NullableStringFieldUpdateOperationsInput | string | null
+    eventVision?: NullableStringFieldUpdateOperationsInput | string | null
+    themeConcept?: NullableStringFieldUpdateOperationsInput | string | null
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    status?: EnumProposalStatusFieldUpdateOperationsInput | $Enums.ProposalStatus
+    validUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    publicToken?: StringFieldUpdateOperationsInput | string
+    clientApproved?: BoolFieldUpdateOperationsInput | boolean
+    clientApprovedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clientRejected?: BoolFieldUpdateOperationsInput | boolean
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    booking?: BookingUpdateOneRequiredWithoutProposalsNestedInput
+    createdBy?: UserUpdateOneRequiredWithoutProposalsNestedInput
+    items?: ProposalItemUpdateManyWithoutProposalNestedInput
+    contracts?: ProposalContractUpdateManyWithoutProposalNestedInput
+    comments?: ProposalCommentUpdateManyWithoutProposalNestedInput
+  }
+
+  export type ProposalUncheckedUpdateWithoutSectionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookingId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    proposalNumber?: StringFieldUpdateOperationsInput | string
+    introduction?: NullableStringFieldUpdateOperationsInput | string | null
+    eventVision?: NullableStringFieldUpdateOperationsInput | string | null
+    themeConcept?: NullableStringFieldUpdateOperationsInput | string | null
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    status?: EnumProposalStatusFieldUpdateOperationsInput | $Enums.ProposalStatus
+    validUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    publicToken?: StringFieldUpdateOperationsInput | string
+    clientApproved?: BoolFieldUpdateOperationsInput | boolean
+    clientApprovedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clientRejected?: BoolFieldUpdateOperationsInput | boolean
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdById?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    items?: ProposalItemUncheckedUpdateManyWithoutProposalNestedInput
+    contracts?: ProposalContractUncheckedUpdateManyWithoutProposalNestedInput
+    comments?: ProposalCommentUncheckedUpdateManyWithoutProposalNestedInput
+  }
+
+  export type ProposalCreateWithoutContractsInput = {
+    id?: string
+    title: string
+    proposalNumber: string
+    introduction?: string | null
+    eventVision?: string | null
+    themeConcept?: string | null
+    totalAmount: number
+    currency?: string
+    status?: $Enums.ProposalStatus
+    validUntil?: Date | string | null
+    pdfUrl?: string | null
+    publicToken: string
+    clientApproved?: boolean
+    clientApprovedAt?: Date | string | null
+    clientRejected?: boolean
+    rejectionReason?: string | null
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    booking: BookingCreateNestedOneWithoutProposalsInput
+    createdBy: UserCreateNestedOneWithoutProposalsInput
+    items?: ProposalItemCreateNestedManyWithoutProposalInput
+    sections?: ProposalSectionCreateNestedManyWithoutProposalInput
+    comments?: ProposalCommentCreateNestedManyWithoutProposalInput
+  }
+
+  export type ProposalUncheckedCreateWithoutContractsInput = {
+    id?: string
+    bookingId: string
+    title: string
+    proposalNumber: string
+    introduction?: string | null
+    eventVision?: string | null
+    themeConcept?: string | null
+    totalAmount: number
+    currency?: string
+    status?: $Enums.ProposalStatus
+    validUntil?: Date | string | null
+    pdfUrl?: string | null
+    publicToken: string
+    clientApproved?: boolean
+    clientApprovedAt?: Date | string | null
+    clientRejected?: boolean
+    rejectionReason?: string | null
+    notes?: string | null
+    createdById: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    items?: ProposalItemUncheckedCreateNestedManyWithoutProposalInput
+    sections?: ProposalSectionUncheckedCreateNestedManyWithoutProposalInput
+    comments?: ProposalCommentUncheckedCreateNestedManyWithoutProposalInput
+  }
+
+  export type ProposalCreateOrConnectWithoutContractsInput = {
+    where: ProposalWhereUniqueInput
+    create: XOR<ProposalCreateWithoutContractsInput, ProposalUncheckedCreateWithoutContractsInput>
+  }
+
+  export type ProposalUpsertWithoutContractsInput = {
+    update: XOR<ProposalUpdateWithoutContractsInput, ProposalUncheckedUpdateWithoutContractsInput>
+    create: XOR<ProposalCreateWithoutContractsInput, ProposalUncheckedCreateWithoutContractsInput>
+    where?: ProposalWhereInput
+  }
+
+  export type ProposalUpdateToOneWithWhereWithoutContractsInput = {
+    where?: ProposalWhereInput
+    data: XOR<ProposalUpdateWithoutContractsInput, ProposalUncheckedUpdateWithoutContractsInput>
+  }
+
+  export type ProposalUpdateWithoutContractsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    proposalNumber?: StringFieldUpdateOperationsInput | string
+    introduction?: NullableStringFieldUpdateOperationsInput | string | null
+    eventVision?: NullableStringFieldUpdateOperationsInput | string | null
+    themeConcept?: NullableStringFieldUpdateOperationsInput | string | null
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    status?: EnumProposalStatusFieldUpdateOperationsInput | $Enums.ProposalStatus
+    validUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    publicToken?: StringFieldUpdateOperationsInput | string
+    clientApproved?: BoolFieldUpdateOperationsInput | boolean
+    clientApprovedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clientRejected?: BoolFieldUpdateOperationsInput | boolean
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    booking?: BookingUpdateOneRequiredWithoutProposalsNestedInput
+    createdBy?: UserUpdateOneRequiredWithoutProposalsNestedInput
+    items?: ProposalItemUpdateManyWithoutProposalNestedInput
+    sections?: ProposalSectionUpdateManyWithoutProposalNestedInput
+    comments?: ProposalCommentUpdateManyWithoutProposalNestedInput
+  }
+
+  export type ProposalUncheckedUpdateWithoutContractsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookingId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    proposalNumber?: StringFieldUpdateOperationsInput | string
+    introduction?: NullableStringFieldUpdateOperationsInput | string | null
+    eventVision?: NullableStringFieldUpdateOperationsInput | string | null
+    themeConcept?: NullableStringFieldUpdateOperationsInput | string | null
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    status?: EnumProposalStatusFieldUpdateOperationsInput | $Enums.ProposalStatus
+    validUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    publicToken?: StringFieldUpdateOperationsInput | string
+    clientApproved?: BoolFieldUpdateOperationsInput | boolean
+    clientApprovedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clientRejected?: BoolFieldUpdateOperationsInput | boolean
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdById?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    items?: ProposalItemUncheckedUpdateManyWithoutProposalNestedInput
+    sections?: ProposalSectionUncheckedUpdateManyWithoutProposalNestedInput
+    comments?: ProposalCommentUncheckedUpdateManyWithoutProposalNestedInput
+  }
+
+  export type ProposalCreateWithoutCommentsInput = {
+    id?: string
+    title: string
+    proposalNumber: string
+    introduction?: string | null
+    eventVision?: string | null
+    themeConcept?: string | null
+    totalAmount: number
+    currency?: string
+    status?: $Enums.ProposalStatus
+    validUntil?: Date | string | null
+    pdfUrl?: string | null
+    publicToken: string
+    clientApproved?: boolean
+    clientApprovedAt?: Date | string | null
+    clientRejected?: boolean
+    rejectionReason?: string | null
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    booking: BookingCreateNestedOneWithoutProposalsInput
+    createdBy: UserCreateNestedOneWithoutProposalsInput
+    items?: ProposalItemCreateNestedManyWithoutProposalInput
+    sections?: ProposalSectionCreateNestedManyWithoutProposalInput
+    contracts?: ProposalContractCreateNestedManyWithoutProposalInput
+  }
+
+  export type ProposalUncheckedCreateWithoutCommentsInput = {
+    id?: string
+    bookingId: string
+    title: string
+    proposalNumber: string
+    introduction?: string | null
+    eventVision?: string | null
+    themeConcept?: string | null
+    totalAmount: number
+    currency?: string
+    status?: $Enums.ProposalStatus
+    validUntil?: Date | string | null
+    pdfUrl?: string | null
+    publicToken: string
+    clientApproved?: boolean
+    clientApprovedAt?: Date | string | null
+    clientRejected?: boolean
+    rejectionReason?: string | null
+    notes?: string | null
+    createdById: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    items?: ProposalItemUncheckedCreateNestedManyWithoutProposalInput
+    sections?: ProposalSectionUncheckedCreateNestedManyWithoutProposalInput
+    contracts?: ProposalContractUncheckedCreateNestedManyWithoutProposalInput
+  }
+
+  export type ProposalCreateOrConnectWithoutCommentsInput = {
+    where: ProposalWhereUniqueInput
+    create: XOR<ProposalCreateWithoutCommentsInput, ProposalUncheckedCreateWithoutCommentsInput>
+  }
+
+  export type ProposalUpsertWithoutCommentsInput = {
+    update: XOR<ProposalUpdateWithoutCommentsInput, ProposalUncheckedUpdateWithoutCommentsInput>
+    create: XOR<ProposalCreateWithoutCommentsInput, ProposalUncheckedCreateWithoutCommentsInput>
+    where?: ProposalWhereInput
+  }
+
+  export type ProposalUpdateToOneWithWhereWithoutCommentsInput = {
+    where?: ProposalWhereInput
+    data: XOR<ProposalUpdateWithoutCommentsInput, ProposalUncheckedUpdateWithoutCommentsInput>
+  }
+
+  export type ProposalUpdateWithoutCommentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    proposalNumber?: StringFieldUpdateOperationsInput | string
+    introduction?: NullableStringFieldUpdateOperationsInput | string | null
+    eventVision?: NullableStringFieldUpdateOperationsInput | string | null
+    themeConcept?: NullableStringFieldUpdateOperationsInput | string | null
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    status?: EnumProposalStatusFieldUpdateOperationsInput | $Enums.ProposalStatus
+    validUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    publicToken?: StringFieldUpdateOperationsInput | string
+    clientApproved?: BoolFieldUpdateOperationsInput | boolean
+    clientApprovedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clientRejected?: BoolFieldUpdateOperationsInput | boolean
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    booking?: BookingUpdateOneRequiredWithoutProposalsNestedInput
+    createdBy?: UserUpdateOneRequiredWithoutProposalsNestedInput
+    items?: ProposalItemUpdateManyWithoutProposalNestedInput
+    sections?: ProposalSectionUpdateManyWithoutProposalNestedInput
+    contracts?: ProposalContractUpdateManyWithoutProposalNestedInput
+  }
+
+  export type ProposalUncheckedUpdateWithoutCommentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookingId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    proposalNumber?: StringFieldUpdateOperationsInput | string
+    introduction?: NullableStringFieldUpdateOperationsInput | string | null
+    eventVision?: NullableStringFieldUpdateOperationsInput | string | null
+    themeConcept?: NullableStringFieldUpdateOperationsInput | string | null
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    status?: EnumProposalStatusFieldUpdateOperationsInput | $Enums.ProposalStatus
+    validUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    publicToken?: StringFieldUpdateOperationsInput | string
+    clientApproved?: BoolFieldUpdateOperationsInput | boolean
+    clientApprovedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clientRejected?: BoolFieldUpdateOperationsInput | boolean
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdById?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    items?: ProposalItemUncheckedUpdateManyWithoutProposalNestedInput
+    sections?: ProposalSectionUncheckedUpdateManyWithoutProposalNestedInput
+    contracts?: ProposalContractUncheckedUpdateManyWithoutProposalNestedInput
+  }
+
+  export type UserCreateWithoutProposalTemplatesInput = {
+    id?: string
+    name: string
+    email: string
+    password: string
+    role?: $Enums.UserRole
+    isActive?: boolean
+    avatarUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    proposals?: ProposalCreateNestedManyWithoutCreatedByInput
+  }
+
+  export type UserUncheckedCreateWithoutProposalTemplatesInput = {
+    id?: string
+    name: string
+    email: string
+    password: string
+    role?: $Enums.UserRole
+    isActive?: boolean
+    avatarUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    proposals?: ProposalUncheckedCreateNestedManyWithoutCreatedByInput
+  }
+
+  export type UserCreateOrConnectWithoutProposalTemplatesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutProposalTemplatesInput, UserUncheckedCreateWithoutProposalTemplatesInput>
+  }
+
+  export type UserUpsertWithoutProposalTemplatesInput = {
+    update: XOR<UserUpdateWithoutProposalTemplatesInput, UserUncheckedUpdateWithoutProposalTemplatesInput>
+    create: XOR<UserCreateWithoutProposalTemplatesInput, UserUncheckedCreateWithoutProposalTemplatesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutProposalTemplatesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutProposalTemplatesInput, UserUncheckedUpdateWithoutProposalTemplatesInput>
+  }
+
+  export type UserUpdateWithoutProposalTemplatesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    proposals?: ProposalUpdateManyWithoutCreatedByNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutProposalTemplatesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    proposals?: ProposalUncheckedUpdateManyWithoutCreatedByNestedInput
+  }
+
+  export type ProposalCreateManyCreatedByInput = {
+    id?: string
+    bookingId: string
+    title: string
+    proposalNumber: string
+    introduction?: string | null
+    eventVision?: string | null
+    themeConcept?: string | null
+    totalAmount: number
+    currency?: string
+    status?: $Enums.ProposalStatus
+    validUntil?: Date | string | null
+    pdfUrl?: string | null
+    publicToken: string
+    clientApproved?: boolean
+    clientApprovedAt?: Date | string | null
+    clientRejected?: boolean
+    rejectionReason?: string | null
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProposalTemplateCreateManyCreatedByInput = {
+    id?: string
+    name: string
+    description?: string | null
+    eventType?: $Enums.EventType | null
+    coverImage?: string | null
+    sections: string
+    contractTerms?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProposalUpdateWithoutCreatedByInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    proposalNumber?: StringFieldUpdateOperationsInput | string
+    introduction?: NullableStringFieldUpdateOperationsInput | string | null
+    eventVision?: NullableStringFieldUpdateOperationsInput | string | null
+    themeConcept?: NullableStringFieldUpdateOperationsInput | string | null
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    status?: EnumProposalStatusFieldUpdateOperationsInput | $Enums.ProposalStatus
+    validUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    publicToken?: StringFieldUpdateOperationsInput | string
+    clientApproved?: BoolFieldUpdateOperationsInput | boolean
+    clientApprovedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clientRejected?: BoolFieldUpdateOperationsInput | boolean
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    booking?: BookingUpdateOneRequiredWithoutProposalsNestedInput
+    items?: ProposalItemUpdateManyWithoutProposalNestedInput
+    sections?: ProposalSectionUpdateManyWithoutProposalNestedInput
+    contracts?: ProposalContractUpdateManyWithoutProposalNestedInput
+    comments?: ProposalCommentUpdateManyWithoutProposalNestedInput
+  }
+
+  export type ProposalUncheckedUpdateWithoutCreatedByInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookingId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    proposalNumber?: StringFieldUpdateOperationsInput | string
+    introduction?: NullableStringFieldUpdateOperationsInput | string | null
+    eventVision?: NullableStringFieldUpdateOperationsInput | string | null
+    themeConcept?: NullableStringFieldUpdateOperationsInput | string | null
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    status?: EnumProposalStatusFieldUpdateOperationsInput | $Enums.ProposalStatus
+    validUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    publicToken?: StringFieldUpdateOperationsInput | string
+    clientApproved?: BoolFieldUpdateOperationsInput | boolean
+    clientApprovedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clientRejected?: BoolFieldUpdateOperationsInput | boolean
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    items?: ProposalItemUncheckedUpdateManyWithoutProposalNestedInput
+    sections?: ProposalSectionUncheckedUpdateManyWithoutProposalNestedInput
+    contracts?: ProposalContractUncheckedUpdateManyWithoutProposalNestedInput
+    comments?: ProposalCommentUncheckedUpdateManyWithoutProposalNestedInput
+  }
+
+  export type ProposalUncheckedUpdateManyWithoutCreatedByInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookingId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    proposalNumber?: StringFieldUpdateOperationsInput | string
+    introduction?: NullableStringFieldUpdateOperationsInput | string | null
+    eventVision?: NullableStringFieldUpdateOperationsInput | string | null
+    themeConcept?: NullableStringFieldUpdateOperationsInput | string | null
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    status?: EnumProposalStatusFieldUpdateOperationsInput | $Enums.ProposalStatus
+    validUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    publicToken?: StringFieldUpdateOperationsInput | string
+    clientApproved?: BoolFieldUpdateOperationsInput | boolean
+    clientApprovedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clientRejected?: BoolFieldUpdateOperationsInput | boolean
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalTemplateUpdateWithoutCreatedByInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    eventType?: NullableEnumEventTypeFieldUpdateOperationsInput | $Enums.EventType | null
+    coverImage?: NullableStringFieldUpdateOperationsInput | string | null
+    sections?: StringFieldUpdateOperationsInput | string
+    contractTerms?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalTemplateUncheckedUpdateWithoutCreatedByInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    eventType?: NullableEnumEventTypeFieldUpdateOperationsInput | $Enums.EventType | null
+    coverImage?: NullableStringFieldUpdateOperationsInput | string | null
+    sections?: StringFieldUpdateOperationsInput | string
+    contractTerms?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalTemplateUncheckedUpdateManyWithoutCreatedByInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    eventType?: NullableEnumEventTypeFieldUpdateOperationsInput | $Enums.EventType | null
+    coverImage?: NullableStringFieldUpdateOperationsInput | string | null
+    sections?: StringFieldUpdateOperationsInput | string
+    contractTerms?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type MessageCreateManyBookingInput = {
     id?: string
     sender: $Enums.MessageSender
@@ -19542,6 +29921,29 @@ export namespace Prisma {
     publishedAt?: Date | string | null
     isPublished?: boolean
     pdfUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProposalCreateManyBookingInput = {
+    id?: string
+    title: string
+    proposalNumber: string
+    introduction?: string | null
+    eventVision?: string | null
+    themeConcept?: string | null
+    totalAmount: number
+    currency?: string
+    status?: $Enums.ProposalStatus
+    validUntil?: Date | string | null
+    pdfUrl?: string | null
+    publicToken: string
+    clientApproved?: boolean
+    clientApprovedAt?: Date | string | null
+    clientRejected?: boolean
+    rejectionReason?: string | null
+    notes?: string | null
+    createdById: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -19677,6 +30079,83 @@ export namespace Prisma {
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isPublished?: BoolFieldUpdateOperationsInput | boolean
     pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalUpdateWithoutBookingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    proposalNumber?: StringFieldUpdateOperationsInput | string
+    introduction?: NullableStringFieldUpdateOperationsInput | string | null
+    eventVision?: NullableStringFieldUpdateOperationsInput | string | null
+    themeConcept?: NullableStringFieldUpdateOperationsInput | string | null
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    status?: EnumProposalStatusFieldUpdateOperationsInput | $Enums.ProposalStatus
+    validUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    publicToken?: StringFieldUpdateOperationsInput | string
+    clientApproved?: BoolFieldUpdateOperationsInput | boolean
+    clientApprovedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clientRejected?: BoolFieldUpdateOperationsInput | boolean
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdBy?: UserUpdateOneRequiredWithoutProposalsNestedInput
+    items?: ProposalItemUpdateManyWithoutProposalNestedInput
+    sections?: ProposalSectionUpdateManyWithoutProposalNestedInput
+    contracts?: ProposalContractUpdateManyWithoutProposalNestedInput
+    comments?: ProposalCommentUpdateManyWithoutProposalNestedInput
+  }
+
+  export type ProposalUncheckedUpdateWithoutBookingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    proposalNumber?: StringFieldUpdateOperationsInput | string
+    introduction?: NullableStringFieldUpdateOperationsInput | string | null
+    eventVision?: NullableStringFieldUpdateOperationsInput | string | null
+    themeConcept?: NullableStringFieldUpdateOperationsInput | string | null
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    status?: EnumProposalStatusFieldUpdateOperationsInput | $Enums.ProposalStatus
+    validUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    publicToken?: StringFieldUpdateOperationsInput | string
+    clientApproved?: BoolFieldUpdateOperationsInput | boolean
+    clientApprovedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clientRejected?: BoolFieldUpdateOperationsInput | boolean
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdById?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    items?: ProposalItemUncheckedUpdateManyWithoutProposalNestedInput
+    sections?: ProposalSectionUncheckedUpdateManyWithoutProposalNestedInput
+    contracts?: ProposalContractUncheckedUpdateManyWithoutProposalNestedInput
+    comments?: ProposalCommentUncheckedUpdateManyWithoutProposalNestedInput
+  }
+
+  export type ProposalUncheckedUpdateManyWithoutBookingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    proposalNumber?: StringFieldUpdateOperationsInput | string
+    introduction?: NullableStringFieldUpdateOperationsInput | string | null
+    eventVision?: NullableStringFieldUpdateOperationsInput | string | null
+    themeConcept?: NullableStringFieldUpdateOperationsInput | string | null
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    status?: EnumProposalStatusFieldUpdateOperationsInput | $Enums.ProposalStatus
+    validUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    publicToken?: StringFieldUpdateOperationsInput | string
+    clientApproved?: BoolFieldUpdateOperationsInput | boolean
+    clientApprovedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    clientRejected?: BoolFieldUpdateOperationsInput | boolean
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdById?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19919,11 +30398,151 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ProposalItemCreateManyProposalInput = {
+    id?: string
+    title: string
+    description?: string | null
+    quantity?: number
+    unitPrice: number
+    totalPrice: number
+    category: $Enums.ProposalItemCategory
+    sortOrder?: number
+    createdAt?: Date | string
+  }
+
+  export type ProposalSectionCreateManyProposalInput = {
+    id?: string
+    title: string
+    content: string
+    sortOrder?: number
+    createdAt?: Date | string
+  }
+
+  export type ProposalContractCreateManyProposalInput = {
+    id?: string
+    title: string
+    content: string
+    createdAt?: Date | string
+  }
+
+  export type ProposalCommentCreateManyProposalInput = {
+    id?: string
+    authorName: string
+    content: string
+    createdAt?: Date | string
+  }
+
+  export type ProposalItemUpdateWithoutProposalInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    category?: EnumProposalItemCategoryFieldUpdateOperationsInput | $Enums.ProposalItemCategory
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalItemUncheckedUpdateWithoutProposalInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    category?: EnumProposalItemCategoryFieldUpdateOperationsInput | $Enums.ProposalItemCategory
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalItemUncheckedUpdateManyWithoutProposalInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    category?: EnumProposalItemCategoryFieldUpdateOperationsInput | $Enums.ProposalItemCategory
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalSectionUpdateWithoutProposalInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalSectionUncheckedUpdateWithoutProposalInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalSectionUncheckedUpdateManyWithoutProposalInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalContractUpdateWithoutProposalInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalContractUncheckedUpdateWithoutProposalInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalContractUncheckedUpdateManyWithoutProposalInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalCommentUpdateWithoutProposalInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authorName?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalCommentUncheckedUpdateWithoutProposalInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authorName?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProposalCommentUncheckedUpdateManyWithoutProposalInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    authorName?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
 
 
   /**
    * Aliases for legacy arg types
    */
+    /**
+     * @deprecated Use UserCountOutputTypeDefaultArgs instead
+     */
+    export type UserCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use BookingCountOutputTypeDefaultArgs instead
      */
@@ -19940,6 +30559,10 @@ export namespace Prisma {
      * @deprecated Use GiftRegistryCountOutputTypeDefaultArgs instead
      */
     export type GiftRegistryCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = GiftRegistryCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ProposalCountOutputTypeDefaultArgs instead
+     */
+    export type ProposalCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ProposalCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use UserDefaultArgs instead
      */
@@ -19984,6 +30607,30 @@ export namespace Prisma {
      * @deprecated Use DesignAssetDefaultArgs instead
      */
     export type DesignAssetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = DesignAssetDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ProposalDefaultArgs instead
+     */
+    export type ProposalArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ProposalDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ProposalItemDefaultArgs instead
+     */
+    export type ProposalItemArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ProposalItemDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ProposalSectionDefaultArgs instead
+     */
+    export type ProposalSectionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ProposalSectionDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ProposalContractDefaultArgs instead
+     */
+    export type ProposalContractArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ProposalContractDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ProposalCommentDefaultArgs instead
+     */
+    export type ProposalCommentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ProposalCommentDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ProposalTemplateDefaultArgs instead
+     */
+    export type ProposalTemplateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ProposalTemplateDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

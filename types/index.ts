@@ -293,3 +293,159 @@ export interface NavItem {
   href?: string;
   dropdown?: DropdownItem[];
 }
+
+// ─────────────────────────────────────────
+// PROPOSAL SYSTEM
+// ─────────────────────────────────────────
+
+export type ProposalStatus =
+  | "DRAFT"
+  | "SENT"
+  | "VIEWED"
+  | "APPROVED"
+  | "REJECTED"
+  | "EXPIRED";
+
+export type ProposalItemCategory =
+  | "DECORATION"
+  | "CATERING"
+  | "PHOTOGRAPHY"
+  | "VENUE"
+  | "ENTERTAINMENT"
+  | "FLORAL"
+  | "LIGHTING"
+  | "TRANSPORT"
+  | "COORDINATION"
+  | "CUSTOM";
+
+export interface ProposalRecord {
+  id: string;
+  bookingId: string;
+  title: string;
+  proposalNumber: string;
+  introduction: string | null;
+  eventVision: string | null;
+  themeConcept: string | null;
+  totalAmount: number;
+  currency: string;
+  status: ProposalStatus;
+  validUntil: string | null;
+  pdfUrl: string | null;
+  publicToken: string;
+  clientApproved: boolean;
+  clientApprovedAt: string | null;
+  clientRejected: boolean;
+  rejectionReason: string | null;
+  notes: string | null;
+  createdById: string;
+  createdAt: string;
+  updatedAt: string;
+  booking?: {
+    id: string;
+    clientName: string;
+    clientEmail: string;
+    clientPhone: string;
+    eventType: string;
+    eventDate: string;
+    location?: string;
+    guestCount?: number | null;
+    status?: string;
+  };
+  createdBy?: {
+    id: string;
+    name: string;
+    email: string;
+  };
+  items?: ProposalItemRecord[];
+  sections?: ProposalSectionRecord[];
+  contracts?: ProposalContractRecord[];
+  comments?: ProposalCommentRecord[];
+  _count?: {
+    comments: number;
+  };
+}
+
+export interface ProposalItemRecord {
+  id: string;
+  proposalId: string;
+  title: string;
+  description: string | null;
+  quantity: number;
+  unitPrice: number;
+  totalPrice: number;
+  category: ProposalItemCategory;
+  sortOrder: number;
+  createdAt: string;
+}
+
+export interface ProposalSectionRecord {
+  id: string;
+  proposalId: string;
+  title: string;
+  content: string;
+  sortOrder: number;
+  createdAt: string;
+}
+
+export interface ProposalContractRecord {
+  id: string;
+  proposalId: string;
+  title: string;
+  content: string;
+  createdAt: string;
+}
+
+export interface ProposalCommentRecord {
+  id: string;
+  proposalId: string;
+  authorName: string;
+  content: string;
+  createdAt: string;
+}
+
+export interface ProposalTemplateRecord {
+  id: string;
+  name: string;
+  description: string | null;
+  eventType: string | null;
+  coverImage: string | null;
+  sections: string; // JSON string
+  contractTerms: string | null;
+  isActive: boolean;
+  createdAt: string;
+}
+
+export const PROPOSAL_STATUS_LABELS: Record<string, string> = {
+  DRAFT: "Draft",
+  SENT: "Sent",
+  VIEWED: "Viewed",
+  APPROVED: "Approved",
+  REJECTED: "Rejected",
+  EXPIRED: "Expired",
+};
+
+export const PROPOSAL_ITEM_CATEGORY_LABELS: Record<string, string> = {
+  DECORATION: "Decoration",
+  CATERING: "Catering",
+  PHOTOGRAPHY: "Photography",
+  VENUE: "Venue",
+  ENTERTAINMENT: "Entertainment",
+  FLORAL: "Floral",
+  LIGHTING: "Lighting",
+  TRANSPORT: "Transport",
+  COORDINATION: "Coordination",
+  CUSTOM: "Custom",
+};
+
+export const PROPOSAL_ITEM_CATEGORIES = [
+  "DECORATION",
+  "CATERING",
+  "PHOTOGRAPHY",
+  "VENUE",
+  "ENTERTAINMENT",
+  "FLORAL",
+  "LIGHTING",
+  "TRANSPORT",
+  "COORDINATION",
+  "CUSTOM",
+] as const;

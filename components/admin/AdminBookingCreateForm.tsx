@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { prisma } from "@/lib/prisma";
 import { bookingFormSchema } from "@/lib/validations";
 import { EVENT_TYPE_LABELS, BUDGET_LABELS } from "@/types";
 import { Loader2, CheckCircle } from "lucide-react";
@@ -95,30 +94,20 @@ export function AdminBookingCreateForm() {
     try {
       const validated = bookingFormSchema.parse(formData);
 
-      // Create booking via Prisma
-      const booking = await prisma.booking.create({
-        data: {
-          clientName: validated.clientName,
-          clientEmail: validated.clientEmail,
-          clientPhone: validated.clientPhone,
-          eventType: validated.eventType,
-          eventDate: new Date(validated.eventDate),
-          location: validated.location,
-          guestCount: validated.guestCount ?? null,
-          budgetRange: validated.budgetRange,
-          notes: validated.notes || null,
-          status: "NEW_REQUEST",
+      // Create booking via API
+      const response = await fetch("/api/bookings", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
+        body: JSON.stringify(validated),
       });
 
-      // Create initial system message
-      await prisma.message.create({
-        data: {
-          bookingId: booking.id,
-          sender: "SYSTEM",
-          content: "New booking request received. Awaiting review.",
-        },
-      });
+      const result = await response.json();
+
+      if (!result.success) {
+        throw new Error(result.error || "Failed to create booking");
+      }
 
       setIsSuccess(true);
       setFormData(initialFormData);

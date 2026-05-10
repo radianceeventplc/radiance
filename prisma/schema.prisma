@@ -29,6 +29,9 @@ model User {
 
   createdAt DateTime   @default(now())
   updatedAt DateTime   @default(now()) @updatedAt
+
+  proposals        Proposal[]
+  proposalTemplates ProposalTemplate[]
 }
 
 // ─────────────────────────────────────────
@@ -72,6 +75,9 @@ model Booking {
   // Timestamps
   createdAt     DateTime        @default(now())
   updatedAt     DateTime        @updatedAt
+
+  // Proposals
+  proposals     Proposal[]
 }
 
 enum EventType {
@@ -339,4 +345,141 @@ enum AssetCategory {
   FRAME
   ORNAMENT
   TEXTURE
+}
+
+// ─────────────────────────────────────────
+// PROPOSAL & QUOTATION SYSTEM
+// ─────────────────────────────────────────
+
+enum ProposalStatus {
+  DRAFT
+  SENT
+  VIEWED
+  APPROVED
+  REJECTED
+  EXPIRED
+}
+
+enum ProposalItemCategory {
+  DECORATION
+  CATERING
+  PHOTOGRAPHY
+  VENUE
+  ENTERTAINMENT
+  FLORAL
+  LIGHTING
+  TRANSPORT
+  COORDINATION
+  CUSTOM
+}
+
+model Proposal {
+  id              String          @id @default(cuid())
+
+  bookingId       String
+  booking         Booking         @relation(fields: [bookingId], references: [id])
+
+  title           String
+  proposalNumber  String          @unique
+  introduction    String?         @db.Text
+  eventVision     String?         @db.Text
+  themeConcept    String?         @db.Text
+
+  totalAmount     Float
+  currency        String          @default("ETB")
+  status          ProposalStatus  @default(DRAFT)
+  validUntil      DateTime?
+
+  pdfUrl          String?
+  publicToken     String          @unique
+  clientApproved  Boolean         @default(false)
+  clientApprovedAt DateTime?
+  clientRejected  Boolean         @default(false)
+  rejectionReason String?
+
+  notes           String?         @db.Text
+
+  createdById     String
+  createdBy       User            @relation(fields: [createdById], references: [id])
+
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+
+  items           ProposalItem[]
+  sections        ProposalSection[]
+  contracts       ProposalContract[]
+  comments        ProposalComment[]
+}
+
+model ProposalItem {
+  id          String              @id @default(cuid())
+
+  proposalId  String
+  proposal    Proposal            @relation(fields: [proposalId], references: [id], onDelete: Cascade)
+
+  title       String
+  description String?
+  quantity    Int                 @default(1)
+  unitPrice   Float
+  totalPrice  Float
+  category    ProposalItemCategory
+  sortOrder   Int                 @default(0)
+
+  createdAt   DateTime            @default(now())
+}
+
+model ProposalSection {
+  id          String              @id @default(cuid())
+
+  proposalId  String
+  proposal    Proposal            @relation(fields: [proposalId], references: [id], onDelete: Cascade)
+
+  title       String
+  content     String              @db.Text
+  sortOrder   Int                 @default(0)
+
+  createdAt   DateTime            @default(now())
+}
+
+model ProposalContract {
+  id          String              @id @default(cuid())
+
+  proposalId  String
+  proposal    Proposal            @relation(fields: [proposalId], references: [id], onDelete: Cascade)
+
+  title       String
+  content     String              @db.Text
+
+  createdAt   DateTime            @default(now())
+}
+
+model ProposalComment {
+  id          String              @id @default(cuid())
+
+  proposalId  String
+  proposal    Proposal            @relation(fields: [proposalId], references: [id], onDelete: Cascade)
+
+  authorName  String
+  content     String              @db.Text
+
+  createdAt   DateTime            @default(now())
+}
+
+model ProposalTemplate {
+  id            String            @id @default(cuid())
+
+  name          String
+  description   String?
+  eventType     EventType?
+  coverImage    String?
+
+  sections      String            @db.Text    // JSON array of template sections
+  contractTerms String?           @db.Text
+
+  isActive      Boolean           @default(true)
+  createdById   String
+  createdBy     User              @relation(fields: [createdById], references: [id])
+
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
 }
