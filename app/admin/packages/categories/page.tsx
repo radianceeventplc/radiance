@@ -44,7 +44,7 @@ export default function AdminPackageCategoriesPage() {
     setLoading(true);
     setError("");
     try {
-      const response = await fetch("/api/package-categories?includeInactive=true");
+      const response = await fetch("/api/admin/package-categories?includeInactive=true");
       const result = await response.json();
       if (!response.ok) throw new Error(result.error || "Could not load categories");
       setCategories(result.data ?? []);

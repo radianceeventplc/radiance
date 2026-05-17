@@ -195,7 +195,10 @@ model Package {
   updatedAt     DateTime        @updatedAt
 }
 
-// WEDDING DIGITAL EXPERIENCE
+// ════════════════════════════════════════════
+// WEDDING DIGITAL CARD / INVITATION SYSTEM
+// ════════════════════════════════════════════
+
 model WeddingInvitation {
   id             String          @id @default(cuid())
 
@@ -242,11 +245,69 @@ model WeddingInvitation {
   createdAt      DateTime        @default(now())
   updatedAt      DateTime        @updatedAt
 
+  // NEW RELATIONS for card content
+  invitationMessage   InvitationMessage?
+  loveStories         LoveStory[]
+  programItems        ProgramItem[]
+  venueDetails        VenueDetail?
+
   gifts          GiftRegistry[]
   reservations   GiftReservation[]
   rsvps          RSVP[]
 }
 
+// ── NEW: Invitation message (the main text) ──
+model InvitationMessage {
+  id        String   @id @default(cuid())
+  weddingId String   @unique
+  wedding   WeddingInvitation @relation(fields: [weddingId], references: [id], onDelete: Cascade)
+  preline   String   @default("We are getting married")
+  message   String   @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ── NEW: Love Story timeline entries ──
+model LoveStory {
+  id          String   @id @default(cuid())
+  weddingId   String
+  wedding     WeddingInvitation @relation(fields: [weddingId], references: [id], onDelete: Cascade)
+  year        String
+  title       String
+  description String   @db.Text
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ── NEW: Day Program / Schedule items ──
+model ProgramItem {
+  id          String   @id @default(cuid())
+  weddingId   String
+  wedding     WeddingInvitation @relation(fields: [weddingId], references: [id], onDelete: Cascade)
+  time        String
+  title       String
+  description String   @db.Text @default("")
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ── NEW: Venue details (enhanced) ──
+model VenueDetail {
+  id             String @id @default(cuid())
+  weddingId      String @unique
+  wedding        WeddingInvitation @relation(fields: [weddingId], references: [id], onDelete: Cascade)
+  name           String
+  address        String
+  googleMapsLink String?
+  eventTime      String @default("4:30 PM – Late")
+  dressCode      String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+// ── EXISTING: RSVP responses ──
 model RSVP {
   id             String            @id @default(cuid())
 
@@ -261,6 +322,7 @@ model RSVP {
   createdAt      DateTime          @default(now())
 }
 
+// ── EXISTING: Gift registry ──
 model GiftRegistry {
   id             String            @id @default(cuid())
 

@@ -249,6 +249,49 @@ exports.Prisma.WeddingInvitationScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.InvitationMessageScalarFieldEnum = {
+  id: 'id',
+  weddingId: 'weddingId',
+  preline: 'preline',
+  message: 'message',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.LoveStoryScalarFieldEnum = {
+  id: 'id',
+  weddingId: 'weddingId',
+  year: 'year',
+  title: 'title',
+  description: 'description',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ProgramItemScalarFieldEnum = {
+  id: 'id',
+  weddingId: 'weddingId',
+  time: 'time',
+  title: 'title',
+  description: 'description',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.VenueDetailScalarFieldEnum = {
+  id: 'id',
+  weddingId: 'weddingId',
+  name: 'name',
+  address: 'address',
+  googleMapsLink: 'googleMapsLink',
+  eventTime: 'eventTime',
+  dressCode: 'dressCode',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.RSVPScalarFieldEnum = {
   id: 'id',
   invitationId: 'invitationId',
@@ -499,6 +542,10 @@ exports.Prisma.ModelName = {
   PackageCategory: 'PackageCategory',
   Package: 'Package',
   WeddingInvitation: 'WeddingInvitation',
+  InvitationMessage: 'InvitationMessage',
+  LoveStory: 'LoveStory',
+  ProgramItem: 'ProgramItem',
+  VenueDetail: 'VenueDetail',
   RSVP: 'RSVP',
   GiftRegistry: 'GiftRegistry',
   GiftReservation: 'GiftReservation',

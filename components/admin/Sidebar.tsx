@@ -16,6 +16,7 @@ import {
   X,
   LogOut,
   FileText,
+  PenSquare,
 } from "lucide-react";
 
 const navItems = [
@@ -23,6 +24,7 @@ const navItems = [
   { label: "Bookings", href: "/admin/bookings", icon: CalendarCheck },
   { label: "Proposals", href: "/admin/proposals", icon: FileText },
   { label: "Weddings", href: "/admin/weddings", icon: Heart },
+  { label: "Card Design", href: "/admin/card-design", icon: PenSquare },
   { label: "Gallery", href: "/admin/gallery", icon: Image },
   { label: "Packages", href: "/admin/packages", icon: Package },
   { label: "Users", href: "/admin/users", icon: Users },
@@ -54,7 +56,7 @@ export function Sidebar() {
       {/* Sidebar */}
       <aside
         className={cn(
-          "fixed top-0 left-0 z-40 h-full w-64 bg-white border-r border-gray-200 transform transition-transform duration-200 ease-in-out",
+          "fixed top-0 left-0 z-40 h-full w-64 bg-white border-r border-gray-200 transform transition-transform duration-200 ease-in-out overflow-y-auto",
           mobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         )}
       >

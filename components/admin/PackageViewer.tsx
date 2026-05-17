@@ -24,7 +24,7 @@ export function PackageViewer() {
     try {
       const [packagesResponse, categoriesResponse] = await Promise.all([
         fetch("/api/admin/packages"),
-        fetch("/api/package-categories?includeInactive=true"),
+        fetch("/api/admin/package-categories?includeInactive=true"),
       ]);
 
       const [packagesData, categoriesData] = await Promise.all([

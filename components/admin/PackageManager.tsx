@@ -101,7 +101,7 @@ export function PackageManager() {
     try {
       const [packageResponse, categoryResponse] = await Promise.all([
         fetch("/api/admin/packages"),
-        fetch("/api/package-categories?includeInactive=true"),
+        fetch("/api/admin/package-categories?includeInactive=true"),
       ]);
       const [packageResult, categoryResult] = await Promise.all([
         packageResponse.json(),
