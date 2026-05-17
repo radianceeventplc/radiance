@@ -40,6 +40,8 @@ let group: THREE.Group | null = null;
 
     (async () => {
 
+      scene = new THREE.Scene();
+
       const w = container.clientWidth || 300;
       const h = container.clientHeight || 300;
 
