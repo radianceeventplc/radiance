@@ -36,14 +36,14 @@ export default function Cake3D() {
     let camera: THREE.PerspectiveCamera | null = null;
     let renderer: THREE.WebGLRenderer | null = null;
     let animationId: number | null = null;
-    let group: THREE.Group | null = null;
+let group: THREE.Group | null = null;
 
-(() => {
+    (async () => {
 
       const w = container.clientWidth || 300;
       const h = container.clientHeight || 300;
 
-camera = new THREE.PerspectiveCamera(34, w / h, 0.1, 10);
+      camera = new THREE.PerspectiveCamera(34, w / h, 0.1, 10);
       camera.position.set(2.15, 2.0, 2.75);
       camera.lookAt(0, 0.55, 0);
 
