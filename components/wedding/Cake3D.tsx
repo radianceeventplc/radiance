@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import type * as THREE from "three";
+import * as THREE from "three";
 
 interface CakePart {
   id: string;
@@ -38,10 +38,7 @@ export default function Cake3D() {
     let animationId: number | null = null;
     let group: THREE.Group | null = null;
 
-    (async () => {
-      const THREE = await import("three");
-
-      scene = new THREE.Scene();
+(() => {
 
       const w = container.clientWidth || 300;
       const h = container.clientHeight || 300;
