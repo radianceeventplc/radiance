@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { headers } from "next/headers";
 import { prisma } from "@/lib/prisma";
-import { WeddingExperienceClient } from "@/components/wedding/WeddingExperienceClient";
-import { WeddingInvitationRecord } from "@/types";
+import WeddingCardClient from "@/components/wedding/WeddingCardClient";
 
 interface WeddingPageProps {
   params: Promise<{ slug: string }>;
@@ -17,49 +17,79 @@ export async function generateMetadata({
     select: {
       brideName: true,
       groomName: true,
-      customMessage: true,
-      welcomeMessage: true,
-      heroImageUrl: true,
-      coverImage: true,
+      weddingDate: true,
+      venueName: true,
       isPublished: true,
       status: true,
+      invitationMessage: {
+        select: { preline: true, message: true },
+      },
     },
   });
 
   if (!invitation || (!invitation.isPublished && invitation.status !== "PUBLISHED")) {
+    // Still return basic metadata even if not found — page will show 404
     return { title: "Wedding Invitation | Radiance" };
   }
 
   return {
-    title: `${invitation.brideName} & ${invitation.groomName} | Radiance Wedding`,
-    description:
-      invitation.customMessage ||
-      invitation.welcomeMessage ||
-      `Celebrate the wedding of ${invitation.brideName} and ${invitation.groomName}.`,
+    title: `Wedding Invitation | Radiance`,
+    description: `Join us for the wedding celebration at ${invitation.venueName}`,
     openGraph: {
-      title: `${invitation.brideName} & ${invitation.groomName}`,
-      description: "A Radiance digital wedding invitation.",
-      images: invitation.heroImageUrl || invitation.coverImage ? [invitation.heroImageUrl || invitation.coverImage || ""] : undefined,
+      title: `Wedding Invitation`,
+      description: `You're invited to celebrate this special day.`,
     },
   };
 }
 
 export default async function WeddingPage({ params }: WeddingPageProps) {
   const { slug } = await params;
+
   const invitation = await prisma.weddingInvitation.findUnique({
     where: { slug },
     include: {
-      gifts: { orderBy: [{ priority: "desc" }, { createdAt: "asc" }] },
+      invitationMessage: true,
+      loveStories: {
+        orderBy: { sortOrder: "asc" },
+      },
+      programItems: {
+        orderBy: { sortOrder: "asc" },
+      },
+      venueDetails: true,
+      gifts: {
+        orderBy: [{ priority: "desc" }, { createdAt: "asc" }],
+        include: {
+          reservations: {
+            select: { reservedBy: true, reservedMessage: true },
+          },
+        },
+      },
+      rsvps: {
+        orderBy: { createdAt: "desc" },
+      },
     },
   });
 
-  if (!invitation || (!invitation.isPublished && invitation.status !== "PUBLISHED")) {
+  if (!invitation) {
     notFound();
   }
 
-  return (
-    <WeddingExperienceClient
-      invitation={JSON.parse(JSON.stringify(invitation)) as WeddingInvitationRecord}
-    />
-  );
+  // Check if requesting from admin (preview) — allow access even for drafts
+  // Allow if: published, status is PUBLISHED/APPROVED/REVIEW, or preview cookie/header
+  const headersList = await headers();
+  const referer = headersList.get("referer") || "";
+  const isAdminPreview = referer.includes("/admin/");
+
+  const isPubliclyViewable =
+    invitation.isPublished ||
+    invitation.status === "PUBLISHED" ||
+    invitation.status === "APPROVED";
+
+  if (!isPubliclyViewable && !isAdminPreview) {
+    notFound();
+  }
+
+  const serialized = JSON.parse(JSON.stringify(invitation));
+
+  return <WeddingCardClient invitation={serialized} />;
 }
