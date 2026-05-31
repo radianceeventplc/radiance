@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radiance Events – Turning Your Special Moments into Timeless Memories</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#1B2F5E;
+  --navy-dark:#0D1B36;
+  --gold:#C9A84C;
+  --gold-light:#E8D5A3;
+  --gold-pale:#F5EDD8;
+  --cream:#FAF6EF;
+  --cream-dark:#EFE9DC;
+  --white:#FFFFFF;
+  --text-dark:#1a1a1a;
+  --text-muted:#6b6b6b;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;color:var(--text-dark);background:var(--white);overflow-x:hidden;}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;width:100%;z-index:100;
+  background:rgba(13,27,54,0.97);backdrop-filter:blur(12px);
+  padding:18px 60px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid rgba(201,168,76,0.15);
+}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#fff;letter-spacing:0.04em;}
+.nav-logo span{color:var(--gold);}
+.nav-links{display:flex;gap:36px;list-style:none;}
+.nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:12px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;transition:color .3s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:var(--gold);color:var(--navy-dark);padding:10px 24px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:all .3s;}
+.nav-cta:hover{background:var(--gold-light);}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;background:var(--navy-dark);
+  display:flex;align-items:center;
+  position:relative;overflow:hidden;
+  padding:140px 60px 80px;
+}
+.hero-bg-text{
+  position:absolute;right:-40px;top:50%;transform:translateY(-50%);
+  font-family:'Cormorant Garamond',serif;font-size:360px;font-weight:700;
+  color:rgba(201,168,76,0.05);line-height:1;user-select:none;pointer-events:none;
+}
+.hero-line{
+  position:absolute;left:0;top:0;width:4px;height:100%;
+  background:linear-gradient(to bottom,transparent,var(--gold),transparent);
+  opacity:0.4;
+}
+.hero-content{max-width:700px;position:relative;z-index:2;}
+.hero-eyebrow{
+  font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:28px;
+  display:flex;align-items:center;gap:14px;
+}
+.hero-eyebrow::before{content:'';display:block;width:44px;height:1px;background:var(--gold);}
+.hero h1{font-size:78px;font-weight:400;line-height:1.08;color:#fff;margin-bottom:32px;}
+.hero h1 em{font-style:italic;color:var(--gold);}
+.hero-sub{font-size:18px;font-weight:300;line-height:1.75;color:rgba(255,255,255,0.65);margin-bottom:52px;max-width:520px;}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;}
+.btn-primary{
+  background:var(--gold);color:var(--navy-dark);
+  padding:16px 40px;font-size:12px;font-weight:600;
+  letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;
+  border-radius:2px;transition:all .3s;display:inline-block;
+}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);}
+.btn-outline{
+  border:1px solid rgba(255,255,255,0.3);color:#fff;
+  padding:16px 40px;font-size:12px;font-weight:400;
+  letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;
+  border-radius:2px;transition:all .3s;display:inline-block;
+}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.hero-scroll{
+  position:absolute;bottom:44px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  color:rgba(255,255,255,0.35);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;
+}
+.scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,rgba(201,168,76,0.8),transparent);animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:0.3;}50%{opacity:1;}}
+
+/* ── STATS BAR ── */
+.stats-bar{
+  background:var(--gold);padding:32px 60px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+}
+.stat-item{text-align:center;border-right:1px solid rgba(27,47,94,0.2);}
+.stat-item:last-child{border-right:none;}
+.stat-number{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:600;color:var(--navy-dark);line-height:1;}
+.stat-label{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(13,27,54,0.65);margin-top:6px;}
+
+/* ── SHARED ── */
+section{padding:100px 60px;}
+.section-eyebrow{
+  font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:16px;
+  display:flex;align-items:center;gap:12px;
+}
+.section-eyebrow::before{content:'';display:block;width:30px;height:1px;background:var(--gold);}
+.section-title{font-size:54px;font-weight:400;line-height:1.12;color:var(--navy);margin-bottom:24px;}
+.section-title em{font-style:italic;color:var(--gold);}
+.section-lead{font-size:18px;font-weight:300;line-height:1.85;color:var(--text-muted);max-width:640px;margin-bottom:60px;}
+.gold-divider{width:56px;height:2px;background:var(--gold);margin:0 0 40px;}
+.body-text{font-size:16px;line-height:1.9;color:var(--text-muted);margin-bottom:22px;}
+
+/* ── ABOUT ── */
+.about{background:var(--cream);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.about-quote{
+  font-family:'Cormorant Garamond',serif;font-size:26px;font-style:italic;font-weight:400;
+  color:var(--navy);line-height:1.55;
+  border-left:3px solid var(--gold);padding-left:28px;margin:36px 0;
+}
+.about-visual{
+  background:var(--navy);height:540px;border-radius:4px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:44px;position:relative;overflow:hidden;
+}
+.about-visual::before{
+  content:'R';position:absolute;top:-30px;left:-20px;
+  font-family:'Cormorant Garamond',serif;font-size:340px;font-weight:700;
+  color:rgba(201,168,76,0.08);line-height:1;
+}
+.about-visual-tag{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.about-visual-text{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:400;color:#fff;line-height:1.4;}
+.about-visual-line{width:40px;height:2px;background:var(--gold);margin-top:20px;}
+
+/* ── SERVICES ── */
+.services{background:var(--white);}
+.services-intro{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-bottom:60px;align-items:end;}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.service-card{padding:52px 40px;position:relative;overflow:hidden;transition:all .4s;}
+.service-card:nth-child(1){background:var(--navy-dark);}
+.service-card:nth-child(2){background:var(--navy);}
+.service-card:nth-child(3){background:#243d72;}
+.service-card:hover{transform:translateY(-4px);}
+.service-icon-wrap{width:52px;height:52px;border:1px solid rgba(201,168,76,0.35);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:30px;}
+.service-card-title{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:500;color:#fff;margin-bottom:16px;line-height:1.2;}
+.service-card-desc{font-size:14px;line-height:1.8;color:rgba(255,255,255,0.55);margin-bottom:28px;}
+.service-items{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.service-items li{font-size:13px;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:10px;}
+.service-items li::before{content:'';display:block;width:18px;height:1px;background:var(--gold);flex-shrink:0;}
+.service-link{
+  display:inline-flex;align-items:center;gap:8px;margin-top:36px;
+  font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;
+}
+.service-link::after{content:'→';transition:transform .3s;}
+.service-card:hover .service-link::after{transform:translateX(5px);}
+
+/* ── WEDDING DETAIL ── */
+.wedding-section{background:var(--cream);}
+.wedding-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.services-list{display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(27,47,94,0.1);}
+.service-list-item{
+  padding:15px 20px;
+  border-bottom:1px solid rgba(27,47,94,0.08);
+  border-right:1px solid rgba(27,47,94,0.08);
+  display:flex;align-items:center;gap:12px;
+  font-size:14px;color:var(--text-dark);transition:all .3s;
+}
+.service-list-item:hover{background:var(--gold-pale);color:var(--navy);}
+.service-list-item::before{content:'';display:block;width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;}
+.service-list-item:nth-child(even){border-right:none;}
+
+/* ── APPROACH ── */
+.approach{background:var(--navy-dark);padding:100px 60px;}
+.approach .section-title{color:#fff;}
+.approach-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-top:60px;}
+.step-card{padding:52px 36px;background:rgba(255,255,255,0.03);border-top:2px solid rgba(201,168,76,0.25);transition:all .4s;}
+.step-card:hover{background:rgba(255,255,255,0.07);border-top-color:var(--gold);}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:600;color:rgba(201,168,76,0.18);line-height:1;margin-bottom:22px;}
+.step-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;color:#fff;margin-bottom:14px;}
+.step-desc{font-size:14px;line-height:1.85;color:rgba(255,255,255,0.45);}
+
+/* ── FOUNDERS ── */
+.founders{background:var(--cream);}
+.founders-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:60px;}
+.founder-card{background:var(--white);border-radius:4px;overflow:hidden;border:1px solid var(--cream-dark);}
+.founder-header{background:var(--navy);padding:52px 44px 40px;position:relative;overflow:hidden;}
+.founder-header::after{content:'';position:absolute;bottom:-1px;right:0;width:80px;height:80px;background:var(--gold);clip-path:polygon(100% 0,100% 100%,0 100%);}
+.founder-initials{
+  width:68px;height:68px;border-radius:50%;
+  background:rgba(201,168,76,0.15);border:2px solid rgba(201,168,76,0.35);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--gold);
+  margin-bottom:22px;
+}
+.founder-name{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:500;color:#fff;margin-bottom:8px;}
+.founder-role{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);}
+.founder-body{padding:40px 44px;}
+.founder-bio{font-size:15px;line-height:1.85;color:var(--text-muted);margin-bottom:24px;}
+.expertise-label{font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);margin-bottom:12px;}
+.expertise-item{font-size:13px;color:var(--text-muted);display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--cream-dark);}
+.expertise-item:last-child{border-bottom:none;}
+.expertise-item::before{content:'';display:block;width:20px;height:1px;background:var(--gold);flex-shrink:0;}
+
+/* ── WHY CHOOSE ── */
+.why{background:var(--white);}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:60px;}
+.why-item{
+  padding:36px 28px;
+  border:1px solid var(--cream-dark);
+  border-radius:4px;transition:all .4s;
+}
+.why-item:hover{border-color:var(--gold);transform:translateY(-5px);box-shadow:0 12px 40px rgba(201,168,76,0.1);}
+.why-number{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:600;color:var(--cream-dark);line-height:1;margin-bottom:16px;}
+.why-item:hover .why-number{color:var(--gold-pale);}
+.why-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:var(--navy);margin-bottom:10px;}
+.why-desc{font-size:13px;line-height:1.8;color:var(--text-muted);}
+
+/* ── VALUES ── */
+.values{background:var(--navy);padding:100px 60px;}
+.values .section-title{color:#fff;}
+.values .section-lead{color:rgba(255,255,255,0.55);}
+.values-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:60px;}
+.value-card{padding:40px 24px;border:1px solid rgba(201,168,76,0.18);border-radius:4px;text-align:center;transition:all .4s;}
+.value-card:hover{background:rgba(201,168,76,0.07);border-color:var(--gold);}
+.value-icon{font-size:30px;margin-bottom:18px;}
+.value-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:var(--gold);margin-bottom:12px;}
+.value-desc{font-size:13px;line-height:1.75;color:rgba(255,255,255,0.45);}
+
+/* ── CTA ── */
+.cta-section{background:var(--cream);padding:100px 60px;text-align:center;}
+.cta-section .section-eyebrow{justify-content:center;}
+.cta-section .section-eyebrow::before{display:none;}
+.cta-section .section-title,.cta-section .section-lead{margin-left:auto;margin-right:auto;text-align:center;}
+.cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:48px;}
+.btn-navy{background:var(--navy);color:#fff;padding:18px 48px;font-size:12px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:all .3s;display:inline-block;}
+.btn-navy:hover{background:var(--navy-dark);transform:translateY(-2px);}
+.btn-gold{background:var(--gold);color:var(--navy-dark);padding:18px 48px;font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:all .3s;display:inline-block;}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);}
+
+/* ── CONTACT STRIP ── */
+.contact-strip{background:var(--navy-dark);padding:60px;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;}
+.contact-item{display:flex;align-items:flex-start;gap:20px;}
+.contact-icon{width:48px;height:48px;border:1px solid rgba(201,168,76,0.28);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;}
+.contact-label{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:7px;}
+.contact-value{font-size:15px;color:#fff;line-height:1.65;}
+
+/* ── FOOTER ── */
+footer{background:#060d1c;padding:40px 60px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(201,168,76,0.12);}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#fff;}
+.footer-logo span{color:var(--gold);}
+.footer-tag{font-size:11px;color:rgba(255,255,255,0.28);letter-spacing:0.05em;margin-top:5px;}
+.footer-links{display:flex;gap:28px;list-style:none;}
+.footer-links a{font-size:11px;color:rgba(255,255,255,0.38);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;transition:color .3s;}
+.footer-links a:hover{color:var(--gold);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.22);}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-logo">Radiance <span>Events</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#founders">Our Team</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Book Consultation</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-text">R</div>
+  <div class="hero-line"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Ethiopia's Premier Event Planning Company</p>
+    <h1>Turning Moments Into<br><em>Timeless</em> Memories</h1>
+    <p class="hero-sub">From intimate celebrations to grand luxury weddings and high-profile corporate events — we design experiences that are as unique as your story.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">Plan My Event</a>
+      <a href="#services" class="btn-outline">Explore Services</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-number">360°</div>
+    <div class="stat-label">Full Event Management</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">13+</div>
+    <div class="stat-label">Years Combined Experience</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">3+</div>
+    <div class="stat-label">Continents Served</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">100%</div>
+    <div class="stat-label">Client-Focused Service</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div>
+      <p class="section-eyebrow">Who We Are</p>
+      <h2 class="section-title">More Than Planning —<br><em>An Experience</em></h2>
+      <div class="gold-divider"></div>
+      <p class="body-text">Radiance Events is Ethiopia's premier wedding and event planning company, built on a foundation of creativity, professionalism, and genuine passion for creating unforgettable celebrations.</p>
+      <blockquote class="about-quote">"Every event is more than a gathering — it is an experience, a memory, and a reflection of the people behind it."</blockquote>
+      <p class="body-text">We specialize in complete 360° event management — combining modern event styling, strategic planning, and meticulous coordination. From your first consultation to your final moment of celebration, we handle every detail with precision and care.</p>
+      <p class="body-text">Founded to bridge the gap between elegant event experiences and professional management in Ethiopia, Radiance Events delivers world-class celebrations — rooted in local culture, elevated by international standards.</p>
+      <a href="#contact" class="btn-primary" style="margin-top:36px;">Start Your Journey</a>
+    </div>
+    <div class="about-visual">
+      <p class="about-visual-tag">Radiance Events — Addis Ababa, Ethiopia</p>
+      <p class="about-visual-text">Elegant Celebrations.<br>Exceptional Events.</p>
+      <div class="about-visual-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES OVERVIEW -->
+<section class="services" id="services">
+  <div class="services-intro">
+    <div>
+      <p class="section-eyebrow">What We Offer</p>
+      <h2 class="section-title">Full-Service Event<br><em>Solutions</em></h2>
+    </div>
+    <p class="section-lead" style="margin-bottom:0;">Comprehensive event management across three core categories — each crafted to deliver exceptional, personalized experiences tailored to your vision.</p>
+  </div>
+  <div class="services-grid">
+    <!-- Wedding -->
+    <div class="service-card">
+      <div class="service-icon-wrap">💍</div>
+      <h3 class="service-card-title">Wedding Planning</h3>
+      <p class="service-card-desc">Full-service wedding planning crafted to every couple's vision, culture, and love story. From traditional ceremonies to destination weddings worldwide.</p>
+      <ul class="service-items">
+        <li>Full Wedding Planning &amp; Coordination</li>
+        <li>Traditional &amp; Engagement Ceremonies</li>
+        <li>Destination Wedding Planning</li>
+        <li>Honeymoon Package Planning</li>
+        <li>Wedding Decoration &amp; Styling</li>
+        <li>Day-of Wedding Coordination</li>
+      </ul>
+      <a href="#wedding" class="service-link">View All Wedding Services</a>
+    </div>
+    <!-- Social -->
+    <div class="service-card">
+      <div class="service-icon-wrap">🎉</div>
+      <h3 class="service-card-title">Social Events</h3>
+      <p class="service-card-desc">Stylish and memorable private celebrations — from intimate gatherings to lavish luxury affairs, executed with elegance and personal attention to every detail.</p>
+      <ul class="service-items">
+        <li>Birthday Parties &amp; Anniversaries</li>
+        <li>Bridal &amp; Baby Showers</li>
+        <li>Engagement Parties</li>
+        <li>Graduation Celebrations</li>
+        <li>Family Gatherings</li>
+        <li>Private Luxury Events</li>
+      </ul>
+      <a href="#social" class="service-link">Explore Social Events</a>
+    </div>
+    <!-- Corporate -->
+    <div class="service-card">
+      <div class="service-icon-wrap">🏢</div>
+      <h3 class="service-card-title">Corporate Events</h3>
+      <p class="service-card-desc">Professional corporate event management that elevates your brand, engages your audience, and delivers a flawless experience from planning to execution.</p>
+      <ul class="service-items">
+        <li>Gala Dinners &amp; Award Ceremonies</li>
+        <li>Conferences &amp; Seminars</li>
+        <li>Product &amp; Brand Launches</li>
+        <li>Networking Events</li>
+        <li>Team Building Activities</li>
+        <li>Brand Activation Events</li>
+      </ul>
+      <a href="#corporate" class="service-link">View Corporate Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- WEDDING DETAIL -->
+<section class="wedding-section" id="wedding">
+  <div class="wedding-grid">
+    <div>
+      <p class="section-eyebrow">Wedding Planning</p>
+      <h2 class="section-title">Every Detail,<br><em>Perfectly</em> Managed</h2>
+      <div class="gold-divider"></div>
+      <p class="body-text">We take care of every single detail — so you can fully enjoy your most precious moments. Our wedding planning service covers everything from initial consultation to the final dance of the evening.</p>
+      <p class="body-text">Whether you dream of a traditional Ethiopian ceremony, a modern local wedding, or a destination celebration across Africa and beyond — Radiance Events brings your vision to life with elegance, precision, and heart.</p>
+      <p class="body-text">Our experienced team coordinates vendors, manages timelines and budgets, handles logistics, and ensures every element reflects your unique story as a couple.</p>
+      <a href="#contact" class="btn-primary" style="margin-top:36px;">Book a Consultation</a>
+    </div>
+    <div>
+      <div class="services-list">
+        <div class="service-list-item">Post Planning</div>
+        <div class="service-list-item">Full Wedding Planning</div>
+        <div class="service-list-item">Traditional Ceremonies</div>
+        <div class="service-list-item">Engagement Ceremonies</div>
+        <div class="service-list-item">Local Weddings</div>
+        <div class="service-list-item">Destination Weddings</div>
+        <div class="service-list-item">African Country Weddings</div>
+        <div class="service-list-item">International Weddings</div>
+        <div class="service-list-item">Honeymoon Planning</div>
+        <div class="service-list-item">Timeline Development</div>
+        <div class="service-list-item">Budget Management</div>
+        <div class="service-list-item">Venue Selection &amp; Booking</div>
+        <div class="service-list-item">Vendor Sourcing &amp; Negotiation</div>
+        <div class="service-list-item">Decoration &amp; Styling</div>
+        <div class="service-list-item">Entertainment Coordination</div>
+        <div class="service-list-item">Photography &amp; Videography</div>
+        <div class="service-list-item">Makeup &amp; Beauty Coordination</div>
+        <div class="service-list-item">Transportation Coordination</div>
+        <div class="service-list-item">Guest Hospitality &amp; Logistics</div>
+        <div class="service-list-item">Day-of Coordination</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR APPROACH -->
+<section class="approach" id="approach">
+  <p class="section-eyebrow">Our Process</p>
+  <h2 class="section-title">How We Bring Your <em>Vision to Life</em></h2>
+  <div class="approach-grid">
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <h3 class="step-title">Consultation &amp; Vision</h3>
+      <p class="step-desc">We begin by deeply understanding your vision, preferences, expectations, and budget. Every decision starts with you — and stays true to you.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <h3 class="step-title">Design &amp; Coordination</h3>
+      <p class="step-desc">We curate every detail — from décor and ambiance to entertainment and guest flow — creating a seamless, beautifully orchestrated experience.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <h3 class="step-title">Flawless Execution</h3>
+      <p class="step-desc">Our team manages the complete event execution, ensuring everything runs smoothly, professionally, and stress-free from start to finish.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">04</div>
+      <h3 class="step-title">You Celebrate</h3>
+      <p class="step-desc">While we handle every detail behind the scenes, you enjoy every precious moment of your celebration — present, joyful, and free.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDERS -->
+<section class="founders" id="founders">
+  <p class="section-eyebrow">Meet the Team</p>
+  <h2 class="section-title">The People Behind<br><em>Every Perfect Event</em></h2>
+  <p class="section-lead" style="margin-bottom:0;">Two passionate professionals, united by a shared commitment to excellence, creativity, and unforgettable client experiences.</p>
+  <div class="founders-grid">
+    <div class="founder-card">
+      <div class="founder-header">
+        <div class="founder-initials">EM</div>
+        <h3 class="founder-name">Emnet Mulugeta</h3>
+        <p class="founder-role">Co-Founder &amp; Creative Director</p>
+      </div>
+      <div class="founder-body">
+        <p class="founder-bio">A certified wedding and party planner with extensive marketing experience both in Ethiopia and internationally, Emnet brings fresh ideas, refined aesthetics, and deep cultural understanding to every celebration she designs.</p>
+        <p class="founder-bio">Her passion for creating meaningful experiences — combined with her mastery of modern trends and cultural traditions — ensures every Radiance event is elegant, timeless, and uniquely yours.</p>
+        <p class="expertise-label">Specializes In</p>
+        <div class="expertise-item">Wedding &amp; Event Concept Development</div>
+        <div class="expertise-item">Event Styling &amp; Design</div>
+        <div class="expertise-item">Client Experience Management</div>
+        <div class="expertise-item">Marketing &amp; Branding</div>
+        <div class="expertise-item">Vendor Coordination</div>
+        <div class="expertise-item">Luxury Wedding Planning</div>
+      </div>
+    </div>
+    <div class="founder-card">
+      <div class="founder-header">
+        <div class="founder-initials">MA</div>
+        <h3 class="founder-name">Meseret Alemu</h3>
+        <p class="founder-role">Co-Founder &amp; Operations Director</p>
+      </div>
+      <div class="founder-body">
+        <p class="founder-bio">With over 13 years of professional experience across local and international organizations, Meseret brings exceptional operational discipline, strategic management, and structured precision to every project she leads.</p>
+        <p class="founder-bio">Known for her professionalism, meticulous attention to detail, and solution-oriented approach, Meseret ensures every Radiance event is delivered on time, on budget, and far beyond expectations.</p>
+        <p class="expertise-label">Expertise Includes</p>
+        <div class="expertise-item">Operations Management</div>
+        <div class="expertise-item">Budget Planning &amp; Coordination</div>
+        <div class="expertise-item">Corporate Client Relations</div>
+        <div class="expertise-item">Event Administration</div>
+        <div class="expertise-item">Team Coordination</div>
+        <div class="expertise-item">Project Management</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="why" id="why">
+  <div style="max-width:600px;">
+    <p class="section-eyebrow">Why Radiance Events</p>
+    <h2 class="section-title">Eight Reasons Clients<br><em>Choose Us</em></h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-number">01</div>
+      <h4 class="why-title">Personalized Experiences</h4>
+      <p class="why-desc">No two events are ever the same. Every celebration is designed around your unique story, vision, and personality.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-number">02</div>
+      <h4 class="why-title">Professional Planning</h4>
+      <p class="why-desc">Organized, detail-oriented, and completely stress-free planning from first consultation through to final execution.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-number">03</div>
+      <h4 class="why-title">Local &amp; International Reach</h4>
+      <p class="why-desc">Strong exposure across Ethiopia, Africa, and internationally — bringing global standards to every event we produce.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-number">04</div>
+      <h4 class="why-title">Creative Event Styling</h4>
+      <p class="why-desc">Modern, imaginative styling and design that transforms any space into a breathtaking, memorable environment.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-number">05</div>
+      <h4 class="why-title">Trusted Vendor Network</h4>
+      <p class="why-desc">Reliable partnerships with Ethiopia's finest vendors — ensuring premium quality at every level of your event.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-number">06</div>
+      <h4 class="why-title">360° Management</h4>
+      <p class="why-desc">Complete end-to-end event management — every detail handled with care, nothing overlooked, nothing left to chance.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-number">07</div>
+      <h4 class="why-title">Client-First Service</h4>
+      <p class="why-desc">You are the center of everything we do. Your satisfaction, comfort, and joy are our highest priority — always.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-number">08</div>
+      <h4 class="why-title">Elegant Execution</h4>
+      <p class="why-desc">Sophisticated, seamless, and beautiful — every Radiance event leaves a lasting impression on you and your guests.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values" id="values">
+  <p class="section-eyebrow">What Drives Us</p>
+  <h2 class="section-title">Our Core Values</h2>
+  <p class="section-lead">Five principles guide everything we do — from how we plan, to how we serve, to how we deliver.</p>
+  <div class="values-grid">
+    <div class="value-card">
+      <div class="value-icon">⭐</div>
+      <h4 class="value-title">Excellence</h4>
+      <p class="value-desc">Committed to delivering the highest quality service and professional standards in everything we do.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">✨</div>
+      <h4 class="value-title">Creativity</h4>
+      <p class="value-desc">Designing unique and deeply memorable experiences tailored to each individual client.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🤝</div>
+      <h4 class="value-title">Integrity</h4>
+      <p class="value-desc">Honesty, transparency, and professionalism in every interaction, every time.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">❤️</div>
+      <h4 class="value-title">Client Satisfaction</h4>
+      <p class="value-desc">Our clients are the center of everything we do — and their happiness is our greatest measure of success.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🎯</div>
+      <h4 class="value-title">Attention to Detail</h4>
+      <p class="value-desc">Exceptional events are built through thoughtful details and meticulous coordination.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <p class="section-eyebrow">Start Planning</p>
+  <h2 class="section-title" style="max-width:620px;">Ready to Create Something <em>Unforgettable?</em></h2>
+  <p class="section-lead" style="text-align:center;">Whether you're planning an intimate gathering or a grand luxury celebration, our team is ready to turn your vision into a timeless memory. Let's begin with a conversation.</p>
+  <div class="cta-buttons">
+    <a href="mailto:Radiancevents@gmail.com" class="btn-gold">Book a Consultation</a>
+    <a href="tel:+251930533197" class="btn-navy">Call Us Now</a>
+  </div>
+</section>
+
+<!-- CONTACT STRIP -->
+<div class="contact-strip">
+  <div class="contact-item">
+    <div class="contact-icon">📞</div>
+    <div>
+      <p class="contact-label">Phone</p>
+      <p class="contact-value">+251 93 053 3197</p>
+    </div>
+  </div>
+  <div class="contact-item">
+    <div class="contact-icon">📧</div>
+    <div>
+      <p class="contact-label">Email &amp; Website</p>
+      <p class="contact-value">Radiancevents@gmail.com<br>Radiancevents.com</p>
+    </div>
+  </div>
+  <div class="contact-item">
+    <div class="contact-icon">📍</div>
+    <div>
+      <p class="contact-label">Location</p>
+      <p class="contact-value">Addis Ababa, Ethiopia<br>Serving Locally &amp; Globally</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <p class="footer-logo">Radiance <span>Events</span></p>
+    <p class="footer-tag">Turning Your Special Moments into Timeless Memories</p>
+  </div>
+  <ul class="footer-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#founders">Team</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 Radiance Events. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

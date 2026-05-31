@@ -19,7 +19,7 @@ export default function AdminBookingsPage() {
             Manage and respond to event booking requests
           </p>
         </div>
-        <Link href="/admin/bookings/create" className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500 text-white font-medium rounded-lg hover:bg-amber-600 transition-colors">
+        <Link href="/admin/bookings/create" className="inline-flex items-center gap-2 px-4 py-2 bg-[#bf8f38] text-white font-medium rounded-none hover:bg-[#bf8f38] transition-colors">
           <Plus className="h-4 w-4" />
           Create Booking
         </Link>

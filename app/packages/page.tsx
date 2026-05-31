@@ -1,8 +1,6 @@
 import { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { Container } from "@/components/ui/Container";
-import { Section } from "@/components/ui/Section";
 import { PackageExplorer } from "@/components/public/PackageExplorer";
 import { prisma } from "@/lib/prisma";
 import { PackageCategoryRecord, PackageRecord } from "@/types";
@@ -20,9 +18,7 @@ export default async function PackagesPage() {
       where: { isActive: true },
       include: {
         _count: {
-          select: {
-            packages: { where: { isActive: true } },
-          },
+          select: { packages: { where: { isActive: true } } },
         },
       },
       orderBy: [{ sortOrder: "asc" }, { name: "asc" }],
@@ -40,30 +36,75 @@ export default async function PackagesPage() {
 
   return (
     <>
-      <Header />
-      <main>
-        <Section className="pt-32">
-          <Container>
-            <div className="max-w-3xl">
-              <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-radiance-navy/60">
-                Packages
-              </p>
-              <h1 className="text-4xl font-light tracking-tight text-radiance-navy md:text-5xl lg:text-6xl">
-                Our Event Packages
-              </h1>
-              <p className="mt-5 text-lg leading-relaxed text-radiance-navy/70">
-                Flexible solutions tailored to your celebration.
-              </p>
-            </div>
+      <Header topVariant="light" />
+      <main className="min-h-screen" style={{ backgroundColor: "#f9f4ed" }}>
+        <style>{`
+          .pkg-eyebrow {
+            font-family: "Montserrat", sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: #bf8f38;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+          }
+          .pkg-eyebrow::before {
+            content: "";
+            display: block;
+            width: 30px;
+            height: 1px;
+            background: #bf8f38;
+          }
+          .pkg-title {
+            font-family: "Kostic Serif", "Times New Roman", Georgia, serif;
+            font-size: clamp(40px, 5vw, 68px);
+            font-weight: 700;
+            line-height: 1.08;
+            color: #182849;
+          }
+          .pkg-title em { font-style: italic; color: #bf8f38; }
+          .pkg-lead {
+            font-family: "Montserrat", sans-serif;
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 1.85;
+            color: rgba(24, 40, 73, 0.7);
+            max-width: 640px;
+          }
+        `}</style>
 
-            <div className="mt-12">
-              <PackageExplorer
-                categories={JSON.parse(JSON.stringify(categories)) as PackageCategoryRecord[]}
-                packages={JSON.parse(JSON.stringify(packages)) as PackageRecord[]}
-              />
+        {/* Hero */}
+        <section className="pt-36 pb-16 md:pt-44 md:pb-20">
+          <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-8 xl:px-12">
+            <div className="grid lg:grid-cols-[1fr_0.9fr] gap-12 items-end">
+              <div>
+                <p className="pkg-eyebrow">Packages</p>
+                <h1 className="pkg-title">
+                  Curated Solutions,<br />
+                  <em>Crafted For You</em>
+                </h1>
+              </div>
+              <p className="pkg-lead">
+                Flexible event packages designed to match every vision and budget —
+                from intimate celebrations to full-scale productions. Choose a starting
+                point, and we&apos;ll tailor every detail to your story.
+              </p>
             </div>
-          </Container>
-        </Section>
+          </div>
+        </section>
+
+        {/* Packages grid */}
+        <section className="pb-32">
+          <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-8 xl:px-12">
+            <PackageExplorer
+              categories={JSON.parse(JSON.stringify(categories)) as PackageCategoryRecord[]}
+              packages={JSON.parse(JSON.stringify(packages)) as PackageRecord[]}
+            />
+          </div>
+        </section>
       </main>
       <Footer />
     </>

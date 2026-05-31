@@ -89,7 +89,7 @@ export function PaymentTracker({
               setData((prev) => ({ ...prev, agreed_amount: e.target.value }))
             }
             placeholder="0.00"
-              className="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors text-sm"
+              className="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-none text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#bf8f38] focus:border-[#bf8f38] transition-colors text-sm"
           />
         </div>
 
@@ -106,7 +106,7 @@ export function PaymentTracker({
                 setData((prev) => ({ ...prev, deposit_amount: e.target.value }))
               }
               placeholder="0.00"
-            className="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors text-sm"
+            className="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-none text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#bf8f38] focus:border-[#bf8f38] transition-colors text-sm"
             />
           </div>
           <div>
@@ -121,7 +121,7 @@ export function PaymentTracker({
                 }))
               }
               className={cn(
-                "w-full px-4 py-2.5 rounded-lg border text-sm font-medium transition-colors flex items-center justify-center gap-2",
+                "w-full px-4 py-2.5 rounded-none border text-sm font-medium transition-colors flex items-center justify-center gap-2",
                 data.deposit_received
                   ? "bg-green-50 border-green-200 text-green-700"
                   : "bg-white border-gray-200 text-gray-600 hover:border-gray-500"
@@ -141,7 +141,7 @@ export function PaymentTracker({
               onChange={(e) =>
                 setData((prev) => ({ ...prev, deposit_date: e.target.value }))
               }
-              className="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors text-sm"
+              className="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-none text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#bf8f38] focus:border-[#bf8f38] transition-colors text-sm"
             />
           </div>
         </div>
@@ -163,7 +163,7 @@ export function PaymentTracker({
                 }))
               }
               className={cn(
-                "w-full px-4 py-2.5 rounded-lg border text-sm font-medium transition-colors flex items-center justify-center gap-2",
+                "w-full px-4 py-2.5 rounded-none border text-sm font-medium transition-colors flex items-center justify-center gap-2",
                 data.balance_paid
                   ? "bg-green-50 border-green-200 text-green-700"
                   : "bg-white border-gray-200 text-gray-600 hover:border-gray-500"
@@ -183,7 +183,7 @@ export function PaymentTracker({
               onChange={(e) =>
                 setData((prev) => ({ ...prev, balance_date: e.target.value }))
               }
-              className="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors text-sm"
+              className="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-none text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#bf8f38] focus:border-[#bf8f38] transition-colors text-sm"
             />
           </div>
         </div>
@@ -193,7 +193,7 @@ export function PaymentTracker({
         <button
           onClick={handleSave}
           disabled={saving}
-          className="px-6 py-2.5 bg-amber-500 hover:bg-amber-600 text-white text-sm font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+          className="px-6 py-2.5 bg-[#bf8f38] hover:bg-[#bf8f38] text-white text-sm font-medium rounded-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
         >
           {saving ? (
             <Loader2 className="w-4 h-4 animate-spin" />

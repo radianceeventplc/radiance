@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function GalleryPage() {
   return (
     <>
-      <Header />
+      <Header topVariant="light" />
       <GalleryClient />
       <Footer />
     </>

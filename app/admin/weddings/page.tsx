@@ -30,7 +30,7 @@ export default async function AdminWeddingsPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
       <div className="mb-8">
-        <div className="inline-flex items-center gap-2 text-sm font-semibold text-amber-700">
+        <div className="inline-flex items-center gap-2 text-sm font-semibold text-[#a47a2a]">
           <Heart className="h-4 w-4" />
           Premium Feature
         </div>
@@ -43,7 +43,7 @@ export default async function AdminWeddingsPage() {
       </div>
 
       {setupRequired ? (
-        <div className="rounded-xl border border-amber-200 bg-amber-50 p-8">
+        <div className="rounded-none border border-[#ecd398] bg-[#fdf6e8] p-8">
           <h2 className="text-xl font-semibold text-gray-900">
             Wedding database tables are not installed yet
           </h2>
@@ -52,7 +52,7 @@ export default async function AdminWeddingsPage() {
             the new `WeddingInvitation`, `RSVP`, `GiftRegistry`, reservation, and `DesignAsset`
             tables before invitations can be created.
           </p>
-          <div className="mt-5 rounded-lg bg-white p-4 text-sm text-gray-700">
+          <div className="mt-5 rounded-none bg-white p-4 text-sm text-gray-700">
             Run the schema from{" "}
             <code className="rounded bg-gray-100 px-1.5 py-0.5">
               prisma/wedding_experience.sql
@@ -65,14 +65,14 @@ export default async function AdminWeddingsPage() {
           </div>
           <Link
             href="/admin/bookings"
-            className="mt-5 inline-flex rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-500"
+            className="mt-5 inline-flex rounded-none bg-[#bf8f38] px-4 py-2 text-sm font-semibold text-white hover:bg-[#bf8f38]"
           >
             Back to Bookings
           </Link>
         </div>
       ) : (
         <>
-          <section className="mb-8 rounded-xl border border-amber-200 bg-white p-6">
+          <section className="mb-8 rounded-none border border-[#ecd398] bg-white p-6">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <h2 className="text-lg font-semibold text-gray-900">
@@ -84,7 +84,7 @@ export default async function AdminWeddingsPage() {
               </div>
               <Link
                 href="/admin/bookings?status=CONFIRMED"
-                className="inline-flex items-center justify-center rounded-lg border border-amber-300 px-4 py-2 text-sm font-semibold text-amber-700 hover:bg-amber-50"
+                className="inline-flex items-center justify-center rounded-none border border-[#d9b665] px-4 py-2 text-sm font-semibold text-[#a47a2a] hover:bg-[#fdf6e8]"
               >
                 View confirmed bookings
               </Link>
@@ -99,7 +99,7 @@ export default async function AdminWeddingsPage() {
                 {readyBookings.map((booking) => (
                   <div
                     key={booking.id}
-                    className="flex flex-col gap-4 rounded-lg border border-gray-200 bg-gray-50 p-4 sm:flex-row sm:items-center sm:justify-between"
+                    className="flex flex-col gap-4 rounded-none border border-gray-200 bg-gray-50 p-4 sm:flex-row sm:items-center sm:justify-between"
                   >
                     <div>
                       <div className="font-semibold text-gray-900">
@@ -114,7 +114,7 @@ export default async function AdminWeddingsPage() {
                     </div>
                     <Link
                       href={`/admin/weddings/${booking.id}`}
-                      className="inline-flex items-center justify-center gap-2 rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-500"
+                      className="inline-flex items-center justify-center gap-2 rounded-none bg-[#bf8f38] px-4 py-2 text-sm font-semibold text-white hover:bg-[#bf8f38]"
                     >
                       <WandSparkles className="h-4 w-4" />
                       Design Card
@@ -126,17 +126,17 @@ export default async function AdminWeddingsPage() {
           </section>
 
           {invitations.length === 0 ? (
-        <div className="rounded-xl border border-gray-200 bg-white p-10 text-center">
+        <div className="rounded-none border border-gray-200 bg-white p-10 text-center">
           <p className="text-gray-700">No wedding invitations have been created yet.</p>
           <Link
             href="/admin/bookings"
-            className="mt-4 inline-flex rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-500"
+            className="mt-4 inline-flex rounded-none bg-[#bf8f38] px-4 py-2 text-sm font-semibold text-white hover:bg-[#bf8f38]"
           >
             Open Bookings
           </Link>
         </div>
           ) : (
-        <div className="overflow-x-auto rounded-xl border border-gray-200 bg-white">
+        <div className="overflow-x-auto rounded-none border border-gray-200 bg-white">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-gray-200">
@@ -177,7 +177,7 @@ export default async function AdminWeddingsPage() {
                         <Link
                           href={`/wedding/${invitation.slug}`}
                           target="_blank"
-                          className="inline-flex items-center gap-1 rounded-lg border border-gray-200 px-3 py-1.5 text-xs font-semibold text-gray-700 hover:bg-gray-50"
+                          className="inline-flex items-center gap-1 rounded-none border border-gray-200 px-3 py-1.5 text-xs font-semibold text-gray-700 hover:bg-gray-50"
                         >
                           <ExternalLink className="h-3.5 w-3.5" />
                           Live
@@ -185,7 +185,7 @@ export default async function AdminWeddingsPage() {
                       )}
                       <Link
                         href={`/admin/weddings/${invitation.bookingId}`}
-                        className="rounded-lg border border-amber-300 px-3 py-1.5 text-xs font-semibold text-amber-700 hover:bg-amber-50"
+                        className="rounded-none border border-[#d9b665] px-3 py-1.5 text-xs font-semibold text-[#a47a2a] hover:bg-[#fdf6e8]"
                       >
                         Edit & Preview
                       </Link>

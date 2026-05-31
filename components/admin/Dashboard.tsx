@@ -49,13 +49,13 @@ export function Dashboard() {
     { label: "New Requests", value: stats.newRequests, icon: CalendarCheck, color: "text-blue-400 bg-blue-500/10" },
     { label: "Confirmed", value: stats.confirmed, icon: TrendingUp, color: "text-green-400 bg-green-500/10" },
     { label: "Completed", value: stats.completed, icon: CheckCircle, color: "text-gray-400 bg-gray-500/10" },
-    { label: "Total Bookings", value: stats.total, icon: List, color: "text-amber-400 bg-amber-500/10" },
+    { label: "Total Bookings", value: stats.total, icon: List, color: "text-[#d4a85c] bg-[#bf8f38]/10" },
   ];
 
   if (loading) {
     return (
       <div className="flex justify-center py-20">
-        <Loader2 className="w-8 h-8 animate-spin text-amber-600" />
+        <Loader2 className="w-8 h-8 animate-spin text-[#bf8f38]" />
       </div>
     );
   }
@@ -71,10 +71,10 @@ export function Dashboard() {
         {statCards.map((card) => {
           const Icon = card.icon;
           return (
-            <div key={card.label} className="bg-white border border-gray-200 rounded-xl p-5">
+            <div key={card.label} className="bg-white border border-gray-200 rounded-none p-5">
               <div className="flex items-center justify-between mb-3">
                 <span className="text-gray-600 text-sm">{card.label}</span>
-                <div className={`p-2 rounded-lg ${card.color}`}>
+                <div className={`p-2 rounded-none ${card.color}`}>
                   <Icon className="w-4 h-4" />
                 </div>
               </div>
@@ -84,7 +84,7 @@ export function Dashboard() {
         })}
       </div>
 
-      <div className="bg-white border border-gray-200 rounded-xl">
+      <div className="bg-white border border-gray-200 rounded-none">
         <div className="p-5 border-b border-gray-200">
           <h2 className="text-lg font-semibold text-gray-900">Recent Bookings</h2>
         </div>
@@ -124,7 +124,7 @@ export function Dashboard() {
                     <td className="py-3 px-5 text-right">
                       <button
                         onClick={() => router.push(`/admin/bookings/${booking.id}`)}
-                        className="text-amber-600 hover:text-amber-500 text-sm font-medium transition-colors"
+                        className="text-[#bf8f38] hover:text-[#bf8f38] text-sm font-medium transition-colors"
                       >
                         View
                       </button>

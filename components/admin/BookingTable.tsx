@@ -84,7 +84,7 @@ export function BookingTable() {
     return (
       <div className="text-center py-12">
         <p className="text-red-600 mb-4">{error}</p>
-        <button onClick={fetchBookings} className="text-amber-600 underline hover:no-underline">
+        <button onClick={fetchBookings} className="text-[#bf8f38] underline hover:no-underline">
           Try again
         </button>
       </div>
@@ -102,8 +102,8 @@ export function BookingTable() {
               className={cn(
                 "px-3 py-1.5 text-sm rounded-full whitespace-nowrap transition-colors border",
                 statusFilter === option.value
-                  ? "bg-amber-500 text-white border-amber-500"
-                  : "bg-gray-100 text-gray-600 border-gray-200 hover:border-amber-500"
+                  ? "bg-[#bf8f38] text-white border-[#bf8f38]"
+                  : "bg-gray-100 text-gray-600 border-gray-200 hover:border-[#bf8f38]"
               )}
             >
               {option.label}
@@ -118,14 +118,14 @@ export function BookingTable() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search by name..."
-            className="pl-10 pr-4 py-2 bg-white border border-gray-200 rounded-lg text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 w-full sm:w-64"
+            className="pl-10 pr-4 py-2 bg-white border border-gray-200 rounded-none text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#bf8f38] focus:border-[#bf8f38] w-full sm:w-64"
           />
         </form>
       </div>
 
       {loading && (
         <div className="flex justify-center py-12">
-          <Loader2 className="w-8 h-8 animate-spin text-amber-600" />
+          <Loader2 className="w-8 h-8 animate-spin text-[#bf8f38]" />
         </div>
       )}
 
@@ -136,7 +136,7 @@ export function BookingTable() {
       )}
 
       {!loading && bookings.length > 0 && (
-        <div className="overflow-x-auto bg-white border border-gray-200 rounded-xl">
+        <div className="overflow-x-auto bg-white border border-gray-200 rounded-none">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-gray-200">
@@ -232,7 +232,7 @@ export function BookingTable() {
                           e.stopPropagation();
                           router.push(`/admin/bookings/${booking.id}`);
                         }}
-                        className="p-1.5 text-xs rounded border border-amber-500 text-amber-600 hover:bg-amber-50 transition-colors"
+                        className="p-1.5 text-xs rounded border border-[#bf8f38] text-[#bf8f38] hover:bg-[#fdf6e8] transition-colors"
                         title="View Details"
                       >
                         <ChevronRight className="w-3.5 h-3.5" />

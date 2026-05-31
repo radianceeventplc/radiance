@@ -27,6 +27,8 @@ export const metadata: Metadata = {
   title: "Printable Wedding Invitation | Radiance",
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function WeddingPrintPage({ params }: PrintPageProps) {
   const { slug, variant } = await params;
   const selected = variants[variant as keyof typeof variants];

@@ -90,7 +90,7 @@ export function BookingDetail({ bookingId }: BookingDetailProps) {
   if (loading) {
     return (
       <div className="flex justify-center py-20">
-        <Loader2 className="w-8 h-8 animate-spin text-amber-600" />
+        <Loader2 className="w-8 h-8 animate-spin text-[#bf8f38]" />
       </div>
     );
   }
@@ -101,7 +101,7 @@ export function BookingDetail({ bookingId }: BookingDetailProps) {
         <p className="text-red-600 mb-4">{error || "Booking not found"}</p>
         <button
           onClick={() => router.push("/admin/bookings")}
-          className="text-amber-600 underline hover:no-underline"
+          className="text-[#bf8f38] underline hover:no-underline"
         >
           Back to bookings
         </button>
@@ -129,7 +129,7 @@ export function BookingDetail({ bookingId }: BookingDetailProps) {
   return (
     <div className="space-y-6">
       {toastMessage && (
-        <div className="fixed top-4 right-4 z-50 bg-amber-500 text-white px-4 py-2 rounded-lg shadow-lg text-sm">
+        <div className="fixed top-4 right-4 z-50 bg-[#bf8f38] text-white px-4 py-2 rounded-none shadow-lg text-sm">
           {toastMessage}
         </div>
       )}
@@ -152,25 +152,25 @@ export function BookingDetail({ bookingId }: BookingDetailProps) {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-white border border-gray-200 rounded-xl p-6">
+        <div className="bg-white border border-gray-200 rounded-none p-6">
           <h2 className="text-lg font-semibold text-gray-900 mb-4">Client Information</h2>
           <div className="space-y-3">
             <div className="flex items-center gap-3 text-sm">
               <Mail className="w-4 h-4 text-gray-600" />
-              <a href={`mailto:${booking.clientEmail}`} className="text-amber-600 hover:text-amber-500">
+              <a href={`mailto:${booking.clientEmail}`} className="text-[#bf8f38] hover:text-[#bf8f38]">
                 {booking.clientEmail}
               </a>
             </div>
             <div className="flex items-center gap-3 text-sm">
               <Phone className="w-4 h-4 text-gray-600" />
-              <a href={`tel:${booking.clientPhone}`} className="text-amber-600 hover:text-amber-500">
+              <a href={`tel:${booking.clientPhone}`} className="text-[#bf8f38] hover:text-[#bf8f38]">
                 {booking.clientPhone}
               </a>
             </div>
           </div>
         </div>
 
-        <div className="bg-white border border-gray-200 rounded-xl p-6">
+        <div className="bg-white border border-gray-200 rounded-none p-6">
           <h2 className="text-lg font-semibold text-gray-900 mb-4">Event Details</h2>
           <div className="space-y-3">
             <div className="flex items-center gap-3 text-sm">
@@ -206,17 +206,17 @@ export function BookingDetail({ bookingId }: BookingDetailProps) {
       </div>
 
       {booking.notes && (
-        <div className="bg-white border border-gray-200 rounded-xl p-6">
+        <div className="bg-white border border-gray-200 rounded-none p-6">
           <h2 className="text-lg font-semibold text-gray-900 mb-3">Client Notes</h2>
           <p className="text-gray-700 whitespace-pre-wrap">{booking.notes}</p>
         </div>
       )}
 
       {booking.eventType === "WEDDING" && (
-        <div className="bg-white border border-amber-200 rounded-xl p-6">
+        <div className="bg-white border border-[#ecd398] rounded-none p-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
             <div>
-              <div className="inline-flex items-center gap-2 text-sm font-semibold text-amber-700">
+              <div className="inline-flex items-center gap-2 text-sm font-semibold text-[#a47a2a]">
                 <Heart className="h-4 w-4" />
                 Premium Wedding Experience
               </div>
@@ -241,7 +241,7 @@ export function BookingDetail({ bookingId }: BookingDetailProps) {
                 </div>
               )}
               {!canCreateWeddingExperience && !invitation && (
-                <p className="mt-3 text-xs text-amber-700">
+                <p className="mt-3 text-xs text-[#a47a2a]">
                   Available once this wedding booking is confirmed.
                 </p>
               )}
@@ -250,7 +250,7 @@ export function BookingDetail({ bookingId }: BookingDetailProps) {
               {(canCreateWeddingExperience || invitation) && (
                 <button
                   onClick={() => router.push(`/admin/bookings/${booking.id}/invitation`)}
-                  className="inline-flex items-center gap-2 rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-500"
+                  className="inline-flex items-center gap-2 rounded-none bg-[#bf8f38] px-4 py-2 text-sm font-semibold text-white hover:bg-[#bf8f38]"
                 >
                   <WandSparkles className="h-4 w-4" />
                   {invitation ? "Edit & Preview Invitation Cards" : "Design Invitation Cards"}
@@ -261,7 +261,7 @@ export function BookingDetail({ bookingId }: BookingDetailProps) {
                   href={`/wedding/${invitation.slug}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg border border-gray-200 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50"
+                  className="inline-flex items-center gap-2 rounded-none border border-gray-200 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50"
                 >
                   <ExternalLink className="h-4 w-4" />
                   View Live
@@ -272,7 +272,7 @@ export function BookingDetail({ bookingId }: BookingDetailProps) {
         </div>
       )}
 
-      <div className="bg-white border border-gray-200 rounded-xl p-6">
+      <div className="bg-white border border-gray-200 rounded-none p-6">
         <h2 className="text-lg font-semibold text-gray-900 mb-4">Status Control</h2>
         {availableTransitions.length > 0 ? (
           <div className="flex flex-wrap gap-2">
@@ -282,10 +282,10 @@ export function BookingDetail({ bookingId }: BookingDetailProps) {
                 onClick={() => updateStatus(transition)}
                 disabled={updating}
                 className={cn(
-                  "px-4 py-2 text-sm rounded-lg transition-colors border font-medium",
+                  "px-4 py-2 text-sm rounded-none transition-colors border font-medium",
                   transition === BOOKING_STATUS.CANCELLED
                      ? "border-red-200 text-red-600 hover:bg-red-50"
-                     : "border-amber-500/30 text-amber-600 hover:bg-amber-50",
+                     : "border-[#bf8f38]/30 text-[#bf8f38] hover:bg-[#fdf6e8]",
                   updating && "opacity-50 cursor-not-allowed"
                 )}
               >
@@ -299,12 +299,12 @@ export function BookingDetail({ bookingId }: BookingDetailProps) {
         )}
       </div>
 
-      <div className="bg-white border border-gray-200 rounded-xl p-6">
+      <div className="bg-white border border-gray-200 rounded-none p-6">
         <h2 className="text-lg font-semibold text-gray-900 mb-4">Payment Tracking</h2>
         <PaymentTracker bookingId={bookingId} />
       </div>
 
-      <div className="bg-white border border-gray-200 rounded-xl p-6">
+      <div className="bg-white border border-gray-200 rounded-none p-6">
         <h2 className="text-lg font-semibold text-gray-900 mb-4">Communication Log</h2>
         <MessageThread bookingId={bookingId} />
       </div>

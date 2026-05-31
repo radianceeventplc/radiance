@@ -3,13 +3,26 @@
 import { useScrollHeader } from "@/hooks/useScrollHeader";
 import { HeaderOverlay } from "./HeaderOverlay";
 import { HeaderSolid } from "./HeaderSolid";
+import { HeaderLight } from "./HeaderLight";
 
-export function Header() {
+interface HeaderProps {
+  /**
+   * Style used while the page is at the top (before scroll).
+   * - "overlay": transparent bg + white text + inverted logo. Use over a dark hero (homepage).
+   * - "light":   transparent bg + navy text + color logo. Use on pages with light backgrounds.
+   * Once the user scrolls past the threshold, both variants switch to the solid header.
+   */
+  topVariant?: "overlay" | "light";
+}
+
+export function Header({ topVariant = "overlay" }: HeaderProps) {
   const { isAtTop } = useScrollHeader(80);
+
+  const TopHeader = topVariant === "light" ? HeaderLight : HeaderOverlay;
 
   return (
     <>
-      {/* Header 1: Overlay - Only visible at top (Hero section) */}
+      {/* Top-of-page header (overlay or light) */}
       <div
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ease-in-out ${
           isAtTop
@@ -17,10 +30,10 @@ export function Header() {
             : "opacity-0 -translate-y-full pointer-events-none"
         }`}
       >
-        <HeaderOverlay />
+        <TopHeader />
       </div>
 
-      {/* Header 2: Solid - Visible when scrolled down, stays on scroll up */}
+      {/* Solid header after scroll */}
       <div
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ease-in-out ${
           !isAtTop

@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radiance Events | Turning Your Special Moments into Timeless Memories</title>
+    <meta name="description" content="Radiance Events – Ethiopia's premier full-service wedding and event planning company. Weddings, corporate events, social celebrations, and destination planning.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --deep:       #09080A;
+            --charcoal:   #161318;
+            --card:       #1E1A20;
+            --gold:       #C69B56;
+            --gold-light: #D9B278;
+            --champagne:  #E8D5AF;
+            --ivory:      #F7F3EC;
+            --blush:      #F2E8DF;
+            --text-light: #FAF8F5;
+            --text-muted: #9B9189;
+            --border:     rgba(198, 155, 86, 0.22);
+            --border-dim: rgba(255,255,255,0.06);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Jost', sans-serif; background: var(--deep); color: var(--text-light); overflow-x: hidden; }
+
+        /* ─── TYPE ─────────────────────────────── */
+        h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; font-weight: 400; line-height: 1.1; }
+        .display-xl  { font-size: clamp(3.2rem, 7.5vw, 8rem); font-weight: 300; letter-spacing: -0.02em; line-height: 0.95; }
+        .display-lg  { font-size: clamp(2.2rem, 4.5vw, 4.6rem); line-height: 1.05; }
+        .display-md  { font-size: clamp(1.6rem, 2.8vw, 2.8rem); }
+        .section-label { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); }
+        .divider-gold  { width: 55px; height: 1px; background: var(--gold); margin: 1.4rem 0; }
+        .divider-center { margin: 1.4rem auto; }
+
+        /* ─── LAYOUT ────────────────────────────── */
+        section { padding: 8rem 4rem; }
+        .container { max-width: 1360px; margin: 0 auto; }
+        .section-header { margin-bottom: 5rem; }
+
+        /* ─── BUTTONS ────────────────────────────── */
+        .btn-primary {
+            display: inline-block; background: var(--gold); color: var(--deep);
+            padding: 0.95rem 2.8rem; font-family: 'Jost', sans-serif; font-size: 0.78rem;
+            font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+            text-decoration: none; border: none; cursor: pointer; transition: all 0.3s ease;
+        }
+        .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(198,155,86,0.25); }
+
+        .btn-outline {
+            display: inline-block; background: transparent; color: var(--text-light);
+            padding: 0.95rem 2.8rem; font-family: 'Jost', sans-serif; font-size: 0.78rem;
+            font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase;
+            text-decoration: none; border: 1px solid rgba(255,255,255,0.25); cursor: pointer; transition: all 0.3s ease;
+        }
+        .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+        .btn-dark {
+            display: inline-block; background: var(--deep); color: var(--gold);
+            padding: 0.95rem 2.8rem; font-family: 'Jost', sans-serif; font-size: 0.78rem;
+            font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+            text-decoration: none; border: none; cursor: pointer; transition: all 0.3s ease;
+        }
+        .btn-dark:hover { background: var(--charcoal); transform: translateY(-2px); }
+
+        /* ─── NAV ────────────────────────────────── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 1.6rem 4rem; display: flex; justify-content: space-between;
+            align-items: center; transition: all 0.4s ease;
+        }
+        nav.scrolled {
+            background: rgba(9,8,10,0.93); backdrop-filter: blur(24px);
+            padding: 1rem 4rem; border-bottom: 1px solid var(--border);
+        }
+        .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.55rem; font-weight: 500; color: var(--gold); text-decoration: none; letter-spacing: 0.06em; }
+        .nav-logo span { color: var(--text-light); font-weight: 300; }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a { font-size: 0.75rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-cta { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 0.55rem 1.7rem; font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: all 0.3s; }
+        .nav-cta:hover { background: var(--gold); color: var(--deep); }
+
+        /* mobile nav toggle */
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+        .hamburger span { width: 24px; height: 1.5px; background: var(--gold); display: block; transition: all 0.3s; }
+
+        /* ─── HERO ───────────────────────────────── */
+        .hero {
+            min-height: 100vh; position: relative; display: flex;
+            flex-direction: column; justify-content: center;
+            padding: 0 4rem; overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse at 72% 42%, rgba(198,155,86,0.08) 0%, transparent 58%),
+                radial-gradient(ellipse at 18% 78%, rgba(198,155,86,0.04) 0%, transparent 52%),
+                var(--deep);
+        }
+        .hero-bg::after {
+            content: ''; position: absolute; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+        }
+        .hero-content { position: relative; z-index: 2; max-width: 1360px; margin: 0 auto; width: 100%; }
+        .hero-eyebrow { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 2rem; }
+        .hero-eyebrow::after { content: ''; width: 55px; height: 1px; background: var(--gold); }
+        .hero-title { margin-bottom: 0; }
+        .hero-italic { font-style: italic; color: var(--gold); }
+        .hero-sub { font-size: 1rem; font-weight: 300; color: var(--text-muted); max-width: 480px; line-height: 1.85; margin-top: 2rem; margin-bottom: 3rem; }
+        .hero-cta { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+
+        .hero-aside {
+            position: absolute; right: 5rem; top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column; gap: 0; z-index: 2;
+        }
+        .hero-stat { text-align: right; padding: 1.4rem 0; border-bottom: 1px solid var(--border); min-width: 130px; }
+        .hero-stat:last-child { border-bottom: none; }
+        .hero-stat .num { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; color: var(--gold); line-height: 1; }
+        .hero-stat .lbl { font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.3rem; }
+
+        .scroll-cue { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; z-index: 2; }
+        .scroll-cue span { font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-muted); }
+        .scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scrollPulse 2.2s ease-in-out infinite; }
+        @keyframes scrollPulse { 0%,100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+        /* ─── BRAND BAR ──────────────────────────── */
+        .brand-bar { background: var(--charcoal); padding: 2.5rem 4rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .brand-bar-inner { max-width: 1360px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
+        .brand-bar-item { display: flex; align-items: center; gap: 1rem; }
+        .brand-bar-icon { color: var(--gold); font-size: 1rem; }
+        .brand-bar-text { font-size: 0.78rem; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; }
+
+        /* ─── ABOUT ──────────────────────────────── */
+        #about { background: var(--charcoal); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+        .about-copy p { font-size: 0.95rem; font-weight: 300; line-height: 1.95; color: rgba(250,248,245,0.68); margin-bottom: 1.5rem; }
+        .about-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; font-style: italic; color: var(--gold-light); line-height: 1.5; border-left: 2px solid var(--gold); padding-left: 2rem; margin: 2.5rem 0; }
+        .values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+        .val-card { padding: 1.6rem; border: 1px solid var(--border); transition: border-color 0.3s, transform 0.3s; }
+        .val-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+        .val-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold); margin-bottom: 0.5rem; }
+        .val-card p { font-size: 0.82rem; font-weight: 300; line-height: 1.65; color: var(--text-muted); }
+
+        /* ─── SERVICES ───────────────────────────── */
+        #services { background: var(--deep); }
+        .service-tabs { display: flex; border-bottom: 1px solid var(--border); margin-bottom: 4rem; gap: 0; overflow-x: auto; scrollbar-width: none; }
+        .service-tabs::-webkit-scrollbar { display: none; }
+        .stab { padding: 1rem 2.4rem; font-family: 'Jost', sans-serif; font-size: 0.73rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; background: none; border: none; color: var(--text-muted); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all 0.3s; white-space: nowrap; }
+        .stab.active, .stab:hover { color: var(--gold); border-bottom-color: var(--gold); }
+        .spanel { display: none; animation: fadeIn 0.4s ease; }
+        .spanel.active { display: block; }
+        @keyframes fadeIn { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: translateY(0); } }
+        .scards { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 2px; }
+        .scard { background: var(--card); padding: 2.5rem; border: 1px solid var(--border-dim); position: relative; overflow: hidden; transition: transform 0.35s, box-shadow 0.35s; }
+        .scard::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--gold); transition: width 0.4s ease; }
+        .scard:hover::after { width: 100%; }
+        .scard:hover { transform: translateY(-5px); box-shadow: 0 24px 60px rgba(0,0,0,0.35); }
+        .scard-num { font-family: 'Cormorant Garamond', serif; font-size: 3.2rem; font-weight: 300; color: rgba(198,155,86,0.15); line-height: 1; margin-bottom: 1rem; }
+        .scard h3 { font-size: 1.35rem; margin-bottom: 1.2rem; }
+        .scard ul { list-style: none; }
+        .scard ul li { font-size: 0.83rem; font-weight: 300; color: var(--text-muted); padding: 0.42rem 0; border-bottom: 1px solid var(--border-dim); display: flex; align-items: center; gap: 0.8rem; }
+        .scard ul li:last-child { border-bottom: none; }
+        .scard ul li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+        .service-cta-row { margin-top: 4rem; display: flex; align-items: center; gap: 2rem; }
+        .service-cta-row p { font-size: 0.88rem; font-weight: 300; color: var(--text-muted); }
+
+        /* ─── APPROACH ───────────────────────────── */
+        #approach { background: var(--ivory); }
+        #approach .section-label { color: var(--gold); }
+        .approach-steps { display: grid; grid-template-columns: repeat(4,1fr); margin-top: 4rem; }
+        .step { padding: 3rem 2.5rem; border-right: 1px solid rgba(10,8,7,0.1); }
+        .step:last-child { border-right: none; }
+        .step-num { font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 300; color: rgba(198,155,86,0.18); line-height: 1; margin-bottom: 1.5rem; }
+        .step h3 { font-size: 1.35rem; color: var(--deep); margin-bottom: 1rem; }
+        .step p { font-size: 0.88rem; font-weight: 300; line-height: 1.75; color: rgba(10,8,7,0.55); }
+
+        /* ─── WHY ────────────────────────────────── */
+        #why { background: var(--deep); }
+        .why-layout { display: grid; grid-template-columns: 1fr 1.15fr; gap: 6rem; align-items: start; }
+        .features { margin-top: 3rem; }
+        .feat { display: flex; gap: 1.8rem; align-items: flex-start; padding: 1.8rem 0; border-bottom: 1px solid var(--border); }
+        .feat:first-child { border-top: 1px solid var(--border); }
+        .feat:hover .feat-icon { background: var(--gold); color: var(--deep); }
+        .feat-icon { width: 42px; height: 42px; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.9rem; transition: all 0.3s; }
+        .feat-body h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; margin-bottom: 0.4rem; }
+        .feat-body p { font-size: 0.84rem; font-weight: 300; color: var(--text-muted); line-height: 1.75; }
+        .why-box { padding: 3rem; border: 1px solid var(--border); }
+        .why-box .big-q { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 300; font-style: italic; color: var(--gold-light); line-height: 1.3; margin-bottom: 2rem; }
+        .why-box p { font-size: 0.9rem; font-weight: 300; line-height: 1.85; color: rgba(250,248,245,0.6); margin-bottom: 1.2rem; }
+
+        /* ─── TEAM ───────────────────────────────── */
+        #team { background: var(--charcoal); }
+        .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 4rem; }
+        .team-card { padding: 3rem; border: 1px solid var(--border); transition: border-color 0.3s; }
+        .team-card:hover { border-color: var(--gold); }
+        .team-card .tc-label { font-size: 0.68rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+        .team-card h3 { font-size: 2.1rem; margin-bottom: 0.2rem; }
+        .team-card .tc-title { font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .team-card .tc-bio { font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: rgba(250,248,245,0.62); margin-bottom: 2rem; }
+        .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tag { font-size: 0.67rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--border); padding: 0.28rem 0.75rem; }
+
+        /* ─── GALLERY ────────────────────────────── */
+        #gallery { background: var(--deep); padding-bottom: 0; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(4,1fr); grid-auto-rows: 220px; gap: 4px; margin-top: 3rem; }
+        .gi { background: var(--card); position: relative; overflow: hidden; cursor: pointer; }
+        .gi:first-child { grid-column: span 2; grid-row: span 2; }
+        .gi-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(9,8,10,0.75), transparent); display: flex; align-items: flex-end; padding: 1.5rem; opacity: 0; transition: opacity 0.3s; }
+        .gi:hover .gi-overlay { opacity: 1; }
+        .gi-overlay span { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--champagne); }
+        .gi-fill { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; background: linear-gradient(135deg, var(--card), var(--deep)); }
+        .gi-fill .gi-icon { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: rgba(198,155,86,0.25); }
+        .gi-fill span { font-size: 0.63rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(155,145,137,0.5); }
+        .gallery-note { text-align: center; padding: 2.5rem 4rem 5rem; }
+        .gallery-note p { font-size: 0.8rem; color: rgba(155,145,137,0.45); font-style: italic; margin-bottom: 1.5rem; }
+
+        /* ─── TESTIMONIALS ───────────────────────── */
+        #testimonials { background: var(--charcoal); }
+        .test-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-top: 4rem; }
+        .tcard { padding: 2.5rem; border: 1px solid var(--border); position: relative; transition: border-color 0.3s; }
+        .tcard:hover { border-color: var(--gold); }
+        .tcard::before { content: '\201C'; font-family: 'Cormorant Garamond', serif; font-size: 5rem; color: var(--gold); opacity: 0.18; position: absolute; top: 0.5rem; left: 1.8rem; line-height: 1; }
+        .tcard-text { font-family: 'Cormorant Garamond', serif; font-size: 1.12rem; font-style: italic; line-height: 1.75; color: rgba(250,248,245,0.85); margin-bottom: 2rem; padding-top: 1.2rem; }
+        .tcard-author { display: flex; align-items: center; gap: 1rem; }
+        .tcard-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--deep); flex-shrink: 0; }
+        .tcard-meta .tname { font-size: 0.85rem; font-weight: 500; }
+        .tcard-meta .tevent { font-size: 0.72rem; color: var(--gold); letter-spacing: 0.08em; }
+        .test-disclaimer { font-size: 0.72rem; color: rgba(155,145,137,0.4); font-style: italic; text-align: center; margin-top: 2.5rem; }
+
+        /* ─── CTA BAND ───────────────────────────── */
+        #ctaband { background: var(--gold); padding: 6rem 4rem; text-align: center; }
+        .ctaband-lbl { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(9,8,10,0.45); margin-bottom: 0.8rem; }
+        #ctaband h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem,4.5vw,3.8rem); color: var(--deep); margin-bottom: 1rem; line-height: 1.1; }
+        #ctaband h2 em { font-style: italic; }
+        #ctaband p { font-size: 0.98rem; font-weight: 300; color: rgba(9,8,10,0.6); max-width: 480px; margin: 0 auto 3rem; line-height: 1.75; }
+
+        /* ─── CONTACT ────────────────────────────── */
+        #contact { background: var(--deep); }
+        .contact-layout { display: grid; grid-template-columns: 1fr 1.6fr; gap: 6rem; }
+        .ci-head h3 { font-size: 1.35rem; margin-bottom: 0.5rem; }
+        .ci-head p { font-size: 0.88rem; font-weight: 300; color: var(--text-muted); line-height: 1.85; margin-bottom: 3rem; }
+        .ci-items { display: flex; flex-direction: column; gap: 1.6rem; }
+        .ci-row { display: flex; gap: 1rem; align-items: flex-start; }
+        .ci-icon { width: 38px; height: 38px; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; color: var(--gold); }
+        .ci-row .ci-lbl { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.2rem; }
+        .ci-row .ci-val { font-size: 0.88rem; color: var(--text-light); }
+        .cform { display: flex; flex-direction: column; gap: 1.4rem; }
+        .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+        .fgrp { display: flex; flex-direction: column; gap: 0.45rem; }
+        .fgrp label { font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+        .fgrp input, .fgrp select, .fgrp textarea {
+            background: var(--card); border: 1px solid var(--border); color: var(--text-light);
+            padding: 0.85rem 1.1rem; font-family: 'Jost', sans-serif; font-size: 0.88rem;
+            font-weight: 300; outline: none; transition: border-color 0.3s; width: 100%;
+        }
+        .fgrp input::placeholder, .fgrp textarea::placeholder { color: rgba(155,145,137,0.55); }
+        .fgrp input:focus, .fgrp select:focus, .fgrp textarea:focus { border-color: var(--gold); }
+        .fgrp select { cursor: pointer; appearance: none; }
+        .fgrp select option { background: var(--card); }
+        .fgrp textarea { resize: vertical; min-height: 120px; }
+        .submit-btn { width: 100%; padding: 1.1rem; font-size: 0.82rem; }
+        .form-confirm { display: none; padding: 1.5rem; border: 1px solid var(--gold); color: var(--gold); font-size: 0.88rem; font-weight: 300; text-align: center; }
+
+        /* ─── FOOTER ─────────────────────────────── */
+        footer { background: #060507; padding: 3.5rem 4rem; border-top: 1px solid var(--border); }
+        .footer-inner { max-width: 1360px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; }
+        .footer-brand .fl { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; color: var(--gold); }
+        .footer-brand .ft { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.3rem; letter-spacing: 0.04em; }
+        .footer-nav { display: flex; gap: 2.2rem; list-style: none; flex-wrap: wrap; }
+        .footer-nav a { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+        .footer-nav a:hover { color: var(--gold); }
+        .footer-copy { font-size: 0.72rem; color: rgba(155,145,137,0.38); }
+
+        /* ─── SCROLL ANIMATIONS ──────────────────── */
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.vis { opacity: 1; transform: translateY(0); }
+        .d1 { transition-delay: 0.1s; }
+        .d2 { transition-delay: 0.2s; }
+        .d3 { transition-delay: 0.3s; }
+        .d4 { transition-delay: 0.4s; }
+
+        /* ─── RESPONSIVE ─────────────────────────── */
+        @media (max-width: 1100px) {
+            nav, nav.scrolled { padding: 1.3rem 2rem; }
+            section { padding: 5rem 2rem; }
+            .hero { padding: 0 2rem; }
+            .brand-bar { padding: 2rem; }
+            #ctaband { padding: 5rem 2rem; }
+            footer { padding: 3rem 2rem; }
+            .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .approach-steps { grid-template-columns: repeat(2,1fr); }
+            .step { border-right: none; border-bottom: 1px solid rgba(10,8,7,0.1); }
+            .step:nth-child(even) { border-bottom: none; }
+            .step:last-child { border-bottom: none; }
+            .why-layout { grid-template-columns: 1fr; gap: 3rem; }
+            .team-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: repeat(2,1fr); }
+            .gi:first-child { grid-column: span 2; }
+            .test-grid { grid-template-columns: 1fr; }
+            .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+            .hero-aside { display: none; }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+        }
+        @media (max-width: 640px) {
+            .frow { grid-template-columns: 1fr; }
+            .values-grid { grid-template-columns: 1fr; }
+            .approach-steps { grid-template-columns: 1fr; }
+            .step { border-right: none; border-bottom: 1px solid rgba(10,8,7,0.1); }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .gi:first-child { grid-column: span 1; }
+            .hero-cta { flex-direction: column; }
+            .footer-inner { flex-direction: column; align-items: flex-start; }
+            .brand-bar-inner { flex-direction: column; align-items: flex-start; gap: 1.2rem; }
+        }
+
+        /* mobile nav drawer */
+        .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(9,8,10,0.97); z-index: 999; flex-direction: column; justify-content: center; align-items: center; gap: 2.5rem; }
+        .mobile-nav.open { display: flex; }
+        .mobile-nav a { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--text-light); text-decoration: none; transition: color 0.3s; }
+        .mobile-nav a:hover { color: var(--gold); }
+        .mobile-close { position: absolute; top: 1.5rem; right: 1.8rem; font-size: 1.8rem; color: var(--text-muted); cursor: pointer; background: none; border: none; }
+    </style>
+</head>
+<body>
+
+<!-- ════ NAVIGATION ════════════════════════════════════════════════════════ -->
+<nav id="navbar">
+    <a href="#home" class="nav-logo">Radiance<span> Events</span></a>
+    <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta" style="display:none;" id="navCtaDesktop">Book Consultation</a>
+    <div class="hamburger" id="menuBtn" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </div>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="mobile-nav" id="mobileNav">
+    <button class="mobile-close" onclick="toggleMenu()">✕</button>
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="#services" onclick="toggleMenu()">Services</a>
+    <a href="#why" onclick="toggleMenu()">Why Us</a>
+    <a href="#team" onclick="toggleMenu()">Team</a>
+    <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+    <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+
+<!-- ════ HERO ══════════════════════════════════════════════════════════════ -->
+<section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+        <div class="hero-eyebrow">
+            <span class="section-label">Ethiopia's Premier Event Company</span>
+        </div>
+        <h1 class="display-xl hero-title">
+            We Don't Just<br>
+            Plan Events —<br>
+            We <span class="hero-italic">Craft</span><br>
+            Memories.
+        </h1>
+        <p class="hero-sub">
+            From intimate celebrations to grand weddings and world-class corporate events —
+            Radiance Events delivers flawless, unforgettable experiences tailored
+            precisely to your vision.
+        </p>
+        <div class="hero-cta">
+            <a href="#contact" class="btn-primary">Start Planning Your Event</a>
+            <a href="#services" class="btn-outline">Explore Our Services</a>
+        </div>
+    </div>
+
+    <div class="hero-aside">
+        <div class="hero-stat">
+            <div class="num">360°</div>
+            <div class="lbl">Full Service</div>
+        </div>
+        <div class="hero-stat">
+            <div class="num">13+</div>
+            <div class="lbl">Yrs of Expertise</div>
+        </div>
+        <div class="hero-stat">
+            <div class="num">4</div>
+            <div class="lbl">Event Specialties</div>
+        </div>
+    </div>
+
+    <div class="scroll-cue">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+    </div>
+</section>
+
+
+<!-- ════ BRAND BAR ═════════════════════════════════════════════════════════ -->
+<div class="brand-bar">
+    <div class="brand-bar-inner">
+        <div class="brand-bar-item">
+            <div class="brand-bar-icon">✦</div>
+            <div class="brand-bar-text">Full 360° Wedding Planning</div>
+        </div>
+        <div class="brand-bar-item">
+            <div class="brand-bar-icon">✦</div>
+            <div class="brand-bar-text">Corporate &amp; Gala Events</div>
+        </div>
+        <div class="brand-bar-item">
+            <div class="brand-bar-icon">✦</div>
+            <div class="brand-bar-text">Destination Weddings</div>
+        </div>
+        <div class="brand-bar-item">
+            <div class="brand-bar-icon">✦</div>
+            <div class="brand-bar-text">Private &amp; Social Celebrations</div>
+        </div>
+        <div class="brand-bar-item">
+            <div class="brand-bar-icon">✦</div>
+            <div class="brand-bar-text">Local &amp; International Experience</div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ════ ABOUT ═════════════════════════════════════════════════════════════ -->
+<section id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-copy reveal">
+                <span class="section-label">Our Story</span>
+                <div class="divider-gold"></div>
+                <h2 class="display-lg">Where Every Event<br>Becomes a Legacy</h2>
+                <div class="about-quote">
+                    "Every event is more than a gathering — it is an experience,
+                    a memory, and a reflection of the people behind it."
+                </div>
+                <p>Radiance Events was founded by two passionate professionals who recognized a clear need in Ethiopia: world-class event experiences delivered with precision, elegance, and deeply personal care.</p>
+                <p>We combine creativity, strategic planning, modern event styling, and exceptional coordination to deliver celebrations that are both sophisticated and completely stress-free for our clients — from the very first consultation to the final beautiful moment.</p>
+                <p>Built on the belief that every client deserves dedicated attention and flawless execution, Radiance Events is your trusted partner for every occasion that matters.</p>
+                <br>
+                <a href="#contact" class="btn-primary">Schedule a Free Consultation</a>
+            </div>
+            <div class="values-grid reveal d2">
+                <div class="val-card">
+                    <h4>Excellence</h4>
+                    <p>Committed to the highest quality service and professional standards in every project.</p>
+                </div>
+                <div class="val-card">
+                    <h4>Creativity</h4>
+                    <p>Designing unique, memorable experiences tailored to each client's unique story and vision.</p>
+                </div>
+                <div class="val-card">
+                    <h4>Integrity</h4>
+                    <p>Honesty, transparency, and professionalism in every interaction and relationship we build.</p>
+                </div>
+                <div class="val-card">
+                    <h4>Attention to Detail</h4>
+                    <p>Exceptional events are created through thoughtful details and meticulous coordination.</p>
+                </div>
+                <div class="val-card" style="grid-column: span 2;">
+                    <h4>Client Satisfaction</h4>
+                    <p>Our clients are the center of everything we do. Your peace of mind and happiness is our definition of a perfect event.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ════ SERVICES ══════════════════════════════════════════════════════════ -->
+<section id="services">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">What We Offer</span>
+            <div class="divider-gold"></div>
+            <h2 class="display-lg">Complete Event Solutions<br>For Every Occasion</h2>
+            <p style="font-size:0.95rem; font-weight:300; color:var(--text-muted); max-width:520px; margin-top:1.2rem; line-height:1.85;">
+                Choose your event type below to explore how we can make it extraordinary.
+            </p>
+        </div>
+
+        <div class="service-tabs reveal">
+            <button class="stab active" onclick="showTab('weddings',this)">💍 Weddings</button>
+            <button class="stab" onclick="showTab('social',this)">🎉 Social Events</button>
+            <button class="stab" onclick="showTab('destination',this)">✈ Destination</button>
+            <button class="stab" onclick="showTab('corporate',this)">🏢 Corporate</button>
+        </div>
+
+        <!-- Weddings -->
+        <div class="spanel active" id="tab-weddings">
+            <div class="scards">
+                <div class="scard"><div class="scard-num">01</div><h3>Full Wedding Planning</h3><ul><li>Complete End-to-End Planning</li><li>Timeline &amp; Budget Management</li><li>Venue &amp; Vendor Selection</li><li>Wedding Styling &amp; Décor</li><li>Beauty &amp; Bridal Coordination</li><li>Post-Event Support</li></ul></div>
+                <div class="scard"><div class="scard-num">02</div><h3>Cultural Celebrations</h3><ul><li>Traditional Ethiopian Weddings</li><li>Engagement Ceremonies</li><li>Multi-Day Cultural Events</li><li>Cultural Décor &amp; Styling</li><li>Local Traditions Integration</li><li>Family Coordination</li></ul></div>
+                <div class="scard"><div class="scard-num">03</div><h3>Day-Of Coordination</h3><ul><li>Entertainment Coordination</li><li>Photography &amp; Videography</li><li>Guest Hospitality Services</li><li>Transportation &amp; Logistics</li><li>Vendor Day Management</li><li>Emergency Contingencies</li></ul></div>
+                <div class="scard"><div class="scard-num">04</div><h3>Honeymoon Planning</h3><ul><li>Honeymoon Package Design</li><li>Travel &amp; Flight Coordination</li><li>Accommodation Booking</li><li>Romantic Itinerary Planning</li><li>International Arrangements</li><li>Surprise Elements</li></ul></div>
+            </div>
+            <div class="service-cta-row" style="margin-top:3rem;">
+                <a href="#contact" class="btn-primary">Plan My Wedding</a>
+                <p>Every wedding is as unique as the couple. Let's start with your story.</p>
+            </div>
+        </div>
+
+        <!-- Social Events -->
+        <div class="spanel" id="tab-social">
+            <div class="scards">
+                <div class="scard"><div class="scard-num">01</div><h3>Milestone Celebrations</h3><ul><li>Birthday Parties (All Ages)</li><li>Anniversary Celebrations</li><li>Graduation Parties</li><li>Retirement Events</li><li>Family Milestones</li></ul></div>
+                <div class="scard"><div class="scard-num">02</div><h3>Pre-Wedding Events</h3><ul><li>Bridal Showers</li><li>Engagement Parties</li><li>Baby Showers</li><li>Hen &amp; Stag Parties</li><li>Couples' Celebrations</li></ul></div>
+                <div class="scard"><div class="scard-num">03</div><h3>Private Luxury Events</h3><ul><li>Private Dinners &amp; Soirées</li><li>Family Gatherings</li><li>VIP Celebrations</li><li>Intimate Events</li><li>High-End Private Experiences</li></ul></div>
+            </div>
+            <div class="service-cta-row" style="margin-top:3rem;">
+                <a href="#contact" class="btn-primary">Plan My Celebration</a>
+                <p>No celebration is too big or too intimate. We handle every detail with equal care.</p>
+            </div>
+        </div>
+
+        <!-- Destination -->
+        <div class="spanel" id="tab-destination">
+            <div class="scards">
+                <div class="scard"><div class="scard-num">01</div><h3>Local Weddings</h3><ul><li>Addis Ababa Premium Venues</li><li>Ethiopian Destination Sites</li><li>Full Local Coordination</li><li>Cultural Integration</li><li>Trusted Local Vendor Network</li></ul></div>
+                <div class="scard"><div class="scard-num">02</div><h3>African Destinations</h3><ul><li>Pan-African Wedding Planning</li><li>Cross-Border Coordination</li><li>Multi-Cultural Events</li><li>Destination Scouting</li><li>Travel &amp; Logistics</li></ul></div>
+                <div class="scard"><div class="scard-num">03</div><h3>International Weddings</h3><ul><li>Global Destination Planning</li><li>International Vendor Network</li><li>Documentation &amp; Legal Support</li><li>Guest Travel Coordination</li><li>Honeymoon Integration</li></ul></div>
+            </div>
+            <div class="service-cta-row" style="margin-top:3rem;">
+                <a href="#contact" class="btn-primary">Plan My Destination Wedding</a>
+                <p>Wherever you dream of saying "I do" — we'll make it happen, beautifully.</p>
+            </div>
+        </div>
+
+        <!-- Corporate -->
+        <div class="spanel" id="tab-corporate">
+            <div class="scards">
+                <div class="scard"><div class="scard-num">01</div><h3>Corporate Gatherings</h3><ul><li>Company Events &amp; Parties</li><li>Gala Dinners</li><li>Networking Events</li><li>Award Ceremonies</li><li>Staff Appreciation Events</li></ul></div>
+                <div class="scard"><div class="scard-num">02</div><h3>Business Events</h3><ul><li>Conferences &amp; Seminars</li><li>Product Launches</li><li>Brand Activation Events</li><li>Trade Exhibitions</li><li>Press &amp; Media Events</li></ul></div>
+                <div class="scard"><div class="scard-num">03</div><h3>Team &amp; Culture</h3><ul><li>Team Building Events</li><li>Company Retreats</li><li>Leadership Gatherings</li><li>Workshops &amp; Training</li><li>Internal Milestone Celebrations</li></ul></div>
+            </div>
+            <div class="service-cta-row" style="margin-top:3rem;">
+                <a href="#contact" class="btn-primary">Plan My Corporate Event</a>
+                <p>Professional, polished, and perfectly on-brand — your corporate events deserve the best.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ════ APPROACH ══════════════════════════════════════════════════════════ -->
+<section id="approach">
+    <div class="container">
+        <div class="section-header reveal" style="text-align:center;">
+            <span class="section-label">How We Work</span>
+            <div class="divider-gold divider-center"></div>
+            <h2 class="display-lg" style="color:var(--deep);">Our Planning Process</h2>
+            <p style="font-size:0.95rem; font-weight:300; color:rgba(10,8,7,0.55); max-width:490px; margin:1.5rem auto 0; line-height:1.85;">
+                From your first spark of an idea to the final unforgettable moment — every step handled with precision and care.
+            </p>
+        </div>
+        <div class="approach-steps">
+            <div class="step reveal">
+                <div class="step-num">01</div>
+                <h3>Consultation &amp; Vision</h3>
+                <p>We begin by truly listening — understanding your vision, preferences, expectations, and budget. Every extraordinary event begins with this conversation.</p>
+            </div>
+            <div class="step reveal d1">
+                <div class="step-num">02</div>
+                <h3>Design &amp; Coordination</h3>
+                <p>We curate every detail of the experience — from décor and ambiance to entertainment, guest flow, and vendor logistics — into a seamless event blueprint.</p>
+            </div>
+            <div class="step reveal d2">
+                <div class="step-num">03</div>
+                <h3>Flawless Execution</h3>
+                <p>Our team manages every element of event day with precision — ensuring a smooth, stress-free experience from setup to the final farewell moment.</p>
+            </div>
+            <div class="step reveal d3">
+                <div class="step-num">04</div>
+                <h3>Celebrate &amp; Remember</h3>
+                <p>You enjoy every magical moment while we handle everything behind the scenes. Your only job? Be fully present and celebrate.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ════ WHY CHOOSE US ═════════════════════════════════════════════════════ -->
+<section id="why">
+    <div class="container">
+        <div class="why-layout">
+            <div class="reveal">
+                <span class="section-label">Why Radiance</span>
+                <div class="divider-gold"></div>
+                <h2 class="display-lg">The Radiance<br>Difference</h2>
+                <div class="features">
+                    <div class="feat">
+                        <div class="feat-icon">✦</div>
+                        <div class="feat-body">
+                            <h4>Truly Personalized Experiences</h4>
+                            <p>No two events are the same. We tailor every celebration to reflect your unique story, culture, and vision — never a template, always bespoke.</p>
+                        </div>
+                    </div>
+                    <div class="feat">
+                        <div class="feat-icon">✦</div>
+                        <div class="feat-body">
+                            <h4>Complete 360° Event Management</h4>
+                            <p>From concept to execution to post-event support — we manage every single detail so you never have to carry the weight of planning.</p>
+                        </div>
+                    </div>
+                    <div class="feat">
+                        <div class="feat-icon">✦</div>
+                        <div class="feat-body">
+                            <h4>Local &amp; International Expertise</h4>
+                            <p>Our founders combine deep local market knowledge with international exposure — bringing world-class standards to every Ethiopian celebration.</p>
+                        </div>
+                    </div>
+                    <div class="feat">
+                        <div class="feat-icon">✦</div>
+                        <div class="feat-body">
+                            <h4>Creative Styling &amp; Design Excellence</h4>
+                            <p>Led by a certified event stylist, our creative direction transforms spaces into breathtaking, magazine-worthy environments.</p>
+                        </div>
+                    </div>
+                    <div class="feat">
+                        <div class="feat-icon">✦</div>
+                        <div class="feat-body">
+                            <h4>Reliable Vendor &amp; Partner Network</h4>
+                            <p>We work with a carefully vetted network of top-tier vendors to guarantee seamless, high-quality delivery of every event element.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal d2">
+                <div class="why-box">
+                    <div class="big-q">"Turning Your Special Moments into Timeless Memories."</div>
+                    <p>At Radiance Events, we believe that every celebration — regardless of size or scale — deserves dedicated attention, personalized care, and flawless execution. Whether you're planning an intimate gathering of 20 or a grand wedding of 500, our commitment never wavers.</p>
+                    <p>We are not just event planners. We are your creative partners, your logistics team, your calm in the storm, and the reason your guests leave saying: "That was the most beautiful event I have ever attended."</p>
+                    <br><br>
+                    <a href="#contact" class="btn-primary">Let's Create Your Event Together</a>
+                </div>
+                <br>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:0.5rem;">
+                    <div style="padding:1.5rem; border:1px solid var(--border); text-align:center;">
+                        <div style="font-family:'Cormorant Garamond',serif; font-size:2.2rem; color:var(--gold);">360°</div>
+                        <div style="font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-muted); margin-top:0.4rem;">Full-Service</div>
+                    </div>
+                    <div style="padding:1.5rem; border:1px solid var(--border); text-align:center;">
+                        <div style="font-family:'Cormorant Garamond',serif; font-size:2.2rem; color:var(--gold);">100%</div>
+                        <div style="font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-muted); margin-top:0.4rem;">Client-Focused</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ════ TEAM ═══════════════════════════════════════════════════════════════ -->
+<section id="team">
+    <div class="container">
+        <div class="section-header reveal" style="text-align:center;">
+            <span class="section-label">The People Behind the Magic</span>
+            <div class="divider-gold divider-center"></div>
+            <h2 class="display-lg">Meet Our Founders</h2>
+            <p style="font-size:0.95rem; font-weight:300; color:var(--text-muted); max-width:480px; margin:1.2rem auto 0; line-height:1.85;">
+                Two passionate professionals. One shared commitment to excellence.
+            </p>
+        </div>
+        <div class="team-grid">
+            <div class="team-card reveal">
+                <div class="tc-label">Co-Founder</div>
+                <h3>Emnet Mulugeta</h3>
+                <div class="tc-title">Creative Director</div>
+                <p class="tc-bio">A certified wedding and party planner with extensive marketing experience both in Ethiopia and internationally. Emnet's passion for creating memorable experiences — combined with her deep understanding of modern trends and cultural traditions — allows Radiance Events to design celebrations that are elegant, meaningful, and timeless. Her creative vision is the heart and soul of every event we produce.</p>
+                <div class="tags">
+                    <span class="tag">Event Styling</span>
+                    <span class="tag">Concept Development</span>
+                    <span class="tag">Luxury Weddings</span>
+                    <span class="tag">Client Experience</span>
+                    <span class="tag">Brand &amp; Marketing</span>
+                    <span class="tag">Vendor Coordination</span>
+                </div>
+            </div>
+            <div class="team-card reveal d2">
+                <div class="tc-label">Co-Founder</div>
+                <h3>Meseret Alemu</h3>
+                <div class="tc-title">Operations Director</div>
+                <p class="tc-bio">With over 13 years of professional experience working across local and international companies, Meseret's expertise in operations management, budget planning, and organizational leadership ensures flawless event execution at every scale. Her structured, solution-oriented approach is the operational backbone behind every Radiance Events celebration — ensuring everything runs smoothly, on time, and to perfection.</p>
+                <div class="tags">
+                    <span class="tag">Operations</span>
+                    <span class="tag">Budget Management</span>
+                    <span class="tag">Corporate Relations</span>
+                    <span class="tag">Project Management</span>
+                    <span class="tag">Team Leadership</span>
+                    <span class="tag">Administration</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ════ GALLERY ════════════════════════════════════════════════════════════ -->
+<section id="gallery" style="padding-bottom:0;">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">Our Work</span>
+            <div class="divider-gold"></div>
+            <h2 class="display-lg">Portfolio &amp; Gallery</h2>
+            <p style="font-size:0.9rem; font-weight:300; color:var(--text-muted); max-width:420px; margin-top:1rem; line-height:1.75;">
+                A glimpse into the beautiful celebrations we have had the privilege of bringing to life.
+            </p>
+        </div>
+    </div>
+    <div class="gallery-grid reveal">
+        <div class="gi"><div class="gi-fill"><div class="gi-icon">✦</div><span>Wedding Gallery</span></div><div class="gi-overlay"><span>Wedding Celebrations</span></div></div>
+        <div class="gi"><div class="gi-fill"><div class="gi-icon">✦</div><span>Corporate Events</span></div><div class="gi-overlay"><span>Corporate Events</span></div></div>
+        <div class="gi"><div class="gi-fill"><div class="gi-icon">✦</div><span>Décor &amp; Styling</span></div><div class="gi-overlay"><span>Event Styling</span></div></div>
+        <div class="gi"><div class="gi-fill"><div class="gi-icon">✦</div><span>Social Celebrations</span></div><div class="gi-overlay"><span>Social Events</span></div></div>
+        <div class="gi"><div class="gi-fill"><div class="gi-icon">✦</div><span>Destination Weddings</span></div><div class="gi-overlay"><span>Destination Weddings</span></div></div>
+    </div>
+    <div class="gallery-note">
+        <p>Gallery images will be added as events are completed and photographed.</p>
+        <a href="#contact" class="btn-outline">Inquire About Our Past Work</a>
+    </div>
+</section>
+
+
+<!-- ════ TESTIMONIALS ══════════════════════════════════════════════════════ -->
+<section id="testimonials">
+    <div class="container">
+        <div class="section-header reveal" style="text-align:center;">
+            <span class="section-label">Client Stories</span>
+            <div class="divider-gold divider-center"></div>
+            <h2 class="display-lg">What Our Clients Say</h2>
+        </div>
+        <div class="test-grid">
+            <div class="tcard reveal">
+                <p class="tcard-text">Radiance Events turned our wedding day into something beyond our wildest imagination. Every single detail was perfection, and we didn't have to stress about a single thing. They truly understood our vision and made it real.</p>
+                <div class="tcard-author">
+                    <div class="tcard-avatar">S</div>
+                    <div class="tcard-meta">
+                        <div class="tname">Sara &amp; Daniel</div>
+                        <div class="tevent">Traditional Wedding — Addis Ababa</div>
+                    </div>
+                </div>
+            </div>
+            <div class="tcard reveal d1">
+                <p class="tcard-text">Our company gala dinner was executed flawlessly. Professional, elegant, and delivered exactly on brief. The team and guests were truly impressed. Radiance Events is now our go-to partner for all corporate events.</p>
+                <div class="tcard-author">
+                    <div class="tcard-avatar">M</div>
+                    <div class="tcard-meta">
+                        <div class="tname">Martha Tesfaye</div>
+                        <div class="tevent">Corporate Gala Dinner</div>
+                    </div>
+                </div>
+            </div>
+            <div class="tcard reveal d2">
+                <p class="tcard-text">The birthday celebration they planned for my mother was absolutely magical. The attention to detail, the styling, the coordination — it was seamless and deeply personal. I will recommend Radiance Events to everyone I know.</p>
+                <div class="tcard-author">
+                    <div class="tcard-avatar">A</div>
+                    <div class="tcard-meta">
+                        <div class="tname">Abreham L.</div>
+                        <div class="tevent">Private Birthday Celebration</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="test-disclaimer">*Sample testimonials — to be replaced with verified client reviews upon collection.</p>
+    </div>
+</section>
+
+
+<!-- ════ CTA BAND ══════════════════════════════════════════════════════════ -->
+<section id="ctaband">
+    <div class="ctaband-lbl">Ready to Begin?</div>
+    <h2 class="display-lg">Your Dream Event Starts<br><em>With One Conversation</em></h2>
+    <p>Tell us your vision. We'll handle everything else — from the first idea to the final breathtaking moment of celebration.</p>
+    <a href="#contact" class="btn-dark">Book a Free Consultation</a>
+</section>
+
+
+<!-- ════ CONTACT ════════════════════════════════════════════════════════════ -->
+<section id="contact">
+    <div class="container">
+        <div class="contact-layout">
+            <div class="reveal">
+                <span class="section-label">Get In Touch</span>
+                <div class="divider-gold"></div>
+                <h2 class="display-md" style="margin-bottom:0.8rem;">Let's Start Planning<br><em style="color:var(--gold);">Your Perfect Event</em></h2>
+                <br>
+                <div class="ci-head">
+                    <p>Whether you have a clear vision or are just beginning to dream, our team is ready to listen, advise, and bring your celebration to life. Reach out — your extraordinary event starts here.</p>
+                </div>
+                <div class="ci-items">
+                    <div class="ci-row">
+                        <div class="ci-icon">✉</div>
+                        <div>
+                            <div class="ci-lbl">Email Us</div>
+                            <div class="ci-val">hello@radianceevents.et</div>
+                        </div>
+                    </div>
+                    <div class="ci-row">
+                        <div class="ci-icon">✆</div>
+                        <div>
+                            <div class="ci-lbl">Call or WhatsApp</div>
+                            <div class="ci-val">+251 — — — — — — —</div>
+                        </div>
+                    </div>
+                    <div class="ci-row">
+                        <div class="ci-icon">◈</div>
+                        <div>
+                            <div class="ci-lbl">Location</div>
+                            <div class="ci-val">Addis Ababa, Ethiopia</div>
+                        </div>
+                    </div>
+                    <div class="ci-row">
+                        <div class="ci-icon">◎</div>
+                        <div>
+                            <div class="ci-lbl">Instagram &amp; Social</div>
+                            <div class="ci-val">@RadianceEvents</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal d2">
+                <div class="cform" id="contactForm">
+                    <div class="frow">
+                        <div class="fgrp">
+                            <label>First Name</label>
+                            <input type="text" placeholder="Your first name">
+                        </div>
+                        <div class="fgrp">
+                            <label>Last Name</label>
+                            <input type="text" placeholder="Your last name">
+                        </div>
+                    </div>
+                    <div class="frow">
+                        <div class="fgrp">
+                            <label>Email Address</label>
+                            <input type="email" placeholder="your@email.com">
+                        </div>
+                        <div class="fgrp">
+                            <label>Phone / WhatsApp</label>
+                            <input type="tel" placeholder="+251 ...">
+                        </div>
+                    </div>
+                    <div class="fgrp">
+                        <label>Event Type</label>
+                        <select>
+                            <option value="">Select your event type...</option>
+                            <option>Full Wedding Planning</option>
+                            <option>Traditional / Cultural Wedding</option>
+                            <option>Destination Wedding (Local)</option>
+                            <option>Destination Wedding (Africa or International)</option>
+                            <option>Birthday Celebration</option>
+                            <option>Bridal or Baby Shower</option>
+                            <option>Engagement Party</option>
+                            <option>Anniversary Celebration</option>
+                            <option>Corporate Event / Gala Dinner</option>
+                            <option>Conference or Seminar</option>
+                            <option>Product Launch / Brand Event</option>
+                            <option>Team Building Event</option>
+                            <option>Other Private Event</option>
+                        </select>
+                    </div>
+                    <div class="frow">
+                        <div class="fgrp">
+                            <label>Estimated Event Date</label>
+                            <input type="date">
+                        </div>
+                        <div class="fgrp">
+                            <label>Expected Guest Count</label>
+                            <select>
+                                <option>Under 50 Guests</option>
+                                <option>50 – 100 Guests</option>
+                                <option>100 – 200 Guests</option>
+                                <option>200 – 500 Guests</option>
+                                <option>500+ Guests</option>
+                                <option>Not Sure Yet</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="fgrp">
+                        <label>Tell Us About Your Vision</label>
+                        <textarea placeholder="Describe your event dream, any inspiration you have, or specific requests..."></textarea>
+                    </div>
+                    <button class="btn-primary submit-btn" onclick="handleSubmit(event)">
+                        Send Inquiry — Let's Create Something Beautiful ✦
+                    </button>
+                </div>
+                <div class="form-confirm" id="formConfirm">
+                    ✦ &nbsp; Thank you — your inquiry has been received. Our team will be in touch within 24 hours.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ════ FOOTER ═════════════════════════════════════════════════════════════ -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <div class="fl">Radiance Events</div>
+            <div class="ft">Turning Your Special Moments into Timeless Memories</div>
+        </div>
+        <ul class="footer-nav">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#why">Why Us</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="footer-copy">© 2025 Radiance Events, Addis Ababa, Ethiopia. All rights reserved.</div>
+    </div>
+</footer>
+
+
+<script>
+    /* ── Sticky nav ─── */
+    const navbar = document.getElementById('navbar');
+    const navCtaD = document.getElementById('navCtaDesktop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 80) { navbar.classList.add('scrolled'); navCtaD.style.display = 'inline-block'; }
+        else { navbar.classList.remove('scrolled'); navCtaD.style.display = 'none'; }
+    });
+
+    /* ── Mobile menu ── */
+    function toggleMenu() {
+        document.getElementById('mobileNav').classList.toggle('open');
+    }
+
+    /* ── Scroll reveal ─ */
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    /* ── Service tabs ── */
+    function showTab(name, btn) {
+        document.querySelectorAll('.spanel').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.stab').forEach(t => t.classList.remove('active'));
+        document.getElementById('tab-' + name).classList.add('active');
+        btn.classList.add('active');
+    }
+
+    /* ── Form submit ── */
+    function handleSubmit(e) {
+        e.preventDefault();
+        document.getElementById('contactForm').style.display = 'none';
+        document.getElementById('formConfirm').style.display = 'block';
+    }
+
+    /* ── Smooth scroll ── */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        });
+    });
+</script>
+
+</body>
+</html>

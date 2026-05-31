@@ -123,7 +123,7 @@ export function ProposalDashboard() {
         </div>
         <button
           onClick={() => router.push("/admin/proposals/new")}
-          className="inline-flex items-center gap-2 px-4 py-2.5 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors font-medium text-sm"
+          className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#bf8f38] text-white rounded-none hover:bg-[#a47a2a] transition-colors font-medium text-sm"
         >
           <Plus className="w-4 h-4" />
           New Proposal
@@ -140,8 +140,8 @@ export function ProposalDashboard() {
               className={cn(
                 "px-3 py-1.5 text-sm rounded-full whitespace-nowrap transition-colors border",
                 statusFilter === opt.value
-                  ? "bg-amber-500 text-white border-amber-500"
-                  : "bg-white text-gray-600 border-gray-200 hover:border-amber-500"
+                  ? "bg-[#bf8f38] text-white border-[#bf8f38]"
+                  : "bg-white text-gray-600 border-gray-200 hover:border-[#bf8f38]"
               )}
             >
               {opt.label}
@@ -156,14 +156,14 @@ export function ProposalDashboard() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search proposals..."
-            className="pl-10 pr-4 py-2 bg-white border border-gray-200 rounded-lg text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 w-full sm:w-64"
+            className="pl-10 pr-4 py-2 bg-white border border-gray-200 rounded-none text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#bf8f38] focus:border-[#bf8f38] w-full sm:w-64"
           />
         </form>
       </div>
 
       {/* Error */}
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-none text-sm">
           {error}
         </div>
       )}
@@ -171,18 +171,18 @@ export function ProposalDashboard() {
       {/* Loading */}
       {loading && (
         <div className="flex justify-center py-16">
-          <Loader2 className="w-8 h-8 animate-spin text-amber-600" />
+          <Loader2 className="w-8 h-8 animate-spin text-[#bf8f38]" />
         </div>
       )}
 
       {/* Empty */}
       {!loading && filteredProposals.length === 0 && (
-        <div className="text-center py-16 bg-white border border-gray-200 rounded-xl">
+        <div className="text-center py-16 bg-white border border-gray-200 rounded-none">
           <FileText className="w-12 h-12 text-gray-300 mx-auto mb-4" />
           <p className="text-gray-600">No proposals found</p>
           <button
             onClick={() => router.push("/admin/proposals/new")}
-            className="mt-4 text-amber-600 font-medium hover:text-amber-500 text-sm"
+            className="mt-4 text-[#bf8f38] font-medium hover:text-[#bf8f38] text-sm"
           >
             Create your first proposal
           </button>
@@ -191,7 +191,7 @@ export function ProposalDashboard() {
 
       {/* Table */}
       {!loading && filteredProposals.length > 0 && (
-        <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
+        <div className="bg-white border border-gray-200 rounded-none overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
@@ -220,7 +220,7 @@ export function ProposalDashboard() {
                     <td className="py-3 px-5">
                       <button
                         onClick={() => handleView(proposal.id)}
-                        className="text-gray-900 font-medium hover:text-amber-600 transition-colors"
+                        className="text-gray-900 font-medium hover:text-[#bf8f38] transition-colors"
                       >
                         {proposal.title}
                       </button>

@@ -12,9 +12,9 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen" style={{ backgroundColor: "#f9f4ed" }}>
       <Sidebar />
-      <main className="flex-1 ml-0 lg:ml-64 p-4 lg:p-8 overflow-x-hidden">
+      <main className="flex-1 ml-0 lg:ml-64 p-4 lg:p-10 overflow-x-hidden">
         {children}
       </main>
     </div>

@@ -311,7 +311,7 @@ export function WeddingInvitationBuilder({
   if (loading) {
     return (
       <div className="flex justify-center py-20">
-        <Loader2 className="h-8 w-8 animate-spin text-amber-600" />
+        <Loader2 className="h-8 w-8 animate-spin text-[#bf8f38]" />
       </div>
     );
   }
@@ -322,7 +322,7 @@ export function WeddingInvitationBuilder({
         <p className="mb-4 text-red-600">{error}</p>
         <button
           onClick={() => router.push(`/admin/bookings/${bookingId}`)}
-          className="text-amber-600 underline"
+          className="text-[#bf8f38] underline"
         >
           Back to booking
         </button>
@@ -332,7 +332,7 @@ export function WeddingInvitationBuilder({
 
   if (!canCreate) {
     return (
-      <div className="mx-auto max-w-2xl rounded-xl border border-amber-200 bg-amber-50 p-6">
+      <div className="mx-auto max-w-2xl rounded-none border border-[#ecd398] bg-[#fdf6e8] p-6">
         <h1 className="text-xl font-semibold text-gray-900">Wedding invitation unavailable</h1>
         <p className="mt-2 text-sm text-gray-700">
           This premium feature is available only when the event type is Wedding and
@@ -340,7 +340,7 @@ export function WeddingInvitationBuilder({
         </p>
         <button
           onClick={() => router.push(`/admin/bookings/${bookingId}`)}
-          className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-amber-700"
+          className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#a47a2a]"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to booking
@@ -372,7 +372,7 @@ export function WeddingInvitationBuilder({
               href={previewUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700"
+              className="inline-flex items-center gap-2 rounded-none border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700"
             >
               <Eye className="h-4 w-4" />
               View Live
@@ -381,7 +381,7 @@ export function WeddingInvitationBuilder({
           <button
             type="submit"
             disabled={saving}
-            className="inline-flex items-center gap-2 rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-500 disabled:opacity-60"
+            className="inline-flex items-center gap-2 rounded-none bg-[#bf8f38] px-4 py-2 text-sm font-semibold text-white hover:bg-[#bf8f38] disabled:opacity-60"
           >
             {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
             Save Experience
@@ -392,7 +392,7 @@ export function WeddingInvitationBuilder({
       {(notice || error) && (
         <div
           className={cn(
-            "rounded-lg border px-4 py-3 text-sm",
+            "rounded-none border px-4 py-3 text-sm",
             error ? "border-red-200 bg-red-50 text-red-700" : "border-green-200 bg-green-50 text-green-700"
           )}
         >
@@ -442,10 +442,10 @@ export function WeddingInvitationBuilder({
           <Panel title="Gift Registry">
             <div className="space-y-4">
               {gifts.map((gift, index) => (
-                <div key={index} className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+                <div key={index} className="rounded-none border border-gray-200 bg-gray-50 p-4">
                   <div className="mb-3 flex items-center justify-between">
                     <div className="inline-flex items-center gap-2 text-sm font-semibold text-gray-800">
-                      <Gift className="h-4 w-4 text-amber-600" />
+                      <Gift className="h-4 w-4 text-[#bf8f38]" />
                       Gift {index + 1}
                     </div>
                     <button
@@ -489,7 +489,7 @@ export function WeddingInvitationBuilder({
                             )
                           )
                         }
-                        className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+                        className="mt-1 w-full rounded-none border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
                       >
                         {Object.values(GIFT_PRIORITIES).map((priority) => (
                           <option key={priority} value={priority}>
@@ -510,7 +510,7 @@ export function WeddingInvitationBuilder({
                           )
                         )
                       }
-                      className="h-4 w-4 accent-amber-600"
+                      className="h-4 w-4 accent-[#bf8f38]"
                     />
                     Allow more than one guest to reserve this gift
                   </label>
@@ -539,7 +539,7 @@ export function WeddingInvitationBuilder({
             <button
               type="button"
               onClick={() => setGifts((current) => [...current, { ...emptyGift }])}
-              className="mt-4 inline-flex items-center gap-2 rounded-lg border border-amber-300 px-4 py-2 text-sm font-semibold text-amber-700 hover:bg-amber-50"
+              className="mt-4 inline-flex items-center gap-2 rounded-none border border-[#d9b665] px-4 py-2 text-sm font-semibold text-[#a47a2a] hover:bg-[#fdf6e8]"
             >
               <Plus className="h-4 w-4" />
               Add Gift
@@ -549,7 +549,7 @@ export function WeddingInvitationBuilder({
 
         <aside className="space-y-6">
           <Panel title="Live Preview">
-            <div className="overflow-hidden rounded-lg border border-gray-200 bg-white">
+            <div className="overflow-hidden rounded-none border border-gray-200 bg-white">
               <div
                 className="relative min-h-[460px] px-6 py-10 text-center"
                 style={{
@@ -612,7 +612,7 @@ export function WeddingInvitationBuilder({
                   setTheme(event.target.value as InvitationTheme);
                   setTemplateKey(event.target.value);
                 }}
-                className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+                className="mt-1 w-full rounded-none border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
               >
                 {Object.values(INVITATION_THEMES).map((option) => (
                   <option key={option} value={option}>
@@ -645,7 +645,7 @@ export function WeddingInvitationBuilder({
                   setStatus(nextStatus);
                   setIsPublished(nextStatus === INVITATION_STATUS.PUBLISHED);
                 }}
-                className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+                className="mt-1 w-full rounded-none border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
               >
                 {Object.values(INVITATION_STATUS).map((option) => (
                   <option key={option} value={option}>
@@ -658,7 +658,7 @@ export function WeddingInvitationBuilder({
               <ToggleField label="Allow RSVP" checked={allowRSVP} onChange={setAllowRSVP} />
               <ToggleField label="Allow gift registry" checked={allowGiftRegistry} onChange={setAllowGiftRegistry} />
             </div>
-            <label className="flex items-start gap-3 rounded-lg border border-gray-200 bg-gray-50 p-4">
+            <label className="flex items-start gap-3 rounded-none border border-gray-200 bg-gray-50 p-4">
               <input
                 type="checkbox"
                 checked={isPublished}
@@ -666,7 +666,7 @@ export function WeddingInvitationBuilder({
                   setIsPublished(event.target.checked);
                   setStatus(event.target.checked ? INVITATION_STATUS.PUBLISHED : INVITATION_STATUS.DRAFT);
                 }}
-                className="mt-1 h-4 w-4 accent-amber-600"
+                className="mt-1 h-4 w-4 accent-[#bf8f38]"
               />
               <span>
                 <span className="block text-sm font-semibold text-gray-900">Publish microsite</span>
@@ -675,7 +675,7 @@ export function WeddingInvitationBuilder({
                 </span>
               </span>
             </label>
-            <div className="mt-4 rounded-lg bg-gray-900 p-4 text-sm text-white">
+            <div className="mt-4 rounded-none bg-gray-900 p-4 text-sm text-white">
               <p className="font-semibold">Public URL</p>
               <p className="mt-1 break-all text-gray-300">{previewUrl}</p>
             </div>
@@ -685,7 +685,7 @@ export function WeddingInvitationBuilder({
                   href={`/wedding/${invitation.slug}/print/a4`}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-lg border border-gray-200 px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50"
+                  className="rounded-none border border-gray-200 px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50"
                 >
                   Printable A4 Export
                 </a>
@@ -693,7 +693,7 @@ export function WeddingInvitationBuilder({
                   href={`/wedding/${invitation.slug}/print/story`}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-lg border border-gray-200 px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50"
+                  className="rounded-none border border-gray-200 px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50"
                 >
                   Mobile Story Export
                 </a>
@@ -701,7 +701,7 @@ export function WeddingInvitationBuilder({
                   href={`/wedding/${invitation.slug}/print/square`}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-lg border border-gray-200 px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50"
+                  className="rounded-none border border-gray-200 px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50"
                 >
                   Instagram Square Export
                 </a>
@@ -716,10 +716,10 @@ export function WeddingInvitationBuilder({
               ) : (
                 <div className="space-y-3">
                   {invitation.rsvps.slice(0, 8).map((rsvp) => (
-                    <div key={rsvp.id} className="rounded-lg border border-gray-200 p-3 text-sm">
+                    <div key={rsvp.id} className="rounded-none border border-gray-200 p-3 text-sm">
                       <div className="flex justify-between gap-3">
                         <span className="font-semibold text-gray-900">{rsvp.guestName}</span>
-                        <span className="text-xs text-amber-700">{rsvp.attendance.replace("_", " ")}</span>
+                        <span className="text-xs text-[#a47a2a]">{rsvp.attendance.replace("_", " ")}</span>
                       </div>
                       {rsvp.message && <p className="mt-2 text-gray-600">{rsvp.message}</p>}
                     </div>
@@ -736,7 +736,7 @@ export function WeddingInvitationBuilder({
 
 function Panel({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <section className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+    <section className="rounded-none border border-gray-200 bg-white p-6 shadow-sm">
       <h2 className="mb-5 text-lg font-semibold text-gray-900">{title}</h2>
       <div className="space-y-4">{children}</div>
     </section>
@@ -766,7 +766,7 @@ function Field({
         value={value}
         onChange={(event) => onChange(event.target.value)}
         required={required}
-        className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+        className="mt-1 w-full rounded-none border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
       />
       {helper && <span className="mt-1 block text-xs text-gray-500">{helper}</span>}
     </label>
@@ -793,7 +793,7 @@ function TextArea({
         value={value}
         onChange={(event) => onChange(event.target.value)}
         rows={rows}
-        className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+        className="mt-1 w-full rounded-none border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
       />
       {helper && <span className="mt-1 block text-xs text-gray-500">{helper}</span>}
     </label>
@@ -823,7 +823,7 @@ function ColorField({
           value={value}
           onChange={(event) => onChange(event.target.value)}
           placeholder="#b76e79"
-          className="min-w-0 flex-1 rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+          className="min-w-0 flex-1 rounded-none border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
         />
       </div>
     </label>
@@ -840,13 +840,13 @@ function ToggleField({
   onChange: (value: boolean) => void;
 }) {
   return (
-    <label className="flex items-center justify-between gap-3 rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-medium text-gray-700">
+    <label className="flex items-center justify-between gap-3 rounded-none border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-medium text-gray-700">
       {label}
       <input
         type="checkbox"
         checked={checked}
         onChange={(event) => onChange(event.target.checked)}
-        className="h-4 w-4 accent-amber-600"
+        className="h-4 w-4 accent-[#bf8f38]"
       />
     </label>
   );

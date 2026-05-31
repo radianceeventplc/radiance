@@ -70,7 +70,7 @@ export function MessageThread({ bookingId }: MessageThreadProps) {
   if (loading) {
     return (
       <div className="flex justify-center py-8">
-        <Loader2 className="w-6 h-6 animate-spin text-amber-600" />
+        <Loader2 className="w-6 h-6 animate-spin text-[#bf8f38]" />
       </div>
     );
   }
@@ -81,7 +81,7 @@ export function MessageThread({ bookingId }: MessageThreadProps) {
         <p className="text-red-600 text-sm">{error}</p>
         <button
           onClick={fetchMessages}
-          className="text-amber-600 underline hover:no-underline text-sm mt-2"
+          className="text-[#bf8f38] underline hover:no-underline text-sm mt-2"
         >
           Retry
         </button>
@@ -110,9 +110,9 @@ export function MessageThread({ bookingId }: MessageThreadProps) {
             }`}
           >
             <div
-              className={`max-w-[80%] rounded-lg px-4 py-2 text-sm ${
+              className={`max-w-[80%] rounded-none px-4 py-2 text-sm ${
                 message.sender === "ADMIN"
-                   ? "bg-amber-500 text-white"
+                   ? "bg-[#bf8f38] text-white"
                    : message.sender === "SYSTEM"
                    ? "bg-gray-200 text-gray-600 text-xs italic"
                    : "bg-gray-300 text-gray-800"
@@ -138,13 +138,13 @@ export function MessageThread({ bookingId }: MessageThreadProps) {
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
           placeholder="Type a message..."
-          className="flex-1 px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+          className="flex-1 px-4 py-2 bg-white border border-gray-200 rounded-none text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#bf8f38] focus:border-[#bf8f38]"
           disabled={sending}
         />
         <button
           type="submit"
           disabled={!newMessage.trim() || sending}
-          className="px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-4 py-2 bg-[#bf8f38] text-white rounded-none hover:bg-[#bf8f38] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {sending ? (
             <Loader2 className="w-4 h-4 animate-spin" />

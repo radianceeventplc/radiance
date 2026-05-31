@@ -121,7 +121,7 @@ export default function AdminPackageCategoriesPage() {
   if (loading) {
     return (
       <div className="flex justify-center py-20">
-        <Loader2 className="h-8 w-8 animate-spin text-amber-600" />
+        <Loader2 className="h-8 w-8 animate-spin text-[#bf8f38]" />
       </div>
     );
   }
@@ -131,7 +131,7 @@ export default function AdminPackageCategoriesPage() {
       {(notice || error) && (
         <div
           className={cn(
-            "rounded-lg border px-4 py-3 text-sm",
+            "rounded-none border px-4 py-3 text-sm",
             error
               ? "border-red-200 bg-red-50 text-red-700"
               : "border-green-200 bg-green-50 text-green-700"
@@ -142,7 +142,7 @@ export default function AdminPackageCategoriesPage() {
       )}
 
       <section className="grid gap-6 xl:grid-cols-[.8fr_1.2fr]">
-        <form onSubmit={saveCategory} className="rounded-xl border border-gray-200 bg-white p-6">
+        <form onSubmit={saveCategory} className="rounded-none border border-gray-200 bg-white p-6">
           <div className="mb-5 flex items-center justify-between">
             <h2 className="text-lg font-semibold text-gray-900">
               {editingId ? "Edit Category" : "Create Category"}
@@ -174,7 +174,7 @@ export default function AdminPackageCategoriesPage() {
                   }))
                 }
                 required
-                className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+                className="mt-1 w-full rounded-none border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
               />
             </label>
             <label className="block text-sm font-medium text-gray-700">
@@ -184,7 +184,7 @@ export default function AdminPackageCategoriesPage() {
                 value={draft.slug}
                 onChange={(e) => setDraft((current) => ({ ...current, slug: slugify(e.target.value) }))}
                 required
-                className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+                className="mt-1 w-full rounded-none border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
               />
             </label>
             <label className="block text-sm font-medium text-gray-700">
@@ -193,7 +193,7 @@ export default function AdminPackageCategoriesPage() {
                 value={draft.description}
                 onChange={(e) => setDraft((current) => ({ ...current, description: e.target.value }))}
                 rows={3}
-                className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+                className="mt-1 w-full rounded-none border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
               />
             </label>
             <label className="block text-sm font-medium text-gray-700">
@@ -202,7 +202,7 @@ export default function AdminPackageCategoriesPage() {
                 type="text"
                 value={draft.coverImage}
                 onChange={(e) => setDraft((current) => ({ ...current, coverImage: e.target.value }))}
-                className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+                className="mt-1 w-full rounded-none border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
               />
             </label>
             <label className="block text-sm font-medium text-gray-700">
@@ -211,22 +211,22 @@ export default function AdminPackageCategoriesPage() {
                 type="number"
                 value={draft.sortOrder}
                 onChange={(e) => setDraft((current) => ({ ...current, sortOrder: e.target.value }))}
-                className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+                className="mt-1 w-full rounded-none border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
               />
             </label>
-            <label className="flex items-center justify-between gap-3 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-700">
+            <label className="flex items-center justify-between gap-3 rounded-none border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-700">
               Active
               <input
                 type="checkbox"
                 checked={draft.isActive}
                 onChange={(e) => setDraft((current) => ({ ...current, isActive: e.target.checked }))}
-                className="h-4 w-4 accent-amber-600"
+                className="h-4 w-4 accent-[#bf8f38]"
               />
             </label>
             <button
               type="submit"
               disabled={saving}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-500 disabled:opacity-60"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-none bg-[#bf8f38] px-4 py-2 text-sm font-semibold text-white hover:bg-[#bf8f38] disabled:opacity-60"
             >
               {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />}
               Save Category
@@ -234,11 +234,11 @@ export default function AdminPackageCategoriesPage() {
           </div>
         </form>
 
-        <div className="rounded-xl border border-gray-200 bg-white p-6">
+        <div className="rounded-none border border-gray-200 bg-white p-6">
           <h2 className="mb-5 text-lg font-semibold text-gray-900">All Categories</h2>
           <div className="grid gap-3 md:grid-cols-2">
             {categories.map((category) => (
-              <div key={category.id} className="rounded-lg border border-gray-200 p-4">
+              <div key={category.id} className="rounded-none border border-gray-200 p-4">
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <div className="font-semibold text-gray-900">{category.name}</div>
@@ -264,7 +264,7 @@ export default function AdminPackageCategoriesPage() {
                     <button
                       type="button"
                       onClick={() => editCategory(category)}
-                      className="text-amber-700 hover:underline"
+                      className="text-[#a47a2a] hover:underline"
                     >
                       Edit
                     </button>

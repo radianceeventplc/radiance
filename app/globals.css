@@ -56,7 +56,7 @@
   --color-primary-brown: #bf8f3a;
 
   /* SECONDARY COLORS (Brand) */
-  --color-secondary-white: #f4f4f4;
+  --color-secondary-white: #f9f4ed;
   --color-secondary-light-brown: #f1d689;
 
   /* SUPPORTING COLORS (Brand) */
@@ -118,7 +118,7 @@ p, button, li, span, a, input, textarea, blockquote, cite, small, .meta, .captio
   --color-primary-brown: #bf8f3a;
 
   /* Secondary Colors */
-  --color-secondary-white: #f4f4f4;
+  --color-secondary-white: #f9f4ed;
   --color-secondary-light-brown: #f1d689;
 
   /* Supporting Colors */
@@ -135,7 +135,7 @@ p, button, li, span, a, input, textarea, blockquote, cite, small, .meta, .captio
   --color-radiance-accent: #bf8f3a;
 
   /* Legacy Color Aliases (for backward compatibility) */
-  --color-radiance-white: #f4f4f4;
+  --color-radiance-white: #f9f4ed;
   --color-radiance-navy: #182849;
 }
 

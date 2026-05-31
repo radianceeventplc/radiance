@@ -1,64 +1,478 @@
-import { Section } from "@/components/ui/Section";
-import { Container } from "@/components/ui/Container";
-import { Sparkles, Users, Calendar, Star } from "lucide-react";
+"use client";
 
-const services = [
+import { useState, useEffect, useRef, useCallback } from "react";
+import Link from "next/link";
+import {
+  Heart,
+  PartyPopper,
+  Plane,
+  Building2,
+} from "lucide-react";
+
+const tabs = [
   {
-    icon: Sparkles,
-    title: "Event Design",
-    description:
-      "Bespoke creative direction and visual storytelling tailored to your vision.",
+    id: "weddings",
+    icon: Heart,
+    label: "Weddings",
+    items: [
+      "Full Wedding Planning & Coordination",
+      "Traditional & Engagement Ceremonies",
+      "Wedding Decoration & Styling",
+      "Vendor Sourcing & Negotiation",
+      "Day-of Wedding Coordination",
+      "Photography & Videography",
+      "Makeup & Beauty Coordination",
+      "Entertainment Coordination",
+      "Guest Hospitality & Logistics",
+    ],
+    link: "#",
+    linkText: "View All Wedding Services",
   },
   {
-    icon: Users,
-    title: "Guest Experience",
-    description:
-      "Curated hospitality and seamless guest management from arrival to departure.",
+    id: "social",
+    icon: PartyPopper,
+    label: "Social Events",
+    items: [
+      "Birthday Parties & Anniversaries",
+      "Bridal & Baby Showers",
+      "Engagement Parties",
+      "Graduation Celebrations",
+      "Family Gatherings",
+      "Private Luxury Events",
+      "Themed Party Planning",
+      "Event Decoration & Styling",
+      "Full Coordination & Execution",
+    ],
+    link: "#",
+    linkText: "Explore Social Events",
   },
   {
-    icon: Calendar,
-    title: "Production",
-    description:
-      "End-to-end logistics, vendor coordination, and on-site execution.",
+    id: "destination",
+    icon: Plane,
+    label: "Destination",
+    items: [
+      "Destination Wedding Planning",
+      "International Venue Sourcing",
+      "Travel & Accommodation Coordination",
+      "Guest Travel Logistics",
+      "Local Vendor Partnerships",
+      "Cultural Ceremony Integration",
+      "Multi-country Event Planning",
+      "Honeymoon Package Planning",
+      "On-site Coordination Abroad",
+    ],
+    link: "#",
+    linkText: "View Destination Services",
   },
   {
-    icon: Star,
-    title: "Celebrations",
-    description:
-      "Weddings, galas, milestone events crafted with precision and passion.",
+    id: "corporate",
+    icon: Building2,
+    label: "Corporate",
+    items: [
+      "Gala Dinners & Award Ceremonies",
+      "Conferences & Seminars",
+      "Product & Brand Launches",
+      "Networking Events",
+      "Team Building Activities",
+      "Brand Activation Events",
+      "Corporate Retreats",
+      "Client Appreciation Events",
+      "Full Event Production",
+    ],
+    link: "#",
+    linkText: "View Corporate Services",
   },
 ];
 
 export function Services() {
+  const [activeTab, setActiveTab] = useState(tabs[0].id);
+  const autoTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  const resetAutoTimer = useCallback(() => {
+    if (autoTimerRef.current) clearTimeout(autoTimerRef.current);
+    autoTimerRef.current = setTimeout(() => {
+      setActiveTab((prev) => {
+        const currentIndex = tabs.findIndex((t) => t.id === prev);
+        const nextIndex = (currentIndex + 1) % tabs.length;
+        return tabs[nextIndex].id;
+      });
+    }, 10000);
+  }, []);
+
+  const handleTabClick = (id: string) => {
+    setActiveTab(id);
+    resetAutoTimer();
+  };
+
+  useEffect(() => {
+    resetAutoTimer();
+    return () => {
+      if (autoTimerRef.current) clearTimeout(autoTimerRef.current);
+    };
+  }, [resetAutoTimer]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const el = sectionRef.current;
+    if (el) observer.observe(el);
+
+    return () => {
+      if (el) observer.unobserve(el);
+    };
+  }, []);
+
+  const currentTab = tabs.find((t) => t.id === activeTab) || tabs[0];
+  const CurrentIcon = currentTab.icon;
+
   return (
-    <Section className="bg-radiance-white">
-      <Container>
-        <div className="text-center mb-16">
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-radiance-navy/60 mb-3">
-            What We Do
+    <section
+      id="services"
+      ref={sectionRef}
+      className="relative py-24 md:py-32"
+      style={{ backgroundColor: "#ffffff" }}
+    >
+      <style>{`
+        .svc-intro {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 80px;
+          align-items: end;
+          margin-bottom: 60px;
+        }
+
+        .svc-eyebrow {
+          font-family: "Montserrat", sans-serif;
+          font-size: 11px;
+          font-weight: 500;
+          letter-spacing: 0.22em;
+          text-transform: uppercase;
+          color: #bf8f38;
+          margin-bottom: 16px;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .svc-eyebrow::before {
+          content: "";
+          display: block;
+          width: 30px;
+          height: 1px;
+          background: #bf8f38;
+        }
+
+        .svc-title {
+          font-family: "Kostic Serif", "Times New Roman", Georgia, serif;
+          font-size: clamp(36px, 4.2vw, 54px);
+          font-weight: 700;
+          line-height: 1.12;
+          color: #182849;
+        }
+
+        .svc-title em {
+          font-style: italic;
+          color: #bf8f38;
+        }
+
+        .svc-lead {
+          font-family: "Montserrat", sans-serif;
+          font-size: 15px;
+          font-weight: 300;
+          line-height: 1.85;
+          color: #6b6b6b;
+        }
+
+        /* Tabs */
+        .svc-tabs {
+          display: flex;
+          gap: 0;
+          border-bottom: 2px solid #e8e0d5;
+          margin-bottom: 48px;
+        }
+
+        .svc-tab {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 18px 32px;
+          font-family: "Kostic Serif", "Times New Roman", Georgia, serif;
+          font-size: 18px;
+          font-weight: 700;
+          color: #182849;
+          background: none;
+          border: none;
+          cursor: pointer;
+          position: relative;
+          transition: color 0.3s;
+          opacity: 0.5;
+        }
+
+        .svc-tab::after {
+          content: "";
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: #bf8f38;
+          transform: scaleX(0);
+          transition: transform 0.3s;
+        }
+
+        .svc-tab.active {
+          opacity: 1;
+        }
+
+        .svc-tab.active::after {
+          transform: scaleX(1);
+        }
+
+        .svc-tab:hover {
+          opacity: 0.8;
+        }
+
+        .svc-tab-icon {
+          width: 22px;
+          height: 22px;
+          stroke-width: 1.5;
+        }
+
+        /* Tab content */
+        .svc-content {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 60px;
+          align-items: start;
+          opacity: 0;
+          transform: translateY(20px);
+          transition: opacity 0.5s, transform 0.5s;
+        }
+
+        .svc-content.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .svc-content-title {
+          font-family: "Kostic Serif", "Times New Roman", Georgia, serif;
+          font-size: clamp(28px, 3.2vw, 38px);
+          font-weight: 700;
+          color: #182849;
+          margin-bottom: 16px;
+          display: flex;
+          align-items: center;
+          gap: 14px;
+        }
+
+        .svc-content-title-icon {
+          width: 32px;
+          height: 32px;
+          color: #bf8f38;
+          stroke-width: 1.5;
+        }
+
+        .svc-content-desc {
+          font-family: "Montserrat", sans-serif;
+          font-size: 15px;
+          line-height: 1.85;
+          color: #6b6b6b;
+          margin-bottom: 36px;
+        }
+
+        .svc-list-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 0;
+          border: 1px solid rgba(24, 40, 73, 0.1);
+        }
+
+        .svc-list-item {
+          padding: 15px 20px;
+          border-bottom: 1px solid rgba(24, 40, 73, 0.08);
+          border-right: 1px solid rgba(24, 40, 73, 0.08);
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          font-family: "Montserrat", sans-serif;
+          font-size: 14px;
+          color: #252422;
+          transition: background 0.3s, color 0.3s;
+          cursor: default;
+        }
+
+        .svc-list-item:hover {
+          background: rgba(191, 143, 56, 0.08);
+          color: #182849;
+        }
+
+        .svc-list-item::before {
+          content: "";
+          display: block;
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #bf8f38;
+          flex-shrink: 0;
+        }
+
+        .svc-list-item:nth-child(even) {
+          border-right: none;
+        }
+
+        .svc-list-grid .svc-list-item:nth-last-child(-n+2) {
+          border-bottom: none;
+        }
+
+        .svc-cta-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          margin-top: 36px;
+          font-family: "Montserrat", sans-serif;
+          font-size: 11px;
+          font-weight: 600;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #bf8f38;
+          text-decoration: none;
+          transition: color 0.3s;
+          padding: 14px 36px;
+          border: 2px solid #bf8f38;
+        }
+
+        .svc-cta-link::after {
+          content: "→";
+          transition: transform 0.3s;
+        }
+
+        .svc-cta-link:hover {
+          color: #182849;
+          border-color: #182849;
+        }
+
+        .svc-cta-link:hover::after {
+          transform: translateX(5px);
+        }
+
+        @media (max-width: 1024px) {
+          .svc-intro {
+            grid-template-columns: 1fr;
+            gap: 32px;
+          }
+          .svc-tabs {
+            flex-wrap: wrap;
+          }
+          .svc-tab {
+            padding: 14px 20px;
+            font-size: 16px;
+          }
+          .svc-content {
+            grid-template-columns: 1fr;
+            gap: 40px;
+          }
+          .svc-list-grid {
+            grid-template-columns: 1fr;
+          }
+          .svc-list-item {
+            border-right: none;
+          }
+          .svc-list-item:nth-last-child(-n+2) {
+            border-bottom: 1px solid rgba(24, 40, 73, 0.08);
+          }
+          .svc-list-item:last-child {
+            border-bottom: none;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .svc-tab {
+            padding: 12px 16px;
+            font-size: 14px;
+          }
+          .svc-tab-icon {
+            width: 18px;
+            height: 18px;
+          }
+        }
+      `}</style>
+
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div className="svc-intro">
+          <div>
+            <p className="svc-eyebrow">What We Offer</p>
+            <h2 className="svc-title">
+              Complete Event Solutions<br />
+              <em>For Every Occasion</em>
+            </h2>
+          </div>
+          <p className="svc-lead" style={{ marginBottom: 0 }}>
+            Comprehensive event management across four core categories — each
+            crafted to deliver exceptional, personalized experiences tailored to
+            your vision.
           </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-radiance-navy tracking-tight">
-            Our Services
-          </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {services.map((service) => (
-            <div
-              key={service.title}
-              className="group p-8 border border-radiance-navy/10 hover:border-radiance-navy/30 transition-colors duration-300"
-            >
-              <service.icon className="w-8 h-8 text-radiance-navy mb-6 group-hover:scale-110 transition-transform duration-300" />
-              <h3 className="text-lg font-medium text-radiance-navy mb-3">
-                {service.title}
-              </h3>
-              <p className="text-radiance-navy/60 text-sm leading-relaxed">
-                {service.description}
-              </p>
-            </div>
-          ))}
+        {/* Tabs */}
+        <div className="svc-tabs">
+          {tabs.map((tab) => {
+            const TabIcon = tab.icon;
+            return (
+              <button
+                key={tab.id}
+                className={`svc-tab ${activeTab === tab.id ? "active" : ""}`}
+                onClick={() => handleTabClick(tab.id)}
+              >
+                <TabIcon className="svc-tab-icon" />
+                {tab.label}
+              </button>
+            );
+          })}
         </div>
-      </Container>
-    </Section>
+
+        {/* Active Tab Content */}
+        <div key={currentTab.id} className={`svc-content visible`}>
+          <div>
+            <h3 className="svc-content-title">
+              <CurrentIcon className="svc-content-title-icon" />
+              {currentTab.label}
+            </h3>
+            <p className="svc-content-desc">
+              {currentTab.id === "weddings" &&
+                "Full-service wedding planning crafted to every couple's vision, culture, and love story. From traditional ceremonies to elegant modern celebrations — we bring your dream wedding to life with precision and heart."}
+              {currentTab.id === "social" &&
+                "Stylish and memorable private celebrations — from intimate gatherings to lavish luxury affairs, executed with elegance and personal attention to every detail. Your story, beautifully celebrated."}
+              {currentTab.id === "destination" &&
+                "Seamless destination event planning across Africa and beyond. From venue sourcing to guest logistics, we handle every aspect so you can celebrate anywhere in the world without stress."}
+              {currentTab.id === "corporate" &&
+                "Professional corporate event management that elevates your brand, engages your audience, and delivers a flawless experience from planning to execution. Impress your stakeholders with precision."}
+            </p>
+            <Link href={currentTab.link} className="svc-cta-link">
+              {currentTab.linkText}
+            </Link>
+          </div>
+
+          <div>
+            <div className="svc-list-grid">
+              {currentTab.items.map((item) => (
+                <div key={item} className="svc-list-item">
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

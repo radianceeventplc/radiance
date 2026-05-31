@@ -341,7 +341,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
   if (loading) {
     return (
       <div className="flex justify-center py-20">
-        <Loader2 className="w-8 h-8 animate-spin text-amber-600" />
+        <Loader2 className="w-8 h-8 animate-spin text-[#bf8f38]" />
       </div>
     );
   }
@@ -353,7 +353,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
         <div className="flex items-center gap-4">
           <button
             onClick={() => router.push("/admin/proposals")}
-            className="p-2 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 transition-colors"
+            className="p-2 rounded-none border border-gray-200 text-gray-600 hover:bg-gray-50 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
           </button>
@@ -375,7 +375,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
               <button
                 onClick={handleSend}
                 disabled={saving}
-                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-purple-600 bg-purple-50 border border-purple-200 rounded-lg hover:bg-purple-100 transition-colors disabled:opacity-50"
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-purple-600 bg-purple-50 border border-purple-200 rounded-none hover:bg-purple-100 transition-colors disabled:opacity-50"
               >
                 <Send className="w-4 h-4" />
                 Send
@@ -385,7 +385,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
           <button
             onClick={() => handleSave("DRAFT")}
             disabled={saving}
-            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50"
+            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-none hover:bg-gray-50 transition-colors disabled:opacity-50"
           >
             <Save className="w-4 h-4" />
             {saving ? "Saving..." : "Save Draft"}
@@ -393,7 +393,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
           <button
             onClick={() => handleSave("SENT")}
             disabled={saving}
-            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-amber-600 rounded-lg hover:bg-amber-700 transition-colors disabled:opacity-50"
+            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[#bf8f38] rounded-none hover:bg-[#a47a2a] transition-colors disabled:opacity-50"
           >
             <Send className="w-4 h-4" />
             {saving ? "Saving..." : "Save & Send"}
@@ -403,12 +403,12 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
 
       {/* Error & Success */}
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-none text-sm">
           {error}
         </div>
       )}
       {success && (
-        <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg text-sm">
+        <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-none text-sm">
           {success}
         </div>
       )}
@@ -424,7 +424,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
               className={cn(
                 "flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-colors",
                 activeTab === tab.id
-                  ? "border-amber-500 text-amber-600"
+                  ? "border-[#bf8f38] text-[#bf8f38]"
                   : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
               )}
             >
@@ -440,7 +440,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
         {/* LEFT SIDE - Controls */}
         <div className="space-y-6">
           {activeTab === "details" && (
-            <div className="bg-white border border-gray-200 rounded-xl p-6 space-y-5">
+            <div className="bg-white border border-gray-200 rounded-none p-6 space-y-5">
               <h2 className="text-lg font-semibold text-gray-900">Proposal Details</h2>
 
               {/* Booking Selection */}
@@ -451,7 +451,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
                 <select
                   value={bookingId}
                   onChange={(e) => setBookingId(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
+                  className="w-full px-3 py-2 border border-gray-200 rounded-none text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#bf8f38] bg-white"
                   required
                 >
                   <option value="">Select a booking...</option>
@@ -473,7 +473,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="e.g., Luxury Wedding Proposal — Helen & Michael"
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  className="w-full px-3 py-2 border border-gray-200 rounded-none text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#bf8f38]"
                 />
               </div>
 
@@ -485,7 +485,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
                   onChange={(e) => setIntroduction(e.target.value)}
                   rows={3}
                   placeholder="A warm welcome message to introduce the proposal..."
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 resize-none"
+                  className="w-full px-3 py-2 border border-gray-200 rounded-none text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#bf8f38] resize-none"
                 />
               </div>
 
@@ -497,7 +497,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
                   onChange={(e) => setEventVision(e.target.value)}
                   rows={3}
                   placeholder="Describe the overall vision for the event..."
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 resize-none"
+                  className="w-full px-3 py-2 border border-gray-200 rounded-none text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#bf8f38] resize-none"
                 />
               </div>
 
@@ -509,7 +509,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
                   onChange={(e) => setThemeConcept(e.target.value)}
                   rows={3}
                   placeholder="Outline the theme concept and design direction..."
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 resize-none"
+                  className="w-full px-3 py-2 border border-gray-200 rounded-none text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#bf8f38] resize-none"
                 />
               </div>
 
@@ -520,7 +520,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
                   type="date"
                   value={validUntil}
                   onChange={(e) => setValidUntil(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  className="w-full px-3 py-2 border border-gray-200 rounded-none text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#bf8f38]"
                 />
               </div>
 
@@ -532,19 +532,19 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
                   onChange={(e) => setNotes(e.target.value)}
                   rows={2}
                   placeholder="Private notes for internal reference..."
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 resize-none"
+                  className="w-full px-3 py-2 border border-gray-200 rounded-none text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#bf8f38] resize-none"
                 />
               </div>
             </div>
           )}
 
           {activeTab === "pricing" && (
-            <div className="bg-white border border-gray-200 rounded-xl p-6 space-y-4">
+            <div className="bg-white border border-gray-200 rounded-none p-6 space-y-4">
               <div className="flex items-center justify-between">
                 <h2 className="text-lg font-semibold text-gray-900">Pricing Items</h2>
                 <button
                   onClick={addPricingItem}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-amber-600 bg-amber-50 border border-amber-200 rounded-lg hover:bg-amber-100 transition-colors"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-[#bf8f38] bg-[#fdf6e8] border border-[#ecd398] rounded-none hover:bg-[#f7e8c4] transition-colors"
                 >
                   <Plus className="w-3.5 h-3.5" />
                   Add Item
@@ -552,7 +552,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
               </div>
 
               {pricingItems.map((item, index) => (
-                <div key={index} className="p-4 border border-gray-200 rounded-lg space-y-3">
+                <div key={index} className="p-4 border border-gray-200 rounded-none space-y-3">
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-medium text-gray-500">Item {index + 1}</span>
                     <button
@@ -571,7 +571,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
                         value={item.title}
                         onChange={(e) => updatePricingItem(index, "title", e.target.value)}
                         placeholder="e.g., Premium Floral Arrangement"
-                        className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                        className="w-full px-3 py-2 border border-gray-200 rounded-none text-sm focus:outline-none focus:ring-2 focus:ring-[#bf8f38]"
                       />
                     </div>
                     <div className="col-span-2">
@@ -581,7 +581,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
                         value={item.description}
                         onChange={(e) => updatePricingItem(index, "description", e.target.value)}
                         placeholder="Brief description of the item"
-                        className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                        className="w-full px-3 py-2 border border-gray-200 rounded-none text-sm focus:outline-none focus:ring-2 focus:ring-[#bf8f38]"
                       />
                     </div>
                     <div>
@@ -589,7 +589,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
                       <select
                         value={item.category}
                         onChange={(e) => updatePricingItem(index, "category", e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                        className="w-full px-3 py-2 border border-gray-200 rounded-none text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#bf8f38]"
                       >
                         {PROPOSAL_ITEM_CATEGORIES.map((cat) => (
                           <option key={cat} value={cat}>
@@ -605,7 +605,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
                         min={1}
                         value={item.quantity}
                         onChange={(e) => updatePricingItem(index, "quantity", parseInt(e.target.value) || 1)}
-                        className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                        className="w-full px-3 py-2 border border-gray-200 rounded-none text-sm focus:outline-none focus:ring-2 focus:ring-[#bf8f38]"
                       />
                     </div>
                     <div>
@@ -615,11 +615,11 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
                         min={0}
                         value={item.unitPrice}
                         onChange={(e) => updatePricingItem(index, "unitPrice", parseFloat(e.target.value) || 0)}
-                        className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                        className="w-full px-3 py-2 border border-gray-200 rounded-none text-sm focus:outline-none focus:ring-2 focus:ring-[#bf8f38]"
                       />
                     </div>
                     <div className="flex items-end">
-                      <div className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700">
+                      <div className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-none text-sm text-gray-700">
                         Total: ETB {(item.quantity * item.unitPrice).toLocaleString()}
                       </div>
                     </div>
@@ -631,7 +631,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
               <div className="pt-4 border-t border-gray-200">
                 <div className="flex justify-between items-center">
                   <span className="text-lg font-bold text-gray-900">Grand Total</span>
-                  <span className="text-xl font-bold text-amber-600">
+                  <span className="text-xl font-bold text-[#bf8f38]">
                     ETB {calculateTotal().toLocaleString()}
                   </span>
                 </div>
@@ -640,7 +640,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
           )}
 
           {activeTab === "sections" && (
-            <div className="bg-white border border-gray-200 rounded-xl p-6 space-y-4">
+            <div className="bg-white border border-gray-200 rounded-none p-6 space-y-4">
               <div className="flex items-center justify-between">
                 <h2 className="text-lg font-semibold text-gray-900">Proposal Sections</h2>
                 <div className="flex gap-2">
@@ -650,7 +650,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
                       if (!isNaN(val)) loadSectionTemplate(val);
                       e.target.value = "";
                     }}
-                    className="px-3 py-1.5 text-sm border border-gray-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    className="px-3 py-1.5 text-sm border border-gray-200 rounded-none bg-white focus:outline-none focus:ring-2 focus:ring-[#bf8f38]"
                   >
                     <option value="">Quick add template...</option>
                     {DEFAULT_SECTION_TEMPLATES.map((tpl, i) => (
@@ -659,7 +659,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
                   </select>
                   <button
                     onClick={addSection}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-amber-600 bg-amber-50 border border-amber-200 rounded-lg hover:bg-amber-100 transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-[#bf8f38] bg-[#fdf6e8] border border-[#ecd398] rounded-none hover:bg-[#f7e8c4] transition-colors"
                   >
                     <Plus className="w-3.5 h-3.5" />
                     Add Section
@@ -674,7 +674,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
               )}
 
               {sections.map((section, index) => (
-                <div key={index} className="p-4 border border-gray-200 rounded-lg space-y-3">
+                <div key={index} className="p-4 border border-gray-200 rounded-none space-y-3">
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-medium text-gray-500">Section {index + 1}</span>
                     <button
@@ -691,7 +691,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
                       value={section.title}
                       onChange={(e) => updateSection(index, "title", e.target.value)}
                       placeholder="e.g., The Vision"
-                      className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                      className="w-full px-3 py-2 border border-gray-200 rounded-none text-sm focus:outline-none focus:ring-2 focus:ring-[#bf8f38]"
                     />
                   </div>
                   <div>
@@ -701,7 +701,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
                       onChange={(e) => updateSection(index, "content", e.target.value)}
                       rows={4}
                       placeholder="Write section content in rich detail..."
-                      className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 resize-none"
+                      className="w-full px-3 py-2 border border-gray-200 rounded-none text-sm focus:outline-none focus:ring-2 focus:ring-[#bf8f38] resize-none"
                     />
                   </div>
                 </div>
@@ -710,19 +710,19 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
           )}
 
           {activeTab === "contract" && (
-            <div className="bg-white border border-gray-200 rounded-xl p-6 space-y-4">
+            <div className="bg-white border border-gray-200 rounded-none p-6 space-y-4">
               <div className="flex items-center justify-between">
                 <h2 className="text-lg font-semibold text-gray-900">Contract Terms</h2>
                 <div className="flex gap-2">
                   <button
                     onClick={loadContractDefaults}
-                    className="px-3 py-1.5 text-sm font-medium text-gray-600 bg-gray-50 border border-gray-200 rounded-lg hover:bg-gray-100 transition-colors"
+                    className="px-3 py-1.5 text-sm font-medium text-gray-600 bg-gray-50 border border-gray-200 rounded-none hover:bg-gray-100 transition-colors"
                   >
                     Load Defaults
                   </button>
                   <button
                     onClick={addContract}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-amber-600 bg-amber-50 border border-amber-200 rounded-lg hover:bg-amber-100 transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-[#bf8f38] bg-[#fdf6e8] border border-[#ecd398] rounded-none hover:bg-[#f7e8c4] transition-colors"
                   >
                     <Plus className="w-3.5 h-3.5" />
                     Add Term
@@ -737,7 +737,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
               )}
 
               {contracts.map((contract, index) => (
-                <div key={index} className="p-4 border border-gray-200 rounded-lg space-y-3">
+                <div key={index} className="p-4 border border-gray-200 rounded-none space-y-3">
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-medium text-gray-500">Term {index + 1}</span>
                     <button
@@ -754,7 +754,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
                       value={contract.title}
                       onChange={(e) => updateContract(index, "title", e.target.value)}
                       placeholder="e.g., Payment Terms"
-                      className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                      className="w-full px-3 py-2 border border-gray-200 rounded-none text-sm focus:outline-none focus:ring-2 focus:ring-[#bf8f38]"
                     />
                   </div>
                   <div>
@@ -764,7 +764,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
                       onChange={(e) => updateContract(index, "content", e.target.value)}
                       rows={4}
                       placeholder="Write the full term details..."
-                      className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 resize-none"
+                      className="w-full px-3 py-2 border border-gray-200 rounded-none text-sm focus:outline-none focus:ring-2 focus:ring-[#bf8f38] resize-none"
                     />
                   </div>
                 </div>
@@ -773,7 +773,7 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
           )}
 
           {activeTab === "preview" && (
-            <div className="bg-white border border-gray-200 rounded-xl p-6">
+            <div className="bg-white border border-gray-200 rounded-none p-6">
               <p className="text-gray-500 text-sm">
                 Save the proposal first to see a live preview. The preview will appear on the right side.
               </p>
@@ -783,11 +783,11 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
 
         {/* RIGHT SIDE - Live Preview */}
         <div className="xl:sticky xl:top-8 xl:self-start">
-          <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-lg">
+          <div className="bg-white border border-gray-200 rounded-none overflow-hidden shadow-lg">
             {/* Preview Header */}
             <div className="p-4 border-b border-gray-100 bg-gray-50 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Eye className="w-4 h-4 text-amber-600" />
+                <Eye className="w-4 h-4 text-[#bf8f38]" />
                 <span className="text-sm font-medium text-gray-700">Proposal Preview</span>
               </div>
               {previewData && (
@@ -801,8 +801,8 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
               {previewData ? (
                 <div className="p-8 space-y-8">
                   {/* Cover */}
-                  <div className="text-center py-16 border-b border-amber-200/30">
-                    <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center">
+                  <div className="text-center py-16 border-b border-[#ecd398]/30">
+                    <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#d4a85c] to-[#bf8f38] flex items-center justify-center">
                       <span className="text-white text-2xl font-bold">R</span>
                     </div>
                     <h1 className="text-4xl font-bold text-gray-900 mb-3 tracking-tight">
@@ -889,9 +889,9 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
                       </div>
 
                       {/* Grand Total */}
-                      <div className="flex items-center justify-between py-4 mt-4 border-t-2 border-amber-500/30">
+                      <div className="flex items-center justify-between py-4 mt-4 border-t-2 border-[#bf8f38]/30">
                         <span className="text-xl font-bold text-gray-900">Total Investment</span>
-                        <span className="text-2xl font-bold text-amber-600">
+                        <span className="text-2xl font-bold text-[#bf8f38]">
                           ETB {previewData.totalAmount.toLocaleString()}
                         </span>
                       </div>
@@ -942,8 +942,8 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
                 /* Live Builder Preview */
                 <div className="p-8 space-y-8">
                   {/* Cover */}
-                  <div className="text-center py-16 border-b border-amber-200/30">
-                    <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center">
+                  <div className="text-center py-16 border-b border-[#ecd398]/30">
+                    <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#d4a85c] to-[#bf8f38] flex items-center justify-center">
                       <span className="text-white text-2xl font-bold">R</span>
                     </div>
                     <h1 className="text-4xl font-bold text-gray-900 mb-3 tracking-tight">
@@ -1030,9 +1030,9 @@ export function ProposalBuilder({ proposalId, isEditing }: Props) {
                             </div>
                           ))}
                       </div>
-                      <div className="flex items-center justify-between py-4 mt-4 border-t-2 border-amber-500/30">
+                      <div className="flex items-center justify-between py-4 mt-4 border-t-2 border-[#bf8f38]/30">
                         <span className="text-xl font-bold text-gray-900">Total Investment</span>
-                        <span className="text-2xl font-bold text-amber-600">
+                        <span className="text-2xl font-bold text-[#bf8f38]">
                           ETB {calculateTotal().toLocaleString()}
                         </span>
                       </div>

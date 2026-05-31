@@ -263,7 +263,7 @@ export function PackageManager() {
   if (loading) {
     return (
       <div className="flex justify-center py-20">
-        <Loader2 className="h-8 w-8 animate-spin text-amber-600" />
+        <Loader2 className="h-8 w-8 animate-spin text-[#bf8f38]" />
       </div>
     );
   }
@@ -273,7 +273,7 @@ export function PackageManager() {
       {(notice || error) && (
         <div
           className={cn(
-            "rounded-lg border px-4 py-3 text-sm",
+            "rounded-none border px-4 py-3 text-sm",
             error ? "border-red-200 bg-red-50 text-red-700" : "border-green-200 bg-green-50 text-green-700"
           )}
         >
@@ -282,7 +282,7 @@ export function PackageManager() {
       )}
 
       <section className="grid gap-6 xl:grid-cols-[.8fr_1.2fr]">
-        <form onSubmit={saveCategory} className="rounded-xl border border-gray-200 bg-white p-6">
+        <form onSubmit={saveCategory} className="rounded-none border border-gray-200 bg-white p-6">
           <div className="mb-5 flex items-center justify-between">
             <h2 className="text-lg font-semibold text-gray-900">
               {editingCategoryId ? "Edit Category" : "Create Category"}
@@ -344,7 +344,7 @@ export function PackageManager() {
             <button
               type="submit"
               disabled={saving}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-500 disabled:opacity-60"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-none bg-[#bf8f38] px-4 py-2 text-sm font-semibold text-white hover:bg-[#bf8f38] disabled:opacity-60"
             >
               {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />}
               Save Category
@@ -352,11 +352,11 @@ export function PackageManager() {
           </div>
         </form>
 
-        <div className="rounded-xl border border-gray-200 bg-white p-6">
+        <div className="rounded-none border border-gray-200 bg-white p-6">
           <h2 className="mb-5 text-lg font-semibold text-gray-900">Categories</h2>
           <div className="grid gap-3 md:grid-cols-2">
             {categories.map((category) => (
-              <div key={category.id} className="rounded-lg border border-gray-200 p-4">
+              <div key={category.id} className="rounded-none border border-gray-200 p-4">
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <div className="font-semibold text-gray-900">{category.name}</div>
@@ -370,7 +370,7 @@ export function PackageManager() {
                 <div className="mt-4 flex items-center justify-between text-xs text-gray-500">
                   <span>{category._count?.packages ?? 0} packages</span>
                   <div className="flex gap-2">
-                    <button type="button" onClick={() => editCategory(category)} className="text-amber-700 hover:underline">
+                    <button type="button" onClick={() => editCategory(category)} className="text-[#a47a2a] hover:underline">
                       Edit
                     </button>
                     <button type="button" onClick={() => removeCategory(category.id)} className="text-red-600 hover:underline">
@@ -386,7 +386,7 @@ export function PackageManager() {
       </section>
 
       <section className="grid gap-6 xl:grid-cols-[.9fr_1.1fr]">
-        <form onSubmit={savePackage} className="rounded-xl border border-gray-200 bg-white p-6">
+        <form onSubmit={savePackage} className="rounded-none border border-gray-200 bg-white p-6">
           <div className="mb-5 flex items-center justify-between">
             <h2 className="text-lg font-semibold text-gray-900">
               {editingPackageId ? "Edit Package" : "Create Package"}
@@ -412,7 +412,7 @@ export function PackageManager() {
                 value={packageDraft.categoryId}
                 onChange={(event) => setPackageDraft((current) => ({ ...current, categoryId: event.target.value }))}
                 required
-                className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+                className="mt-1 w-full rounded-none border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
               >
                 <option value="">Select category</option>
                 {categories.map((category) => (
@@ -442,7 +442,7 @@ export function PackageManager() {
             <button
               type="submit"
               disabled={saving || categories.length === 0}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-500 disabled:opacity-60"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-none bg-[#bf8f38] px-4 py-2 text-sm font-semibold text-white hover:bg-[#bf8f38] disabled:opacity-60"
             >
               {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Check className="h-4 w-4" />}
               Save Package
@@ -450,7 +450,7 @@ export function PackageManager() {
           </div>
         </form>
 
-        <div className="rounded-xl border border-gray-200 bg-white p-6">
+        <div className="rounded-none border border-gray-200 bg-white p-6">
           <h2 className="mb-5 text-lg font-semibold text-gray-900">Packages</h2>
           <div className="overflow-x-auto">
             <table className="w-full min-w-[760px] text-sm">
@@ -484,12 +484,12 @@ export function PackageManager() {
                     </td>
                     <td className="px-3 py-3 text-gray-700">{item.category?.name ?? "Uncategorized"}</td>
                     <td className="px-3 py-3 text-gray-700">{item.priceLabel}</td>
-                    <td className="px-3 py-3">{item.isPopular ? <Star className="h-4 w-4 fill-amber-500 text-amber-500" /> : "-"}</td>
+                    <td className="px-3 py-3">{item.isPopular ? <Star className="h-4 w-4 fill-[#bf8f38] text-[#bf8f38]" /> : "-"}</td>
                     <td className="px-3 py-3">{item.isActive ? <Eye className="h-4 w-4 text-green-600" /> : <EyeOff className="h-4 w-4 text-gray-400" />}</td>
                     <td className="px-3 py-3 text-gray-600">{new Date(item.updatedAt).toLocaleDateString()}</td>
                     <td className="px-3 py-3">
                       <div className="flex justify-end gap-2">
-                        <button type="button" onClick={() => editPackage(item)} className="rounded border border-amber-300 p-1.5 text-amber-700 hover:bg-amber-50" title="Edit">
+                        <button type="button" onClick={() => editPackage(item)} className="rounded border border-[#d9b665] p-1.5 text-[#a47a2a] hover:bg-[#fdf6e8]" title="Edit">
                           <Edit className="h-4 w-4" />
                         </button>
                         <button type="button" onClick={() => removePackage(item.id)} className="rounded border border-red-200 p-1.5 text-red-600 hover:bg-red-50" title="Delete">
@@ -539,7 +539,7 @@ function DynamicList({
         <button
           type="button"
           onClick={() => onChange([...values, ""])}
-          className="inline-flex items-center gap-1 text-xs font-semibold text-amber-700"
+          className="inline-flex items-center gap-1 text-xs font-semibold text-[#a47a2a]"
         >
           <Plus className="h-3.5 w-3.5" />
           Add
@@ -551,7 +551,7 @@ function DynamicList({
             <input
               value={value}
               onChange={(event) => onChange(values.map((item, i) => (i === index ? event.target.value : item)))}
-              className="min-w-0 flex-1 rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+              className="min-w-0 flex-1 rounded-none border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
               placeholder={`${title.slice(0, -1)} ${index + 1}`}
             />
             <button type="button" onClick={() => move(index, -1)} className="rounded border border-gray-200 p-2 text-gray-500 hover:bg-gray-50" title="Move up">
@@ -580,13 +580,13 @@ function Toggle({
   onChange: (value: boolean) => void;
 }) {
   return (
-    <label className="flex items-center justify-between gap-3 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-700">
+    <label className="flex items-center justify-between gap-3 rounded-none border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-700">
       {label}
       <input
         type="checkbox"
         checked={checked}
         onChange={(event) => onChange(event.target.checked)}
-        className="h-4 w-4 accent-amber-600"
+        className="h-4 w-4 accent-[#bf8f38]"
       />
     </label>
   );
@@ -613,7 +613,7 @@ function Field({
         value={value}
         onChange={(event) => onChange(event.target.value)}
         required={required}
-        className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+        className="mt-1 w-full rounded-none border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
       />
     </label>
   );
@@ -642,7 +642,7 @@ function TextArea({
         onChange={(event) => onChange(event.target.value)}
         rows={rows}
         required={required}
-        className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+        className="mt-1 w-full rounded-none border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
       />
       {helper && <span className="mt-1 block text-xs text-gray-500">{helper}</span>}
     </label>

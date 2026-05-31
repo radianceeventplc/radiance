@@ -35,7 +35,7 @@ const insights = [
 export default function InsightsPage() {
   return (
     <>
-      <Header />
+      <Header topVariant="light" />
       <main>
         <Section className="pt-32">
           <Container>

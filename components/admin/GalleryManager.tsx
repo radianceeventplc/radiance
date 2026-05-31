@@ -211,7 +211,7 @@ export function GalleryManager() {
     <div className="mx-auto max-w-7xl">
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="text-sm font-medium uppercase tracking-[0.18em] text-amber-600/70">
+          <p className="text-sm font-medium uppercase tracking-[0.18em] text-[#bf8f38]/70">
             Admin
           </p>
           <h1 className="mt-2 text-3xl font-bold text-gray-900">Gallery</h1>
@@ -232,7 +232,7 @@ export function GalleryManager() {
           <button
             type="button"
             onClick={() => setModalOpen(true)}
-            className="inline-flex items-center gap-2 bg-amber-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-amber-600"
+            className="inline-flex items-center gap-2 bg-[#bf8f38] px-4 py-2 text-sm font-medium text-white transition hover:bg-[#bf8f38]"
           >
             <Upload className="h-4 w-4" />
             Upload
@@ -313,7 +313,7 @@ export function GalleryManager() {
                       <input
                         type="number"
                         defaultValue={image.sortOrder}
-                        className="w-20 border border-gray-200 bg-white px-2 py-1 text-gray-900 outline-none focus:border-amber-500"
+                        className="w-20 border border-gray-200 bg-white px-2 py-1 text-gray-900 outline-none focus:border-[#bf8f38]"
                         onBlur={(event) => {
                           const value = Number(event.target.value);
                           if (value !== image.sortOrder) {
@@ -336,7 +336,7 @@ export function GalleryManager() {
                         }
                         className={`inline-flex h-9 w-9 items-center justify-center border transition ${
                           image.isFeatured
-                            ? "border-amber-500/40 bg-amber-50 text-amber-700"
+                            ? "border-[#bf8f38]/40 bg-[#fdf6e8] text-[#a47a2a]"
                             : "border-gray-200 text-gray-500 hover:text-gray-900"
                         }`}
                         aria-label="Toggle featured"
@@ -401,7 +401,7 @@ export function GalleryManager() {
                   value={form.title}
                   onChange={(event) => updateForm("title", event.target.value)}
                   required
-                  className="w-full border border-gray-200 bg-white px-4 py-3 text-gray-900 outline-none focus:border-amber-500"
+                  className="w-full border border-gray-200 bg-white px-4 py-3 text-gray-900 outline-none focus:border-[#bf8f38]"
                 />
               </label>
 
@@ -414,7 +414,7 @@ export function GalleryManager() {
                   onChange={(event) =>
                     updateForm("category", event.target.value)
                   }
-                  className="w-full border border-gray-200 bg-white px-4 py-3 text-gray-900 outline-none focus:border-amber-500"
+                  className="w-full border border-gray-200 bg-white px-4 py-3 text-gray-900 outline-none focus:border-[#bf8f38]"
                 >
                   {galleryCategoryValues.map((category) => (
                     <option key={category} value={category}>
@@ -434,7 +434,7 @@ export function GalleryManager() {
                   onChange={(event) =>
                     updateForm("sortOrder", event.target.value)
                   }
-                  className="w-full border border-gray-200 bg-white px-4 py-3 text-gray-900 outline-none focus:border-amber-500"
+                  className="w-full border border-gray-200 bg-white px-4 py-3 text-gray-900 outline-none focus:border-[#bf8f38]"
                 />
               </label>
 
@@ -448,7 +448,7 @@ export function GalleryManager() {
                     updateForm("description", event.target.value)
                   }
                   rows={3}
-                  className="w-full resize-none border border-gray-200 bg-white px-4 py-3 text-gray-900 outline-none focus:border-amber-500"
+                  className="w-full resize-none border border-gray-200 bg-white px-4 py-3 text-gray-900 outline-none focus:border-[#bf8f38]"
                 />
               </label>
 
@@ -459,7 +459,7 @@ export function GalleryManager() {
                   onChange={(event) =>
                     updateForm("isFeatured", event.target.checked)
                   }
-                  className="h-4 w-4 accent-amber-500"
+                  className="h-4 w-4 accent-[#bf8f38]"
                 />
                 Featured
               </label>
@@ -471,7 +471,7 @@ export function GalleryManager() {
                   onChange={(event) =>
                     updateForm("isBeforeAfter", event.target.checked)
                   }
-                  className="h-4 w-4 accent-amber-500"
+                  className="h-4 w-4 accent-[#bf8f38]"
                 />
                 Before / After
               </label>
@@ -485,7 +485,7 @@ export function GalleryManager() {
                   accept="image/jpeg,image/png,image/webp,image/avif"
                   required
                   onChange={(event) => handleFileChange(event, setMainFile)}
-                  className="w-full border border-gray-200 bg-white px-4 py-3 text-sm text-gray-700 file:mr-4 file:border-0 file:bg-amber-500 file:px-3 file:py-2 file:text-sm file:font-medium file:text-white"
+                  className="w-full border border-gray-200 bg-white px-4 py-3 text-sm text-gray-700 file:mr-4 file:border-0 file:bg-[#bf8f38] file:px-3 file:py-2 file:text-sm file:font-medium file:text-white"
                 />
               </label>
 
@@ -532,7 +532,7 @@ export function GalleryManager() {
               <button
                 type="submit"
                 disabled={saving}
-                className="inline-flex items-center gap-2 bg-amber-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-amber-600 disabled:cursor-not-allowed disabled:opacity-60"
+                className="inline-flex items-center gap-2 bg-[#bf8f38] px-4 py-2 text-sm font-medium text-white transition hover:bg-[#bf8f38] disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {saving ? (
                   <Loader2 className="h-4 w-4 animate-spin" />

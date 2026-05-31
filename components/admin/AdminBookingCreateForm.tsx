@@ -121,21 +121,21 @@ export function AdminBookingCreateForm() {
 
   return (
     <div className="space-y-6">
-      <div className="border border-gray-200 rounded-xl p-6">
+      <div className="border border-gray-200 rounded-none p-6">
         <h2 className="mb-5 text-lg font-semibold text-gray-900">Create New Booking</h2>
         <p className="text-sm text-gray-600 mb-4">
           Create a new booking manually for walk-in clients or phone bookings
         </p>
 
         {isSuccess && (
-          <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
+          <div className="bg-green-50 border border-green-200 rounded-none p-4 mb-4">
             <CheckCircle className="h-5 w-5 text-green-600 mr-3" />
             <span>Booking created successfully! The client will appear in the bookings table.</span>
           </div>
         )}
 
         {submitError && (
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
+          <div className="bg-red-50 border border-red-200 rounded-none p-4 mb-4">
             <p className="text-red-600">{submitError}</p>
           </div>
         )}
@@ -153,8 +153,8 @@ export function AdminBookingCreateForm() {
                 onChange={(e) => updateField("clientName", e.target.value)}
                 placeholder="Client's full name"
                 className={cn(
-                  "w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors",
-                  errors.clientName ? "border-red-300 focus:ring-red-200" : "border-gray-300 focus:ring-amber-500/20 focus:border-amber-500"
+                  "w-full px-4 py-3 border rounded-none focus:outline-none focus:ring-2 transition-colors",
+                  errors.clientName ? "border-red-300 focus:ring-red-200" : "border-gray-300 focus:ring-[#bf8f38]/20 focus:border-[#bf8f38]"
                 )}
               />
               {errors.clientName && <p className="mt-1 text-sm text-red-500">{errors.clientName}</p>}
@@ -171,8 +171,8 @@ export function AdminBookingCreateForm() {
                 onChange={(e) => updateField("clientEmail", e.target.value)}
                 placeholder="client@email.com"
                 className={cn(
-                  "w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors",
-                  errors.clientEmail ? "border-red-300 focus:ring-red-200" : "border-gray-300 focus:ring-amber-500/20 focus:border-amber-500"
+                  "w-full px-4 py-3 border rounded-none focus:outline-none focus:ring-2 transition-colors",
+                  errors.clientEmail ? "border-red-300 focus:ring-red-200" : "border-gray-300 focus:ring-[#bf8f38]/20 focus:border-[#bf8f38]"
                 )}
               />
               {errors.clientEmail && <p className="mt-1 text-sm text-red-500">{errors.clientEmail}</p>}
@@ -191,8 +191,8 @@ export function AdminBookingCreateForm() {
                 onChange={(e) => updateField("clientPhone", e.target.value)}
                 placeholder="+254 7XX XXX XXX"
                 className={cn(
-                  "w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors",
-                  errors.clientPhone ? "border-red-300 focus:ring-red-200" : "border-gray-300 focus:ring-amber-500/20 focus:border-amber-500"
+                  "w-full px-4 py-3 border rounded-none focus:outline-none focus:ring-2 transition-colors",
+                  errors.clientPhone ? "border-red-300 focus:ring-red-200" : "border-gray-300 focus:ring-[#bf8f38]/20 focus:border-[#bf8f38]"
                 )}
               />
               {errors.clientPhone && <p className="mt-1 text-sm text-red-500">{errors.clientPhone}</p>}
@@ -207,8 +207,8 @@ export function AdminBookingCreateForm() {
                 value={formData.eventType}
                 onChange={(e) => updateField("eventType", e.target.value)}
                 className={cn(
-                  "w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors",
-                  errors.eventType ? "border-red-300 focus:ring-red-200" : "border-gray-300 focus:ring-amber-500/20 focus:border-amber-500"
+                  "w-full px-4 py-3 border rounded-none focus:outline-none focus:ring-2 transition-colors",
+                  errors.eventType ? "border-red-300 focus:ring-red-200" : "border-gray-300 focus:ring-[#bf8f38]/20 focus:border-[#bf8f38]"
                 )}
               >
                 <option value="">Select event type</option>
@@ -231,8 +231,8 @@ export function AdminBookingCreateForm() {
                 value={formData.eventDate}
                 onChange={(e) => updateField("eventDate", e.target.value)}
                 className={cn(
-                  "w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors",
-                  errors.eventDate ? "border-red-300 focus:ring-red-200" : "border-gray-300 focus:ring-amber-500/20 focus:border-amber-500"
+                  "w-full px-4 py-3 border rounded-none focus:outline-none focus:ring-2 transition-colors",
+                  errors.eventDate ? "border-red-300 focus:ring-red-200" : "border-gray-300 focus:ring-[#bf8f38]/20 focus:border-[#bf8f38]"
                 )}
               />
               {errors.eventDate && <p className="mt-1 text-sm text-red-500">{errors.eventDate}</p>}
@@ -249,8 +249,8 @@ export function AdminBookingCreateForm() {
                 onChange={(e) => updateField("location", e.target.value)}
                 placeholder="Event venue or location"
                 className={cn(
-                  "w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors",
-                  errors.location ? "border-red-300 focus:ring-red-200" : "border-gray-300 focus:ring-amber-500/20 focus:border-amber-500"
+                  "w-full px-4 py-3 border rounded-none focus:outline-none focus:ring-2 transition-colors",
+                  errors.location ? "border-red-300 focus:ring-red-200" : "border-gray-300 focus:ring-[#bf8f38]/20 focus:border-[#bf8f38]"
                 )}
               />
               {errors.location && <p className="mt-1 text-sm text-red-500">{errors.location}</p>}
@@ -269,8 +269,8 @@ export function AdminBookingCreateForm() {
                 onChange={(e) => updateField("guestCount", e.target.value)}
                 placeholder="Number of guests"
                 className={cn(
-                  "w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors",
-                  errors.guestCount ? "border-red-300 focus:ring-red-200" : "border-gray-300 focus:ring-amber-500/20 focus:border-amber-500"
+                  "w-full px-4 py-3 border rounded-none focus:outline-none focus:ring-2 transition-colors",
+                  errors.guestCount ? "border-red-300 focus:ring-red-200" : "border-gray-300 focus:ring-[#bf8f38]/20 focus:border-[#bf8f38]"
                 )}
               />
               {errors.guestCount && <p className="mt-1 text-sm text-red-500">{errors.guestCount}</p>}
@@ -285,8 +285,8 @@ export function AdminBookingCreateForm() {
                 value={formData.budgetRange}
                 onChange={(e) => updateField("budgetRange", e.target.value)}
                 className={cn(
-                  "w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors",
-                  errors.budgetRange ? "border-red-300 focus:ring-red-200" : "border-gray-300 focus:ring-amber-500/20 focus:border-amber-500"
+                  "w-full px-4 py-3 border rounded-none focus:outline-none focus:ring-2 transition-colors",
+                  errors.budgetRange ? "border-red-300 focus:ring-red-200" : "border-gray-300 focus:ring-[#bf8f38]/20 focus:border-[#bf8f38]"
                 )}
               >
                 <option value="">Select budget range</option>
@@ -309,8 +309,8 @@ export function AdminBookingCreateForm() {
               onChange={(e) => updateField("notes", e.target.value)}
               placeholder="Any special notes or requirements..."
               className={cn(
-                "w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors",
-                errors.notes ? "border-red-300 focus:ring-red-200" : "border-gray-300 focus:ring-amber-500/20 focus:border-amber-500"
+                "w-full px-4 py-3 border rounded-none focus:outline-none focus:ring-2 transition-colors",
+                errors.notes ? "border-red-300 focus:ring-red-200" : "border-gray-300 focus:ring-[#bf8f38]/20 focus:border-[#bf8f38]"
               )}
             />
             {errors.notes && <p className="mt-1 text-sm text-red-500">{errors.notes}</p>}
@@ -320,7 +320,7 @@ export function AdminBookingCreateForm() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium rounded-lg bg-amber-600 hover:bg-amber-500 text-white transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="w-full flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium rounded-none bg-[#bf8f38] hover:bg-[#bf8f38] text-white transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <div>
@@ -339,7 +339,7 @@ export function AdminBookingCreateForm() {
         </div>
 
         {/* Quick stats */}
-        <div className="border border-gray-200 rounded-xl p-6">
+        <div className="border border-gray-200 rounded-none p-6">
           <h2 className="mb-4 text-lg font-semibold text-gray-900">Recent Activity</h2>
           <div className="space-y-3">
             <div className="text-sm text-gray-600">

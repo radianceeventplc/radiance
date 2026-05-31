@@ -24,7 +24,7 @@ interface ModalProps {
 function Modal({ title, children, onClose }: ModalProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-      <div className="w-full max-w-lg rounded-xl bg-white shadow-2xl">
+      <div className="w-full max-w-lg rounded-none bg-white shadow-2xl">
         <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4">
           <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
           <button
@@ -275,7 +275,7 @@ export function UserManagement() {
   if (loading) {
     return (
       <div className="flex justify-center py-20">
-        <Loader2 className="h-8 w-8 animate-spin text-amber-600" />
+        <Loader2 className="h-8 w-8 animate-spin text-[#bf8f38]" />
       </div>
     );
   }
@@ -294,7 +294,7 @@ export function UserManagement() {
               resetForm();
               setShowAddModal(true);
             }}
-            className="inline-flex items-center gap-2 rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-500"
+            className="inline-flex items-center gap-2 rounded-none bg-[#bf8f38] px-4 py-2 text-sm font-semibold text-white hover:bg-[#bf8f38]"
           >
             <Plus className="h-4 w-4" />
             Add New Admin
@@ -305,7 +305,7 @@ export function UserManagement() {
       {(notice || error) && (
         <div
           className={cn(
-            "rounded-lg border px-4 py-3 text-sm",
+            "rounded-none border px-4 py-3 text-sm",
             error
               ? "border-red-200 bg-red-50 text-red-700"
               : "border-green-200 bg-green-50 text-green-700"
@@ -323,12 +323,12 @@ export function UserManagement() {
       )}
 
       {!isSuperAdmin && (
-        <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-700">
+        <div className="rounded-none border border-[#ecd398] bg-[#fdf6e8] px-4 py-3 text-sm text-[#a47a2a]">
           Only super admins can manage users. Contact your super admin for changes.
         </div>
       )}
 
-      <div className="overflow-x-auto rounded-xl border border-gray-200 bg-white">
+      <div className="overflow-x-auto rounded-none border border-gray-200 bg-white">
         <table className="w-full min-w-[700px] text-sm">
           <thead>
             <tr className="border-b border-gray-200 bg-gray-50 text-left text-gray-600">
@@ -345,7 +345,7 @@ export function UserManagement() {
               <tr key={user.id} className="border-b border-gray-100 last:border-0">
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-amber-100 text-sm font-semibold text-amber-700">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#f7e8c4] text-sm font-semibold text-[#a47a2a]">
                       {user.name.charAt(0).toUpperCase()}
                     </div>
                     <span className="font-semibold text-gray-900">{user.name}</span>
@@ -374,7 +374,7 @@ export function UserManagement() {
                       <button
                         type="button"
                         onClick={() => openEdit(user)}
-                        className="rounded border border-amber-300 p-1.5 text-amber-700 hover:bg-amber-50"
+                        className="rounded border border-[#d9b665] p-1.5 text-[#a47a2a] hover:bg-[#fdf6e8]"
                         title="Edit user"
                       >
                         <UserCog className="h-4 w-4" />
@@ -396,7 +396,7 @@ export function UserManagement() {
                         className={cn(
                           "rounded border p-1.5",
                           user.isActive
-                            ? "border-orange-200 text-orange-600 hover:bg-orange-50"
+                            ? "border-[#ecd398] text-[#bf8f38] hover:bg-[#fdf6e8]"
                             : "border-green-200 text-green-600 hover:bg-green-50"
                         )}
                         title={user.isActive ? "Disable user" : "Enable user"}
@@ -438,7 +438,7 @@ export function UserManagement() {
                 value={formName}
                 onChange={(e) => setFormName(e.target.value)}
                 required
-                className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+                className="mt-1 w-full rounded-none border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
               />
             </label>
             <label className="block text-sm font-medium text-gray-700">
@@ -448,7 +448,7 @@ export function UserManagement() {
                 value={formEmail}
                 onChange={(e) => setFormEmail(e.target.value)}
                 required
-                className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+                className="mt-1 w-full rounded-none border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
               />
             </label>
             <label className="block text-sm font-medium text-gray-700">
@@ -459,7 +459,7 @@ export function UserManagement() {
                 onChange={(e) => setFormPassword(e.target.value)}
                 required
                 minLength={8}
-                className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+                className="mt-1 w-full rounded-none border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
               />
               <span className="mt-1 block text-xs text-gray-500">Minimum 8 characters</span>
             </label>
@@ -471,7 +471,7 @@ export function UserManagement() {
                 onChange={(e) => setFormConfirmPassword(e.target.value)}
                 required
                 minLength={8}
-                className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+                className="mt-1 w-full rounded-none border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
               />
             </label>
             <label className="block text-sm font-medium text-gray-700">
@@ -479,7 +479,7 @@ export function UserManagement() {
               <select
                 value={formRole}
                 onChange={(e) => setFormRole(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+                className="mt-1 w-full rounded-none border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
               >
                 <option value="SUPER_ADMIN">Super Admin</option>
                 <option value="ADMIN">Admin</option>
@@ -489,7 +489,7 @@ export function UserManagement() {
             <button
               type="submit"
               disabled={saving}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-500 disabled:opacity-60"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-none bg-[#bf8f38] px-4 py-2 text-sm font-semibold text-white hover:bg-[#bf8f38] disabled:opacity-60"
             >
               {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />}
               Create User
@@ -509,7 +509,7 @@ export function UserManagement() {
                 value={formName}
                 onChange={(e) => setFormName(e.target.value)}
                 required
-                className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+                className="mt-1 w-full rounded-none border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
               />
             </label>
             <label className="block text-sm font-medium text-gray-700">
@@ -519,7 +519,7 @@ export function UserManagement() {
                 value={formEmail}
                 onChange={(e) => setFormEmail(e.target.value)}
                 required
-                className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+                className="mt-1 w-full rounded-none border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
               />
             </label>
             <label className="block text-sm font-medium text-gray-700">
@@ -527,26 +527,26 @@ export function UserManagement() {
               <select
                 value={formRole}
                 onChange={(e) => setFormRole(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+                className="mt-1 w-full rounded-none border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
               >
                 <option value="SUPER_ADMIN">Super Admin</option>
                 <option value="ADMIN">Admin</option>
                 <option value="STAFF">Staff</option>
               </select>
             </label>
-            <label className="flex items-center justify-between gap-3 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-700">
+            <label className="flex items-center justify-between gap-3 rounded-none border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-700">
               Active
               <input
                 type="checkbox"
                 checked={formIsActive}
                 onChange={(e) => setFormIsActive(e.target.checked)}
-                className="h-4 w-4 accent-amber-600"
+                className="h-4 w-4 accent-[#bf8f38]"
               />
             </label>
             <button
               type="submit"
               disabled={saving}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-500 disabled:opacity-60"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-none bg-[#bf8f38] px-4 py-2 text-sm font-semibold text-white hover:bg-[#bf8f38] disabled:opacity-60"
             >
               {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <UserCog className="h-4 w-4" />}
               Save Changes
@@ -567,14 +567,14 @@ export function UserManagement() {
                 onChange={(e) => setFormPassword(e.target.value)}
                 required
                 minLength={8}
-                className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+                className="mt-1 w-full rounded-none border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
               />
               <span className="mt-1 block text-xs text-gray-500">Minimum 8 characters</span>
             </label>
             <button
               type="submit"
               disabled={saving}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-500 disabled:opacity-60"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-none bg-[#bf8f38] px-4 py-2 text-sm font-semibold text-white hover:bg-[#bf8f38] disabled:opacity-60"
             >
               {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <KeyRound className="h-4 w-4" />}
               Update Password

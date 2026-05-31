@@ -373,7 +373,7 @@ export function CardDesignBuilder() {
   if (loading && weddings.length === 0) {
     return (
       <div className="flex justify-center py-20">
-        <Loader2 className="h-8 w-8 animate-spin text-amber-600" />
+        <Loader2 className="h-8 w-8 animate-spin text-[#bf8f38]" />
       </div>
     );
   }
@@ -394,7 +394,7 @@ export function CardDesignBuilder() {
               href={`/wedding/${previewSlug}`}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50"
+              className="inline-flex items-center gap-2 rounded-none border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50"
             >
               <Eye className="h-4 w-4" />
               Preview
@@ -403,7 +403,7 @@ export function CardDesignBuilder() {
           <button
             onClick={handleSave}
             disabled={saving || !selectedWeddingId}
-            className="inline-flex items-center gap-2 rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-500 disabled:opacity-60"
+            className="inline-flex items-center gap-2 rounded-none bg-[#bf8f38] px-4 py-2 text-sm font-semibold text-white hover:bg-[#bf8f38] disabled:opacity-60"
           >
             {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
             Save All
@@ -412,13 +412,13 @@ export function CardDesignBuilder() {
       </div>
 
       {/* Wedding selector */}
-      <div className="mb-6 rounded-xl border border-gray-200 bg-white p-4">
+      <div className="mb-6 rounded-none border border-gray-200 bg-white p-4">
         <label className="block text-sm font-medium text-gray-700">
           Select Wedding
           <select
             value={selectedWeddingId}
             onChange={(e) => setSelectedWeddingId(e.target.value)}
-            className="mt-1 block w-full max-w-md rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+            className="mt-1 block w-full max-w-md rounded-none border border-gray-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
           >
             <option value="">-- Choose a wedding --</option>
             {weddings.map((w) => (
@@ -433,7 +433,7 @@ export function CardDesignBuilder() {
       {/* Messages */}
       {(message || error) && (
         <div
-          className={`mb-6 rounded-lg border px-4 py-3 text-sm ${
+          className={`mb-6 rounded-none border px-4 py-3 text-sm ${
             error
               ? "border-red-200 bg-red-50 text-red-700"
               : "border-green-200 bg-green-50 text-green-700"
@@ -444,7 +444,7 @@ export function CardDesignBuilder() {
       )}
 
       {!selectedWeddingId ? (
-        <div className="rounded-xl border border-gray-200 bg-white p-12 text-center">
+        <div className="rounded-none border border-gray-200 bg-white p-12 text-center">
           <PenSquare className="mx-auto h-12 w-12 text-gray-300" />
           <h2 className="mt-4 text-lg font-semibold text-gray-900">Select a Wedding</h2>
           <p className="mt-2 text-sm text-gray-600">
@@ -453,7 +453,7 @@ export function CardDesignBuilder() {
         </div>
       ) : loading ? (
         <div className="flex justify-center py-20">
-          <Loader2 className="h-8 w-8 animate-spin text-amber-600" />
+          <Loader2 className="h-8 w-8 animate-spin text-[#bf8f38]" />
         </div>
       ) : (
         <div className="grid gap-6 lg:grid-cols-2">
@@ -482,7 +482,7 @@ export function CardDesignBuilder() {
                 <p className="text-sm text-gray-500">No love story entries yet. Add one below.</p>
               )}
               {loveStories.map((story, i) => (
-                <div key={i} className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+                <div key={i} className="rounded-none border border-gray-200 bg-gray-50 p-4">
                   <div className="mb-3 flex items-center justify-between">
                     <span className="text-xs font-semibold text-gray-500">
                       Entry #{i + 1}
@@ -556,7 +556,7 @@ export function CardDesignBuilder() {
                     { ...emptyStory(), weddingId: selectedWeddingId, sortOrder: prev.length },
                   ])
                 }
-                className="inline-flex items-center gap-2 rounded-lg border border-amber-300 px-4 py-2 text-sm font-semibold text-amber-700 hover:bg-amber-50"
+                className="inline-flex items-center gap-2 rounded-none border border-[#d9b665] px-4 py-2 text-sm font-semibold text-[#a47a2a] hover:bg-[#fdf6e8]"
               >
                 <Plus className="h-4 w-4" />
                 Add Story Entry
@@ -569,7 +569,7 @@ export function CardDesignBuilder() {
                 <p className="text-sm text-gray-500">No program items yet. Add one below.</p>
               )}
               {programItems.map((item, i) => (
-                <div key={i} className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+                <div key={i} className="rounded-none border border-gray-200 bg-gray-50 p-4">
                   <div className="mb-3 flex items-center justify-between">
                     <span className="text-xs font-semibold text-gray-500">
                       Item #{i + 1}
@@ -643,7 +643,7 @@ export function CardDesignBuilder() {
                     { ...emptyProgram(), weddingId: selectedWeddingId, sortOrder: prev.length },
                   ])
                 }
-                className="inline-flex items-center gap-2 rounded-lg border border-amber-300 px-4 py-2 text-sm font-semibold text-amber-700 hover:bg-amber-50"
+                className="inline-flex items-center gap-2 rounded-none border border-[#d9b665] px-4 py-2 text-sm font-semibold text-[#a47a2a] hover:bg-[#fdf6e8]"
               >
                 <Plus className="h-4 w-4" />
                 Add Program Item
@@ -700,7 +700,7 @@ export function CardDesignBuilder() {
                   {gifts.map((gift) => (
                     <div
                       key={gift.id}
-                      className="flex items-center justify-between rounded-lg border border-gray-200 bg-gray-50 px-4 py-3"
+                      className="flex items-center justify-between rounded-none border border-gray-200 bg-gray-50 px-4 py-3"
                     >
                       <div>
                         <span className="font-medium text-gray-900">{gift.giftName}</span>
@@ -721,7 +721,7 @@ export function CardDesignBuilder() {
               )}
               <a
                 href={selectedWeddingId ? `/admin/weddings/${selectedWeddingId}` : "#"}
-                className="mt-3 inline-flex text-sm text-amber-600 hover:text-amber-700"
+                className="mt-3 inline-flex text-sm text-[#bf8f38] hover:text-[#a47a2a]"
               >
                 Manage gifts in Wedding Builder →
               </a>
@@ -736,7 +736,7 @@ export function CardDesignBuilder() {
                   {rsvps.slice(0, 10).map((rsvp) => (
                     <div
                       key={rsvp.id}
-                      className="flex items-center justify-between rounded-lg border border-gray-200 bg-gray-50 px-4 py-3"
+                      className="flex items-center justify-between rounded-none border border-gray-200 bg-gray-50 px-4 py-3"
                     >
                       <span className="font-medium text-gray-900">{rsvp.guestName}</span>
                       <div className="flex items-center gap-3">
@@ -767,7 +767,7 @@ export function CardDesignBuilder() {
               {rsvps.length > 0 && (
                 <a
                   href={selectedWeddingId ? `/admin/weddings/${selectedWeddingId}` : "#"}
-                  className="mt-3 inline-flex text-sm text-amber-600 hover:text-amber-700"
+                  className="mt-3 inline-flex text-sm text-[#bf8f38] hover:text-[#a47a2a]"
                 >
                   View all RSVPs in Wedding Builder →
                 </a>
@@ -792,9 +792,9 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+    <section className="rounded-none border border-gray-200 bg-white p-6 shadow-sm">
       <h2 className="mb-5 flex items-center gap-2 text-lg font-semibold text-gray-900">
-        <Icon className="h-5 w-5 text-amber-600" />
+        <Icon className="h-5 w-5 text-[#bf8f38]" />
         {title}
       </h2>
       <div className="space-y-4">{children}</div>
@@ -821,7 +821,7 @@ function Field({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+        className="mt-1 w-full rounded-none border border-gray-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
       />
     </label>
   );
@@ -848,7 +848,7 @@ function TextArea({
         onChange={(e) => onChange(e.target.value)}
         rows={rows}
         placeholder={placeholder}
-        className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+        className="mt-1 w-full rounded-none border border-gray-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#bf8f38] focus:ring-2 focus:ring-[#ecd398]"
       />
     </label>
   );

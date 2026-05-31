@@ -51,7 +51,7 @@ export function PackageViewer() {
   if (loading) {
     return (
       <div className="flex justify-center py-12">
-        <Loader2 className="w-8 h-8 animate-spin text-amber-600" />
+        <Loader2 className="w-8 h-8 animate-spin text-[#bf8f38]" />
       </div>
     );
   }
@@ -66,11 +66,11 @@ export function PackageViewer() {
 
   return (
     <div className="space-y-6">
-      <div className="border border-gray-200 rounded-xl p-6">
+      <div className="border border-gray-200 rounded-none p-6">
         <h2 className="mb-5 text-lg font-semibold text-gray-900">Categories</h2>
         <div className="grid gap-3 md:grid-cols-2">
           {categories.map((category) => (
-            <div key={category.id} className="rounded-lg border border-gray-200 p-4">
+            <div key={category.id} className="rounded-none border border-gray-200 p-4">
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <div className="font-semibold text-gray-900">{category.name}</div>
@@ -90,7 +90,7 @@ export function PackageViewer() {
         </div>
       </div>
 
-      <div className="border border-gray-200 rounded-xl p-6">
+      <div className="border border-gray-200 rounded-none p-6">
         <h2 className="mb-5 text-lg font-semibold text-gray-900">Packages</h2>
         <div className="overflow-x-auto">
           <table className="w-full min-w-[760px] text-sm">
@@ -124,7 +124,7 @@ export function PackageViewer() {
                   </td>
                   <td className="px-3 py-3 text-gray-700">{item.category?.name ?? "Uncategorized"}</td>
                   <td className="px-3 py-3 text-gray-700">{item.priceLabel}</td>
-                  <td className="px-3 py-3">{item.isPopular ? <Star className="h-4 w-4 fill-amber-500 text-amber-500" /> : <span className="text-gray-400">-</span>}</td>
+                  <td className="px-3 py-3">{item.isPopular ? <Star className="h-4 w-4 fill-[#bf8f38] text-[#bf8f38]" /> : <span className="text-gray-400">-</span>}</td>
                   <td className="px-3 py-3">{item.isActive ? <Eye className="h-4 w-4 text-green-600" /> : <EyeOff className="h-4 w-4 text-gray-400" />}</td>
                   <td className="px-3 py-3 text-gray-600">{new Date(item.updatedAt).toLocaleDateString()}</td>
                   <td className="px-3 py-3">

@@ -56,7 +56,7 @@ const experiences = [
 export default function ExperiencesPage() {
   return (
     <>
-      <Header />
+      <Header topVariant="light" />
       <main>
         <Section className="pt-32">
           <Container>

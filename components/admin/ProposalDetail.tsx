@@ -77,7 +77,7 @@ export function ProposalDetail() {
   if (loading) {
     return (
       <div className="flex justify-center py-20">
-        <Loader2 className="w-8 h-8 animate-spin text-amber-600" />
+        <Loader2 className="w-8 h-8 animate-spin text-[#bf8f38]" />
       </div>
     );
   }
@@ -88,7 +88,7 @@ export function ProposalDetail() {
         <p className="text-red-600 mb-4">{error || "Proposal not found"}</p>
         <button
           onClick={() => router.push("/admin/proposals")}
-          className="text-amber-600 underline hover:no-underline"
+          className="text-[#bf8f38] underline hover:no-underline"
         >
           Back to proposals
         </button>
@@ -103,7 +103,7 @@ export function ProposalDetail() {
         <div className="flex items-center gap-4">
           <button
             onClick={() => router.push("/admin/proposals")}
-            className="p-2 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 transition-colors"
+            className="p-2 rounded-none border border-gray-200 text-gray-600 hover:bg-gray-50 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
           </button>
@@ -121,7 +121,7 @@ export function ProposalDetail() {
         <div className="flex items-center gap-2">
           <button
             onClick={() => router.push(`/admin/proposals/${proposal.id}/edit`)}
-            className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-blue-600 bg-blue-50 border border-blue-200 rounded-lg hover:bg-blue-100 transition-colors"
+            className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-blue-600 bg-blue-50 border border-blue-200 rounded-none hover:bg-blue-100 transition-colors"
           >
             <Edit className="w-4 h-4" />
             Edit
@@ -130,7 +130,7 @@ export function ProposalDetail() {
             <button
               onClick={handleSend}
               disabled={sending}
-              className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-purple-600 bg-purple-50 border border-purple-200 rounded-lg hover:bg-purple-100 transition-colors disabled:opacity-50"
+              className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-purple-600 bg-purple-50 border border-purple-200 rounded-none hover:bg-purple-100 transition-colors disabled:opacity-50"
             >
               <Send className="w-4 h-4" />
               {sending ? "Sending..." : "Send"}
@@ -138,14 +138,14 @@ export function ProposalDetail() {
           )}
           <button
             onClick={() => window.open(`/proposal/${proposal.publicToken}`, "_blank")}
-            className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-600 bg-gray-50 border border-gray-200 rounded-lg hover:bg-gray-100 transition-colors"
+            className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-600 bg-gray-50 border border-gray-200 rounded-none hover:bg-gray-100 transition-colors"
           >
             <ExternalLink className="w-4 h-4" />
             Public View
           </button>
           <button
             onClick={handleDuplicate}
-            className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-amber-600 bg-amber-50 border border-amber-200 rounded-lg hover:bg-amber-100 transition-colors"
+            className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-[#bf8f38] bg-[#fdf6e8] border border-[#ecd398] rounded-none hover:bg-[#f7e8c4] transition-colors"
           >
             <Copy className="w-4 h-4" />
             Duplicate
@@ -155,7 +155,7 @@ export function ProposalDetail() {
 
       {/* Error */}
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-none text-sm">
           {error}
         </div>
       )}
@@ -165,7 +165,7 @@ export function ProposalDetail() {
         <div className="lg:col-span-2 space-y-6">
           {/* Client Info */}
           {proposal.booking && (
-            <div className="bg-white border border-gray-200 rounded-xl p-6">
+            <div className="bg-white border border-gray-200 rounded-none p-6">
               <h2 className="text-lg font-semibold text-gray-900 mb-4">Client Information</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex items-center gap-3">
@@ -224,7 +224,7 @@ export function ProposalDetail() {
 
           {/* Event Vision / Theme */}
           {(proposal.introduction || proposal.eventVision || proposal.themeConcept) && (
-            <div className="bg-white border border-gray-200 rounded-xl p-6 space-y-4">
+            <div className="bg-white border border-gray-200 rounded-none p-6 space-y-4">
               <h2 className="text-lg font-semibold text-gray-900">Proposal Content</h2>
               {proposal.introduction && (
                 <div>
@@ -249,7 +249,7 @@ export function ProposalDetail() {
 
           {/* Pricing Breakdown */}
           {proposal.items && proposal.items.length > 0 && (
-            <div className="bg-white border border-gray-200 rounded-xl p-6">
+            <div className="bg-white border border-gray-200 rounded-none p-6">
               <h2 className="text-lg font-semibold text-gray-900 mb-4">Pricing Breakdown</h2>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
@@ -289,7 +289,7 @@ export function ProposalDetail() {
                       <td colSpan={4} className="pt-4 text-right font-bold text-gray-900">
                         Total
                       </td>
-                      <td className="pt-4 text-right font-bold text-amber-600">
+                      <td className="pt-4 text-right font-bold text-[#bf8f38]">
                         ETB {proposal.totalAmount.toLocaleString()}
                       </td>
                     </tr>
@@ -301,7 +301,7 @@ export function ProposalDetail() {
 
           {/* Contract Terms */}
           {proposal.contracts && proposal.contracts.length > 0 && (
-            <div className="bg-white border border-gray-200 rounded-xl p-6">
+            <div className="bg-white border border-gray-200 rounded-none p-6">
               <h2 className="text-lg font-semibold text-gray-900 mb-4">Contract Terms</h2>
               <div className="space-y-4">
                 {proposal.contracts.map((contract) => (
@@ -318,7 +318,7 @@ export function ProposalDetail() {
         {/* Right Sidebar */}
         <div className="space-y-6">
           {/* Status & Dates */}
-          <div className="bg-white border border-gray-200 rounded-xl p-6 space-y-4">
+          <div className="bg-white border border-gray-200 rounded-none p-6 space-y-4">
             <h2 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">Details</h2>
 
             <div>
@@ -329,7 +329,7 @@ export function ProposalDetail() {
             </div>
 
             {proposal.clientApproved && (
-              <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+              <div className="bg-green-50 border border-green-200 rounded-none p-3">
                 <p className="text-sm font-medium text-green-800">Approved by client</p>
                 {proposal.clientApprovedAt && (
                   <p className="text-xs text-green-600 mt-0.5">
@@ -340,7 +340,7 @@ export function ProposalDetail() {
             )}
 
             {proposal.clientRejected && (
-              <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+              <div className="bg-red-50 border border-red-200 rounded-none p-3">
                 <p className="text-sm font-medium text-red-800">Rejected by client</p>
                 {proposal.rejectionReason && (
                   <p className="text-xs text-red-600 mt-0.5">{proposal.rejectionReason}</p>
@@ -373,17 +373,17 @@ export function ProposalDetail() {
           </div>
 
           {/* Public Link */}
-          <div className="bg-white border border-gray-200 rounded-xl p-6">
+          <div className="bg-white border border-gray-200 rounded-none p-6">
             <h2 className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-3">
               Public Link
             </h2>
-            <div className="bg-gray-50 rounded-lg p-3">
+            <div className="bg-gray-50 rounded-none p-3">
               <p className="text-xs text-gray-500 mb-1">Client view link:</p>
               <a
                 href={`/proposal/${proposal.publicToken}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-amber-600 hover:text-amber-500 break-all"
+                className="text-sm text-[#bf8f38] hover:text-[#bf8f38] break-all"
               >
                 {window.location.origin}/proposal/{proposal.publicToken}
               </a>
@@ -392,13 +392,13 @@ export function ProposalDetail() {
 
           {/* Comments */}
           {proposal.comments && proposal.comments.length > 0 && (
-            <div className="bg-white border border-gray-200 rounded-xl p-6">
+            <div className="bg-white border border-gray-200 rounded-none p-6">
               <h2 className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-3">
                 Comments ({proposal.comments.length})
               </h2>
               <div className="space-y-3">
                 {proposal.comments.map((comment) => (
-                  <div key={comment.id} className="bg-gray-50 rounded-lg p-3">
+                  <div key={comment.id} className="bg-gray-50 rounded-none p-3">
                     <div className="flex items-center justify-between mb-1">
                       <p className="text-sm font-medium text-gray-900">{comment.authorName}</p>
                       <p className="text-xs text-gray-500">

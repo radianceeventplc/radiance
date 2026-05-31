@@ -8,21 +8,15 @@ import { cn } from "@/lib/utils";
 const navItems: NavItem[] = [
   {
     label: "About",
-    dropdown: [
-      { label: "Who We Are", href: "/about" },
-      { label: "Why Radiance", href: "/about/why-radiance" },
-      { label: "Our Team", href: "/about/team" },
-    ],
+    href: "/about",
   },
   {
     label: "What We Do",
     dropdown: [
-      { label: "Weddings", href: "/services?category=wedding" },
-      { label: "Social Events", href: "/services?category=social" },
-      { label: "Destination Events", href: "/services?category=destination" },
-      { label: "Corporate Events", href: "/services?category=corporate" },
-      { label: "Consulting & Branding", href: "/services?category=consulting" },
-      { label: "Packages", href: "/packages" },
+      { label: "Weddings", href: "/services/weddings" },
+      { label: "Social Events", href: "/services/social-events" },
+      { label: "Destination Events", href: "/services/destination" },
+      { label: "Corporate Events", href: "/services/corporate" },
     ],
   },
   {
@@ -62,11 +56,41 @@ export function NavMenu({ variant = "dark", className }: NavMenuProps) {
     setOpenDropdown(openDropdown === label ? null : label);
   };
 
+  const linkBase = cn(
+    "nav-link relative inline-block px-4 py-2 text-[12px] font-medium uppercase transition-colors duration-300",
+    {
+      "text-white hover:text-[#bf8f38]": variant === "light",
+      "text-[#182849] hover:text-[#bf8f38]": variant === "dark",
+    }
+  );
+
   return (
     <nav
       ref={dropdownRef}
-      className={cn("hidden md:flex items-center gap-1", className)}
+      className={cn("hidden md:flex items-center gap-2", className)}
+      style={{ fontFamily: "'Montserrat', sans-serif" }}
     >
+      <style>{`
+        .nav-link {
+          letter-spacing: 0.16em;
+        }
+        .nav-link::after {
+          content: "";
+          position: absolute;
+          left: 16px;
+          right: 16px;
+          bottom: 4px;
+          height: 1px;
+          background: #bf8f38;
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.3s ease;
+        }
+        .nav-link:hover::after,
+        .nav-link[data-open="true"]::after {
+          transform: scaleX(1);
+        }
+      `}</style>
       {navItems.map((item) => {
         const isActive = openDropdown === item.label;
         const hasDropdown = !!item.dropdown;
@@ -77,29 +101,13 @@ export function NavMenu({ variant = "dark", className }: NavMenuProps) {
               <button
                 onClick={() => handleDropdownClick(item.label)}
                 onMouseEnter={() => setOpenDropdown(item.label)}
-                className={cn(
-                  "relative px-4 py-2 text-sm font-medium tracking-wide uppercase transition-colors duration-300 rounded-none",
-                  "after:content-[''] after:absolute after:left-4 after:bottom-0 after:h-[2px] after:w-0 after:bg-secondary-light-brown after:transition-all after:duration-300 hover:after:w-[calc(100%-32px)]",
-                  {
-                    "text-radiance-white": variant === "light",
-                    "text-radiance-navy": variant === "dark",
-                  }
-                )}
+                data-open={isActive}
+                className={linkBase}
               >
                 {item.label}
               </button>
             ) : (
-              <Link
-                href={item.href!}
-                className={cn(
-                  "relative px-4 py-2 text-sm font-medium tracking-wide uppercase transition-colors duration-300",
-                  "after:content-[''] after:absolute after:left-4 after:bottom-0 after:h-[2px] after:w-0 after:bg-secondary-light-brown after:transition-all after:duration-300 hover:after:w-[calc(100%-32px)]",
-                  {
-                    "text-radiance-white": variant === "light",
-                    "text-radiance-navy": variant === "dark",
-                  }
-                )}
-              >
+              <Link href={item.href!} className={linkBase}>
                 {item.label}
               </Link>
             )}
@@ -118,14 +126,15 @@ export function NavMenu({ variant = "dark", className }: NavMenuProps) {
               >
                 <div
                   className={cn(
-                    "rounded-lg shadow-xl border overflow-hidden",
+                    "shadow-2xl border overflow-hidden",
                     {
-                      "bg-primary-navy/95 backdrop-blur-md border-secondary-light-brown/20":
+                      "bg-[#182849]/95 backdrop-blur-md border-[#bf8f38]/25":
                         variant === "light",
-                      "bg-white/95 backdrop-blur-md border-muted-navy/10":
+                      "bg-white/95 backdrop-blur-md border-[#bf8f38]/25":
                         variant === "dark",
                     }
                   )}
+                  style={{ borderRadius: 0 }}
                 >
                   {item.dropdown!.map((dropItem) => (
                     <Link
@@ -133,14 +142,15 @@ export function NavMenu({ variant = "dark", className }: NavMenuProps) {
                       href={dropItem.href}
                       onClick={() => setOpenDropdown(null)}
                       className={cn(
-                        "block px-5 py-3 text-sm font-medium transition-colors duration-200",
+                        "block px-5 py-3 text-[11px] font-medium uppercase transition-colors duration-200",
                         {
-                          "text-secondary-white hover:bg-secondary-light-brown/10 hover:text-secondary-light-brown":
+                          "text-white hover:bg-[#bf8f38]/15 hover:text-[#bf8f38]":
                             variant === "light",
-                          "text-radiance-navy hover:bg-primary-navy/5 hover:text-primary-brown":
+                          "text-[#182849] hover:bg-[#bf8f38]/10 hover:text-[#bf8f38]":
                             variant === "dark",
                         }
                       )}
+                      style={{ letterSpacing: "0.14em", fontFamily: "'Montserrat', sans-serif" }}
                     >
                       {dropItem.label}
                     </Link>
