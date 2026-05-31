@@ -107,7 +107,7 @@ export default function WeddingCardClient({ invitation }: Props) {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     canvas.style.opacity = "1";
-    const colors = ["#c9a96e", "#d4a08e", "#e8c4b8", "#b8944f", "#e0d3b8", "#fdfaf6"];
+    const colors = ["#bf8f38", "#d4a85c", "#ecd398", "#a47a2a", "#182849", "#f9f4ed"];
     const particles: { x: number; y: number; vx: number; vy: number; size: number; color: string; rotation: number; spin: number }[] = [];
     const startX = originX ?? canvas.width / 2;
     const startY = originY ?? canvas.height * 0.6;
@@ -230,13 +230,36 @@ export default function WeddingCardClient({ invitation }: Props) {
   const rsvpDeadline = new Date(new Date(invitation.weddingDate).getTime() - 30 * 24 * 60 * 60 * 1000).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
 
   return (
-    <div className="wedding-card-root" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+    <div className="wedding-card-root" style={{ fontFamily: "'Kostic Serif','Times New Roman',Georgia,serif" }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
-        :root { --cream:#fdfaf6; --warm-cream:#f7f1e8; --gold:#c9a96e; --gold-dark:#b8944f; --gold-light:#e0d3b8; --blush:#e8c4b8; --blush-rose:#d4a08e; --text-dark:#2c2416; --text-medium:#5a4e3c; --text-light:#8a7d6b; --white:#ffffff; --border-subtle:#e8e0d5; --shadow-sm:0 2px 12px rgba(44,36,22,0.06); --shadow-md:0 8px 32px rgba(44,36,22,0.10); --shadow-lg:0 20px 60px rgba(44,36,22,0.15); --radius-sm:8px; --radius-md:16px; --radius-lg:24px; --radius-full:9999px; }
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
+        :root {
+          --cream:#f9f4ed;
+          --warm-cream:#f1e8d6;
+          --gold:#bf8f38;
+          --gold-dark:#a47a2a;
+          --gold-light:#ecd398;
+          --gold-soft:#d4a85c;
+          --navy:#182849;
+          --navy-soft:#2f497c;
+          --blush:#ecd398;
+          --blush-rose:#d4a85c;
+          --text-dark:#182849;
+          --text-medium:rgba(24,40,73,0.78);
+          --text-light:rgba(24,40,73,0.55);
+          --white:#ffffff;
+          --border-subtle:rgba(24,40,73,0.12);
+          --shadow-sm:0 2px 12px rgba(24,40,73,0.06);
+          --shadow-md:0 12px 36px rgba(24,40,73,0.12);
+          --shadow-lg:0 28px 70px rgba(24,40,73,0.18);
+          --radius-sm:0px;
+          --radius-md:0px;
+          --radius-lg:0px;
+          --radius-full:0px;
+        }
         *{box-sizing:border-box;margin:0;padding:0}
         html{font-size:16px}
-        body{font-family:'Cormorant Garamond',serif;background:var(--cream);color:var(--text-dark);-webkit-font-smoothing:antialiased}
+        body{font-family:'Kostic Serif','Times New Roman',Georgia,serif;background:var(--cream);color:var(--text-dark);-webkit-font-smoothing:antialiased}
         .wedding-card-root #sd{height:240vh;position:relative}
         .wedding-card-root #stage{position:sticky;top:0;height:100vh;overflow:hidden;z-index:10;transform-style:preserve-3d}
         .wedding-card-root #bg{position:absolute;inset:0;padding-top:0!important;background:radial-gradient(ellipse 130% 100% at 50% 100%, #faf5ec, #f0e6d4 40%, #e8d9be 75%, #dfceb0);display:flex;flex-direction:column;align-items:center;z-index:1;will-change:transform;padding:0 20px clamp(10px,2vh,20px)}
@@ -247,10 +270,10 @@ export default function WeddingCardClient({ invitation }: Props) {
         .bg-orb--2{width:36vmin;height:36vmin;bottom:12%;right:-4%;background:radial-gradient(circle,rgba(201,169,110,0.4),transparent 70%);animation-delay:-5s}
         .bg-orb--3{width:28vmin;height:28vmin;top:42%;left:58%;background:radial-gradient(circle,rgba(255,248,235,0.5),transparent 70%);animation-delay:-9s}
         @keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(12px,-18px) scale(1.06)}}
-        .reveal-preline{font-family:'Montserrat',sans-serif;font-size:clamp(.55rem,.8vw,.75rem);letter-spacing:.38em;text-transform:uppercase;color:#9a8870}
-        .reveal-names{font-family:'Great Vibes',cursive!important;font-size:clamp(3.2rem,9vw,7.5rem);color:#2c2416;font-weight:400;line-height:1.05;will-change:opacity,transform;position:relative;z-index:2;text-shadow:0 2px 30px rgba(44,36,22,.06)}
-        .reveal-names .amp{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.68em;color:#b8944f;display:inline-block;margin:0 4px}
-        .reveal-date{font-family:'Montserrat',sans-serif;font-size:clamp(.55rem,.75vw,.7rem);letter-spacing:.3em;text-transform:uppercase;color:#8a7d6b;will-change:opacity,transform;position:relative;z-index:2}
+        .reveal-preline{font-family:'Montserrat',sans-serif;font-size:clamp(.55rem,.8vw,.75rem);letter-spacing:.38em;text-transform:uppercase;color:rgba(24,40,73,0.55)}
+        .reveal-names{font-family:'Great Vibes',cursive!important;font-size:clamp(3.2rem,9vw,7.5rem);color:#182849;font-weight:400;line-height:1.05;will-change:opacity,transform;position:relative;z-index:2;text-shadow:0 2px 30px rgba(44,36,22,.06)}
+        .reveal-names .amp{font-family:'Kostic Serif','Times New Roman',Georgia,serif;font-style:italic;font-size:.68em;color:#a47a2a;display:inline-block;margin:0 4px}
+        .reveal-date{font-family:'Montserrat',sans-serif;font-size:clamp(.55rem,.75vw,.7rem);letter-spacing:.3em;text-transform:uppercase;color:rgba(24,40,73,0.55);will-change:opacity,transform;position:relative;z-index:2}
         #rp,#rn,#rd{opacity:0;transform:translateY(16px)}
         #fp{position:absolute;inset:0;perspective:2200px;perspective-origin:50% 0%;pointer-events:none;z-index:5}
         #flap-group{position:absolute;inset:0;transform-origin:top center;transform-style:preserve-3d;will-change:transform;filter:drop-shadow(0 18px 40px rgba(44,36,22,.12))}
@@ -258,7 +281,7 @@ export default function WeddingCardClient({ invitation }: Props) {
         #flap-edge{position:absolute;inset:0;clip-path:url(#roundedTriangle);-webkit-clip-path:url(#roundedTriangle);pointer-events:none;z-index:3;background:transparent;box-shadow:inset 0 0 0 1px rgba(201,169,110,.22),inset 0 -2px 24px rgba(201,169,110,.08)}
         #flap-shimmer{position:absolute;inset:0;clip-path:url(#roundedTriangle);-webkit-clip-path:url(#roundedTriangle);pointer-events:none;z-index:4;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.35) 50%,transparent 62%);background-size:220% 100%;animation:flapShimmer 6s ease-in-out infinite;opacity:.55}
         @keyframes flapShimmer{0%,100%{background-position:120% 0}50%{background-position:-20% 0}}
-        #flap::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 900'%3E%3Cg fill='none' stroke='%23c9a96e' stroke-width='0.9' opacity='0.09' stroke-linecap='round'%3E%3Cellipse cx='400' cy='340' rx='130' ry='155'/%3E%3Cellipse cx='400' cy='340' rx='80' ry='100'/%3E%3Ccircle cx='400' cy='340' r='24'/%3E%3C/g%3E%3C/svg%3E");background-size:cover;background-position:center top;pointer-events:none}
+        #flap::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 900'%3E%3Cg fill='none' stroke='%23bf8f38' stroke-width='0.9' opacity='0.09' stroke-linecap='round'%3E%3Cellipse cx='400' cy='340' rx='130' ry='155'/%3E%3Cellipse cx='400' cy='340' rx='80' ry='100'/%3E%3Ccircle cx='400' cy='340' r='24'/%3E%3C/g%3E%3C/svg%3E");background-size:cover;background-position:center top;pointer-events:none}
         #flap::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.12),transparent 28%,rgba(44,30,10,.03) 58%,rgba(44,30,10,.09) 100%);pointer-events:none}
         .fold-left,.fold-right{position:absolute;bottom:0;height:100%;width:50%;border:none;pointer-events:none;z-index:2}
         .fold-left{left:0;background:linear-gradient(128deg,rgba(255,255,255,.08),transparent 48%);border-right:1px solid rgba(201,169,110,.14)}
@@ -267,7 +290,7 @@ export default function WeddingCardClient({ invitation }: Props) {
         @keyframes tipPulse{0%,100%{opacity:.5;transform:translate(-50%,42%) scale(1)}50%{opacity:.85;transform:translate(-50%,40%) scale(1.04)}}
         .reveal-names{font-family:'Great Vibes',cursive!important}
         #badge{position:absolute;bottom:clamp(10px,2vh,25px);left:50%;transform:translateX(-50%);width:clamp(120px,18vw,180px);height:clamp(120px,18vw,180px);border-radius:50%;background:radial-gradient(circle at 38% 32%,#fff4c8,#efd582 26%,#d4ad5b 55%,#ad7f31 82%,#8f6727);box-shadow:0 8px 24px rgba(120,82,32,.32),0 3px 10px rgba(80,48,12,.15),inset 0 2px 8px rgba(255,249,210,.75),inset 0 -5px 12px rgba(103,68,20,.22);display:flex;align-items:center;justify-content:center;z-index:20;will-change:transform,opacity;pointer-events:auto;cursor:default}
-        #badge .mono{font-family:'Playfair Display','Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:500;font-style:italic;color:rgba(255,252,235,.96);letter-spacing:.06em;text-shadow:0 1px 3px rgba(94,58,15,.38),0 0 16px rgba(255,235,150,.32);pointer-events:none;line-height:1;white-space:nowrap}
+        #badge .mono{font-family:'Kostic Serif','Times New Roman',Georgia,serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:500;font-style:italic;color:rgba(255,252,235,.96);letter-spacing:.06em;text-shadow:0 1px 3px rgba(94,58,15,.38),0 0 16px rgba(255,235,150,.32);pointer-events:none;line-height:1;white-space:nowrap}
         .badge-ring-outer{position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(255,235,150,.48);animation:bPulse 2.8s ease-in-out infinite;pointer-events:none}
         .badge-ring-inner{position:absolute;inset:8px;border-radius:50%;border:1px solid rgba(255,246,185,.42);pointer-events:none}
         .badge-notch{position:absolute;inset:0;border-radius:50%;background:repeating-conic-gradient(rgba(255,250,205,.08) 0deg,transparent 8deg,transparent 16deg);pointer-events:none}
@@ -284,16 +307,16 @@ export default function WeddingCardClient({ invitation }: Props) {
         .chev:nth-child(1){animation-delay:0s}.chev:nth-child(2){animation-delay:.22s}.chev:nth-child(3){animation-delay:.44s}
         @keyframes chevAnim{0%{opacity:0;transform:translateY(-5px)}40%{opacity:.7}100%{opacity:0;transform:translateY(6px)}}
         .invitation-countdown{padding:90px 20px 80px;text-align:center;background:linear-gradient(180deg,#fdfaf6,#f9f2e8 30%,#f5ecdc);position:relative;overflow:hidden}
-        .invitation-copy{max-width:750px;margin:0 auto 50px;font-size:1.5rem;font-weight:400;color:var(--text-dark);line-height:1.85;font-family:'Cormorant Garamond',serif;letter-spacing:.02em;text-shadow:0 1px 1px rgba(255,255,255,0.5)}
+        .invitation-copy{max-width:750px;margin:0 auto 50px;font-size:1.5rem;font-weight:400;color:var(--text-dark);line-height:1.85;font-family:'Kostic Serif','Times New Roman',Georgia,serif;letter-spacing:.02em;text-shadow:0 1px 1px rgba(255,255,255,0.5)}
         .invitation-copy strong{font-weight:600;color:var(--gold-dark)}
         .countdown-wrapper{display:flex;justify-content:center;gap:24px;flex-wrap:wrap}
         .countdown-unit{background:var(--white);border-radius:var(--radius-lg);padding:28px 22px;min-width:100px;box-shadow:var(--shadow-sm);border:1px solid var(--border-subtle);transition:transform .3s,box-shadow .3s}
         .countdown-unit:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
-        .countdown-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:600;color:var(--gold-dark);line-height:1;display:block}
+        .countdown-num{font-family:'Kostic Serif','Times New Roman',Georgia,serif;font-size:3rem;font-weight:600;color:var(--gold-dark);line-height:1;display:block}
         .countdown-label{font-family:'Montserrat',sans-serif;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-light);margin-top:8px;display:block}
         .love-story{padding:80px 20px;background:var(--cream);position:relative}
         .section-header{text-align:center;margin-bottom:60px}
-        .section-header h2{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:500;color:var(--text-dark);letter-spacing:.04em}
+        .section-header h2{font-family:'Kostic Serif','Times New Roman',Georgia,serif;font-size:2.4rem;font-weight:500;color:var(--text-dark);letter-spacing:.04em}
         .section-header .ornament-line{display:block;width:60px;height:2px;background:var(--gold);margin:16px auto 0;border-radius:1px}
         .timeline{position:relative;max-width:700px;margin:0 auto;padding-left:40px}
         .timeline::before{content:'';position:absolute;left:18px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--gold-light),var(--gold),var(--gold-light));border-radius:1px}
@@ -302,7 +325,7 @@ export default function WeddingCardClient({ invitation }: Props) {
         .timeline-item.visible .tl-year,.timeline-item.visible .tl-title,.timeline-item.visible .tl-text{opacity:1;transform:translateY(0)}
         .timeline-item::before{content:'';position:absolute;left:-27px;top:6px;width:14px;height:14px;background:var(--gold);border-radius:50%;border:3px solid var(--cream);box-shadow:0 0 0 3px var(--gold-light);z-index:1}
         .tl-year{font-family:'Montserrat',sans-serif;font-size:.7rem;letter-spacing:.25em;color:var(--gold-dark);text-transform:uppercase;margin-bottom:4px}
-        .tl-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:500;color:var(--text-dark);margin-bottom:6px}
+        .tl-title{font-family:'Kostic Serif','Times New Roman',Georgia,serif;font-size:1.4rem;font-weight:500;color:var(--text-dark);margin-bottom:6px}
         .tl-text{color:var(--text-medium);font-size:1.05rem;line-height:1.8}
         .day-program{padding:80px 20px;background:var(--white)}
         .program-list{max-width:550px;margin:0 auto;position:relative;padding-left:50px}
@@ -312,7 +335,7 @@ export default function WeddingCardClient({ invitation }: Props) {
         .program-item.visible .pr-time,.program-item.visible .pr-title,.program-item.visible .pr-desc{opacity:1;transform:translateY(0)}
         .program-item::before{content:'';position:absolute;left:-34px;top:4px;width:10px;height:10px;background:var(--blush-rose);border-radius:50%;border:3px solid var(--white);box-shadow:0 0 0 3px var(--blush);z-index:1}
         .pr-time{display:inline-block;font-family:'Montserrat',sans-serif;font-size:.7rem;letter-spacing:.15em;background:var(--warm-cream);color:var(--gold-dark);padding:6px 16px;border-radius:var(--radius-full);margin-bottom:6px;font-weight:500}
-        .pr-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:500;color:var(--text-dark);display:block}
+        .pr-title{font-family:'Kostic Serif','Times New Roman',Georgia,serif;font-size:1.2rem;font-weight:500;color:var(--text-dark);display:block}
         .pr-desc{color:var(--text-light);font-size:.95rem}
         .event-details{padding:80px 20px;background:var(--cream);text-align:center}
         .details-grid{max-width:600px;margin:0 auto 40px;display:grid;grid-template-columns:1fr 1fr;gap:20px;text-align:left}
@@ -333,7 +356,7 @@ export default function WeddingCardClient({ invitation }: Props) {
         .wedding-ring ellipse{fill:none;stroke:#d8bd72;stroke-width:10;stroke-linecap:round}
         .wedding-ring .ring-highlight{stroke:#fff1bd;stroke-width:3;opacity:.86}
         .wedding-ring .ring-shadow{stroke:#9c7130;stroke-width:2;opacity:.2}
-        .wedding-ring .ring-gem{fill:#fff8e7;stroke:#c9a96e;stroke-width:2}
+        .wedding-ring .ring-gem{fill:#fff8e7;stroke:#bf8f38;stroke-width:2}
         @keyframes ringJoinLeft{0%{opacity:0;transform:translateX(-230px) rotateY(58deg) rotateZ(-18deg) scale(.82)}72%{opacity:1;transform:translateX(-28px) rotateY(-10deg) rotateZ(-13deg) scale(1.04)}100%{opacity:1;transform:translateX(-20px) rotateY(0deg) rotateZ(-12deg) scale(1)}}
         @keyframes ringJoinRight{0%{opacity:0;transform:translateX(230px) rotateY(-58deg) rotateZ(18deg) scale(.82)}72%{opacity:1;transform:translateX(28px) rotateY(10deg) rotateZ(13deg) scale(1.04)}100%{opacity:1;transform:translateX(20px) rotateY(0deg) rotateZ(12deg) scale(1)}}
         .map-pin{position:absolute;top:42%;left:48%;transform:translate(-50%,-50%);animation:pinBounce 2s ease-in-out infinite;pointer-events:none;z-index:2}
@@ -342,7 +365,7 @@ export default function WeddingCardClient({ invitation }: Props) {
         .action-buttons{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;max-width:500px;margin:0 auto}
         .btn{display:inline-flex;align-items:center;gap:8px;font-family:'Montserrat',sans-serif;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;padding:14px 26px;border-radius:var(--radius-full);cursor:pointer;transition:all .3s;text-decoration:none;font-weight:500;background:transparent;color:var(--text-dark);border:none}
         .btn-primary{background:var(--gold-dark);color:white;box-shadow:0 4px 16px rgba(184,148,79,.35)}
-        .btn-primary:hover{background:#a07d3a;transform:translateY(-2px)}
+        .btn-primary:hover{background:#8a6822;transform:translateY(-2px)}
         .btn-outline{background:transparent;color:var(--gold-dark);border:2px solid var(--gold)}
         .btn-outline:hover{background:var(--warm-cream);border-color:var(--gold-dark);transform:translateY(-2px)}
         .gift-registry{padding:80px 20px;background:var(--white);text-align:center}
@@ -356,24 +379,24 @@ export default function WeddingCardClient({ invitation }: Props) {
         .iban-reveal-area{background:var(--warm-cream);border-radius:var(--radius-md);padding:16px;margin-top:10px;font-family:'Montserrat',sans-serif;font-size:.7rem;word-break:break-all;display:none}
         .iban-reveal-area.show{display:block}
         .btn-iban{font-family:'Montserrat',sans-serif;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:10px 20px;border-radius:var(--radius-full);cursor:pointer;background:var(--text-dark);color:white;border:none;transition:all .3s}
-        .btn-iban:hover{background:#3d3224}
+        .btn-iban:hover{background:#0d1b36}
         .rsvp-section{padding:80px 20px;background:var(--cream);text-align:center}
         .rsvp-deadline{font-family:'Montserrat',sans-serif;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blush-rose);margin-bottom:30px;font-weight:500}
         .rsvp-form{max-width:480px;margin:0 auto;text-align:left}
         .form-group{margin-bottom:18px}
         .form-group label{display:block;font-family:'Montserrat',sans-serif;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-medium);margin-bottom:6px;font-weight:500}
-        .form-group input,.form-group textarea{width:100%;padding:14px 18px;border:1px solid var(--border-subtle);border-radius:var(--radius-md);font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--text-dark);background:var(--white);outline:none;transition:border-color .3s,box-shadow .3s}
+        .form-group input,.form-group textarea{width:100%;padding:14px 18px;border:1px solid var(--border-subtle);border-radius:var(--radius-md);font-family:'Kostic Serif','Times New Roman',Georgia,serif;font-size:1.1rem;font-style:italic;color:var(--text-dark);background:var(--white);outline:none;transition:border-color .3s,box-shadow .3s}
         .form-group input:focus,.form-group textarea:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(201,169,110,.12)}
         .form-group input::placeholder,.form-group textarea::placeholder{font-style:italic;color:var(--text-light);opacity:0.7}
         .radio-group{display:flex;gap:12px;flex-wrap:wrap}
-        .radio-option{position:relative;display:flex;align-items:center;gap:14px;cursor:pointer;padding:12px 20px 12px 46px;border:1px solid var(--border-subtle);border-radius:var(--radius-full);background:var(--white);transition:all .3s;font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic}
+        .radio-option{position:relative;display:flex;align-items:center;gap:14px;cursor:pointer;padding:12px 20px 12px 46px;border:1px solid var(--border-subtle);border-radius:var(--radius-full);background:var(--white);transition:all .3s;font-family:'Kostic Serif','Times New Roman',Georgia,serif;font-size:1rem;font-style:italic}
         .radio-option input[type=radio]{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
         .radio-option::before{content:'';position:absolute;left:18px;top:50%;transform:translateY(-50%);width:20px;height:20px;border-radius:50%;border:2px solid var(--border-subtle);background:var(--white);transition:all .3s;box-sizing:border-box}
         .radio-option:has(input:checked)::before{border-color:var(--gold-dark);background:var(--gold-dark)}
         .radio-option:has(input:checked)::after{content:'';position:absolute;left:24px;top:50%;transform:translateY(-50%);width:8px;height:8px;border-radius:50%;background:white}
         .radio-option:has(input:checked){border-color:var(--gold-dark);background:var(--warm-cream);font-weight:500}
         .btn-submit{width:100%;padding:16px;font-family:'Montserrat',sans-serif;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;background:var(--gold-dark);color:white;border:none;border-radius:var(--radius-full);cursor:pointer;transition:all .3s;margin-top:10px}
-        .btn-submit:hover{background:#a07d3a;transform:translateY(-2px)}
+        .btn-submit:hover{background:#8a6822;transform:translateY(-2px)}
         .btn-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
         .form-feedback{text-align:center;margin-top:16px;font-family:'Montserrat',sans-serif;font-size:.75rem;letter-spacing:.08em;color:#5a8a5a;display:none}
         .form-feedback.show{display:block}
@@ -546,7 +569,7 @@ export default function WeddingCardClient({ invitation }: Props) {
           <div className="map-area" onClick={() => { window.open(mapsUrl, "_blank"); fireConfetti(); }}>
             <div className="map-pin">
               <svg viewBox="0 0 44 56" width="36" height="46">
-                <path d="M22 0C10 0 0 9.5 0 22c0 16 22 34 22 34s22-18 22-34C44 9.5 34 0 22 0z" fill="#c9a96e" stroke="#8b6f3a" strokeWidth="2" />
+                <path d="M22 0C10 0 0 9.5 0 22c0 16 22 34 22 34s22-18 22-34C44 9.5 34 0 22 0z" fill="#bf8f38" stroke="#8b6f3a" strokeWidth="2" />
                 <circle cx="22" cy="20" r="8" fill="white" />
               </svg>
             </div>
@@ -587,7 +610,7 @@ export default function WeddingCardClient({ invitation }: Props) {
               <span>Contribution</span><span className="accordion-arrow">▾</span>
             </div>
             <div className="accordion-body">
-              <p style={{ marginBottom: 16, color: "#5a4e3c", fontSize: "1.05rem", lineHeight: 1.7 }}>
+              <p style={{ marginBottom: 16, color: "#2f497c", fontSize: "1.05rem", lineHeight: 1.7 }}>
                 Your presence is the greatest gift. Should you wish to contribute, details are below.
               </p>
               <button className="btn-iban" onClick={() => setShowIban((p) => !p)}>
@@ -601,7 +624,7 @@ export default function WeddingCardClient({ invitation }: Props) {
         </section>
 
         <section className="rsvp-section parallax-section" id="rsvpSection">
-          <div className="section-header"><h2>R&eacute;pondez S'il Vous Pla&icirc;t</h2><span className="ornament-line"></span></div>
+          <div className="section-header"><h2>RSVP</h2><span className="ornament-line"></span></div>
           <p className="rsvp-deadline">Kindly respond by {rsvpDeadline}</p>
           <form className="rsvp-form" id="rsvpForm" onSubmit={submitRsvp}>
             <div className="form-group">
