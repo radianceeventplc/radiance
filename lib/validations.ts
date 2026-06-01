@@ -162,6 +162,7 @@ export const giftReservationSchema = z.object({
 
 export const packageCategorySchema = z.object({
   name: z.string().trim().min(2, "Category name is required").max(120),
+  nameAm: z.string().trim().max(120).optional().nullable().default(null),
   slug: z
     .string()
     .trim()
@@ -177,7 +178,9 @@ export const packageCategorySchema = z.object({
 export const packageSchema = z.object({
   categoryId: z.string().min(1, "Category is required"),
   name: z.string().trim().min(2, "Package name is required").max(140),
+  nameAm: z.string().trim().max(140).optional().nullable().default(null),
   shortDesc: z.string().trim().min(2, "Short description is required").max(220),
+  shortDescAm: z.string().trim().max(220).optional().nullable().default(null),
   description: z.string().trim().min(2, "Description is required").max(4000),
   price: z
     .union([z.coerce.number().min(0), z.literal("").transform(() => null)])

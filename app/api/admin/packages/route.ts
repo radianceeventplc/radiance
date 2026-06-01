@@ -58,7 +58,9 @@ export async function POST(request: NextRequest) {
       data: {
         categoryId: data.categoryId,
         name: data.name,
+        nameAm: data.nameAm ?? null,
         shortDesc: data.shortDesc,
+        shortDescAm: data.shortDescAm ?? null,
         description: data.description,
         price: data.price ?? null,
         priceLabel: data.priceLabel,

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import StarLoader from "@/components/ui/StarLoader";
+import { LanguageProvider } from "@/lib/languageContext";
 
 export const metadata: Metadata = {
   title: "Radiance | Premium Event Experiences",
@@ -20,7 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body className="antialiased bg-secondary-white text-neutral-black">
-        <StarLoader>{children}</StarLoader>
+        <LanguageProvider>
+          <StarLoader>{children}</StarLoader>
+        </LanguageProvider>
       </body>
     </html>
   );

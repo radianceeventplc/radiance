@@ -183,6 +183,7 @@ exports.Prisma.GalleryImageScalarFieldEnum = {
 exports.Prisma.PackageCategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  nameAm: 'nameAm',
   slug: 'slug',
   description: 'description',
   coverImage: 'coverImage',
@@ -196,7 +197,9 @@ exports.Prisma.PackageScalarFieldEnum = {
   id: 'id',
   categoryId: 'categoryId',
   name: 'name',
+  nameAm: 'nameAm',
   shortDesc: 'shortDesc',
+  shortDescAm: 'shortDescAm',
   description: 'description',
   price: 'price',
   priceLabel: 'priceLabel',

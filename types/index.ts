@@ -230,6 +230,7 @@ export interface BookingMessage {
 export interface PackageCategoryRecord {
   id: string;
   name: string;
+  nameAm: string | null;
   slug: string;
   description: string | null;
   coverImage: string | null;
@@ -247,7 +248,9 @@ export interface PackageRecord {
   categoryId: string;
   category?: PackageCategoryRecord;
   name: string;
+  nameAm: string | null;
   shortDesc: string;
+  shortDescAm: string | null;
   description: string;
   price: number | null;
   priceLabel: string;

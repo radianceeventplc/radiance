@@ -21,7 +21,9 @@ import { cn } from "@/lib/utils";
 type PackageDraft = {
   categoryId: string;
   name: string;
+  nameAm: string;
   shortDesc: string;
+  shortDescAm: string;
   description: string;
   price: string;
   priceLabel: string;
@@ -37,6 +39,7 @@ type PackageDraft = {
 
 type CategoryDraft = {
   name: string;
+  nameAm: string;
   slug: string;
   description: string;
   coverImage: string;
@@ -47,7 +50,9 @@ type CategoryDraft = {
 const emptyPackage: PackageDraft = {
   categoryId: "",
   name: "",
+  nameAm: "",
   shortDesc: "",
+  shortDescAm: "",
   description: "",
   price: "",
   priceLabel: "",
@@ -63,6 +68,7 @@ const emptyPackage: PackageDraft = {
 
 const emptyCategory: CategoryDraft = {
   name: "",
+  nameAm: "",
   slug: "",
   description: "",
   coverImage: "",
@@ -133,7 +139,9 @@ export function PackageManager() {
     setPackageDraft({
       categoryId: item.categoryId,
       name: item.name,
+      nameAm: item.nameAm ?? "",
       shortDesc: item.shortDesc,
+      shortDescAm: item.shortDescAm ?? "",
       description: item.description,
       price: item.price === null ? "" : String(item.price),
       priceLabel: item.priceLabel,
@@ -152,6 +160,7 @@ export function PackageManager() {
     setEditingCategoryId(item.id);
     setCategoryDraft({
       name: item.name,
+      nameAm: item.nameAm ?? "",
       slug: item.slug,
       description: item.description ?? "",
       coverImage: item.coverImage ?? "",
@@ -302,7 +311,7 @@ export function PackageManager() {
           </div>
           <div className="space-y-4">
             <Field
-              label="Category name"
+              label="Category name (English)"
               value={categoryDraft.name}
               onChange={(value) =>
                 setCategoryDraft((current) => ({
@@ -312,6 +321,11 @@ export function PackageManager() {
                 }))
               }
               required
+            />
+            <Field
+              label="Category name — አማርኛ (optional)"
+              value={categoryDraft.nameAm}
+              onChange={(value) => setCategoryDraft((current) => ({ ...current, nameAm: value }))}
             />
             <Field
               label="Slug"
@@ -422,8 +436,10 @@ export function PackageManager() {
                 ))}
               </select>
             </label>
-            <Field label="Package name" value={packageDraft.name} onChange={(value) => setPackageDraft((current) => ({ ...current, name: value }))} required />
-            <TextArea label="Short description" value={packageDraft.shortDesc} onChange={(value) => setPackageDraft((current) => ({ ...current, shortDesc: value }))} rows={2} required />
+            <Field label="Package name (English)" value={packageDraft.name} onChange={(value) => setPackageDraft((current) => ({ ...current, name: value }))} required />
+            <Field label="Package name — አማርኛ (optional)" value={packageDraft.nameAm} onChange={(value) => setPackageDraft((current) => ({ ...current, nameAm: value }))} />
+            <TextArea label="Short description (English)" value={packageDraft.shortDesc} onChange={(value) => setPackageDraft((current) => ({ ...current, shortDesc: value }))} rows={2} required />
+            <TextArea label="Short description — አማርኛ (optional)" value={packageDraft.shortDescAm} onChange={(value) => setPackageDraft((current) => ({ ...current, shortDescAm: value }))} rows={2} />
             <TextArea label="Full description" value={packageDraft.description} onChange={(value) => setPackageDraft((current) => ({ ...current, description: value }))} rows={5} required />
             <div className="grid gap-4 sm:grid-cols-2">
               <Field label="Price" type="number" value={packageDraft.price} onChange={(value) => setPackageDraft((current) => ({ ...current, price: value }))} />

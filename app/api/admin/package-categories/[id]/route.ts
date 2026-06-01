@@ -37,6 +37,7 @@ export async function PATCH(
       where: { id },
       data: {
         name: data.name,
+        nameAm: data.nameAm ?? null,
         slug: data.slug,
         description: nullable(data.description),
         coverImage: nullable(data.coverImage),

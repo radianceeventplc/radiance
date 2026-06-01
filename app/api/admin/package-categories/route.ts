@@ -69,6 +69,7 @@ export async function POST(request: NextRequest) {
     const category = await prisma.packageCategory.create({
       data: {
         name: data.name,
+        nameAm: data.nameAm ?? null,
         slug: data.slug,
         description: nullable(data.description),
         coverImage: nullable(data.coverImage),

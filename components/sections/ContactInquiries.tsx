@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 
 export function ContactInquiries() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -286,6 +287,10 @@ export function ContactInquiries() {
                 </div>
               </div>
             </div>
+
+            <Link href="/contact" className="ci-cta-btn">
+              Send an Inquiry
+            </Link>
           </div>
 
           <div className="ci-reveal">

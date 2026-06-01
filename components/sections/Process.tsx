@@ -2,30 +2,36 @@
 
 import { useEffect, useRef } from "react";
 
-const steps = [
+interface Step {
+  number: string;
+  title: string;
+  description: string;
+}
+
+const steps: Step[] = [
   {
     number: "01",
-    title: "Consultation & Vision",
+    title: "Discovery",
     description:
-      "We begin by truly listening — understanding your vision, preferences, expectations, and budget. Every extraordinary event begins with this conversation.",
+      "We sit down with you — whether in person or virtually — to understand your vision, preferences, and every detail that matters most to you.",
   },
   {
     number: "02",
-    title: "Design & Coordination",
+    title: "Design & Planning",
     description:
-      "We curate every detail of the experience — from d\u00e9cor and ambiance to entertainment, guest flow, and vendor logistics — into a seamless event blueprint.",
+      "Our creative team crafts a bespoke event plan tailored to your unique style, budget, and requirements, leaving no stone unturned.",
   },
   {
     number: "03",
-    title: "Flawless Execution",
+    title: "Execution",
     description:
-      "Our team manages every element of event day with precision — ensuring a smooth, stress-free experience from setup to the final farewell moment.",
+      "We coordinate every vendor, timeline, and logistics element so that on the big day, you can simply be present and enjoy every moment.",
   },
   {
     number: "04",
-    title: "Celebrate & Remember",
+    title: "The Grand Reveal",
     description:
-      "You enjoy every magical moment while we handle everything behind the scenes. Your only job? Be fully present and celebrate.",
+      "Watch as your dream event comes to life exactly as envisioned — and often beyond. We stay until the最后一刻 to ensure perfection.",
   },
 ];
 
@@ -41,153 +47,179 @@ export function Process() {
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
 
-    const cards = sectionRef.current?.querySelectorAll(".step, .prc-section-header");
-    cards?.forEach((card) => observer.observe(card));
+    const els = sectionRef.current?.querySelectorAll(".p-reveal");
+    els?.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
   }, []);
 
   return (
     <section
-      id="approach"
+      id="process"
       ref={sectionRef}
-      style={{ backgroundColor: "#f9f4ed", padding: "clamp(60px, 10vh, 100px) 0" }}
+      style={{
+        backgroundColor: "#ffffff",
+        padding: "clamp(60px, 10vh, 100px) 24px",
+      }}
     >
       <style>{`
-        .prc-container {
+        .proc-container {
+          max-width: 1360px;
           margin: 0 auto;
-          width: 100%;
-          max-width: 1440px;
-          padding: 0 24px;
         }
 
-        @media (min-width: 640px) { .prc-container { padding: 0 24px; } }
-        @media (min-width: 1024px) { .prc-container { padding: 0 32px; } }
-        @media (min-width: 1280px) { .prc-container { padding: 0 48px; } }
-
-        .prc-section-header {
+        .proc-header {
           text-align: center;
+          margin-bottom: 4rem;
           opacity: 0;
           transform: translateY(20px);
           transition: opacity 0.6s, transform 0.6s;
         }
 
-        .prc-section-header.vis { opacity: 1; transform: translateY(0); }
+        .proc-header.vis {
+          opacity: 1;
+          transform: translateY(0);
+        }
 
-        .prc-section-label {
+        .proc-label {
           font-family: "Montserrat", sans-serif;
           font-size: 11px;
           font-weight: 500;
           letter-spacing: 0.22em;
           text-transform: uppercase;
           color: #bf8f38;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+          margin-bottom: 0.8rem;
         }
 
-        .prc-divider {
-          width: 40px;
-          height: 2px;
+        .proc-label::before,
+        .proc-label::after {
+          content: "";
+          display: block;
+          width: 30px;
+          height: 1px;
           background: #bf8f38;
-          margin: 14px auto;
         }
 
-        .prc-display {
+        .proc-title {
           font-family: "Kostic Serif", "Times New Roman", Georgia, serif;
-          font-size: clamp(32px, 3.6vw, 48px);
+          font-size: clamp(36px, 4.2vw, 54px);
           font-weight: 700;
           color: #182849;
           line-height: 1.12;
-          margin: 0;
-        }
-
-        .prc-sub {
-          font-family: "Montserrat", sans-serif;
-          font-size: 0.95rem;
-          font-weight: 300;
-          color: rgba(24, 40, 73, 0.55);
-          max-width: 490px;
-          margin: 1.5rem auto 0;
-          line-height: 1.85;
-        }
-
-        .prc-steps {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 0;
-          margin-top: 60px;
-        }
-
-        .step {
-          opacity: 0;
-          transform: translateY(24px);
-          transition: opacity 0.6s, transform 0.6s;
-          padding: 0 32px;
-          border-right: 1px solid rgba(191, 143, 56, 0.2);
-        }
-
-        .step:first-child { padding-left: 0; }
-        .step:last-child { padding-right: 0; border-right: none; }
-
-        .step.vis { opacity: 1; transform: translateY(0); }
-        .step:nth-child(2) { transition-delay: 0.15s; }
-        .step:nth-child(3) { transition-delay: 0.3s; }
-        .step:nth-child(4) { transition-delay: 0.45s; }
-
-        .step-num {
-          font-family: "Kostic Serif", "Times New Roman", Georgia, serif;
-          font-size: clamp(44px, 4.8vw, 60px);
-          font-weight: 700;
-          color: rgba(191, 143, 56, 0.2);
-          line-height: 1;
           margin-bottom: 16px;
         }
 
-        .step h3 {
-          font-family: "Kostic Serif", "Times New Roman", Georgia, serif;
-          font-size: clamp(18px, 1.6vw, 22px);
-          font-weight: 700;
-          color: #182849;
-          margin: 0 0 12px;
-          line-height: 1.3;
+        .proc-title em {
+          font-style: italic;
+          color: #bf8f38;
         }
 
-        .step p {
+        .proc-sub {
           font-family: "Montserrat", sans-serif;
-          font-size: 14px;
-          line-height: 1.8;
+          font-size: 15px;
+          font-weight: 300;
           color: rgba(24, 40, 73, 0.55);
-          margin: 0;
+          max-width: 520px;
+          margin: 0 auto;
+          line-height: 1.85;
+        }
+
+        .proc-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 32px;
+        }
+
+        .proc-card {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .proc-card:nth-child(1) { transition-delay: 0.1s; }
+        .proc-card:nth-child(2) { transition-delay: 0.2s; }
+        .proc-card:nth-child(3) { transition-delay: 0.3s; }
+        .proc-card:nth-child(4) { transition-delay: 0.4s; }
+
+        .proc-card.vis {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .proc-number {
+          font-family: "Kostic Serif", "Times New Roman", Georgia, serif;
+          font-size: 3rem;
+          font-weight: 700;
+          color: rgba(191, 143, 56, 0.2);
+          line-height: 1;
+          margin-bottom: 1rem;
+        }
+
+        .proc-card-title {
+          font-family: "Montserrat", sans-serif;
+          font-size: 1.1rem;
+          font-weight: 600;
+          color: #182849;
+          margin-bottom: 0.75rem;
+          letter-spacing: 0.02em;
+        }
+
+        .proc-card-desc {
+          font-family: "Montserrat", sans-serif;
+          font-size: 0.88rem;
+          font-weight: 300;
+          color: rgba(24, 40, 73, 0.6);
+          line-height: 1.75;
+        }
+
+        .proc-divider {
+          width: 40px;
+          height: 2px;
+          background: #bf8f38;
+          margin-bottom: 1.2rem;
         }
 
         @media (max-width: 1024px) {
-          .prc-steps { grid-template-columns: 1fr 1fr; gap: 36px 24px; }
-          .step { border-right: none; padding: 0; }
+          .proc-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+          }
         }
 
         @media (max-width: 640px) {
-          .prc-steps { grid-template-columns: 1fr; gap: 32px; }
-          .step { border-right: none; padding: 0; }
+          .proc-grid {
+            grid-template-columns: 1fr;
+            gap: 36px;
+          }
         }
       `}</style>
 
-      <div className="prc-container">
-        <div className="prc-section-header" data-animate>
-          <span className="prc-section-label">How We Work</span>
-          <div className="prc-divider"></div>
-          <h2 className="prc-display">Our Planning Process</h2>
-          <p className="prc-sub">
-            From your first spark of an idea to the final unforgettable moment — every step handled with precision and care.
+      <div className="proc-container">
+        <div className="proc-header p-reveal">
+          <p className="proc-label">How We Work</p>
+          <h2 className="proc-title">
+            Our <em>Process</em>
+          </h2>
+          <p className="proc-sub">
+            From the very first conversation to the final flourish, we guide you
+            through every step of crafting your perfect event.
           </p>
         </div>
 
-        <div className="prc-steps">
+        <div className="proc-grid">
           {steps.map((step) => (
-            <div key={step.number} className="step" data-animate>
-              <div className="step-num">{step.number}</div>
-              <h3>{step.title}</h3>
-              <p>{step.description}</p>
+            <div key={step.number} className="proc-card p-reveal">
+              <div className="proc-number">{step.number}</div>
+              <div className="proc-divider" />
+              <h3 className="proc-card-title">{step.title}</h3>
+              <p className="proc-card-desc">{step.description}</p>
             </div>
           ))}
         </div>

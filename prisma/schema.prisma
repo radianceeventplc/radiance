@@ -156,6 +156,7 @@ enum GalleryCategory {
 model PackageCategory {
   id          String    @id @default(cuid())
   name        String
+  nameAm      String?   // Amharic name (optional)
   slug        String    @unique
   description String?
   coverImage  String?
@@ -174,7 +175,9 @@ model Package {
   category      PackageCategory @relation(fields: [categoryId], references: [id], onDelete: Restrict)
 
   name          String
+  nameAm        String?         // Amharic name (optional)
   shortDesc     String          @default("")
+  shortDescAm   String?         // Amharic short description (optional)
   description   String          @db.Text
 
   price         Float?

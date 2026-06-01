@@ -7233,6 +7233,7 @@ export namespace Prisma {
   export type PackageCategoryMinAggregateOutputType = {
     id: string | null
     name: string | null
+    nameAm: string | null
     slug: string | null
     description: string | null
     coverImage: string | null
@@ -7245,6 +7246,7 @@ export namespace Prisma {
   export type PackageCategoryMaxAggregateOutputType = {
     id: string | null
     name: string | null
+    nameAm: string | null
     slug: string | null
     description: string | null
     coverImage: string | null
@@ -7257,6 +7259,7 @@ export namespace Prisma {
   export type PackageCategoryCountAggregateOutputType = {
     id: number
     name: number
+    nameAm: number
     slug: number
     description: number
     coverImage: number
@@ -7279,6 +7282,7 @@ export namespace Prisma {
   export type PackageCategoryMinAggregateInputType = {
     id?: true
     name?: true
+    nameAm?: true
     slug?: true
     description?: true
     coverImage?: true
@@ -7291,6 +7295,7 @@ export namespace Prisma {
   export type PackageCategoryMaxAggregateInputType = {
     id?: true
     name?: true
+    nameAm?: true
     slug?: true
     description?: true
     coverImage?: true
@@ -7303,6 +7308,7 @@ export namespace Prisma {
   export type PackageCategoryCountAggregateInputType = {
     id?: true
     name?: true
+    nameAm?: true
     slug?: true
     description?: true
     coverImage?: true
@@ -7402,6 +7408,7 @@ export namespace Prisma {
   export type PackageCategoryGroupByOutputType = {
     id: string
     name: string
+    nameAm: string | null
     slug: string
     description: string | null
     coverImage: string | null
@@ -7433,6 +7440,7 @@ export namespace Prisma {
   export type PackageCategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    nameAm?: boolean
     slug?: boolean
     description?: boolean
     coverImage?: boolean
@@ -7447,6 +7455,7 @@ export namespace Prisma {
   export type PackageCategorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    nameAm?: boolean
     slug?: boolean
     description?: boolean
     coverImage?: boolean
@@ -7459,6 +7468,7 @@ export namespace Prisma {
   export type PackageCategorySelectScalar = {
     id?: boolean
     name?: boolean
+    nameAm?: boolean
     slug?: boolean
     description?: boolean
     coverImage?: boolean
@@ -7482,6 +7492,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
+      nameAm: string | null
       slug: string
       description: string | null
       coverImage: string | null
@@ -7885,6 +7896,7 @@ export namespace Prisma {
   interface PackageCategoryFieldRefs {
     readonly id: FieldRef<"PackageCategory", 'String'>
     readonly name: FieldRef<"PackageCategory", 'String'>
+    readonly nameAm: FieldRef<"PackageCategory", 'String'>
     readonly slug: FieldRef<"PackageCategory", 'String'>
     readonly description: FieldRef<"PackageCategory", 'String'>
     readonly coverImage: FieldRef<"PackageCategory", 'String'>
@@ -8266,7 +8278,9 @@ export namespace Prisma {
     id: string | null
     categoryId: string | null
     name: string | null
+    nameAm: string | null
     shortDesc: string | null
+    shortDescAm: string | null
     description: string | null
     price: number | null
     priceLabel: string | null
@@ -8283,7 +8297,9 @@ export namespace Prisma {
     id: string | null
     categoryId: string | null
     name: string | null
+    nameAm: string | null
     shortDesc: string | null
+    shortDescAm: string | null
     description: string | null
     price: number | null
     priceLabel: string | null
@@ -8300,7 +8316,9 @@ export namespace Prisma {
     id: number
     categoryId: number
     name: number
+    nameAm: number
     shortDesc: number
+    shortDescAm: number
     description: number
     price: number
     priceLabel: number
@@ -8332,7 +8350,9 @@ export namespace Prisma {
     id?: true
     categoryId?: true
     name?: true
+    nameAm?: true
     shortDesc?: true
+    shortDescAm?: true
     description?: true
     price?: true
     priceLabel?: true
@@ -8349,7 +8369,9 @@ export namespace Prisma {
     id?: true
     categoryId?: true
     name?: true
+    nameAm?: true
     shortDesc?: true
+    shortDescAm?: true
     description?: true
     price?: true
     priceLabel?: true
@@ -8366,7 +8388,9 @@ export namespace Prisma {
     id?: true
     categoryId?: true
     name?: true
+    nameAm?: true
     shortDesc?: true
+    shortDescAm?: true
     description?: true
     price?: true
     priceLabel?: true
@@ -8473,7 +8497,9 @@ export namespace Prisma {
     id: string
     categoryId: string
     name: string
+    nameAm: string | null
     shortDesc: string
+    shortDescAm: string | null
     description: string
     price: number | null
     priceLabel: string
@@ -8512,7 +8538,9 @@ export namespace Prisma {
     id?: boolean
     categoryId?: boolean
     name?: boolean
+    nameAm?: boolean
     shortDesc?: boolean
+    shortDescAm?: boolean
     description?: boolean
     price?: boolean
     priceLabel?: boolean
@@ -8533,7 +8561,9 @@ export namespace Prisma {
     id?: boolean
     categoryId?: boolean
     name?: boolean
+    nameAm?: boolean
     shortDesc?: boolean
+    shortDescAm?: boolean
     description?: boolean
     price?: boolean
     priceLabel?: boolean
@@ -8554,7 +8584,9 @@ export namespace Prisma {
     id?: boolean
     categoryId?: boolean
     name?: boolean
+    nameAm?: boolean
     shortDesc?: boolean
+    shortDescAm?: boolean
     description?: boolean
     price?: boolean
     priceLabel?: boolean
@@ -8586,7 +8618,9 @@ export namespace Prisma {
       id: string
       categoryId: string
       name: string
+      nameAm: string | null
       shortDesc: string
+      shortDescAm: string | null
       description: string
       price: number | null
       priceLabel: string
@@ -8997,7 +9031,9 @@ export namespace Prisma {
     readonly id: FieldRef<"Package", 'String'>
     readonly categoryId: FieldRef<"Package", 'String'>
     readonly name: FieldRef<"Package", 'String'>
+    readonly nameAm: FieldRef<"Package", 'String'>
     readonly shortDesc: FieldRef<"Package", 'String'>
+    readonly shortDescAm: FieldRef<"Package", 'String'>
     readonly description: FieldRef<"Package", 'String'>
     readonly price: FieldRef<"Package", 'Float'>
     readonly priceLabel: FieldRef<"Package", 'String'>
@@ -24826,6 +24862,7 @@ export namespace Prisma {
   export const PackageCategoryScalarFieldEnum: {
     id: 'id',
     name: 'name',
+    nameAm: 'nameAm',
     slug: 'slug',
     description: 'description',
     coverImage: 'coverImage',
@@ -24842,7 +24879,9 @@ export namespace Prisma {
     id: 'id',
     categoryId: 'categoryId',
     name: 'name',
+    nameAm: 'nameAm',
     shortDesc: 'shortDesc',
+    shortDescAm: 'shortDescAm',
     description: 'description',
     price: 'price',
     priceLabel: 'priceLabel',
@@ -25748,6 +25787,7 @@ export namespace Prisma {
     NOT?: PackageCategoryWhereInput | PackageCategoryWhereInput[]
     id?: StringFilter<"PackageCategory"> | string
     name?: StringFilter<"PackageCategory"> | string
+    nameAm?: StringNullableFilter<"PackageCategory"> | string | null
     slug?: StringFilter<"PackageCategory"> | string
     description?: StringNullableFilter<"PackageCategory"> | string | null
     coverImage?: StringNullableFilter<"PackageCategory"> | string | null
@@ -25761,6 +25801,7 @@ export namespace Prisma {
   export type PackageCategoryOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    nameAm?: SortOrderInput | SortOrder
     slug?: SortOrder
     description?: SortOrderInput | SortOrder
     coverImage?: SortOrderInput | SortOrder
@@ -25778,6 +25819,7 @@ export namespace Prisma {
     OR?: PackageCategoryWhereInput[]
     NOT?: PackageCategoryWhereInput | PackageCategoryWhereInput[]
     name?: StringFilter<"PackageCategory"> | string
+    nameAm?: StringNullableFilter<"PackageCategory"> | string | null
     description?: StringNullableFilter<"PackageCategory"> | string | null
     coverImage?: StringNullableFilter<"PackageCategory"> | string | null
     sortOrder?: IntFilter<"PackageCategory"> | number
@@ -25790,6 +25832,7 @@ export namespace Prisma {
   export type PackageCategoryOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
+    nameAm?: SortOrderInput | SortOrder
     slug?: SortOrder
     description?: SortOrderInput | SortOrder
     coverImage?: SortOrderInput | SortOrder
@@ -25810,6 +25853,7 @@ export namespace Prisma {
     NOT?: PackageCategoryScalarWhereWithAggregatesInput | PackageCategoryScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"PackageCategory"> | string
     name?: StringWithAggregatesFilter<"PackageCategory"> | string
+    nameAm?: StringNullableWithAggregatesFilter<"PackageCategory"> | string | null
     slug?: StringWithAggregatesFilter<"PackageCategory"> | string
     description?: StringNullableWithAggregatesFilter<"PackageCategory"> | string | null
     coverImage?: StringNullableWithAggregatesFilter<"PackageCategory"> | string | null
@@ -25826,7 +25870,9 @@ export namespace Prisma {
     id?: StringFilter<"Package"> | string
     categoryId?: StringFilter<"Package"> | string
     name?: StringFilter<"Package"> | string
+    nameAm?: StringNullableFilter<"Package"> | string | null
     shortDesc?: StringFilter<"Package"> | string
+    shortDescAm?: StringNullableFilter<"Package"> | string | null
     description?: StringFilter<"Package"> | string
     price?: FloatNullableFilter<"Package"> | number | null
     priceLabel?: StringFilter<"Package"> | string
@@ -25847,7 +25893,9 @@ export namespace Prisma {
     id?: SortOrder
     categoryId?: SortOrder
     name?: SortOrder
+    nameAm?: SortOrderInput | SortOrder
     shortDesc?: SortOrder
+    shortDescAm?: SortOrderInput | SortOrder
     description?: SortOrder
     price?: SortOrderInput | SortOrder
     priceLabel?: SortOrder
@@ -25871,7 +25919,9 @@ export namespace Prisma {
     NOT?: PackageWhereInput | PackageWhereInput[]
     categoryId?: StringFilter<"Package"> | string
     name?: StringFilter<"Package"> | string
+    nameAm?: StringNullableFilter<"Package"> | string | null
     shortDesc?: StringFilter<"Package"> | string
+    shortDescAm?: StringNullableFilter<"Package"> | string | null
     description?: StringFilter<"Package"> | string
     price?: FloatNullableFilter<"Package"> | number | null
     priceLabel?: StringFilter<"Package"> | string
@@ -25892,7 +25942,9 @@ export namespace Prisma {
     id?: SortOrder
     categoryId?: SortOrder
     name?: SortOrder
+    nameAm?: SortOrderInput | SortOrder
     shortDesc?: SortOrder
+    shortDescAm?: SortOrderInput | SortOrder
     description?: SortOrder
     price?: SortOrderInput | SortOrder
     priceLabel?: SortOrder
@@ -25920,7 +25972,9 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Package"> | string
     categoryId?: StringWithAggregatesFilter<"Package"> | string
     name?: StringWithAggregatesFilter<"Package"> | string
+    nameAm?: StringNullableWithAggregatesFilter<"Package"> | string | null
     shortDesc?: StringWithAggregatesFilter<"Package"> | string
+    shortDescAm?: StringNullableWithAggregatesFilter<"Package"> | string | null
     description?: StringWithAggregatesFilter<"Package"> | string
     price?: FloatNullableWithAggregatesFilter<"Package"> | number | null
     priceLabel?: StringWithAggregatesFilter<"Package"> | string
@@ -27635,6 +27689,7 @@ export namespace Prisma {
   export type PackageCategoryCreateInput = {
     id?: string
     name: string
+    nameAm?: string | null
     slug: string
     description?: string | null
     coverImage?: string | null
@@ -27648,6 +27703,7 @@ export namespace Prisma {
   export type PackageCategoryUncheckedCreateInput = {
     id?: string
     name: string
+    nameAm?: string | null
     slug: string
     description?: string | null
     coverImage?: string | null
@@ -27661,6 +27717,7 @@ export namespace Prisma {
   export type PackageCategoryUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    nameAm?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coverImage?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27674,6 +27731,7 @@ export namespace Prisma {
   export type PackageCategoryUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    nameAm?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coverImage?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27687,6 +27745,7 @@ export namespace Prisma {
   export type PackageCategoryCreateManyInput = {
     id?: string
     name: string
+    nameAm?: string | null
     slug: string
     description?: string | null
     coverImage?: string | null
@@ -27699,6 +27758,7 @@ export namespace Prisma {
   export type PackageCategoryUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    nameAm?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coverImage?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27711,6 +27771,7 @@ export namespace Prisma {
   export type PackageCategoryUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    nameAm?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coverImage?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27723,7 +27784,9 @@ export namespace Prisma {
   export type PackageCreateInput = {
     id?: string
     name: string
+    nameAm?: string | null
     shortDesc?: string
+    shortDescAm?: string | null
     description: string
     price?: number | null
     priceLabel: string
@@ -27744,7 +27807,9 @@ export namespace Prisma {
     id?: string
     categoryId: string
     name: string
+    nameAm?: string | null
     shortDesc?: string
+    shortDescAm?: string | null
     description: string
     price?: number | null
     priceLabel: string
@@ -27763,7 +27828,9 @@ export namespace Prisma {
   export type PackageUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    nameAm?: NullableStringFieldUpdateOperationsInput | string | null
     shortDesc?: StringFieldUpdateOperationsInput | string
+    shortDescAm?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     priceLabel?: StringFieldUpdateOperationsInput | string
@@ -27784,7 +27851,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    nameAm?: NullableStringFieldUpdateOperationsInput | string | null
     shortDesc?: StringFieldUpdateOperationsInput | string
+    shortDescAm?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     priceLabel?: StringFieldUpdateOperationsInput | string
@@ -27804,7 +27873,9 @@ export namespace Prisma {
     id?: string
     categoryId: string
     name: string
+    nameAm?: string | null
     shortDesc?: string
+    shortDescAm?: string | null
     description: string
     price?: number | null
     priceLabel: string
@@ -27823,7 +27894,9 @@ export namespace Prisma {
   export type PackageUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    nameAm?: NullableStringFieldUpdateOperationsInput | string | null
     shortDesc?: StringFieldUpdateOperationsInput | string
+    shortDescAm?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     priceLabel?: StringFieldUpdateOperationsInput | string
@@ -27843,7 +27916,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    nameAm?: NullableStringFieldUpdateOperationsInput | string | null
     shortDesc?: StringFieldUpdateOperationsInput | string
+    shortDescAm?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     priceLabel?: StringFieldUpdateOperationsInput | string
@@ -29853,6 +29928,7 @@ export namespace Prisma {
   export type PackageCategoryCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    nameAm?: SortOrder
     slug?: SortOrder
     description?: SortOrder
     coverImage?: SortOrder
@@ -29869,6 +29945,7 @@ export namespace Prisma {
   export type PackageCategoryMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    nameAm?: SortOrder
     slug?: SortOrder
     description?: SortOrder
     coverImage?: SortOrder
@@ -29881,6 +29958,7 @@ export namespace Prisma {
   export type PackageCategoryMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    nameAm?: SortOrder
     slug?: SortOrder
     description?: SortOrder
     coverImage?: SortOrder
@@ -29911,7 +29989,9 @@ export namespace Prisma {
     id?: SortOrder
     categoryId?: SortOrder
     name?: SortOrder
+    nameAm?: SortOrder
     shortDesc?: SortOrder
+    shortDescAm?: SortOrder
     description?: SortOrder
     price?: SortOrder
     priceLabel?: SortOrder
@@ -29936,7 +30016,9 @@ export namespace Prisma {
     id?: SortOrder
     categoryId?: SortOrder
     name?: SortOrder
+    nameAm?: SortOrder
     shortDesc?: SortOrder
+    shortDescAm?: SortOrder
     description?: SortOrder
     price?: SortOrder
     priceLabel?: SortOrder
@@ -29953,7 +30035,9 @@ export namespace Prisma {
     id?: SortOrder
     categoryId?: SortOrder
     name?: SortOrder
+    nameAm?: SortOrder
     shortDesc?: SortOrder
+    shortDescAm?: SortOrder
     description?: SortOrder
     price?: SortOrder
     priceLabel?: SortOrder
@@ -33088,7 +33172,9 @@ export namespace Prisma {
   export type PackageCreateWithoutCategoryInput = {
     id?: string
     name: string
+    nameAm?: string | null
     shortDesc?: string
+    shortDescAm?: string | null
     description: string
     price?: number | null
     priceLabel: string
@@ -33107,7 +33193,9 @@ export namespace Prisma {
   export type PackageUncheckedCreateWithoutCategoryInput = {
     id?: string
     name: string
+    nameAm?: string | null
     shortDesc?: string
+    shortDescAm?: string | null
     description: string
     price?: number | null
     priceLabel: string
@@ -33156,7 +33244,9 @@ export namespace Prisma {
     id?: StringFilter<"Package"> | string
     categoryId?: StringFilter<"Package"> | string
     name?: StringFilter<"Package"> | string
+    nameAm?: StringNullableFilter<"Package"> | string | null
     shortDesc?: StringFilter<"Package"> | string
+    shortDescAm?: StringNullableFilter<"Package"> | string | null
     description?: StringFilter<"Package"> | string
     price?: FloatNullableFilter<"Package"> | number | null
     priceLabel?: StringFilter<"Package"> | string
@@ -33175,6 +33265,7 @@ export namespace Prisma {
   export type PackageCategoryCreateWithoutPackagesInput = {
     id?: string
     name: string
+    nameAm?: string | null
     slug: string
     description?: string | null
     coverImage?: string | null
@@ -33187,6 +33278,7 @@ export namespace Prisma {
   export type PackageCategoryUncheckedCreateWithoutPackagesInput = {
     id?: string
     name: string
+    nameAm?: string | null
     slug: string
     description?: string | null
     coverImage?: string | null
@@ -33215,6 +33307,7 @@ export namespace Prisma {
   export type PackageCategoryUpdateWithoutPackagesInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    nameAm?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coverImage?: NullableStringFieldUpdateOperationsInput | string | null
@@ -33227,6 +33320,7 @@ export namespace Prisma {
   export type PackageCategoryUncheckedUpdateWithoutPackagesInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    nameAm?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coverImage?: NullableStringFieldUpdateOperationsInput | string | null
@@ -36625,7 +36719,9 @@ export namespace Prisma {
   export type PackageCreateManyCategoryInput = {
     id?: string
     name: string
+    nameAm?: string | null
     shortDesc?: string
+    shortDescAm?: string | null
     description: string
     price?: number | null
     priceLabel: string
@@ -36644,7 +36740,9 @@ export namespace Prisma {
   export type PackageUpdateWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    nameAm?: NullableStringFieldUpdateOperationsInput | string | null
     shortDesc?: StringFieldUpdateOperationsInput | string
+    shortDescAm?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     priceLabel?: StringFieldUpdateOperationsInput | string
@@ -36663,7 +36761,9 @@ export namespace Prisma {
   export type PackageUncheckedUpdateWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    nameAm?: NullableStringFieldUpdateOperationsInput | string | null
     shortDesc?: StringFieldUpdateOperationsInput | string
+    shortDescAm?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     priceLabel?: StringFieldUpdateOperationsInput | string
@@ -36682,7 +36782,9 @@ export namespace Prisma {
   export type PackageUncheckedUpdateManyWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    nameAm?: NullableStringFieldUpdateOperationsInput | string | null
     shortDesc?: StringFieldUpdateOperationsInput | string
+    shortDescAm?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
     price?: NullableFloatFieldUpdateOperationsInput | number | null
     priceLabel?: StringFieldUpdateOperationsInput | string

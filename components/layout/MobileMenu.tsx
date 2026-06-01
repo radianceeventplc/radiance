@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { LangToggle } from "./LangToggle";
 
 interface MenuItem {
   number: string;
@@ -200,6 +201,7 @@ export function MobileMenu({ variant = "dark" }: MobileMenuProps) {
             ))}
           </nav>
           <div className="header-right">
+            <LangToggle variant="light" />
             <button
               ref={closeBtnRef}
               id="closeMenuBtn"

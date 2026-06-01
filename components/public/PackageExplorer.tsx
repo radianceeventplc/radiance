@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Check, Sparkles, X } from "lucide-react";
 import { PackageCategoryRecord, PackageRecord } from "@/types";
+import { useLanguage } from "@/lib/languageContext";
+import { t } from "@/lib/translations";
 
 interface PackageExplorerProps {
   categories: PackageCategoryRecord[];
@@ -12,6 +14,8 @@ interface PackageExplorerProps {
 }
 
 export function PackageExplorer({ categories, packages }: PackageExplorerProps) {
+  const { lang } = useLanguage();
+  const tr = t[lang].packages;
   const [selectedPackage, setSelectedPackage] = useState<PackageRecord | null>(null);
 
   const tabCategories = useMemo(
@@ -392,15 +396,21 @@ export function PackageExplorer({ categories, packages }: PackageExplorerProps) 
                   <Sparkles className="h-10 w-10" />
                 </div>
               )}
-              {item.isPopular && <div className="pe-badge">Most Popular</div>}
+              {item.isPopular && <div className="pe-badge">{tr.mostPopular}</div>}
             </div>
 
             <div className="pe-body">
               <div>
-                <div className="pe-cat">{item.category?.name}</div>
-                <h2 className="pe-name">{item.name}</h2>
+                <div className="pe-cat">
+                  {(lang === "am" && item.category?.nameAm) || item.category?.name}
+                </div>
+                <h2 className="pe-name">
+                  {(lang === "am" && item.nameAm) || item.name}
+                </h2>
                 <p className="pe-price">{item.priceLabel}</p>
-                <p className="pe-desc">{item.shortDesc}</p>
+                <p className="pe-desc">
+                  {(lang === "am" && item.shortDescAm) || item.shortDesc}
+                </p>
 
                 <ul className="pe-features">
                   {item.features.slice(0, 6).map((feature) => (
@@ -418,13 +428,13 @@ export function PackageExplorer({ categories, packages }: PackageExplorerProps) 
                   onClick={() => setSelectedPackage(item)}
                   className="pe-btn pe-btn-outline"
                 >
-                  View Details
+                  {tr.viewDetails}
                 </button>
                 <Link
                   href={`/book?package=${encodeURIComponent(item.name)}`}
                   className="pe-btn pe-btn-primary"
                 >
-                  Book Now
+                  {tr.bookNow}
                 </Link>
               </div>
             </div>
@@ -445,10 +455,10 @@ export function PackageExplorer({ categories, packages }: PackageExplorerProps) 
             <div className="pe-modal-head">
               <div>
                 <div className="pe-cat" style={{ marginBottom: 10 }}>
-                  {selectedPackage.category?.name}
+                  {(lang === "am" && selectedPackage.category?.nameAm) || selectedPackage.category?.name}
                 </div>
                 <h2 className="pe-name" style={{ fontSize: 32 }}>
-                  {selectedPackage.name}
+                  {(lang === "am" && selectedPackage.nameAm) || selectedPackage.name}
                 </h2>
                 <p className="pe-price">{selectedPackage.priceLabel}</p>
               </div>
@@ -456,7 +466,7 @@ export function PackageExplorer({ categories, packages }: PackageExplorerProps) 
                 type="button"
                 onClick={() => setSelectedPackage(null)}
                 className="pe-modal-close"
-                aria-label="Close package details"
+                aria-label={tr.close}
               >
                 <X className="h-5 w-5" />
               </button>
@@ -488,7 +498,7 @@ export function PackageExplorer({ categories, packages }: PackageExplorerProps) 
 
               <div>
                 <div className="pe-modal-section">
-                  <h3 className="pe-modal-section-title">Included</h3>
+                  <h3 className="pe-modal-section-title">{tr.whatsIncluded}</h3>
                   <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                     {selectedPackage.features.map((feature) => (
                       <li key={feature} className="pe-modal-feature incl">
@@ -518,7 +528,7 @@ export function PackageExplorer({ categories, packages }: PackageExplorerProps) 
                   className="pe-btn pe-btn-primary"
                   style={{ width: "100%", marginTop: 32 }}
                 >
-                  Book This Package
+                  {tr.bookNow}
                 </Link>
               </div>
             </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import React from "react";
 import Link from "next/link";
 import {
   Heart,
@@ -8,84 +9,30 @@ import {
   Plane,
   Building2,
 } from "lucide-react";
+import { useLanguage } from "@/lib/languageContext";
+import { t } from "@/lib/translations";
 
-const tabs = [
-  {
-    id: "weddings",
-    icon: Heart,
-    label: "Weddings",
-    items: [
-      "Full Wedding Planning & Coordination",
-      "Traditional & Engagement Ceremonies",
-      "Wedding Decoration & Styling",
-      "Vendor Sourcing & Negotiation",
-      "Day-of Wedding Coordination",
-      "Photography & Videography",
-      "Makeup & Beauty Coordination",
-      "Entertainment Coordination",
-      "Guest Hospitality & Logistics",
-    ],
-    link: "#",
-    linkText: "View All Wedding Services",
-  },
-  {
-    id: "social",
-    icon: PartyPopper,
-    label: "Social Events",
-    items: [
-      "Birthday Parties & Anniversaries",
-      "Bridal & Baby Showers",
-      "Engagement Parties",
-      "Graduation Celebrations",
-      "Family Gatherings",
-      "Private Luxury Events",
-      "Themed Party Planning",
-      "Event Decoration & Styling",
-      "Full Coordination & Execution",
-    ],
-    link: "#",
-    linkText: "Explore Social Events",
-  },
-  {
-    id: "destination",
-    icon: Plane,
-    label: "Destination",
-    items: [
-      "Destination Wedding Planning",
-      "International Venue Sourcing",
-      "Travel & Accommodation Coordination",
-      "Guest Travel Logistics",
-      "Local Vendor Partnerships",
-      "Cultural Ceremony Integration",
-      "Multi-country Event Planning",
-      "Honeymoon Package Planning",
-      "On-site Coordination Abroad",
-    ],
-    link: "#",
-    linkText: "View Destination Services",
-  },
-  {
-    id: "corporate",
-    icon: Building2,
-    label: "Corporate",
-    items: [
-      "Gala Dinners & Award Ceremonies",
-      "Conferences & Seminars",
-      "Product & Brand Launches",
-      "Networking Events",
-      "Team Building Activities",
-      "Brand Activation Events",
-      "Corporate Retreats",
-      "Client Appreciation Events",
-      "Full Event Production",
-    ],
-    link: "#",
-    linkText: "View Corporate Services",
-  },
+type TabId = "weddings" | "social" | "destination" | "corporate";
+
+const tabIds: { id: TabId; icon: React.ElementType; link: string }[] = [
+  { id: "weddings", icon: Heart, link: "#" },
+  { id: "social", icon: PartyPopper, link: "#" },
+  { id: "destination", icon: Plane, link: "#" },
+  { id: "corporate", icon: Building2, link: "#" },
 ];
 
 export function Services() {
-  const [activeTab, setActiveTab] = useState(tabs[0].id);
+  const { lang } = useLanguage();
+  const tr = t[lang].services;
+
+  const tabs = tabIds.map((tab) => ({
+    ...tab,
+    label: tr.tabs[tab.id].label,
+    items: tr.tabs[tab.id].items,
+    linkText: tr.tabs[tab.id].linkText,
+  }));
+
+  const [activeTab, setActiveTab] = useState<TabId>(tabIds[0].id);
   const autoTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -93,14 +40,14 @@ export function Services() {
     if (autoTimerRef.current) clearTimeout(autoTimerRef.current);
     autoTimerRef.current = setTimeout(() => {
       setActiveTab((prev) => {
-        const currentIndex = tabs.findIndex((t) => t.id === prev);
-        const nextIndex = (currentIndex + 1) % tabs.length;
-        return tabs[nextIndex].id;
+        const currentIndex = tabIds.findIndex((t) => t.id === prev);
+        const nextIndex = (currentIndex + 1) % tabIds.length;
+        return tabIds[nextIndex].id;
       });
     }, 10000);
   }, []);
 
-  const handleTabClick = (id: string) => {
+  const handleTabClick = (id: TabId) => {
     setActiveTab(id);
     resetAutoTimer();
   };
@@ -410,16 +357,14 @@ export function Services() {
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-8 xl:px-12">
         <div className="svc-intro">
           <div>
-            <p className="svc-eyebrow">What We Offer</p>
+            <p className="svc-eyebrow">{tr.eyebrow}</p>
             <h2 className="svc-title">
-              Complete Event Solutions<br />
-              <em>For Every Occasion</em>
+              {tr.heading1}<br />
+              <em>{tr.heading2}</em>
             </h2>
           </div>
           <p className="svc-lead" style={{ marginBottom: 0 }}>
-            Comprehensive event management across four core categories — each
-            crafted to deliver exceptional, personalized experiences tailored to
-            your vision.
+            {tr.lead}
           </p>
         </div>
 
@@ -448,14 +393,7 @@ export function Services() {
               {currentTab.label}
             </h3>
             <p className="svc-content-desc">
-              {currentTab.id === "weddings" &&
-                "Full-service wedding planning crafted to every couple's vision, culture, and love story. From traditional ceremonies to elegant modern celebrations — we bring your dream wedding to life with precision and heart."}
-              {currentTab.id === "social" &&
-                "Stylish and memorable private celebrations — from intimate gatherings to lavish luxury affairs, executed with elegance and personal attention to every detail. Your story, beautifully celebrated."}
-              {currentTab.id === "destination" &&
-                "Seamless destination event planning across Africa and beyond. From venue sourcing to guest logistics, we handle every aspect so you can celebrate anywhere in the world without stress."}
-              {currentTab.id === "corporate" &&
-                "Professional corporate event management that elevates your brand, engages your audience, and delivers a flawless experience from planning to execution. Impress your stakeholders with precision."}
+              {tr.tabs[currentTab.id as keyof typeof tr.tabs].desc}
             </p>
             <Link href={currentTab.link} className="svc-cta-link">
               {currentTab.linkText}

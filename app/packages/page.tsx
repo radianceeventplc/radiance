@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { PackageExplorer } from "@/components/public/PackageExplorer";
+import { PackagesHero } from "@/components/public/PackagesHero";
 import { prisma } from "@/lib/prisma";
 import { PackageCategoryRecord, PackageRecord } from "@/types";
 
@@ -77,24 +78,7 @@ export default async function PackagesPage() {
         `}</style>
 
         {/* Hero */}
-        <section className="pt-36 pb-16 md:pt-44 md:pb-20">
-          <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-8 xl:px-12">
-            <div className="grid lg:grid-cols-[1fr_0.9fr] gap-12 items-end">
-              <div>
-                <p className="pkg-eyebrow">Packages</p>
-                <h1 className="pkg-title">
-                  Curated Solutions,<br />
-                  <em>Crafted For You</em>
-                </h1>
-              </div>
-              <p className="pkg-lead">
-                Flexible event packages designed to match every vision and budget —
-                from intimate celebrations to full-scale productions. Choose a starting
-                point, and we&apos;ll tailor every detail to your story.
-              </p>
-            </div>
-          </div>
-        </section>
+        <PackagesHero />
 
         {/* Packages grid */}
         <section className="pb-32">

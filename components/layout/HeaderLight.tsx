@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { NavMenu } from "./NavMenu";
 import { MobileMenu } from "./MobileMenu";
+import { LangToggle } from "./LangToggle";
 import { Container } from "@/components/ui/Container";
 
 export function HeaderLight() {
@@ -23,7 +24,8 @@ export function HeaderLight() {
           <NavMenu variant="dark" />
 
           {/* Right: CTA + Hamburger */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            <LangToggle variant="dark" />
             <Link
               href="/contact"
               className="hidden sm:inline-flex items-center justify-center font-semibold uppercase tracking-[0.12em] text-[11px] transition-all duration-300"
